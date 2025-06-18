@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Music Player</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="player.css">
+</head>
+<body>
+
+    <div id="music-player-container">
+        <audio id="audio-player"></audio>
+        
+        <div class="track-info">
+            <div id="track-title">Carregando...</div>
+            <div id="track-artist"></div>
+        </div>
+
+        <div class="player-controls">
+            <button id="prev-btn" class="control-btn" title="Anterior"><i class="fas fa-backward-step"></i></button>
+            <button id="play-pause-btn" class="control-btn play" title="Tocar/Pausar"><i class="fas fa-play"></i></button>
+            <button id="next-btn" class="control-btn" title="Próxima"><i class="fas fa-forward-step"></i></button>
+        </div>
+        
+        <div class="progress-container">
+            <span id="current-time">0:00</span>
+            <input type="range" id="progress-bar" class="slider" value="0">
+            <span id="duration">0:00</span>
+        </div>
+
+        <div class="volume-container">
+            <i class="fas fa-volume-down"></i>
+            <input type="range" id="volume-slider" class="slider" min="0" max="1" step="0.01" value="0.5">
+            <i class="fas fa-volume-up"></i>
+        </div>
+    </div>
+    
+    <script src="/Scripts/music-player.js"></script>
+
+</body>
+</html>

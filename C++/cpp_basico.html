@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/estilo.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Guia Básico de C++</title>
+    
+    <!-- NOVO: Biblioteca de áudio Tone.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@hotwired/turbo@8.0.4/dist/turbo.es2017-umd.js"></script>
+    <meta name="turbo-permanent-dom-id" content="meu-player-de-musica"> 
+
+</head>
+
+<body class="page-content">
+
+    <header>
+        
+        <h1>Guia Básico de C++</h1>
+        <p>Seus primeiros passos na poderosa linguagem C++.</p>
+        
+        <!-- BARRA DE PESQUISA ADICIONADA -->
+        <input type="text" id="search-bar" placeholder="Pesquisar seções do guia...">
+
+        <nav>
+            <!-- Adicionada uma classe para os efeitos sonoros -->
+            <a href="/Design_Web_Hub.html" class="nav-link">Guias de Design Web</a>
+            <a href="xml_git.html" class="nav-link">Guia de XML & Git</a>
+            <a href="ArquiteturaHub.html" class="nav-link">Guias de Arquitetura Comp.</a>
+            <a href="infobasic.html" class="nav-link">Guia de Info Básica</a>
+            <a href="cpp.html" class="nav-link">Guia básico de C++</a>
+        </nav>
+
+    </header>
+
+    <main>
+        <!-- Adicionada classe 'filterable-section' para a busca funcionar -->
+        <section id="sintaxe" class="filterable-section">
+            <h2>Sintaxe Básica e Estrutura</h2>
+            <p>Todo programa C++ segue uma estrutura fundamental. O ponto de entrada de qualquer programa é a função <code>main()</code>. A linha <code>using namespace std;</code> nos permite usar nomes de elementos da biblioteca padrão (como <code>cout</code>) diretamente, sem o prefixo <code>std::</code>.</p>
+            <pre><code>// Inclui a biblioteca de entrada e saída
+#include &lt;iostream&gt;
+
+// Permite usar nomes da biblioteca padrão diretamente
+using namespace std;
+
+// A função principal onde a execução do programa começa
+int main() {
+    // cout é usado para imprimir dados na tela
+    cout &lt;&lt; "Olá, Mundo!" &lt;&lt; endl;
+
+    // Retorna 0 para indicar que o programa terminou com sucesso
+    return 0;
+}</code></pre>
+            <ul>
+                <li><strong>#include &lt;iostream&gt;:</strong> Inclui a biblioteca padrão de input/output (entrada e saída).</li>
+                <li><strong>using namespace std;:</strong> Informa ao compilador que usaremos elementos do namespace (espaço de nomes) <code>std</code>. Isso evita ter que escrever <code>std::cout</code> ou <code>std::endl</code>.</li>
+                <li><strong>int main():</strong> Declara a função principal.</li>
+                <li><strong>cout:</strong> É o fluxo de saída padrão (geralmente a tela). O operador <code>&lt;&lt;</code> é usado para "enviar" dados para ele.</li>
+                <li><strong>endl:</strong> Insere uma nova linha e limpa o buffer de saída.</li>
+                <li><strong>return 0;:</strong> Indica ao sistema operacional que o programa foi concluído sem erros.</li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section id="variaveis" class="filterable-section">
+            <h2>Variáveis e Tipos de Dados</h2>
+            <p>Variáveis são contêineres para armazenar valores de dados. Em C++, você deve declarar o tipo da variável.</p>
+            <h3>Tipos Primitivos Comuns:</h3>
+            <ul>
+                <li><code>int</code>: para números inteiros (ex: 10, -5, 1000).</li>
+                <li><code>double</code> ou <code>float</code>: para números de ponto flutuante (ex: 3.14, -0.5). <code>double</code> tem mais precisão.</li>
+                <li><code>char</code>: para um único caractere (ex: 'a', 'B', '$').</li>
+                <li><code>bool</code>: para valores booleanos, ou seja, <strong>true</strong> ou <strong>false</strong>.</li>
+                <li><code>string</code>: para sequências de caracteres (texto). Requer a inclusão da biblioteca <code>&lt;string&gt;</code>.</li>
+            </ul>
+            <pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt; // Necessário para usar string
+
+using namespace std;
+
+int main() {
+    int idade = 25;
+    double altura = 1.75;
+    char inicial = 'J';
+    bool estudante = true;
+    string nome = "João Silva";
+
+    cout &lt;&lt; "Nome: " &lt;&lt; nome &lt;&lt; endl;
+    cout &lt;&lt; "Idade: " &lt;&lt; idade &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+        </section>
+
+        <hr>
+
+        <section id="operadores" class="filterable-section">
+            <h2>Operadores Lógicos e Aritméticos</h2>
+            <p>Operadores são usados para realizar operações em variáveis e valores.</p>
+            <h3>Operadores Aritméticos</h3>
+            <ul>
+                <li><code>+</code> (Adição)</li>
+                <li><code>-</code> (Subtração)</li>
+                <li><code>*</code> (Multiplicação)</li>
+                <li><code>/</code> (Divisão)</li>
+                <li><code>%</code> (Módulo - resto da divisão)</li>
+            </ul>
+            <h3>Operadores Lógicos</h3>
+            <p>Usados principalmente em estruturas condicionais para combinar ou inverter condições.</p>
+            <ul>
+                <li><code>&&</code> (E Lógico - <strong>AND</strong>): Retorna <strong>true</strong> se ambas as condições forem verdadeiras.</li>
+                <li><code>||</code> (OU Lógico - <strong>OR</strong>): Retorna <strong>true</strong> se pelo menos uma das condições for verdadeira.</li>
+                <li><code>!</code> (Negação Lógica - <strong>NOT</strong>): Inverte o resultado de uma condição (<strong>true</strong> vira <strong>false</strong> e vice-versa).</li>
+            </ul>
+        </section>
+
+        <hr>
+        
+        <section id="controle" class="filterable-section">
+            <h2>Estruturas de Controle: if / else if / else</h2>
+            <p>Essas estruturas permitem que o programa tome decisões e execute blocos de código diferentes com base em condições.</p>
+            <pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+int main() {
+    int nota = 75;
+
+    if (nota >= 90) {
+        cout &lt;&lt; "Conceito A" &lt;&lt; endl;
+    } else if (nota >= 70) {
+        cout &lt;&lt; "Conceito B" &lt;&lt; endl; // Esta linha será executada
+    } else if (nota >= 50) {
+        cout &lt;&lt; "Conceito C" &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; "Reprovado" &lt;&lt; endl;
+    }
+
+    return 0;
+}</code></pre>
+            <p>O programa verifica as condições em ordem. Assim que uma condição <strong>verdadeira</strong> é encontrada, seu bloco de código é executado e as demais condições (<code>else if</code>, <code>else</code>) são ignoradas.</p>
+        </section>
+
+        <hr>
+
+        <section id="funcoes" class="filterable-section">
+            <h2>Funções: Tipos, Parâmetros e Retorno</h2>
+            <p>Funções são blocos de código que realizam uma tarefa específica e podem ser chamados (executados) de outras partes do programa. Isso ajuda a organizar e reutilizar o código.</p>
+            
+            <h3>Estrutura de uma Função</h3>
+            <p><code>tipo_de_retorno nome_da_funcao(parametro1, parametro2, ...);</code></p>
+
+            <h3>Tipo de Retorno</h3>
+            <p>É o tipo de dado que a função "devolve" após sua execução. Se uma função não retorna nenhum valor, usamos o tipo <strong>void</strong>.</p>
+
+            <h3>Parâmetros</h3>
+            <p>São valores que a função recebe para trabalhar. Existem duas formas principais de passar parâmetros:</p>
+            <ul>
+                <li><strong>Passagem por Valor:</strong> Uma <strong>cópia</strong> do valor da variável é passada para a função. Alterações no parâmetro dentro da função <strong>não afetam</strong> a variável original.</li>
+                <li><strong>Passagem por Referência (&):</strong> A função recebe uma referência (o endereço de memória) à variável original. Alterações no parâmetro dentro da função <strong>afetam</strong> a variável original.</li>
+            </ul>
+
+            <pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+// Função que soma dois inteiros e retorna o resultado (retorno 'int')
+int somar(int a, int b) { // 'a' e 'b' são parâmetros por valor
+    return a + b;
+}
+
+// Função que não retorna valor (retorno 'void')
+// e recebe um parâmetro por referência para modificá-lo
+void dobrar(int& num) { // 'num' é um parâmetro por referência
+    num = num * 2;
+}
+
+int main() {
+    // Chamando a função 'somar'
+    int resultado = somar(5, 3);
+    cout &lt;&lt; "A soma é: " &lt;&lt; resultado &lt;&lt; endl; // Saída: 8
+
+    // Chamando a função 'dobrar'
+    int meuNumero = 10;
+    cout &lt;&lt; "Número original: " &lt;&lt; meuNumero &lt;&lt; endl; // Saída: 10
+    
+    dobrar(meuNumero); // Passando a variável para ser modificada
+    
+    cout &lt;&lt; "Número dobrado: " &lt;&lt; meuNumero &lt;&lt; endl; // Saída: 20
+
+    return 0;
+}</code></pre>
+        </section>
+
+    </main>
+
+    <footer>
+        
+    <iframe 
+    id="meu-player-de-musica"  src="/player/player.html"
+    title="Player de Música"
+    frameborder="0"
+    allow="autoplay"
+    style="position: fixed; bottom: 0; left: 0; width: 100%; height: 80px; z-index: 1000; border: none;">
+    </iframe>
+
+<div style="height: 80px;"></div>
+
+        <p class="copyright">&copy; 2025 - Lucas Willian</p>
+        
+    </footer>
+
+    <!-- Scripts JS -->
+    <script src="/Scripts/search.js"></script>
+    <!-- NOVO: Script para efeitos sonoros -->
+    <script src="/Scripts/sound-effects.js"></script>
+
+</body>
+</html>

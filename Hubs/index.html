@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/estilo.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Módulo A</title>
+    
+    <!-- NOVO: Biblioteca de áudio Tone.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@hotwired/turbo@8.0.4/dist/turbo.es2017-umd.js"></script>
+    <meta name="turbo-permanent-dom-id" content="meu-player-de-musica"> 
+
+</head>
+
+<body class="page-hub">
+
+    <header>
+        <h1>Lu Microspace:</h1>
+        <h2>Bem-vindo(a) ao Módulo A3</h2>
+        <p>Navegue pelos módulos abaixo para explorar guias detalhados sobre desenvolvimento, programação e arquitetura de computadores.</p>
+        
+        <input type="text" id="search-bar" placeholder="Pesquisar módulos...">
+    </header>
+
+    <main>
+        <div class="hub-grid">
+            
+            <a href="ArquiteturaHub.html" class="module-card">
+                <span class="icon">⚙️</span>
+                <h3>Arquitetura Computacional</h3>
+                <p>Acesse o Hub dedicado exclusivamente a matéria de Arquitetura Computacional.</p>
+            </a>
+
+            <a href="CppHub.html" class="module-card">
+                <span class="icon">🔁</span>
+                <h3>Guias de C++</h3>
+                <p>Aprofunde-se nas técnicas de programação em C++, com guias voltados a uma variedade de conhecimentos.</p>
+            </a>
+
+            <a href="Design_Web_Hub.html" class="module-card">
+                <span class="icon">🌐</span>
+                <h3>Guia de HTML & CSS</h3>
+                <p>Aprenda a estruturar e estilizar páginas web com as linguagens fundamentais da internet.</p>
+            </a>
+
+            <a href="/C++/cpp_basico.html" class="module-card">
+                <span class="icon">🖥️</span>
+                <h3>Guia Sobre Info Básica</h3>
+                <p>Aprenda sobre os periféricos (mouse, teclado), componentes (CPU, GPU), tipos de memória (RAM, HD, SSD) e etc.</p>
+            </a>
+
+        </div>
+    </main>
+
+    <footer>
+
+    <iframe 
+    id="meu-player-de-musica"  src="/player/player.html"
+    title="Player de Música"
+    frameborder="0"
+    allow="autoplay"
+    style="position: fixed; bottom: 0; left: 0; width: 100%; height: 80px; z-index: 1000; border: none;">
+    </iframe>
+
+    <div style="height: 80px;"></div>
+
+        <p class="copyright">&copy; 2025 - Lucas Willian</p>
+        
+    </footer>
+
+    <!-- Scripts JS -->
+    <script src="/Scripts/search.js"></script>
+    <!-- NOVO: Script para efeitos sonoros -->
+    <script src="/Scripts/sound-effects.js"></script>
+
+</body>
+</html>
