@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="estilo.css"> 
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +11,6 @@
 
     <title>Módulo A</title>
     
-    <!-- NOVO: Biblioteca de áudio Tone.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
 
     <script type="module" src="https://cdn.jsdelivr.net/npm/@hotwired/turbo@8.0.4/dist/turbo.es2017-umd.js"></script>
@@ -50,7 +49,7 @@
                 <p>Aprenda a estruturar e estilizar páginas web com as linguagens fundamentais da internet.</p>
             </a>
 
-            <a href="/C++/cpp_basico.html" class="module-card">
+            <a href="C++/cpp_basico.html" class="module-card">
                 <span class="icon">🖥️</span>
                 <h3>Guia Sobre Info Básica</h3>
                 <p>Aprenda sobre os periféricos (mouse, teclado), componentes (CPU, GPU), tipos de memória (RAM, HD, SSD) e etc.</p>
@@ -62,11 +61,12 @@
     <footer>
 
     <iframe 
-    id="meu-player-de-musica"  src="/player/player.html"
-    title="Player de Música"
-    frameborder="0"
-    allow="autoplay"
-    style="position: fixed; bottom: 0; left: 0; width: 100%; height: 80px; z-index: 1000; border: none;">
+        id="meu-player-de-musica"
+        src="player/player.html"
+        title="Player de Música"
+        frameborder="0"
+        allow="autoplay"
+        style="position: fixed; bottom: 0; left: 0; width: 100%; height: 80px; z-index: 1000; border: none;">
     </iframe>
 
     <div style="height: 80px;"></div>
@@ -75,9 +75,7 @@
         
     </footer>
 
-    <!-- Scripts JS -->
     <script src="Scripts/search.js"></script>
-    <!-- NOVO: Script para efeitos sonoros -->
     <script src="Scripts/sound-effects.js"></script>
 
 </body>
