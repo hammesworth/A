@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Guia de Laços e Vetores C++</title>
+    
+    <!-- NOVO: Biblioteca de áudio Tone.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
+</head>
+
+<body data-barba="wrapper">
+
+    <div class="search-container" style="margin-bottom: 2rem;"> 
+        <input type="text" id="search-bar" placeholder="Pesquisar módulos ou seções...">
+        <div class="search-results-box" style="display: none;"></div>
+        <span id="autocomplete-suggestion"></span>
+        </div>
+
+        <div data-barba="container" data-barba-namespace="Cpp-While" namespace="default-view">
+
+<header>
+    <h1>Guia Detalhado do Laço 'while' em C++ 🛠️</h1>
+    <p>Um mergulho profundo na estrutura de repetição mais fundamental para controle de fluxo.</p>
+
+    <nav>
+        <a href="/Design_Web_Hub.html" class="nav-link">Guias de Design Web</a>
+            <a href="xml_git.html" class="nav-link">Guia de XML & Git</a>
+            <a href="ArquiteturaHub.html" class="nav-link">Guias de Arquitetura Comp.</a>
+            <a href="infobasic.html" class="nav-link">Guia de Info Básica</a>
+            <a href="cpp.html" class="nav-link">Guia básico de C++</a>
+    </nav>
+</header>
+
+<main>
+
+    <!-- Adicionada classe 'filterable-section' para a busca funcionar -->
+        <section id="sintaxe" class="filterable-section">
+
+<div id="xml-intro">
+
+    <section id="intro">
+      <h2 class="subtitle">🔁 Introdução ao Laço While</h2>
+      <p>O comando <code>while</code> (que se traduz como "enquanto") é uma das estruturas de repetição mais essenciais na programação. Sua função é executar repetidamente um bloco de código <strong>enquanto</strong> uma determinada condição permanecer verdadeira.</p>
+      <p>A principal característica do <code>while</code> é ser um <strong>laço pré-condicional</strong>. Isso significa que a condição é sempre testada <strong>antes</strong> de cada possível execução do bloco. Se, na primeira verificação, a condição já for falsa, o bloco de código interno nunca será executado.</p>
+      <p>Este comportamento o torna ideal para situações onde o número de repetições é indeterminado e depende de um evento externo, como uma entrada de usuário, o fim de um arquivo ou a mudança de um estado no programa.</p>
+    </section>
+
+    <section id="sintaxe">
+        <h2 class="subtitle">⚙️ Sintaxe e Fluxo de Execução</h2>
+        <p>A estrutura do <code>while</code> é simples e direta. Ela consiste na palavra-chave <code>while</code>, seguida por uma condição entre parênteses e um bloco de código delimitado por chaves <code>{}</code>.</p>
+        <pre class="code">
+while (condicao) {
+    // Bloco de código a ser repetido
+    // enquanto a 'condicao' for verdadeira.
+    // É crucial que algo aqui dentro possa, eventualmente,
+    // tornar a 'condicao' falsa.
+}
+        </pre>
+        <p>O fluxo de execução ocorre da seguinte forma:</p>
+        <ul>
+            <li><strong>Teste da Condição:</strong> O programa avalia a expressão booleana dentro dos parênteses.</li>
+            <li><strong>Execução do Bloco:</strong> Se a condição for <code>true</code>, o código dentro das chaves é executado linha por linha.</li>
+            <li><strong>Retorno ao Teste:</strong> Após a última linha do bloco ser executada, o controle do programa volta para o passo 1, e a condição é testada novamente.</li>
+            <li><strong>Término do Laço:</strong> Se a condição for avaliada como <code>false</code>, o bloco de código é ignorado e o programa continua sua execução na primeira instrução que estiver após a chave de fechamento <code>}</code> do <code>while</code>.</li>
+        </ul>
+
+        <p>Veja um exemplo básico que ilustra esse fluxo:</p>
+        <pre class="code">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int contador = 1; // 1. Inicialização da variável de controle
+
+    // 2. Teste da condição (1 <= 5 é verdadeiro)
+    while (contador <= 5) {
+        // 3. Execução do bloco
+        cout << "O contador vale: " << contador << "\n";
+
+        // 4. Modificação da variável de controle
+        contador++; // Equivalente a contador = contador + 1;
+    } // 5. Fim do bloco, retorna ao passo 2 para um novo teste
+
+    cout << "Fim do laco." << "\n"; // 6. Executado quando a condição se torna falsa
+    return 0;
+}
+        </pre>
+        <p><strong>Saída do código:</strong><br>
+        O contador vale: 1<br>
+        O contador vale: 2<br>
+        O contador vale: 3<br>
+        O contador vale: 4<br>
+        O contador vale: 5<br>
+        Fim do laço.
+        </p>
+    </section>
+
+    <section id="infinito">
+        <h2 class="subtitle">⚠️ O Perigo do Loop Infinito</h2>
+        <p>Um dos erros mais comuns ao usar o <code>while</code> é criar um <strong>loop infinito</strong>. Isso acontece quando a condição do laço nunca se torna falsa. Consequentemente, o programa fica preso, executando o mesmo bloco de código indefinidamente, o que geralmente trava a aplicação e pode consumir 100% de um núcleo de CPU.</p>
+        <p>A causa é quase sempre a mesma: a variável ou o estado que controla a condição <strong>nunca é alterado</strong> dentro do laço de uma forma que o leve ao término.</p>
+        <pre class="code">
+#include &lt;iostream&gt;
+using namespace std;
+
+// ATENCAO: Este código cria um loop infinito.
+// Nao execute a menos que saiba como parar o programa.
+int main() {
+    int i = 0;
+    while (i < 10) {
+        cout << "Estou preso no loop!" << "\n";
+        // O erro está aqui: 'i' nunca é incrementado.
+        // A condição 'i < 10' será eternamente verdadeira.
+    }
+    return 0; // Esta linha nunca será alcançada.
+}
+        </pre>
+        <p>Para evitar isso, sempre garanta que haja uma "rota de fuga", ou seja, que a lógica dentro do laço eventualmente fará com que a condição se torne <code>false</code>.</p>
+    </section>
+
+    <section id="aplicacoes">
+        <h2 class="subtitle">💡 Aplicações Práticas do While</h2>
+        <p>O <code>while</code> brilha em cenários onde a repetição não é contada, mas condicional.</p>
+        
+        <h3>1. Validação de Entrada de Usuário</h3>
+        <p>Um uso clássico é forçar o usuário a digitar um dado válido.</p>
+        <pre class="code">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int idade;
+    cout << "Por favor, digite sua idade: ";
+    cin >> idade;
+
+    // Enquanto a idade for inválida (menor que 0 ou maior que 120)
+    while (idade < 0 || idade > 120) {
+        cout << "Idade invalida! Por favor, digite um valor entre 0 e 120: ";
+        cin >> idade; // Pede a entrada novamente
+    }
+
+    cout << "Obrigado! Sua idade e " << idade << " anos." << "\n";
+    return 0;
+}
+        </pre>
+
+        <h3>2. Menu Interativo</h3>
+        <p>Manter um menu de opções ativo até que o usuário escolha sair.</p>
+        <pre class="code">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int escolha = 0;
+
+    // O loop continua enquanto a escolha for diferente de 4 (opção de sair)
+    while (escolha != 4) {
+        cout << "\n--- MENU ---\n";
+        cout << "1. Jogar\n";
+        cout << "2. Ver pontuacoes\n";
+        cout << "3. Ajuda\n";
+        cout << "4. Sair\n";
+        cout << "Escolha uma opcao: ";
+        cin >> escolha;
+
+        if (escolha == 1) {
+            cout << "Iniciando o jogo...\n";
+        } else if (escolha == 2) {
+            cout << "Exibindo pontuacoes...\n";
+        } else if (escolha == 3) {
+            cout << "Mostrando a ajuda...\n";
+        }
+    }
+
+    cout << "Obrigado por jogar. Ate mais!\n";
+    return 0;
+}
+        </pre>
+    </section>
+
+    <section id="controle">
+        <h2 class="subtitle">Controle Fino: `break` e `continue`</h2>
+        <p>Às vezes, é necessário alterar o fluxo padrão de um laço <code>while</code>. Para isso, existem duas palavras-chave importantes:</p>
+        <ul>
+            <li><code>break</code>: Encerra o laço <strong>imediatamente</strong>, independentemente do estado da condição. A execução salta para a primeira linha de código após o laço.</li>
+            <li><code>continue</code>: Pula o restante do código da iteração atual e volta <strong>imediatamente</strong> para o teste da condição do <code>while</code>, iniciando a próxima iteração se a condição for verdadeira.</li>
+        </ul>
+
+        <h3>Exemplo com `break`</h3>
+        <p>O laço abaixo foi projetado para rodar 1000 vezes, mas o <code>break</code> o interrompe se um número específico for encontrado.</p>
+        <pre class="code">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int numero = 0;
+    while (numero < 1000) {
+        cout << numero << " ";
+        if (numero == 7) {
+            cout << "\nEncontrei o 7! Saindo do laco...";
+            break; // Termina o 'while' aqui mesmo.
+        }
+        numero++;
+    }
+    cout << "\nFora do laco.\n";
+    return 0;
+}
+        </pre>
+        <p><strong>Saída:</strong> 0 1 2 3 4 5 6 7 <br>Encontrei o 7! Saindo do laco...<br>Fora do laco.</p>
+
+        <h3>Exemplo com `continue`</h3>
+        <p>Este código imprime apenas os números ímpares. Quando `i` é par, <code>continue</code> pula a instrução <code>cout</code>.</p>
+        <pre class="code">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int i = 0;
+    while (i < 10) {
+        i++;
+        if (i % 2 == 0) { // Se 'i' for par...
+            continue; // ...pule para a próxima iteração, ignorando o cout.
+        }
+        cout << i << " "; // Esta linha só executa para números ímpares.
+    }
+    cout << "\n";
+    return 0;
+}
+        </pre>
+        <p><strong>Saída:</strong> 1 3 5 7 9</p>
+    </section>
+
+    <section id="exercicios">
+        <h2 class="subtitle">✏️ Exercícios Práticos</h2>
+        <p>A melhor forma de aprender é praticando. Tente resolver os problemas abaixo antes de olhar a resposta!</p>
+
+        <div class="exercise">
+            <h4>Exercício 1: Contagem Regressiva</h4>
+            <p><strong>Problema:</strong> Escreva um programa que peça ao usuário um número inteiro positivo e, em seguida, use um laço <code>while</code> para imprimir uma contagem regressiva a partir desse número até 1, finalizando com a mensagem "Decolar!".</p>
+            <p><strong>Solução:</strong></p>
+            <pre class="code">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int contador;
+    cout << "Digite um numero para a contagem regressiva: ";
+    cin >> contador;
+
+    while (contador > 0) {
+        cout << contador << "...\n";
+        contador--; // Decrementa o contador a cada iteração
+    }
+
+    cout << "Decolar!\n";
+    return 0;
+}
+            </pre>
+            <p><strong>Explicação da Resposta:</strong> O laço <code>while</code> continua executando enquanto a variável <code>contador</code> for maior que zero. A cada passo, o valor atual do contador é impresso e, em seguida, ele é decrementado (<code>contador--</code>). Quando o contador chega a 0, a condição <code>contador > 0</code> se torna falsa, o laço termina, e a mensagem "Decolar!" é impressa.</p>
+        </div>
+
+        <div class="exercise">
+            <h4>Exercício 2: Adivinhe o Número</h4>
+            <p><strong>Problema:</strong> Crie um jogo simples onde o programa "pensa" em um número secreto (ex: 42). Use um laço <code>while</code> para pedir repetidamente que o usuário adivinhe o número. O laço deve continuar até que o usuário acerte. A cada tentativa, informe se o palpite foi muito alto, muito baixo ou correto.</p>
+             <p><strong>Solução:</strong></p>
+            <pre class="code">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int numeroSecreto = 42;
+    int palpite = 0;
+
+    cout << "Adivinhe o numero secreto (entre 1 e 100)!\n";
+
+    while (palpite != numeroSecreto) {
+        cout << "Qual o seu palpite? ";
+        cin >> palpite;
+
+        if (palpite < numeroSecreto) {
+            cout << "Muito baixo! Tente de novo.\n";
+        } else if (palpite > numeroSecreto) {
+            cout << "Muito alto! Tente de novo.\n";
+        }
+    }
+
+    cout << "Parabens! Voce acertou o numero secreto!\n";
+    return 0;
+}
+            </pre>
+            <p><strong>Explicação da Resposta:</strong> O laço é controlado pela condição <code>palpite != numeroSecreto</code>. Enquanto o palpite do usuário for diferente do número secreto, o laço continua. Dentro dele, uma estrutura <code>if-else if</code> verifica se o palpite é menor ou maior que o alvo, dando uma dica ao usuário. O laço só termina quando o usuário digita o número correto, momento em que a condição se torna falsa e a mensagem de parabéns é exibida.</p>
+        </div>
+
+        <div class="exercise">
+            <h4>Exercício 3: Soma de Dígitos</h4>
+            <p><strong>Problema:</strong> Peça ao usuário um número inteiro. Use um laço <code>while</code> para calcular a soma de todos os seus dígitos. Por exemplo, se o usuário digitar <code>123</code>, o programa deve imprimir <code>6</code> (pois 1 + 2 + 3 = 6).</p>
+             <p><strong>Solução:</strong></p>
+            <pre class="code">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int numero, soma = 0;
+    cout << "Digite um numero inteiro para somar seus digitos: ";
+    cin >> numero;
+
+    int numeroOriginal = numero; // Guarda o número original para exibir no final
+
+    while (numero > 0) {
+        soma += numero % 10; // Adiciona o último dígito à soma
+        numero /= 10;        // Remove o último dígito do número
+    }
+
+    cout << "A soma dos digitos de " << numeroOriginal << " e: " << soma << "\n";
+    return 0;
+}
+            </pre>
+            <p><strong>Explicação da Resposta:</strong> Este é um uso inteligente da matemática. O operador módulo <code>% 10</code> retorna o último dígito de um número (ex: <code>123 % 10</code> é <code>3</code>). A divisão inteira <code>/ 10</code> remove o último dígito (ex: <code>123 / 10</code> é <code>12</code>). O laço <code>while</code> repete esse processo, somando o último dígito e depois o removendo, até que o número se torne 0. Quando isso acontece, todos os dígitos foram somados.</p>
+        </div>
+    </section>
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+<footer>
+    
+    <iframe 
+    id="meu-player-de-musica"  src="../player/player.html"
+    title="Player de Música"
+    frameborder="0"
+    allow="autoplay"
+    style="position: fixed; bottom: 0; left: 0; width: 100%; height: 80px; z-index: 1000; border: none;">
+    </iframe>
+
+<div style="height: 80px;"></div>
+
+    <p style="text-align: center; margin-top: 40px;">💻 Teste os exemplos em um compilador online como o GDB para praticar.</p>
+    <p>&copy; 2025 - Lucas Willian</p>
+</footer>
+
+    <!-- Scripts JS -->
+    <script src="../Scripts/search.js" defer></script>
+    <!-- NOVO: Script para efeitos sonoros  -->
+    <script src="../Scripts/sound-effects.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="../Scripts/barba-init.js" defer></script>
+
+</body>
+</html>

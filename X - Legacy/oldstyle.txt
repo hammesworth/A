@@ -1,12 +1,8 @@
 /* ==========================================================================
-   ARQUIVO CSS OTIMIZADO (estilo.css)
-   Organizado para clareza, manutenibilidade e responsividade.
+   ARQUIVO CSS UNIFICADO (estilo.css)
    ========================================================================== */
 
-/* ==========================================================================
-   1. CONFIGURAÇÕES GLOBAIS E RESET
-   ========================================================================== */
-
+/* --- 1. Reset e Configurações Globais (Comum a todas as páginas) --- */
 :root {
     /* Paleta de Cores */
     --primary-color: #007BFF;
@@ -40,7 +36,6 @@
 }
 
 html {
-    height: 100%;
     scroll-behavior: smooth;
 }
 
@@ -51,14 +46,6 @@ body {
     line-height: 1.7;
     padding: 2rem;
     overflow-x: hidden;
-    
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Garante que o corpo ocupe no mínimo toda a altura da tela */
-}
-
-.page-hub, .page-content {
-    flex-grow: 1;
 }
 
 /* --- Animações Globais --- */
@@ -72,203 +59,74 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes float-anim {
-    50% { transform: translateY(-6px); }
-}
 
 /* ==========================================================================
-   2. HEADER E BARRA DE PESQUISA
+   2. ESTILOS DAS PÁGINAS DE HUB (page-hub)
    ========================================================================== */
-
-/* --- 2.1 Estrutura Base do Header --- */
-.page-hub header,
-.page-content header {
-    background: var(--surface-color);
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--shadow-medium);
-    padding: 2.5rem;
-    margin: 0 auto;
-    position: relative; /* Contexto para posicionar elementos filhos */
-    text-align: center;
-    max-width: 1000px;
+.page-hub header {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 1rem 0;
 }
 
-.page-hub header {
-    margin-bottom: 80px; /* Espaço para a busca flutuante */
-    padding-bottom: 80px; /* Espaço interno para a busca */
-}
-
-.page-content header {
-    padding-bottom: 80px; /* Espaço interno para a busca */
-}
-
-/* --- 2.2 Elementos do Header (Títulos, Botões, Navegação) --- */
-.settings-btn {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    background: transparent;
-    border: none;
-    color: var(--text-title);
-    font-size: 1.5rem;
-    width: 44px;
-    height: 44px;
-    cursor: pointer;
-    z-index: 10;
-    transition: color 0.2s ease;
-}
-
-.settings-btn:hover {
-    color: var(--primary-color);
-}
-
-.page-hub header h1 {
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 800;
-    animation: float-anim 5s ease-in-out infinite;
-}
-
-.page-content header h1 {
-    font-size: clamp(2rem, 4vw, 2.5rem);
-    font-weight: 700;
-}
-
-.page-content header nav {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.15rem;
-    width: 100%;
+.page-hub main {
+    max-width: 900px;
     margin: 0 auto;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border-color);
 }
 
-.page-content header nav a {
-    color: var(--text-body);
-    text-decoration: none;
+.page-hub h1 {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: var(--text-title);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    animation: fadeInDown 0.6s ease-out forwards;
+}
+
+.page-hub h2 {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
     font-weight: 600;
-    font-size: 0.9rem;
-    padding: 8px 16px;
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-sm);
-    white-space: nowrap;
-    transition: all 0.2s ease-in-out;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    animation: fadeInDown 0.6s 0.2s ease-out forwards;
+    opacity: 0;
 }
 
-.page-content header nav a:hover {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    color: white;
+.page-hub header p {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    margin: 0 auto 1.5rem auto;
+    max-width: 650px;
+    animation: fadeInDown 0.6s 0.4s ease-out forwards;
+    opacity: 0;
 }
 
-/* --- 2.3 Componentes da Barra de Pesquisa --- */
-
-/* Container que envolve a barra e os resultados */
-.search-container {
-    position: relative; /* Relativo ao header */
-    left: 50%;
-    transform: translateX(-50%);
+.page-hub #search-bar {
     width: 100%;
-    padding: 0 2.5rem; /* Alinha com o padding do header */
-    z-index: 5;
-}
-
-/* Posicionamento vertical do container da busca */
-.page-hub .search-container {
-    bottom: -40px; /* Metade para fora na página HUB */
-}
-
-.page-content .search-container {
-    bottom: 2rem; /* Na base do header de conteúdo */
-}
-
-/* A barra de pesquisa em si */
-#search-bar {
-    width: 100%;
-    max-width: 950px; /* Largura máxima */
-    margin: 0 auto; /* Centraliza a barra dentro do container */
-    display: block;
-    position: relative; /* Contexto para a sugestão de autocomplete */
+    max-width: 600px;
     padding: 14px 24px;
+    margin: 1rem auto 0 auto;
     font-size: 1rem;
-    font-family: var(--font-primary);
     background-color: var(--surface-color);
     border: 1px solid var(--border-color);
     border-radius: 50px;
-    box-shadow: var(--shadow-hard);
+    box-shadow: var(--shadow-soft);
     outline: none;
-    transition: all 0.2s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 0.7s 0.6s ease-out forwards;
+    opacity: 0;
 }
 
-#search-bar:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25), var(--shadow-hard);
-}
-
-/* [CORREÇÃO] Caixa de resultados do Autocomplete */
-.search-results-box {
-    display: none; /* Escondida por padrão */
-    position: absolute;
-    top: calc(100% + 8px); /* Abaixo da barra de pesquisa com um espaçamento */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%; /* Ocupa a mesma largura do container */
-    max-width: 950px; /* E respeita a mesma largura máxima da barra */
-    background-color: var(--surface-color);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--shadow-hard);
-    max-height: 350px;
-    overflow-y: auto;
-    z-index: 5000; /* Garante que fique acima de todo o conteúdo */
-    text-align: left; /* Alinha o texto dos resultados à esquerda */
-}
-
-.search-result-item {
-    display: block;
-    padding: 14px 22px;
-    color: var(--text-body);
-    text-decoration: none;
-    border-bottom: 1px solid var(--border-color);
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.search-result-item:last-child {
-    border-bottom: none;
-}
-
-.search-result-item:hover,
-.search-result-item.active { /* Classe para navegação com teclado */
-    background-color: var(--bg-color);
-    color: var(--primary-color);
-    cursor: pointer;
-}
-
-/* Sugestão de texto (ghost) para autocomplete com Tab */
-#autocomplete-suggestion {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 25px; /* Alinhado com o padding-left do input + borda */
-    font-size: 1rem;
+.page-hub #search-bar::placeholder {
     color: var(--text-muted);
-    z-index: -1;
-    pointer-events: none; /* Permite clicar através do elemento */
-    white-space: pre; /* Mantém o espaçamento do texto do input */
 }
 
-
-/* ==========================================================================
-   3. PÁGINA HUB (Grid de Módulos)
-   ========================================================================== */
-
-.page-hub main {
-    max-width: 1000px;
-    margin: 0 auto;
+.page-hub #search-bar:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
 }
 
 .hub-grid {
@@ -320,22 +178,37 @@ body {
     font-size: 1rem;
     color: var(--text-muted);
     margin-bottom: 0;
-    flex-grow: 1;
+    flex-grow: 1; 
 }
 
-/* Animação em cascata dos cards */
+/* Atraso em cascata para a animação dos cards */
 .page-hub .module-card:nth-child(1) { animation-delay: 0.7s; }
 .page-hub .module-card:nth-child(2) { animation-delay: 0.8s; }
 .page-hub .module-card:nth-child(3) { animation-delay: 0.9s; }
 .page-hub .module-card:nth-child(4) { animation-delay: 1.0s; }
 
+
 /* ==========================================================================
-   4. PÁGINAS DE CONTEÚDO
+   3. ESTILOS DAS PÁGINAS DE CONTEÚDO (page-content)
    ========================================================================== */
+.page-content header {
+    background-color: var(--surface-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.5rem 2rem;
+    margin-bottom: 3rem;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.page-content .header-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
 
 .page-content main {
     max-width: 1000px;
-    margin: 2rem auto 0;
+    margin: 0 auto;
     background: var(--surface-color);
     border-radius: var(--border-radius-md);
     padding: 2.5rem 3rem;
@@ -347,6 +220,27 @@ body {
 .page-content main:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-hard);
+}
+
+.page-content h1 {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--text-title);
+    margin-bottom: 0.25rem;
+}
+
+.page-content header p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.page-content h2 {
+    font-size: clamp(1.5rem, 3vw, 3rem);
+    font-weight: 800;
+    color: var(--text-title);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
 }
 
 .page-content h2.subtitle {
@@ -369,7 +263,7 @@ body {
 }
 
 .page-content strong {
-    color: var(--text-title);
+    color: var(--danger-color);
     font-weight: 600;
 }
 
@@ -383,6 +277,69 @@ body {
 .page-content a:hover {
     color: var(--primary-hover);
     text-decoration: underline;
+}
+
+.page-content header nav {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.page-content header nav a {
+    flex: 1;
+    background-color: transparent;
+    color: var(--text-body);
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    border-left: 1px solid var(--border-color);
+    box-shadow: none;
+    transition: all 0.2s ease-in-out;
+    white-space: nowrap;
+}
+
+.page-content header nav a:first-child {
+    border-left: none;
+}
+
+.page-content header nav a:hover,
+.page-content header nav a:focus-visible {
+    background-color: color-mix(in srgb, var(--primary-color) 8%, transparent);
+    color: var(--primary-hover);
+    transform: none;
+    box-shadow: none;
+    text-decoration: none;
+}
+
+.page-content #search-bar {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 1px solid var(--border-color);
+    background-color: var(--surface-color);
+    color: var(--text-body);
+    border-radius: 25px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.page-content #search-bar:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 25%, transparent);
+}
+
+.page-content .search-container {
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto 1.5rem auto;
 }
 
 .page-content code {
@@ -413,23 +370,38 @@ body {
 }
 
 .page-content ul {
-    list-style-position: outside;
+    list-style: none;
     padding-left: 1.5rem;
 }
 
+.page-content ul li {
+    position: relative;
+}
 
 /* ==========================================================================
-   5. COMPONENTES COMPARTILHADOS (Player, Footer)
+   4. ESTILOS DE COMPONENTES COMPARTILHADOS (Footer, Player, etc.)
    ========================================================================== */
 
+footer {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    animation: fadeInUp 0.8s 1.2s ease-out forwards;
+    opacity: 0;
+    position: relative;
+    padding-top: 6rem; 
+    background: linear-gradient(to top, rgba(0,0,0,0.02), transparent);
+    margin-top: 4rem;
+}
+
+/* Este container do player é compartilhado, então não precisa de classe de página */
 #music-player-container {
     max-width: 900px;
-    margin: 4rem auto 2rem auto;
+    margin: -5rem auto 2rem auto; 
     padding: 1rem 1.5rem;
     background-color: var(--surface-color);
     border-radius: var(--border-radius-md);
     box-shadow: var(--shadow-medium);
-    border: 1px solid var(--border-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -438,6 +410,7 @@ body {
     position: relative;
     z-index: 10;
     opacity: 0;
+    border: 1px solid var(--border-color);
     animation: fadeInUp 0.8s 1.2s ease-out forwards;
 }
 
@@ -464,7 +437,7 @@ body {
     align-items: center;
     gap: 0.5rem;
     justify-content: center;
-    flex-grow: 1;
+    flex-grow: 1; 
 }
 
 .control-btn {
@@ -508,7 +481,7 @@ body {
 
 .progress-container {
     flex-basis: 100%;
-    order: 3; /* Força a barra de progresso para baixo em telas maiores */
+    order: 3;
 }
 
 .progress-container span, .volume-container i {
@@ -518,7 +491,6 @@ body {
 
 .slider {
     -webkit-appearance: none;
-    appearance: none;
     width: 100%;
     height: 6px;
     background: var(--border-color);
@@ -552,21 +524,18 @@ body {
     background: var(--primary-hover);
 }
 
-footer {
+.copyright {
     text-align: center;
     color: var(--text-muted);
     font-size: 0.9rem;
-    padding: 2rem 0; /* Ajustado o padding */
-    margin-top: auto; /* Garante que o footer seja empurrado para o final do container flex */
-    width: 100%;
-    animation: fadeInUp 0.8s 1.2s ease-out forwards;
+    padding-top: 1rem;
 }
 
+
 /* ==========================================================================
-   6. RESPONSIVIDADE (Regras consolidadas)
+   5. RESPONSIVIDADE (Regras combinadas e ajustadas)
    ========================================================================== */
 
-/* --- Telas Médias (Tablets) --- */
 @media (max-width: 992px) {
     body {
         padding: 1.5rem;
@@ -576,28 +545,12 @@ footer {
     }
 }
 
-/* --- Telas Pequenas (Tablets em modo retrato e celulares grandes) --- */
 @media (max-width: 768px) {
-    .page-hub header, .page-content header {
-        margin-bottom: 60px;
-        padding: 2rem 1.5rem 60px 1.5rem;
-    }
-    .page-hub header h1 {
-        animation: none; /* Remove animação em telas menores */
-    }
-    .search-container {
-        padding: 0 1rem;
-    }
-    .page-hub .search-container {
-        bottom: -35px;
-    }
-    .page-content .search-container {
-        bottom: 1.5rem;
-    }
-
-    /* Tipografia */
     .page-hub h1, .page-content h1 {
         font-size: 2rem;
+    }
+    .page-hub header p, .page-content header p {
+        font-size: 1.1rem;
     }
     .page-content h2.subtitle {
         font-size: 1.7rem;
@@ -605,117 +558,135 @@ footer {
     .page-content p, .page-content li {
         font-size: 1rem;
     }
-
-    /* Music Player */
     .player-controls {
-        flex-grow: 0;
+        flex-grow: 0; 
     }
     .progress-container {
         flex: 2;
-        order: initial; /* Ordem natural no layout flex */
+        order: initial;
     }
 }
 
-/* --- Telas Muito Pequenas (Celulares) --- */
 @media (max-width: 480px) {
     body {
         padding: 1rem;
         line-height: 1.6;
     }
-
     .hub-grid {
         grid-template-columns: 1fr;
     }
-
+    .page-content header {
+        margin-bottom: 2rem;
+    }
     .page-content main {
         padding: 1.5rem 1rem;
         border-radius: var(--border-radius-sm);
-        margin-top: 1rem;
-    }
-    .page-content header {
-        margin-bottom: 4rem;
     }
     .page-content header nav {
         flex-direction: column;
         align-items: stretch;
-        gap: 0.5rem;
     }
     .page-content header nav a {
         text-align: center;
-        padding: 12px 20px;
+        padding: 14px 20px;
     }
     .page-content pre {
         padding: 1rem;
     }
 }
 
-/* ==========================================================================
-   7. PLAYER DE MÚSICA CONTROLÁVEL
-   ========================================================================== */
+/* ==================================================================
+   CORREÇÃO FINAL E GLOBAL PARA A BARRA DE BUSCA
+   Adicione este bloco inteiro ao FINAL do seu estilo-principal.css
+   ================================================================== */
 
-/* Garante que o conteúdo do rodapé não seja coberto pelo player quando ele estiver visível */
-body {
-    padding-bottom: 0px;
+/* 1. O "Quadro de Avisos": Garante que o container seja a referência de posição. */
+.search-container {
+    position: relative; /* A regra mais importante! */
+    max-width: 600px;
+    margin: 1.5rem auto; /* Espaçamento consistente */
 }
 
-/* O invólucro que contém o botão e o iframe */
-#player-wrapper {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    transition: transform 0.4s ease-in-out; /* Animação suave */
-}
-
-/* Estado escondido: o player desliza para baixo, para fora da tela */
-#player-wrapper.is-hidden {
-    transform: translateY(145px); /* Move o player para baixo, escondendo apenas o iframe */
-}
-
-/* O iframe do player dentro do invólucro */
-#player-wrapper iframe {
-    width: 100%;
-    height: 150px; /* Altura do seu player */
-    border: none;
-    display: block; /* Remove espaços indesejados */
-}
-
-/* O botão que controla a visibilidade */
-#toggle-player-btn {
+/* 2. O "Post-it": A caixa de resultados que flutua sobre o conteúdo. */
+.search-results-box {
+    display: none; /* Começa escondida. O JS vai mudar para 'block' para exibi-la. */
     position: absolute;
-    top: -30px; /* Posiciona o botão exatamente acima do player */
-    left: 83%;
-    transform: translateX(-83%);
-    width: 80px;
-    height: 40px;
-    background-color: var(--surface-color);
-    border: 1px solid var(--border-color);
-    border-bottom: none;
-    border-top-left-radius: var(--border-radius-md);
-    border-top-right-radius: var(--border-radius-md);
-    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05);
-    cursor: pointer;
-    z-index: 1001;
-    color: var(--text-title);
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+    top: 100%; /* Posiciona a caixa logo abaixo do input. */
+    left: 0;
+    margin-top: 8px; /* Um pequeno espaço entre a barra e a caixa. */
+    background-color: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: var(--border-radius-md, 16px);
+    box-shadow: var(--shadow-hard, 0 12px 35px rgba(0, 0, 0, 0.1));
+    max-height: 350px; /* Limita a altura para não ficar gigante. */
+    overflow-y: auto;  /* Adiciona uma barra de rolagem se houver muitos resultados. */
+    z-index: 5000;     /* Garante que a caixa fique acima de TUDO na página. */
+}
+
+/* 3. O Estilo de cada item dentro da caixa de resultados. */
+.search-result-item {
+    display: block; /* Faz o link ocupar a linha inteira. */
+    padding: 14px 22px;
+    color: var(--text-body, #343a40);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-color, #e9ecef);
     transition: background-color 0.2s ease;
 }
 
-#toggle-player-btn:hover {
-    background-color: var(--bg-color);
+.search-result-item:last-child {
+    border-bottom: none; /* Remove a borda do último item. */
 }
 
-/* Posição da busca nas páginas de HUB */
-.page-hub .search-container {
-    top: 301.5px; /* Ajuste este valor para a altura desejada */
+.search-result-item:hover,
+.search-result-item.active { /* A classe .active é para a navegação com teclado. */
+    background-color: #f4f7f9;
+    color: var(--primary-color, #007BFF);
+    cursor: pointer;
 }
 
-/* Posição da busca nas páginas de CONTEÚDO */
+/* 4. O estilo para a sugestão de autocompletar com Tab. */
+#autocomplete-suggestion {
+    position: absolute;
+    top: 1px;
+    left: 21px; /* Ajuste fino para alinhar com o texto digitado */
+    padding: 12px 0; /* Deve ser igual ao padding do input */
+    font-size: 16px; /* Deve ser igual ao font-size do input */
+    color: var(--text-muted, #6c757d);
+    z-index: -1; /* Fica "atrás" do texto do input */
+    pointer-events: none; /* Permite que o clique atravesse o elemento */
+}
+
+/* =======================================================
+   POSICIONAMENTO FINAL DA BARRA DE BUSCA GLOBAL
+   ======================================================= */
+
+/* 1. Prepara os cabeçalhos para servirem de "âncora" para a busca. */
+.page-hub header,
+.page-content header {
+    position: relative; /* Transforma o header no "quadro de avisos". */
+}
+
+/* 2. Transforma a busca em um elemento "flutuante". */
+.search-container {
+    position: absolute;   /* Solta a barra de busca do fluxo normal da página. */
+    z-index: 100;         /* Garante que ela fique acima do header. */
+    
+    /* 3. Posiciona a busca no lugar certo. */
+    width: 90%;           /* Largura máxima. */
+    max-width: 600px;
+    
+    /* Centraliza horizontalmente em relação ao header */
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* Ajusta a posição vertical. MUDE ESTE VALOR para subir/descer a barra! */
+    top: 260px; 
+}
+
+/* Ajuste fino para a página de conteúdo, que pode ter um header de altura diferente */
 .page-content .search-container {
-    top: 314.5px; /* Ajuste este valor para a altura desejada */
+    top: 2.7px; /* Exemplo: um pouco mais para baixo. Ajuste conforme necessário. */
+    left: 21.7%;
+    transform: translateX(-50%);
 }
-

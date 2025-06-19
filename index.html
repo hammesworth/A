@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="estilo.css"> 
-    
+    <link rel="stylesheet" href="estilo.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -17,7 +18,7 @@
 
 <body data-barba="wrapper">
 
-    <div class="search-container">
+        <div class="search-container">
         <input type="text" id="search-bar" placeholder="Pesquisar módulos...">
         <div class="search-results-box" style="display: none;"></div>
         <span id="autocomplete-suggestion"></span>
@@ -26,6 +27,10 @@
     <div data-barba="container" data-barba-namespace="Hub-Principal" namespace="default-view">
 
     <header>
+
+        <button class="settings-btn" aria-label="Configurações">
+        <i class="fas fa-bars"></i> </button>
+
         <h1>Lu Microspace:</h1>
         <h2>Bem-vindo(a) ao Módulo A3</h2>
         <p>Navegue pelos módulos abaixo para explorar guias detalhados sobre desenvolvimento, programação e arquitetura de computadores.</p>
@@ -66,23 +71,31 @@
 
     <footer>
 
+        <p class="copyright">&copy; 2025 - Lucas Willian</p>
+        
+    </footer>
+
+    <!-- ===== NOVO PLAYER CONTROLÁVEL ===== -->
+    <div id="player-wrapper">
+
+        <!-- Botão para mostrar/esconder o player -->
+        <button id="toggle-player-btn" aria-label="Controlar Player">
+            <i class="fas fa-chevron-down"></i>
+        </button>
+
     <iframe 
         id="meu-player-de-musica"
         src="player/player.html"
         title="Player de Música"
         frameborder="0"
-        allow="autoplay"
-        style="position: fixed; bottom: 0; left: 0; width: 100%; height: 80px; z-index: 1000; border: none;">
+        allow="autoplay">
     </iframe>
 
-    <div style="height: 80px;"></div>
-
-        <p class="copyright">&copy; 2025 - Lucas Willian</p>
-        
-    </footer>
+    </div>
 
     <script src="Scripts/search.js" defer></script>
     <script src="Scripts/sound-effects.js" defer></script>
+    <script src="Scripts/player-toggle.js" defer></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
     <script src="https://unpkg.com/@barba/core" defer></script>

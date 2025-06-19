@@ -26,7 +26,8 @@ barba.init({
         { namespace: 'CppHub', afterEnter() { configurePage('page-hub'); } },
         // ... adicione seus outros Hubs
         
-        { namespace: 'Cpp-Basico', afterEnter() { configurePage('page-content'); } }
+        { namespace: 'Cpp-Basico', afterEnter() { configurePage('page-content'); } },
+        { namespace: 'Cpp-While', afterEnter() { configurePage('page-content'); } }
         // ... adicione suas outras páginas de conteúdo
     ]
 });
