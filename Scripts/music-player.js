@@ -17,20 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 2. Playlist ---
     const playlist = [
         { 
-            title: 'Plum', 
-            artist: 'Widowspeak', 
-            src: '../music/Plum.mp3' 
+            title: 'song', 
+            artist: 'baby', 
+            src: '../music/song1.mp3' 
         },
-        { 
-            title: 'Peace', 
-            artist: 'Taylor Swift', 
-            src: '../music/Peace.mp3'
-        },
-        { 
-            title: 'Vissel', 
-            artist: 'José González', 
-            src: '../music/Vissel.mp3' 
-        }
     ];
 
     let currentTrackIndex = 0;
