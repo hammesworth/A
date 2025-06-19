@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Guia Básico While e Vetores C++</title>
+    
+    <!-- NOVO: Biblioteca de áudio Tone.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
+</head>
+
+<body data-barba="wrapper">
+
+    <div data-barba="container" data-barba-namespace="Cpp-WhileVetores" namespace="default-view">
+
+<header>
+
+        <button class="settings-btn" aria-label="Configurações">
+        <i class="fas fa-bars"></i> </button>
+
+    <h1>Explorando laços e vetores de C++ 🛠️</h1>
+    <p>Um guia para iniciantes e intermediários, aprofundando nos conceitos de repetição e armazenamento de dados.</p>
+
+        <nav>
+        <a href="/Design_Web_Hub.html" class="nav-link">Guias de Design Web</a>
+        <a href="/CppHub.html" class="nav-link">Guias de C++</a>
+        <a href="/ArquiteturaHub.html" class="nav-link">Guias de Arquitetura Comp.</a>
+    </nav>
+
+</header>
+
+    <main>
+  <div id="xml-intro">
+
+    <section>
+      <h2 class="subtitle">🔁 While</h2>
+      <p>O comando <code>while</code> (enquanto) é uma estrutura de controle condicional (semelhante ao if), e que repete um bloco de código enquanto sua condição for avaliada como verdadeira. É ideal para situações onde o número de usos de um determinado bloco de comandos não é conhecido de início, como, por exemplo, na validação de entrada de dados do usuário ou na leitura de um arquivo até o seu final.</p>
+      <p>A condição é verificada <strong>antes</strong> da execução do bloco. Se a condição for falsa na primeira verificação, o bloco de código dentro do <code>while</code> nunca será executado.</p>
+      <pre class="code">
+#include &lt;iostream&gt;
+
+int main() {
+    int i = 0;
+    while (i < 5) {
+        cout << i << " ";
+        i++; // i aumenta 1 de valor a cada repetição, isso para evitar um loop infinito
+    }
+    cout << "\n";
+    return 0;
+}
+      </pre>
+      <p><strong>A saída é:</strong> 0 1 2 3 4</p>
+      <p><strong>Aviso:</strong> É bom evitar que a variável de controle da condição (neste caso, `i`) seja modificada dentro do <code>while</code>, isso para que, em algum momento, a condição se torne falsa. Caso contrário, o programa entrará em um <strong>loop infinito</strong>.</p>
+        <pre class="code">
+// Exemplo de loop infinito (Não é pra fazer isso)
+int i = 0;
+while (i < 5) {
+    cout << "Isso nunca vai parar!\n";
+    // 'i' nunca é incrementado, então i < 5 será sempre verdade.
+}
+        </pre>
+    </section>
+
+    <section>
+      <h2 class="subtitle">🔁 Do While</h2>
+      <p>O comando <code>do while</code> é uma variação do <code>while</code>. A principal diferença é que a condição é verificada <strong>após</strong> a execução do bloco de código. Isso garante que o bloco seja executado <strong>pelo menos uma vez</strong>, independentemente da condição ser verdadeira ou falsa.</p>
+      <p>É particularmente útil para menus de opções ou quando se precisa solicitar uma entrada ao usuário e validá-la em seguida, repetindo o pedido se a entrada for inválida. É um exemplo esdrúxulo, mas serve.</p>
+      <pre class="code">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int i = 5; // Note que a condição (i < 5) é falsa inicialmente
+    do {
+        cout << "Executado ao menos uma vez. i = " << i;
+        i++;
+    } while (i < 5);
+    return 0;
+}
+      </pre>
+      <p><strong>Saída:</strong> Executado ao menos uma vez. i = 5</p>
+      <p>Neste exemplo, mesmo que `i` comece com o valor 5 (o que torna a condição `i < 5` falsa), o texto é impresso uma vez antes que a condição seja checada. E como ela é falsa, ela não é executada novamente.</p>
+    </section>
+
+    <section>
+      <h2 class="subtitle">🔁 For</h2>
+      <p>O comando <code>for</code> é a estrutura de repetição mais comum (para progamadores de verdade) e é ideal quando se sabe o número exato de execuções do código. Ele é mais compacto e legível para esses casos, pois agrupa a inicialização, a condição e o incremento em uma única linha.</p>
+      <p>A estrutura do <code>for</code> consiste em três partes, separadas por ponto e vírgula:</p>
+      <ul>
+        <li><strong>Inicialização:</strong> Executada uma única vez no início. Geralmente, declara e inicializa uma variável de controle (ex: `int i = 0`).</li>
+        <li><strong>Condição:</strong> Verificada antes de cada execução. Se for verdadeira, o bloco de código é executado.</li>
+        <li><strong>Incremento/Decremento:</strong> Executado ao final de cada iteração (ex: `i++` ou `i--`).</li>
+      </ul>
+      <pre class="code">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    //   (inicialização; condição; incremento)
+    for (int i = 0;      i < 5;       i++) {
+        cout << i << " ";
+    }
+        cout << "\n";
+    return 0;
+}
+      </pre>
+      <p><strong>Saída:</strong> 0 1 2 3 4</p>
+         <pre class="code">
+#include &lt;iostream&gt;
+#include &lt;vector&gt; // Necessário para vector
+using namespace std;
+
+int main() {
+    int numeros[] = {10, 20, 30, 40, 50};
+    // Para cada 'numero' na coleção 'numeros', faça:
+    for (int numero : numeros) {
+        cout << numero << " ";
+    }
+    cout << "\n";
+    return 0;
+}
+        </pre>
+        <p><strong>Saída:</strong> 10 20 30 40 50</p>
+    </section>
+
+    <section>
+      <h2 class="subtitle">📦 Vetores (Arrays)</h2>
+      <p>Um vetor (ou array) é uma estrutura de dados fundamental que armazena uma coleção de elementos de tamanho fixo e do mesmo tipo de dado, de forma contígua na memória. O acesso aos elementos é feito por meio de um <strong>índice</strong>, que em C++ começa em <strong>0</strong>.</p>
+      <p>Isso significa que para um vetor de tamanho `N`, os índices válidos vão de `0` a `N-1`. Tentar acessar um índice fora desse intervalo (por exemplo, `numeros[3]` em um vetor de 3 elementos) resulta em <strong>comportamento indefinido</strong>, um erro grave que pode corromper dados ou travar o programa.</p>
+      <pre class="code">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    // Declara e inicializa um vetor de 3 inteiros.
+    int numeros[3] = {10, 20, 30};
+
+    // Acessando e imprimindo elementos
+    cout << "Elemento no indice 0: " << numeros[0] << "\n";
+    cout << "Elemento no indice 1: " << numeros[1] << "\n";
+    cout << "Elemento no indice 2: " << numeros[2] << "\n";
+
+    // Modificando um elemento
+    numeros[1] = 25;
+    cout << "Novo valor no indice 1: " << numeros[1] << "\n";
+    
+    return 0;
+}
+      </pre>
+      <p><strong>Saída:</strong><br>Elemento no indice 0: 10<br>Elemento no indice 1: 20<br>Elemento no indice 2: 30<br>Novo valor no indice 1: 25</p>
+      <p>Também é possível declarar o vetor sem uma inicialização explícita, mas os valores iniciais serão "lixo" (valores indefinidos da memória), a menos que seja um array estático ou global (caso em que são inicializados com zero).</p>
+      <pre class="code">
+int notas[5]; // Declara um vetor para 5 inteiros.
+notas[0] = 10;  // Atribui um valor ao primeiro elemento.
+      </pre>
+      <p><strong>Alternativa Moderna: `vector`</strong></p>
+      <p>Embora os arrays no estilo C sejam fundamentais, o C++ moderno incentiva o uso de <code>vector</code> da Biblioteca Padrão. `vector` é um contêiner dinâmico que pode crescer e encolher de tamanho, gerencia a memória automaticamente e oferece funções úteis, como obter o tamanho atual (`.size()`), tornando o código mais seguro e flexível.</p>
+        <pre class="code">
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+int main() {
+    vector&lt;int&gt; notas = {10, 9, 8};
+    notas.push_back(7); // Adiciona um novo elemento ao final
+
+    for (int nota : notas) {
+        cout << nota << " ";
+    }
+    cout << "\nTamanho do vetor: " << notas.size() << "\n";
+    return 0;
+}
+        </pre>
+        <p><strong>Saída:</strong><br>10 9 8 7 <br>Tamanho do vetor: 4</p>
+    </section>
+
+</div>
+
+</main>
+
+</div>
+
+    <footer>
+
+      <p>&copy; 2025 - Lucas Willian</p>
+
+    </footer>
+
+   <!-- ===== NOVO PLAYER CONTROLÁVEL ===== -->
+    <div id="player-wrapper" class="is-hidden">
+
+        <!-- Botão para mostrar/esconder o player -->
+        <button id="toggle-player-btn" aria-label="Controlar Player">
+            <i class="fas fa-chevron-down"></i>
+        </button>
+
+    <iframe 
+        id="meu-player-de-musica"
+        src="../player/player.html"
+        title="Player de Música"
+        frameborder="0"
+        allow="autoplay">
+    </iframe>
+
+    </div>
+
+    <script src="../Scripts/sound-effects.js" defer></script>
+    <script src="../Scripts/player-toggle.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="../Scripts/barba-init.js" defer></script>
+
+</body>
+</html>

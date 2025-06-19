@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 2. Playlist ---
     const playlist = [
         { 
-            title: 'song', 
-            artist: 'baby', 
+            title: 'song 1', 
+            artist: 'Lu', 
             src: '../music/song1.mp3' 
         },
     ];
