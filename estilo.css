@@ -97,12 +97,11 @@ body {
 }
 
 .page-hub header {
-    margin-bottom: 80px; /* Espaço para a busca flutuante */
-    padding-bottom: 80px; /* Espaço interno para a busca */
+    margin-bottom: 50px; /* Espaço entre o header e os cards */
 }
 
 .page-content header {
-    padding-bottom: 80px; /* Espaço interno para a busca */
+    margin-bottom: 50px; /* Espaço entre o header e o conteúdo */
 }
 
 /* --- 2.2 Elementos do Header (Títulos, Botões, Navegação) --- */
@@ -163,102 +162,6 @@ body {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
     color: white;
-}
-
-/* --- 2.3 Componentes da Barra de Pesquisa --- */
-
-/* Container que envolve a barra e os resultados */
-.search-container {
-    position: relative; /* Relativo ao header */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    padding: 0 2.5rem; /* Alinha com o padding do header */
-    z-index: 5;
-}
-
-/* Posicionamento vertical do container da busca */
-.page-hub .search-container {
-    bottom: -40px; /* Metade para fora na página HUB */
-}
-
-.page-content .search-container {
-    bottom: 2rem; /* Na base do header de conteúdo */
-}
-
-/* A barra de pesquisa em si */
-#search-bar {
-    width: 100%;
-    max-width: 950px; /* Largura máxima */
-    margin: 0 auto; /* Centraliza a barra dentro do container */
-    display: block;
-    position: relative; /* Contexto para a sugestão de autocomplete */
-    padding: 14px 24px;
-    font-size: 1rem;
-    font-family: var(--font-primary);
-    background-color: var(--surface-color);
-    border: 1px solid var(--border-color);
-    border-radius: 50px;
-    box-shadow: var(--shadow-hard);
-    outline: none;
-    transition: all 0.2s ease;
-}
-
-#search-bar:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25), var(--shadow-hard);
-}
-
-/* [CORREÇÃO] Caixa de resultados do Autocomplete */
-.search-results-box {
-    display: none; /* Escondida por padrão */
-    position: absolute;
-    top: calc(100% + 8px); /* Abaixo da barra de pesquisa com um espaçamento */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%; /* Ocupa a mesma largura do container */
-    max-width: 950px; /* E respeita a mesma largura máxima da barra */
-    background-color: var(--surface-color);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--shadow-hard);
-    max-height: 350px;
-    overflow-y: auto;
-    z-index: 5000; /* Garante que fique acima de todo o conteúdo */
-    text-align: left; /* Alinha o texto dos resultados à esquerda */
-}
-
-.search-result-item {
-    display: block;
-    padding: 14px 22px;
-    color: var(--text-body);
-    text-decoration: none;
-    border-bottom: 1px solid var(--border-color);
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.search-result-item:last-child {
-    border-bottom: none;
-}
-
-.search-result-item:hover,
-.search-result-item.active { /* Classe para navegação com teclado */
-    background-color: var(--bg-color);
-    color: var(--primary-color);
-    cursor: pointer;
-}
-
-/* Sugestão de texto (ghost) para autocomplete com Tab */
-#autocomplete-suggestion {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 25px; /* Alinhado com o padding-left do input + borda */
-    font-size: 1rem;
-    color: var(--text-muted);
-    z-index: -1;
-    pointer-events: none; /* Permite clicar através do elemento */
-    white-space: pre; /* Mantém o espaçamento do texto do input */
 }
 
 
@@ -585,15 +488,6 @@ footer {
     .page-hub header h1 {
         animation: none; /* Remove animação em telas menores */
     }
-    .search-container {
-        padding: 0 1rem;
-    }
-    .page-hub .search-container {
-        bottom: -35px;
-    }
-    .page-content .search-container {
-        bottom: 1.5rem;
-    }
 
     /* Tipografia */
     .page-hub h1, .page-content h1 {
@@ -707,15 +601,5 @@ body {
 
 #toggle-player-btn:hover {
     background-color: var(--bg-color);
-}
-
-/* Posição da busca nas páginas de HUB */
-.page-hub .search-container {
-    top: 301.5px; /* Ajuste este valor para a altura desejada */
-}
-
-/* Posição da busca nas páginas de CONTEÚDO */
-.page-content .search-container {
-    top: 314.5px; /* Ajuste este valor para a altura desejada */
 }
 

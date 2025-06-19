@@ -3,7 +3,7 @@
 <html lang="pt-BR">
 
 <head>
-    
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="../estilo.css">
@@ -22,12 +22,6 @@
 
 <body data-barba="wrapper">
 
-        <div class="search-container" style="margin-bottom: 2rem;"> 
-        <input type="text" id="search-bar" placeholder="Pesquisar módulos ou seções...">
-        <div class="search-results-box" style="display: none;"></div>
-        <span id="autocomplete-suggestion"></span>
-        </div>
-
     <div data-barba="container" data-barba-namespace="Cpp-Basico" namespace="default-view">
 
     <header>
@@ -40,11 +34,8 @@
 
         <nav>
             <!-- Adicionada uma classe para os efeitos sonoros -->
-            <a href="../Design_Web_Hub.html" class="nav-link">Guias de Design Web</a>
-            <a href="../xml_git.html" class="nav-link">Guia de XML & Git</a>
-            <a href="../rquiteturaHub.html" class="nav-link">Guias de Arquitetura Comp.</a>
-            <a href="../infobasic.html" class="nav-link">Guia de Info Básica</a>
-            <a href="../index.html" class="nav-link">Guia básico de C++</a>
+            <a href="../index.html" class="nav-link">Início</a>
+            <a href="../Hubs/Cpp-Hub.html" class="nav-link">Guias de C++</a>
         </nav>
 
     </header>
@@ -216,24 +207,30 @@ int main() {
 
     <footer>
 
-    <iframe 
-    id="meu-player-de-musica"  src="../player/player.html"
-    title="Player de Música"
-    frameborder="0"
-    allow="autoplay"
-    style="position: fixed; bottom: 0; left: 0; width: 100%; height: 80px; z-index: 1000; border: none;">
-    </iframe>
-
-<div style="height: 80px;"></div>
-
         <p class="copyright">&copy; 2025 - Lucas Willian</p>
         
     </footer>
 
-    <!-- Scripts JS -->
-    <script src="../Scripts/search.js" defer></script>
-    <!-- NOVO: Script para efeitos sonoros  -->
+    <!-- ===== NOVO PLAYER CONTROLÁVEL ===== -->
+    <div id="player-wrapper" class="is-hidden">
+
+        <!-- Botão para mostrar/esconder o player -->
+        <button id="toggle-player-btn" aria-label="Controlar Player">
+            <i class="fas fa-chevron-down"></i>
+        </button>
+
+    <iframe 
+        id="meu-player-de-musica"
+        src="../player/player.html"
+        title="Player de Música"
+        frameborder="0"
+        allow="autoplay">
+    </iframe>
+
+    </div>
+
     <script src="../Scripts/sound-effects.js" defer></script>
+    <script src="../Scripts/player-toggle.js" defer></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
     <script src="https://unpkg.com/@barba/core" defer></script>

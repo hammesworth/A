@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="../estilo.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-    <title>Módulo A</title>
+    <title>Hub de C++</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script> 
 
@@ -18,7 +18,7 @@
 
 <body data-barba="wrapper">
 
-    <div data-barba="container" data-barba-namespace="Hub-Principal" namespace="default-view">
+    <div data-barba="container" data-barba-namespace="Cpp-Hub" namespace="default-view">
 
     <header>
 
@@ -26,48 +26,36 @@
         <i class="fas fa-bars"></i> </button>
 
         <h1>Lu Microspace:</h1>
-        <h2>Bem-vindo(a) ao Módulo A3</h2>
-        <p>Navegue pelos módulos abaixo para explorar guias detalhados sobre desenvolvimento, programação e arquitetura de computadores.</p>
+        <h2>Bem-vindo(a) ao Hub de C++</h2>
+        <p>Navegue pelos módulos abaixo para explorar guias detalhados sobre programação em C++</p>
 
     </header>
 
     <main>
         <div class="hub-grid">
-
-            <a href="Hubs/Cpp-Hub.html" class="module-card">
-                <span class="icon">🔁</span>
-                <h3>Guias de C++</h3>
-                <p>Aprofunde-se nas técnicas de programação em C++, com guias voltados a uma variedade de conhecimentos.</p>
+            
+            <a href="../cpp/cpp_basico.html" class="module-card">
+                <span class="icon">⚙️</span>
+                <h3>Guia de C++ Básico</h3>
+                <p>Uma introdução detalhada aos fundamentos do C++</p>
             </a>
 
-            <a href="Hubs/DesignWeb-Hub.html" class="module-card">
+            <a href="../cpp/cpp_while.html" class="module-card">
+                <span class="icon">🔁</span>
+                <h3>Guia de While</h3>
+                <p>Aprofunde-se no laço de repetição <code>while</code>. Extra: este guia contém exercícios</p>
+            </a>
+
+            <a href="Design_Web_Hub.html" class="module-card">
                 <span class="icon">🌐</span>
-                <h3>Guias de Design Web</h3>
+                <h3>Guia de HTML & CSS</h3>
                 <p>Aprenda a estruturar e estilizar páginas web com as linguagens fundamentais da internet.</p>
             </a>
 
-            <a href="Hubs/ArquiteturaComp-Hub.html" class="module-card">
+            <a href="cpp/cpp_basico.html" class="module-card">
                 <span class="icon">🖥️</span>
-                <h3>Guias de Arquitetura Comp.</h3>
-                <p>Aprenda sobre bases numéricas, expressões booleanas, redução de circuitos e etc.</p>
-            </a>
-
-            <a href="Hubs/InfoBasica-Hub.html" class="module-card">
-                <span class="icon">🖥️</span>
-                <h3>Guia de Info Básica</h3>
+                <h3>Guia Sobre Info Básica</h3>
                 <p>Aprenda sobre os periféricos (mouse, teclado), componentes (CPU, GPU), tipos de memória (RAM, HD, SSD) e etc.</p>
-            </a>
-
-            <a href="Hubs/Matematica-Hub.html" class="module-card">
-                <span class="icon">🖥️</span>
-                <h3>Guias de Matemática</h3>
-                <p>Este é um módulo extra focado em agrupar alguns guias essenciais matemáticos, auxiliares para as matérias técnicas.</p>
-            </a>
-
-            <a href="Hubs/Jogos.html" class="module-card">
-                <span class="icon">🖥️</span>
-                <h3>Área dos Jogos</h3>
-                <p>Deseja descontrair? Aqui estão alguns joguinhos.</p>
             </a>
 
         </div>
@@ -91,7 +79,7 @@
 
     <iframe 
         id="meu-player-de-musica"
-        src="player/player.html"
+        src="../player/player.html"
         title="Player de Música"
         frameborder="0"
         allow="autoplay">
@@ -99,12 +87,12 @@
 
     </div>
 
-    <script src="Scripts/sound-effects.js" defer></script>
-    <script src="Scripts/player-toggle.js" defer></script>
+    <script src="../Scripts/sound-effects.js" defer></script>
+    <script src="../Scripts/player-toggle.js" defer></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
     <script src="https://unpkg.com/@barba/core" defer></script>
-    <script src="Scripts/barba-init.js" defer></script>
+    <script src="../Scripts/barba-init.js" defer></script>
 
 </body>
 </html>

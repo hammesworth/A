@@ -23,7 +23,12 @@ barba.init({
     views: [
         // Adicione uma view para cada página do seu site, como já fizemos.
         { namespace: 'Hub-Principal', afterEnter() { configurePage('page-hub'); } },
-        { namespace: 'CppHub', afterEnter() { configurePage('page-hub'); } },
+        { namespace: 'Cpp-Hub', afterEnter() { configurePage('page-hub'); } },
+        { namespace: 'ArquiteturaComp-Hub', afterEnter() { configurePage('page-hub'); } },
+        { namespace: 'DesignWeb-Hub', afterEnter() { configurePage('page-hub'); } },
+        { namespace: 'InfoBasica-Hub', afterEnter() { configurePage('page-hub'); } },
+        { namespace: 'Jogos-Hub', afterEnter() { configurePage('page-hub'); } },
+        { namespace: 'Matematica-Hub', afterEnter() { configurePage('page-hub'); } },
         // ... adicione seus outros Hubs
         
         { namespace: 'Cpp-Basico', afterEnter() { configurePage('page-content'); } },
