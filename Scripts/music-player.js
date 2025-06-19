@@ -19,17 +19,17 @@ document.addEventListener('DOMContentLoaded', () => {
         { 
             title: 'Plum', 
             artist: 'Widowspeak', 
-            src: '/music/Plum.mp3' 
+            src: '../music/Plum.mp3' 
         },
         { 
             title: 'Peace', 
             artist: 'Taylor Swift', 
-            src: '/music/Peace.mp3'
+            src: '../music/Peace.mp3'
         },
         { 
             title: 'Vissel', 
             artist: 'José González', 
-            src: '/music/Vissel.mp3' 
+            src: '../music/Vissel.mp3' 
         }
     ];
 
