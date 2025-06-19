@@ -11,21 +11,25 @@
 
     <title>Módulo A</title>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
-
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@hotwired/turbo@8.0.4/dist/turbo.es2017-umd.js"></script>
-    <meta name="turbo-permanent-dom-id" content="meu-player-de-musica"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script> 
 
 </head>
 
-<body class="page-hub">
+<body data-barba="wrapper">
+
+    <div class="search-container">
+        <input type="text" id="search-bar" placeholder="Pesquisar módulos...">
+        <div class="search-results-box" style="display: none;"></div>
+        <span id="autocomplete-suggestion"></span>
+        </div>
+
+    <div data-barba="container" data-barba-namespace="Hub-Principal" namespace="default-view">
 
     <header>
         <h1>Lu Microspace:</h1>
         <h2>Bem-vindo(a) ao Módulo A3</h2>
         <p>Navegue pelos módulos abaixo para explorar guias detalhados sobre desenvolvimento, programação e arquitetura de computadores.</p>
-        
-        <input type="text" id="search-bar" placeholder="Pesquisar módulos...">
+
     </header>
 
     <main>
@@ -58,6 +62,8 @@
         </div>
     </main>
 
+    </div>
+
     <footer>
 
     <iframe 
@@ -75,8 +81,12 @@
         
     </footer>
 
-    <script src="Scripts/search.js"></script>
-    <script src="Scripts/sound-effects.js"></script>
+    <script src="Scripts/search.js" defer></script>
+    <script src="Scripts/sound-effects.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="Scripts/barba-init.js" defer></script>
 
 </body>
 </html>

@@ -16,27 +16,29 @@
     <!-- NOVO: Biblioteca de áudio Tone.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
 
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@hotwired/turbo@8.0.4/dist/turbo.es2017-umd.js"></script>
-    <meta name="turbo-permanent-dom-id" content="meu-player-de-musica"> 
-
 </head>
 
-<body class="page-content">
+<body data-barba="wrapper">
+
+    <div class="search-container" style="margin-bottom: 2rem;"> 
+        <input type="text" id="search-bar" placeholder="Pesquisar módulos ou seções...">
+        <div class="search-results-box" style="display: none;"></div>
+        <span id="autocomplete-suggestion"></span>
+    </div>
+
+    <div data-barba="container" data-barba-namespace="Cpp-Basico" namespace="default-view">
 
     <header>
         
         <h1>Guia Básico de C++</h1>
         <p>Seus primeiros passos na poderosa linguagem C++.</p>
-        
-        <!-- BARRA DE PESQUISA ADICIONADA -->
-        <input type="text" id="search-bar" placeholder="Pesquisar seções do guia...">
 
         <nav>
             <!-- Adicionada uma classe para os efeitos sonoros -->
-            <a href="Design_Web_Hub.html" class="nav-link">Guias de Design Web</a>
-            <a href="xml_git.html" class="nav-link">Guia de XML & Git</a>
-            <a href="ArquiteturaHub.html" class="nav-link">Guias de Arquitetura Comp.</a>
-            <a href="infobasic.html" class="nav-link">Guia de Info Básica</a>
+            <a href="../Design_Web_Hub.html" class="nav-link">Guias de Design Web</a>
+            <a href="../xml_git.html" class="nav-link">Guia de XML & Git</a>
+            <a href="../rquiteturaHub.html" class="nav-link">Guias de Arquitetura Comp.</a>
+            <a href="../infobasic.html" class="nav-link">Guia de Info Básica</a>
             <a href="../index.html" class="nav-link">Guia básico de C++</a>
         </nav>
 
@@ -205,8 +207,10 @@ int main() {
 
     </main>
 
+    </div>
+
     <footer>
-        
+
     <iframe 
     id="meu-player-de-musica"  src="../player/player.html"
     title="Player de Música"
@@ -222,9 +226,13 @@ int main() {
     </footer>
 
     <!-- Scripts JS -->
-    <script src="../Scripts/search.js"></script>
+    <script src="../Scripts/search.js" defer></script>
     <!-- NOVO: Script para efeitos sonoros  -->
-    <script src="../Scripts/sound-effects.js"></script>
+    <script src="../Scripts/sound-effects.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="../Scripts/barba-init.js" defer></script>
 
 </body>
 </html>

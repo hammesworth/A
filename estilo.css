@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ARQUIVO CSS UNIFICADO (estilo-principal.css)
+   ARQUIVO CSS UNIFICADO (estilo.css)
    ========================================================================== */
 
 /* --- 1. Reset e Configurações Globais (Comum a todas as páginas) --- */
@@ -593,4 +593,100 @@ footer {
     .page-content pre {
         padding: 1rem;
     }
+}
+
+/* ==================================================================
+   CORREÇÃO FINAL E GLOBAL PARA A BARRA DE BUSCA
+   Adicione este bloco inteiro ao FINAL do seu estilo-principal.css
+   ================================================================== */
+
+/* 1. O "Quadro de Avisos": Garante que o container seja a referência de posição. */
+.search-container {
+    position: relative; /* A regra mais importante! */
+    max-width: 600px;
+    margin: 1.5rem auto; /* Espaçamento consistente */
+}
+
+/* 2. O "Post-it": A caixa de resultados que flutua sobre o conteúdo. */
+.search-results-box {
+    display: none; /* Começa escondida. O JS vai mudar para 'block' para exibi-la. */
+    position: absolute;
+    width: 100%;
+    top: 100%; /* Posiciona a caixa logo abaixo do input. */
+    left: 0;
+    margin-top: 8px; /* Um pequeno espaço entre a barra e a caixa. */
+    background-color: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: var(--border-radius-md, 16px);
+    box-shadow: var(--shadow-hard, 0 12px 35px rgba(0, 0, 0, 0.1));
+    max-height: 350px; /* Limita a altura para não ficar gigante. */
+    overflow-y: auto;  /* Adiciona uma barra de rolagem se houver muitos resultados. */
+    z-index: 5000;     /* Garante que a caixa fique acima de TUDO na página. */
+}
+
+/* 3. O Estilo de cada item dentro da caixa de resultados. */
+.search-result-item {
+    display: block; /* Faz o link ocupar a linha inteira. */
+    padding: 14px 22px;
+    color: var(--text-body, #343a40);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-color, #e9ecef);
+    transition: background-color 0.2s ease;
+}
+
+.search-result-item:last-child {
+    border-bottom: none; /* Remove a borda do último item. */
+}
+
+.search-result-item:hover,
+.search-result-item.active { /* A classe .active é para a navegação com teclado. */
+    background-color: #f4f7f9;
+    color: var(--primary-color, #007BFF);
+    cursor: pointer;
+}
+
+/* 4. O estilo para a sugestão de autocompletar com Tab. */
+#autocomplete-suggestion {
+    position: absolute;
+    top: 1px;
+    left: 21px; /* Ajuste fino para alinhar com o texto digitado */
+    padding: 12px 0; /* Deve ser igual ao padding do input */
+    font-size: 16px; /* Deve ser igual ao font-size do input */
+    color: var(--text-muted, #6c757d);
+    z-index: -1; /* Fica "atrás" do texto do input */
+    pointer-events: none; /* Permite que o clique atravesse o elemento */
+}
+
+/* =======================================================
+   POSICIONAMENTO FINAL DA BARRA DE BUSCA GLOBAL
+   ======================================================= */
+
+/* 1. Prepara os cabeçalhos para servirem de "âncora" para a busca. */
+.page-hub header,
+.page-content header {
+    position: relative; /* Transforma o header no "quadro de avisos". */
+}
+
+/* 2. Transforma a busca em um elemento "flutuante". */
+.search-container {
+    position: absolute;   /* Solta a barra de busca do fluxo normal da página. */
+    z-index: 100;         /* Garante que ela fique acima do header. */
+    
+    /* 3. Posiciona a busca no lugar certo. */
+    width: 90%;           /* Largura máxima. */
+    max-width: 600px;
+    
+    /* Centraliza horizontalmente em relação ao header */
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* Ajusta a posição vertical. MUDE ESTE VALOR para subir/descer a barra! */
+    top: 260px; 
+}
+
+/* Ajuste fino para a página de conteúdo, que pode ter um header de altura diferente */
+.page-content .search-container {
+    top: 2.7px; /* Exemplo: um pouco mais para baixo. Ajuste conforme necessário. */
+    left: 21.7%;
+    transform: translateX(-50%);
 }

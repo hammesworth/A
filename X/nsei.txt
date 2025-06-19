@@ -1,0 +1,35 @@
+// Scripts/barba-init.js (VERSÃO FINAL E CORRETA)
+
+function configurePage(pageType) {
+    document.body.className = pageType;
+    // A função initSearch agora fará toda a limpeza e inicialização.
+    initSearch();
+}
+
+// A lista de todos os seus namespaces que são do tipo "Hub"
+const hubNamespaces = [
+    'Hub-Principal', 
+    'CppHub', 
+    'ArquiteturaHub', 
+    'Design_Web_Hub'
+];
+
+barba.init({
+    debug: false,
+    transitions: [{
+        name: 'default-transition',
+        leave: ({ current }) => gsap.to(current.container, { opacity: 0, duration: 0.2 }),
+        enter: ({ next }) => gsap.from(next.container, { opacity: 0, duration: 0.2 })
+    }],
+    views: [
+        // Adicione uma view para cada página do seu site.
+        // Isso é explícito e garante que a lógica correta seja executada.
+        { namespace: 'Hub-Principal', afterEnter() { configurePage('page-hub'); } },
+        { namespace: 'CppHub', afterEnter() { configurePage('page-hub'); } },
+        { namespace: 'ArquiteturaHub', afterEnter() { configurePage('page-hub'); } },
+        { namespace: 'Design_Web_Hub', afterEnter() { configurePage('page-hub'); } },
+        
+        { namespace: 'Cpp-Basico', afterEnter() { configurePage('page-content'); } }
+        // Adicione aqui views para suas outras páginas de conteúdo...
+    ]
+});
