@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../estilo.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Hub de Arquitetura</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script> 
+
+</head>
+
+<body data-barba="wrapper">
+
+    <div data-barba="container" data-barba-namespace="ArquiteturaComp-Hub" namespace="default-view">
+
+    <header>
+
+        <button class="settings-btn" aria-label="Configurações">
+        <i class="fas fa-bars"></i> </button>
+
+        <h1><a href="../index.html" style="all: unset; cursor: inherit;">Microspace</a></h1>
+        <h2>Bem-vindo(a) ao Hub de Arquitetura Comp.</h2>
+        <p>Navegue pelos módulos abaixo para explorar os guias sobre circuitos, lógica binaária e bases numéricas.</p>
+
+    </header>
+
+    <main>
+        <div class="hub-grid">
+            
+            <a href="../Arquitetura/" class="module-card">
+                <span class="icon">⚙️</span>
+                <h3>Arquitetura Fundamental</h3>
+                <p>Uma introdução aos conceitos da arquitetura computacional.</p>
+            </a>
+
+            <a href="../Arquitetura/arquitetura_de_reducao.html" class="module-card">
+                <span class="icon">⚙️</span>
+                <h3>Redução de Expressões Booleanas</h3>
+                <p>Os preceitos usados na simplificação de expressões</p>
+            </a>
+
+            <a href="../cpp/cpp_while.html" class="module-card">
+                <span class="icon">🔁</span>
+                <h3>Entendendo Expressões Booleanas</h3>
+                <p></p>
+            </a>
+
+        </div>
+        
+    </main>
+
+    </div>
+
+    <footer>
+
+        <p class="copyright"> ©️ 2025 - Lucas Willian</p>
+        
+    </footer>
+
+    <!-- ===== NOVO PLAYER CONTROLÁVEL ===== -->
+    <div id="player-wrapper" class="is-hidden">
+
+        <!-- Botão para mostrar/esconder o player -->
+        <button id="toggle-player-btn" aria-label="Controlar Player">
+            <i class="fas fa-chevron-down"></i>
+        </button>
+
+    <iframe 
+        id="meu-player-de-musica"
+        src="../Player/player.html"
+        title="Player de Música"
+        frameborder="0"
+        allow="autoplay">
+    </iframe>
+
+    </div>
+
+    <script src="../Scripts/sound-effects.js" defer></script>
+    <script src="../Scripts/player-toggle.js" defer></script>
+    <script src="../Scripts/status-bar.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="../Scripts/barba-init.js" defer></script>
+
+</body>
+</html>

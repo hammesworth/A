@@ -19,13 +19,23 @@ document.addEventListener('DOMContentLoaded', () => {
         { 
             title: 'song 1', 
             artist: 'Lu', 
-            src: '../music/song1.mp3' 
+            src: '../Music/song1.mp3' 
+        },
+        { 
+            title: 'Dreamer', 
+            artist: 'Hazy', 
+            src: '../Music/Dreamer.mp3' 
+        },
+        { 
+            title: 'Sophie', 
+            artist: 'Lu', 
+            src: '../Music/Sophie.mp3' 
         },
     ];
 
     let currentTrackIndex = 0;
     let isPlaying = false;
-    
+
     // --- 3. Lógica de Ordem Aleatória ---
 
     // Cria uma cópia da playlist original para ser embaralhada.

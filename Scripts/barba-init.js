@@ -39,7 +39,8 @@ barba.init({
         
         { namespace: 'Cpp-Basico',         afterEnter() { configurePage('page-content'); } },
         { namespace: 'Cpp-WhileVetores',         afterEnter() { configurePage('page-content'); } },
-        { namespace: 'Cpp-While',          afterEnter() { configurePage('page-content'); } }
+        { namespace: 'Cpp-While',          afterEnter() { configurePage('page-content'); } },
+        { namespace: 'Arquitetura-Reducao',         afterEnter() { configurePage('page-content'); } }
         // ... adicione suas outras páginas de conteúdo
     ]
 });

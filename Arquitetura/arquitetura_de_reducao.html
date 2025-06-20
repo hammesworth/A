@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../estilo.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Redução Booleana</title>
+    
+    <!-- NOVO: Biblioteca de áudio Tone.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
+</head>
+
+<body data-barba="wrapper">
+
+    <div data-barba="container" data-barba-namespace="Arquitetura-Reducao" namespace="default-view">
+
+<header>
+
+    <button class="settings-btn" aria-label="Configurações">
+    <i class="fas fa-bars"></i> </button>
+
+    <h1>Redução de Expressões Booleanas 💡</h1>
+    <p>Um guia detalhado sobre como simplificar expressões booleanas</p>
+
+    <nav>
+
+        <p><a href="../index.html" class="nav-link">Inicío 🏡</a></p>
+        <p><a href="../Hubs/ArquiteturaComp-Hub.html" class="nav-link"> Arquitetura ⚙️</a></p>
+        <p><a href="../Hubs/Matematica-Hub.html" class="nav-link">Matemática ✖️</a></p>
+        <p><a href="../Hubs/Cpp-Hub.html" class="nav-link">C++ 🔧</a></p>
+        <p><a href="../Hubs/InfoBasica-Hub.html" class="nav-link">Info Básica 🖥️</a></p>
+        <p><a href="../Hubs/DesignWeb-Hub.html" class="nav-link">Design Web 🌐</a></p>
+        <p><a href="../Hubs/Jogos-Hub.html" class="nav-link">Jogos 🕹️</a></p>
+
+    </nav>
+
+</header>
+
+<main>
+<div id="boolean-algebra-intro">
+
+    <section>
+      <h2 class="subtitle">🎯 Por que Simplificar? Simples: facilidade</h2>
+      <p>Imagine que uma expressão lógica é a planta de um circuito. Se a planta for muito complicada, com muitas portas, o circuito final será grande e difícil de entender. Simplificar a expressão é otimizar essa planta, encontrando o caminho mais curto e eficiente para obter o mesmo resultado. Os benefícios são enormes:</p>
+      <ul>
+        <li><strong>Redução de Custo:</strong> Menos portas lógicas significam menos componentes físicos (chips, transistores).</li>
+        <li><strong>Aumento de Velocidade:</strong> Cada porta lógica introduz um pequeno atraso (delay) para processar o sinal. Um circuito com menos portas em sequência opera mais rápido.</li>
+        <li><strong>Menor Consumo de Energia:</strong> Menos componentes (portas) em atividade resultam em menor consumo de energia.</li>
+        <li><strong>Maior Confiabilidade:</strong> Circuitos mais simples têm menos conexões e, portanto, menos pontos onde algo pode dar errado.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="subtitle">📜 Teoremas Fundamentais da Álgebra Booleana</h2>
+      <p>A simplificação é uma técnica que usa "ferramentas" chamadas teoremas. Cada teorema é uma regra que nos permite transformar a expressão em algo mais simples, mas com o mesmo resultado. Vamos explorar cada ferramenta em detalhes.</p>
+      
+      <h3 class="sub-subtitle">1. Propriedade Comutativa (A Regra da Troca)</h3>
+      <p><strong>Regra:</strong> <code>A + B = B + A</code> e <code>A . B = B . A</code></p>
+      <p><em>Explicação:</em> Pense em uma lâmpada com dois interruptores em paralelo (lógica OR). Se você ligar o interruptor A ou o B, a lâmpada acende. A ordem não importa. O mesmo vale para interruptores em série (lógica AND). Esta regra permite alterar a ordem dos termos, permitindo maior faacilidade na vizualização lógica de um circuito.</p>
+      
+      <h3 class="sub-subtitle">2. Propriedade Associativa (A Regra dos Parênteses)</h3>
+      <p><strong>Regra:</strong> <code>A + (B + C) = (A + B) + C = A + B + C</code> e <code>A . (B . C) = (A . B) . C = A . B . C</code></p>
+      <p><em>Explicação:</em> Se você precisa fazer a mesma operação várias vezes (só OR, ou só AND), não importa por onde começa. <code>(2+3)+4</code> é o mesmo que <code>2+(3+4)</code>. Na lógica, isso significa que podemos remover os parênteses em sequências como <code>A + B + C</code> ou usar portas lógicas com três ou mais entradas de uma vez só, simplificando o desenho do circuito.</p>
+
+      <h3 class="sub-subtitle">3. Propriedade Distributiva (A Regra do "Chuveirinho")</h3>
+      <p><strong>Regra:</strong> <code>A.B + A.C = A . (B + C</code></p>
+      <p><em>Explicação:</em> Essencial para reorganizar tudo. É a regra que nos permite "multiplicar" um termo por outros que estão sendo "somados". É a principal ferramenta para duas tarefas: <strong>expandir</strong> uma expressão (para ver se algum termo se cancela) ou <strong>fatorar</strong>, ou seja, colocar um termo comum em evidência, que é um dos passos mais importantes da simplificação.</p>
+      
+      <h3 class="sub-subtitle">4. Identidades da Adição e Multiplicação</h3>
+      <p><strong>Regras:</strong> <code>A + 0 = A</code> e <code>A . 1 = A</code></p>
+      <p><em>Explicação:</em> Estas são as regras sobre operar com "nada" ou "tudo". O <code>0</code> representa FALSO e o <code>1</code> representa VERDADEIRO.
+      <li><strong>Adição com 0:</strong> Fazer uma operação de OR (soma) com 0 não muda nada. Se A for 1, 1 + 0 = 1. Se A for 0, 0 + 0 = 0. O resultado é sempre igual  a A.</li>
+      <li><strong>Multiplicação com 1:</strong> Fazer uma operação AND (multiplicação) com 1 também não muda nada. Se A for 1, 1 . 1 = 1. Se A for 0, 0 . 1 = 0. O resultado é sempre igual a A.</li>
+      Usamos isso para remover 0s e 1s que são neutros na expressão.</p>
+
+      <h3 class="sub-subtitle">5. Propriedades da Adição e Multiplicação com 0 e 1</h3>
+      <p><strong>Regras:</strong> <code>A + 1 = 1</code> e <code>A . 0 = 0</code></p>
+      <p><em>Explicação:</em> Estas regras mostram como 0 e 1 podem "dominar" uma operação.
+      <li><strong>Adição com 1:</strong> Se você "soma" qualquer valor A com 1 (VERDADEIRO), o resultado será sempre 1. A porta OR só precisa de uma entrada verdadeira para ser ativada, então o valor de A se torna irrelevante.</li>
+      <li><strong>Multiplicação com 0:</strong> Se você "multiplica" qualquer valor A por 0 (FALSO), o resultado será sempre 0. A porta AND precisa que todas as entradas sejam verdadeiras, então se uma delas for falsa, o resultado é automaticamente falso.</li>
+      Esta é uma ferramenta poderosa para eliminar partes inteiras de um circuito.</p>
+      
+      <h3 class="sub-subtitle">6. Idempotência (A Regra da Repetição)</h3>
+      <p><strong>Regras:</strong> <code>A + A = A</code> e <code>A . A = A</code></p>
+      <p><em>Explicação:</em> É uma palavra chique para dizer que se repetir é inútil.
+      <li><strong>Adição:</strong> "Somar" A com ele mesmo (A + A) dá o próprio A. Se A é 1, 1 + 1 = 1. Se A é 0, 0 + 0 = 0.</li>
+      <li><strong>Multiplicação:</strong> "Multiplicar" A por ele mesmo (A . A) dá o próprio A. Se A é 1, 1 . 1 = 1. Se A é 0, 0 . 0 = 0.</li>
+      Isso nos permite remover termos repetidos, como em <code>X + Y + X</code>, que vira apenas <code>X + Y</code>.</p>
+      
+      <h3 class="sub-subtitle">7. Complementação na Adição e Multiplicação</h3>
+      <p><strong>Regras:</strong> <code>A + ¬A = 1</code> e <code>A . ¬A = 0</code></p>
+      <p><em>Explicação:</em> O que acontece quando operamos uma variável com seu oposto (complemento)?
+      <li><strong>Adição com o Complemento:</strong> A expressão <code>A + ¬A</code> (A OU NÃO A) sempre resulta em 1. Um dos dois tem que ser verdadeiro. Se A = 1, ¬A = 0, então 1 + 0 = 1. Se A = 0, ¬A=  1, então 0 + 1 = 1.</li>
+      <li><strong>Multiplicação com o Complemento:</strong> A expressão <code>A . ¬A</code> (A E NÃO A) sempre resulta em 0. É impossível que A e seu oposto sejam verdadeiros ao mesmo tempo. Se A = 1, ¬A = 0, então 1 . 0 = 0. Se A = 0, ¬A = 1, então 0 . 1 = 0.</li>
+      Esta é uma das regras mais úteis para fazer termos inteiros virarem 0 ou 1.</p>
+      
+      <h3 class="sub-subtitle">8. Dupla Complementação</h3>
+      <p><strong>Regra:</strong> <code>(¬¬A) = A</code></p>
+      <p><em>Explicação:</em> Aplicar a operação de complemento (negação) duas vezes seguidas cancela o efeito. É como dizer "não é verdade que eu NÃO gosto de sorvete", o que significa que você gosta de sorvete. Em um circuito, dois inversores (portas NOT) em série podem ser removidos.</p>
+
+      <h3 class="sub-subtitle">9. Absorção</h3>
+      <p><strong>Regra:</strong> <code>A + (A . B) = A</code></p>
+      <p><em>Explicação:</em> Este é um truque poderoso para simplificações drásticas. A expressão "soma" a variável A com uma "multiplicação" que já contém a própria variável A. O resultado disso tudo é apenas A. Vamos provar usando as outras regras:</p>
+
+      <ol>
+          <li><code>A + (A . B)</code></li>
+          <li>Fatorando o A (Distributividade): <code>A . (1 + B)</code></li>
+          <li>Usando o Elemento Nulo: sabemos que <code>1 + B = 1</code>.</li>
+          <li>Então temos: <code>A . 1</code></li>
+          <li>Usando a Identidade: <code>A . 1 = A</code></li>
+      </ol>
+      O resultado só depende de A. É como se o termo A "engolisse" o termo mais complexo <code>A . B</code>. Isso remove portas lógicas inteiras!</p>
+      
+      <h3 class="sub-subtitle">10. Teoremas de De Morgan</h3>
+      <p><strong>Regra:</strong> <code>(¬(A + B)) = ¬A . ¬B</code> e <code>(¬(A . B)) = ¬A + ¬B</code></p>
+      <p><em>Explicação:</em> Uma regra mágica para lidar com negações sobre múltiplos termos. Ela nos ensina a "quebrar a barra" da negação. O truque é:
+      <ol>
+          <li>Quebre a barra de negação sobre os termos.</li>
+          <li>A negação "passa para dentro", para cada termo individualmente (A vira ¬A, B vira ¬B).</li>
+          <li>A operação que estava embaixo da barra é invertida  OR vira AND, e AND vira OR).</li>
+      </ol>
+      <strong>Exemplo 1:</strong> <code>(¬(A + B))</code> vira <code>¬A . ¬B</code>. Isso significa que uma porta NOR é a mesma coisa que uma porta AND com as duas entradas invertidas.
+      <strong>Exemplo 2:</strong> <code>(¬(X . Y))</code> vira <code>¬X + ¬Y</code>. Isso significa que uma porta NAND é a mesma coisa que uma porta OR com as duas entradas invertidas.
+      Esta regra é a razão pela qual podemos construir qualquer circuito usando apenas portas NAND ou apenas portas NOR.</p>
+
+    </section>
+
+    <section>
+      <h2 class="subtitle">🛠️ Simplificação na Prática</h2>
+      <p>Vamos aplicar essas ferramentas para transformar expressões complexas em expressões mais simples.</p>
+
+      <p><strong>Exemplo 1: Simplificar S = ¬A.B.C + A.B.¬C + A.B.C + ¬A.B.¬C</strong></p>
+      <pre class="code">
+// Expressão Original
+1. S = ¬A.B.C + A.B.¬C + A.B.C + ¬A.B.¬C
+
+// Passo 1: Reagrupar usando a Comutatividade.
+2. S = (¬A.B.C + ¬A.B.¬C) + (A.B.¬C + A.B.C) 
+   
+// Passo 2: Fatorar usando a Distributividade.
+3. S = ¬A.B.(C + ¬C) + A.B.(¬C + C)
+
+// Passo 3: Aplicar a Regra do Complemento (C + ¬C = 1).
+4. S = ¬A.B.(1) + A.B.(1)
+
+// Passo 4: Aplicar a Regra da Identidade (X . 1 = X).
+5. S = ¬A.B + A.B
+
+// Passo 5: Fatorar novamente.
+6. S = B.(¬A + A)
+
+// Passo 6: Aplicar a Regra do Complemento (¬A + A = 1).
+7. S = B.(1)
+
+// Passo 7: Aplicar a Identidade para o resultado final.
+8. S = B
+      </pre>
+      <p>De um circuito complexo, chegamos a um simples fio. A saída S é igual à entrada B.</p>
+
+      <p><strong>Exemplo 2: Simplificar S = A + ¬A.B</strong></p>
+      <pre class="code">
+// Este é um caso clássico (segundo o que eu pesquisei) que não parece ter simplificação óbvia.
+// A chave é usar um truque: aplicar um teorema ao contrário.
+// Sabemos que A = A + A.B (pela regra da Absorção). Mas podemos usar
+// Outra regra: A = A + A.B. Vamos usar a distributiva inversa.
+// Existe um teorema específico: A + ¬A.B = A + B. Vamos prová-lo.
+// Sim, estou com uma atitude bastante prestativa por estar escrevendo isso agora.
+
+// Expressão Original
+1. S = A + ¬A.B
+
+// Passo 1: Usar a distributiva "reversa" A + B.C = (A+B)(A+C)
+2. S = (A + ¬A) . (A + B)
+
+// Passo 2: Aplicar a Regra do Complemento (A + ¬A = 1)
+3. S = 1 . (A + B)
+
+// Passo 3: Aplicar a Regra da Identidade (1 . X = X)
+4. S = A + B
+      </pre>
+      <p>Conseguimos eliminar a variável ¬A completamente, simplificando muito o circuito.</p>
+
+    </section>
+
+</div>
+</main>
+
+</div>
+
+<footer>
+    <p style="text-align: center; margin-top: 40px;">A prática leva à perfeição.</p>
+    <p class="copyright"> ©️ 2025 - Lucas Willian</p>
+</footer>
+
+<!-- ===== NOVO PLAYER CONTROLÁVEL ===== -->
+    <div id="player-wrapper" class="is-hidden">
+
+        <!-- Botão para mostrar/esconder o player -->
+        <button id="toggle-player-btn" aria-label="Controlar Player">
+            <i class="fas fa-chevron-down"></i>
+        </button>
+
+    <iframe 
+        id="meu-player-de-musica"
+        src="../Player/player.html"
+        title="Player de Música"
+        frameborder="0"
+        allow="autoplay">
+    </iframe>
+
+    <script src="../Scripts/sound-effects.js" defer></script>
+    <script src="../Scripts/player-toggle.js" defer></script>
+    <script src="../Scripts/status-bar.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="../Scripts/barba-init.js" defer></script>
+
+</body>
+</html>
