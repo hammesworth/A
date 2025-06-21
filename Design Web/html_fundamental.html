@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <link rel="stylesheet" href="../estilo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Guia Detalhado de HTML: A Base da Web</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
+</head>
+
+<body data-barba="wrapper">
+
+    <div data-barba="container" data-barba-namespace="HTML-Fundamentos" namespace="default-view">
+
+<header>
+
+    <button class="settings-btn" aria-label="Configurações">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <h1>Guia Detalhado de HTML 🏗️</h1>
+    <p>Aprendendo a construir a estrutura de qualquer página da web, passo a passo.</p>
+
+    <nav>
+        <p><a href="../index.html" class="nav-link">Inicío 🏡</a></p>
+        <p><a href="../Hubs/ArquiteturaComp-Hub.html" class="nav-link"> Arquitetura ⚙️</a></p>
+        <p><a href="../Hubs/Matematica-Hub.html" class="nav-link">Matemática ✖️</a></p>
+        <p><a href="../Hubs/Cpp-Hub.html" class="nav-link">C++ 🔧</a></p>
+        <p><a href="../Hubs/InfoBasica-Hub.html" class="nav-link">Info Básica 🖥️</a></p>
+        <p><a href="../Hubs/DesignWeb-Hub.html" class="nav-link">Design Web 🌐</a></p>
+        <p><a href="../Hubs/Jogos-Hub.html" class="nav-link">Jogos 🕹️</a></p>
+    </nav>
+</header>
+
+<main>
+
+<div id="xml-intro">
+
+    <section id="intro-html">
+        <h2 class="subtitle">🤔 O que é HTML?</h2>
+        <p>HTML significa <strong>HyperText Markup Language</strong> (Linguagem de Marcação de Hipertexto). Pense nele como o <strong>esqueleto de uma página da web</strong>. Assim como o esqueleto dá estrutura ao corpo humano, o HTML dá a estrutura básica para todo o conteúdo de um site: textos, imagens, vídeos, links, etc.</p>
+        <p>Ele não é uma linguagem de programação, pois não tem lógica (como C++), mas sim uma <strong>linguagem de marcação</strong>. Nós usamos "etiquetas" (ou <strong>tags</strong>) para "marcar" e descrever cada pedaço do nosso conteúdo para que o navegador saiba como exibi-lo.</p>
+    </section>
+
+    <section id="anatomia-tag">
+        <h2 class="subtitle">🔬 Anatomia de uma Tag HTML</h2>
+        <p>O HTML é formado por <strong>elementos</strong>. A maioria dos elementos é criada com uma tag de abertura e uma tag de fechamento, com o conteúdo inserido entre elas.</p>
+        <pre class="code">
+&lt;p&gt;Este é o conteúdo do meu parágrafo.&lt;/p&gt;
+        </pre>
+        <ul>
+            <li><code>&lt;p&gt;</code>: É a <strong>tag de abertura</strong>. Ela diz ao navegador "aqui começa um parágrafo".</li>
+            <li><code>Este é o conteúdo...</code>: É o <strong>conteúdo</strong> do elemento.</li>
+            <li><code>&lt;/p&gt;</code>: É a <strong>tag de fechamento</strong>. Note a barra <code>/</code>. Ela diz ao navegador "o parágrafo termina aqui".</li>
+        </ul>
+        <p>Alguns elementos são "vazios" e não precisam de tag de fechamento, como a quebra de linha <code>&lt;br&gt;</code> ou a tag de imagem <code>&lt;img&gt;</code>.</p>
+        
+        <h4>Atributos: Aprofundando</h4>
+        <p>Atributos fornecem informações extras sobre os elementos e são cruciais. Eles sempre ficam na tag de abertura no formato <code>nome="valor"</code>.</p>
+        <ul>
+            <li><strong>id</strong>: Fornece um identificador <strong>único</strong> para um elemento na página. Nenhum outro elemento pode ter o mesmo ID. Útil para links de âncora e para manipulação com JavaScript.</li>
+            <li><strong>class</strong>: Aplica um ou mais nomes de "classe" a um elemento. Diferente do ID, <strong>vários elementos podem ter a mesma classe</strong>. É a forma mais comum de agrupar elementos para aplicar estilos com CSS.</li>
+            <li><strong>style</strong>: Permite aplicar estilos CSS diretamente no elemento (chamado "CSS inline"). É útil para testes rápidos, mas a prática recomendada é usar arquivos CSS externos com classes.</li>
+        </ul>
+        <pre class="code">
+&lt;!-- O id 'titulo-principal' é único nesta página --&gt;
+&lt;h1 id="titulo-principal"&gt;Meu Site&lt;/h1&gt;
+
+&lt;!-- Vários parágrafos podem compartilhar a classe 'destaque' --&gt;
+&lt;p class="destaque"&gt;Este parágrafo é importante.&lt;/p&gt;
+&lt;p&gt;Este é normal.&lt;/p&gt;
+&lt;p class="destaque"&gt;Este também é importante.&lt;/p&gt;
+
+&lt;!-- Usando o atributo style para um estilo rápido --&gt;
+&lt;p style="color: blue; font-size: 20px;"&gt;Este parágrafo é azul e grande.&lt;/p&gt;
+        </pre>
+    </section>
+    
+    <section id="estrutura-basica">
+        <h2 class="subtitle">🏛️ A Estrutura Básica de uma Página</h2>
+        <p>Todo arquivo HTML segue uma estrutura fundamental. É a base sobre a qual tudo é construído.</p>
+        <pre class="code">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-br"&gt;
+    &lt;head&gt;
+        &lt;meta charset="UTF-8"&gt;
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+        &lt;title&gt;Título da Minha Página&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;!-- O conteúdo visível vai aqui --&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+        </pre>
+        <ul>
+            <li><code>&lt;!DOCTYPE html&gt;</code>: A primeira linha de todas. Diz ao navegador que este é um documento HTML5.</li>
+            <li><code>&lt;html lang="pt-br"&gt;</code>: A tag raiz. O atributo <code>lang</code> ajuda os mecanismos de busca e leitores de tela a entender o idioma.</li>
+            <li><code>&lt;head&gt;</code>: O "cérebro" da página. Contém informações para o navegador.
+                <ul>
+                    <li><code>&lt;meta charset="UTF-8"&gt;</code>: Garante que o navegador interprete corretamente caracteres especiais, como acentos (ç, á, ê). Essencial!</li>
+                    <li><code>&lt;meta name="viewport" ...&gt;</code>: Instrução fundamental para o design responsivo, garantindo que a página se adapte bem a telas de celulares.</li>
+                    <li><code>&lt;title&gt;</code>: O texto que aparece na aba do navegador.</li>
+                </ul>
+            </li>
+            <li><code>&lt;body&gt;</code>: O "corpo" da página. Tudo que você colocar aqui dentro será visível para o usuário.</li>
+        </ul>
+    </section>
+
+    <section id="html-semantico">
+        <h2 class="subtitle">🗣️ HTML Semântico: Dando Significado à Estrutura</h2>
+        <p>No passado, usava-se <code>&lt;div&gt;</code> para tudo. Hoje, usamos tags que <strong>descrevem o seu conteúdo</strong>. Isso é chamado de HTML Semântico. Ajuda na acessibilidade e na otimização para mecanismos de busca (SEO).</p>
+        <pre class="code">
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Logo do Site&lt;/h1&gt;
+        &lt;nav&gt; &lt;!-- Navegação Principal --&gt;
+            &lt;a href="/inicio"&gt;Início&lt;/a&gt;
+            &lt;a href="/sobre"&gt;Sobre&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;main&gt; &lt;!-- Conteúdo Principal da Página --&gt;
+        &lt;article&gt;
+            &lt;h2&gt;Título do Post do Blog&lt;/h2&gt;
+            &lt;p&gt;Conteúdo do post...&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;aside&gt; &lt;!-- Conteúdo Lateral (barra lateral) --&gt;
+            &lt;h3&gt;Links Relacionados&lt;/h3&gt;
+        &lt;/aside&gt;
+    &lt;/main&gt;
+
+    &lt;footer&gt; &lt;!-- Rodapé --&gt;
+        &lt;p&gt;&copy; 2025 Meu Site. Todos os direitos reservados.&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+        </pre>
+        <ul>
+            <li><code>&lt;header&gt;</code>: Para o cabeçalho do site ou de uma seção. Geralmente contém o logo e a navegação principal.</li>
+            <li><code>&lt;nav&gt;</code>: Para agrupar os links de navegação mais importantes.</li>
+            <li><code>&lt;main&gt;</code>: Envolve o conteúdo <strong>principal e único</strong> da página.</li>
+            <li><code>&lt;article&gt;</code>: Para um bloco de conteúdo autossuficiente, como um post de blog, uma notícia ou um produto.</li>
+            <li><code>&lt;section&gt;</code>: Agrupa conteúdos relacionados tematicamente (não mostrado no exemplo acima, mas é como um capítulo de um livro).</li>
+            <li><code>&lt;aside&gt;</code>: Para conteúdo lateral, menos importante, como uma barra lateral (sidebar) com anúncios ou links extras.</li>
+            <li><code>&lt;footer&gt;</code>: Para o rodapé da página, com informações de copyright, links de contato, etc.</li>
+        </ul>
+    </section>
+
+    <section id="tabelas-html">
+        <h2 class="subtitle">📊 Criando Tabelas</h2>
+        <p>Tabelas são usadas para exibir dados tabulares de forma organizada.</p>
+        <pre class="code">
+&lt;table&gt;
+    &lt;thead&gt; &lt;!-- Cabeçalho da Tabela --&gt;
+        &lt;tr&gt; &lt;!-- tr = Table Row (Linha da Tabela) --&gt;
+            &lt;th&gt;Nome do Produto&lt;/th&gt; &lt;!-- th = Table Header (Célula de Cabeçalho) --&gt;
+            &lt;th&gt;Preço&lt;/th&gt;
+            &lt;th&gt;Estoque&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt; &lt;!-- Corpo da Tabela --&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Notebook X&lt;/td&gt; &lt;!-- td = Table Data (Célula de Dado) --&gt;
+            &lt;td&gt;R$ 4.500,00&lt;/td&gt;
+            &lt;td&gt;15&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Mouse Y&lt;/td&gt;
+            &lt;td&gt;R$ 120,00&lt;/td&gt;
+            &lt;td&gt;42&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+        </pre>
+    </section>
+    
+    <section id="formularios-html">
+        <h2 class="subtitle">📝 Construindo Formulários</h2>
+        <p>Formulários são essenciais para a interação com o usuário, permitindo o envio de dados.</p>
+        <pre class="code">
+&lt;form action="/processar-dados" method="post"&gt;
+    &lt;div&gt;
+        &lt;label for="nome"&gt;Seu Nome:&lt;/label&gt;
+        &lt;input type="text" id="nome" name="usuario_nome" required&gt;
+    &lt;/div&gt;
+
+    &lt;div&gt;
+        &lt;label for="email"&gt;Seu E-mail:&lt;/label&gt;
+        &lt;input type="email" id="email" name="usuario_email" required&gt;
+    &lt;/div&gt;
+
+    &lt;div&gt;
+        &lt;label for="msg"&gt;Sua Mensagem:&lt;/label&gt;
+        &lt;textarea id="msg" name="usuario_msg" rows="4"&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+
+    &lt;div&gt;
+        &lt;p&gt;Qual plano você deseja?&lt;/p&gt;
+        &lt;input type="radio" id="plano-basico" name="plano" value="basico"&gt;
+        &lt;label for="plano-basico"&gt;Básico&lt;/label&gt;
+        &lt;br&gt;
+        &lt;input type="radio" id="plano-premium" name="plano" value="premium"&gt;
+        &lt;label for="plano-premium"&gt;Premium&lt;/label&gt;
+    &lt;/div&gt;
+    
+    &lt;div&gt;
+        &lt;input type="checkbox" id="termos" name="aceitou_termos" required&gt;
+        &lt;label for="termos"&gt;Eu aceito os termos de serviço.&lt;/label&gt;
+    &lt;/div&gt;
+
+    &lt;button type="submit"&gt;Enviar Mensagem&lt;/button&gt;
+&lt;/form&gt;
+        </pre>
+        <ul>
+            <li><code>&lt;form&gt;</code>: O contêiner para todos os campos do formulário.</li>
+            <li><code>&lt;label&gt;</code>: Descreve um campo de entrada. O atributo <code>for</code> se conecta ao <code>id</code> do <code>&lt;input&gt;</code>, melhorando a acessibilidade.</li>
+            <li><code>&lt;input&gt;</code>: O campo de entrada em si. O atributo <code>type</code> é o mais importante e define seu comportamento (<code>text</code>, <code>email</code>, <code>password</code>, <code>checkbox</code>, <code>radio</code>, etc.).</li>
+            <li><code>&lt;textarea&gt;</code>: Para campos de texto de múltiplas linhas.</li>
+            <li><code>&lt;button type="submit"&gt;</code>: Um botão que, quando clicado, envia os dados do formulário.</li>
+        </ul>
+    </section>
+
+</div>
+
+</main>
+
+</div>
+
+<footer>
+    <p class="copyright"> ©️ 2025 - Lucas Willian</p>
+</footer>
+
+    <div id="player-wrapper" class="is-hidden">
+        <button id="toggle-player-btn" aria-label="Controlar Player">
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <iframe 
+            id="meu-player-de-musica"
+            src="../player/player.html"
+            title="Player de Música"
+            frameborder="0"
+            allow="autoplay">
+        </iframe>
+    </div>
+
+    <script src="../Scripts/sound-effects.js" defer></script>
+    <script src="../Scripts/player-toggle.js" defer></script>
+    <script src="../Scripts/status-bar.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="../Scripts/barba-init.js" defer></script>
+
+    <script src="../Scripts/theme-toggle.js" defer></script>
+
+</body>
+</html>

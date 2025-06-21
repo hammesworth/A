@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <!-- Mantive os links para seus arquivos de estilo e fontes para compatibilidade -->
+    <link rel="stylesheet" href="../estilo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Guia CSS: Construindo Componentes Visuais</title>
+    
+    <!-- Biblioteca de áudio Tone.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
+</head>
+
+<body data-barba="wrapper">
+
+    <div data-barba="container" data-barba-namespace="CSS-Componentes-Visuais" namespace="default-view">
+
+<header>
+
+    <button class="settings-btn" aria-label="Configurações">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Título focado em Componentes CSS -->
+    <h1>Guia CSS: Construindo Componentes Visuais 🧱</h1>
+    <p>Um guia prático para criar blocos, botões e menus reutilizáveis.</p>
+
+    <!-- A navegação foi mantida para consistência -->
+    <nav>
+        <p><a href="../index.html" class="nav-link">Inicío 🏡</a></p>
+        <p><a href="../Hubs/ArquiteturaComp-Hub.html" class="nav-link"> Arquitetura ⚙️</a></p>
+        <p><a href="../Hubs/Matematica-Hub.html" class="nav-link">Matemática ✖️</a></p>
+        <p><a href="../Hubs/Cpp-Hub.html" class="nav-link">C++ 🔧</a></p>
+        <p><a href="../Hubs/InfoBasica-Hub.html" class="nav-link">Info Básica 🖥️</a></p>
+        <p><a href="../Hubs/DesignWeb-Hub.html" class="nav-link">Design Web 🌐</a></p>
+        <p><a href="../Hubs/Jogos-Hub.html" class="nav-link">Jogos 🕹️</a></p>
+    </nav>
+</header>
+
+<main>
+
+<div id="xml-intro">
+
+    <section id="intro-components">
+        <h2 class="subtitle">🧩 A Abordagem de Componentes</h2>
+        <p>Sites modernos raramente são construídos como uma única peça monolítica. Em vez disso, eles são montados a partir de "componentes" - pedaços de interface reutilizáveis, como botões, cards, menus e formulários. Aprender a estilizar esses componentes de forma isolada e eficaz é uma habilidade fundamental. Neste guia, vamos construir alguns dos componentes mais comuns do zero.</p>
+    </section>
+
+    <section id="content-blocks">
+        <h2 class="subtitle">1. Criando Blocos de Conteúdo</h2>
+        <p>Um bloco de conteúdo é um contêiner visual que agrupa informações relacionadas, separando-as do resto da página. É a base para criar seções, cards de produtos, posts de blog, etc.</p>
+        <div class="exercise">
+            <h4>Estrutura e Estilo</h4>
+            <p>Usamos uma simples <code>&lt;div&gt;</code> como nosso contêiner e aplicamos estilos de Box Model para dar forma a ele.</p>
+            <p><strong>HTML:</strong></p>
+            <pre class="code">
+&lt;div class="content-block"&gt;
+  &lt;h3&gt;Título do Bloco&lt;/h3&gt;
+  &lt;p&gt;Este é o parágrafo dentro do nosso bloco de conteúdo. Note como o padding cria um respiro interno, e a margem o afasta de outros elementos.&lt;/p&gt;
+&lt;/div&gt;
+            </pre>
+            <p><strong>CSS:</strong></p>
+            <pre class="code">
+.content-block {
+  background-color: #f8f9fa; /* Um cinza muito claro */
+  border: 1px solid #dee2e6;  /* Uma borda sutil */
+  border-radius: 8px;         /* Cantos arredondados */
+  padding: 24px;              /* Espaçamento interno generoso */
+  margin-bottom: 30px;        /* Espaço abaixo para separar do próximo bloco */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Sombra suave para dar profundidade */
+}
+
+.content-block h3 {
+  margin-top: 0; /* Remove a margem padrão do título para alinhá-lo ao topo */
+  color: #343a40;
+}
+            </pre>
+        </div>
+    </section>
+    
+    <section id="buttons">
+        <h2 class="subtitle">2. Estilizando Botões Interativos</h2>
+        <p>Botões são o principal ponto de interação do usuário. Um bom design de botão deve ser convidativo e fornecer feedback claro quando interagido.</p>
+        <div class="exercise">
+            <h4>Do Padrão ao Profissional</h4>
+            <p>Vamos transformar um <code>&lt;button&gt;</code> padrão em um componente atraente.</p>
+            <p><strong>HTML:</strong></p>
+            <pre class="code">
+&lt;button class="btn btn-primary"&gt;Clique Aqui&lt;/button&gt;
+&lt;button class="btn btn-secondary"&gt;Saiba Mais&lt;/button&gt;
+            </pre>
+            <p><strong>CSS:</strong></p>
+            <pre class="code">
+/* Base comum para todos os botões */
+.btn {
+  display: inline-block; /* Permite definir padding e se comporta bem com texto */
+  padding: 12px 24px;
+  border: none; /* Remove a borda padrão */
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none; /* Remove sublinhado se usarmos um &lt;a&gt; */
+  cursor: pointer; /* Muda o cursor para uma mãozinha */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Transição suave */
+}
+
+.btn:hover {
+  transform: translateY(-2px); /* Efeito de elevação no hover */
+  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+.btn:active {
+  transform: translateY(1px); /* Efeito de clique */
+}
+
+/* Variação de Cor Primária */
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Variação de Cor Secundária */
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+            </pre>
+        </div>
+    </section>
+
+    <section id="nav-menu">
+        <h2 class="subtitle">3. Construindo um Menu de Navegação</h2>
+        <p>Um menu de navegação horizontal é um dos componentes mais essenciais de qualquer site. Vamos criá-lo usando uma lista HTML e Flexbox.</p>
+        <div class="exercise">
+            <h4>Estrutura e Estilo</h4>
+            <p>Começamos com HTML semântico (<code>&lt;nav&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;li&gt;</code>) e o transformamos com CSS.</p>
+            <p><strong>HTML:</strong></p>
+            <pre class="code">
+&lt;nav class="main-nav"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Início&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Sobre&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Serviços&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#" class="active"&gt;Contato&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+            </pre>
+            <p><strong>CSS:</strong></p>
+            <pre class="code">
+.main-nav {
+  background-color: #343a40; /* Fundo escuro para a barra de navegação */
+  padding: 1rem 0;
+  border-radius: 8px;
+}
+
+.main-nav ul {
+  display: flex; /* A mágica do Flexbox! */
+  justify-content: center; /* Centraliza os itens no contêiner */
+  margin: 0;
+  padding: 0;
+  list-style: none; /* Remove as bolinhas da lista */
+}
+
+.main-nav a {
+  color: #f8f9fa;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.main-nav a:hover {
+  background-color: #495057; /* Efeito hover sutil */
+}
+
+/* Estilo para o item ativo da página */
+.main-nav a.active {
+  background-color: #007bff;
+  color: white;
+}
+            </pre>
+        </div>
+    </section>
+    
+    <section id="highlight-blocks">
+        <h2 class="subtitle">4. Criando Áreas de Destaque (Blocos de Código)</h2>
+        <p>Para exibir exemplos de código ou informações importantes, criar uma área visualmente distinta é muito eficaz. Usamos as tags <code>&lt;pre&gt;</code> e <code>&lt;code&gt;</code> para isso.</p>
+        <div class="exercise">
+            <h4>Estrutura e Estilo</h4>
+            <p>A tag <code>&lt;pre&gt;</code> preserva os espaços em branco e quebras de linha, ideal para código. A tag <code>&lt;code&gt;</code> indica semanticamente que o conteúdo é código.</p>
+            <p><strong>HTML:</strong></p>
+            <pre class="code">
+&lt;pre class="code-block"&gt;&lt;code&gt;
+body {
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+}
+&lt;/code&gt;&lt;/pre&gt;
+            </pre>
+            <p><strong>CSS:</strong></p>
+            <pre class="code">
+.code-block {
+  background-color: #212529; /* Fundo escuro para código */
+  color: #e9ecef; /* Cor de texto clara */
+  font-family: 'Fira Code', monospace; /* Fonte monoespaçada */
+  font-size: 0.9rem;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 5px solid #007bff; /* Detalhe colorido na borda */
+  white-space: pre-wrap;   /* Permite quebra de linha em palavras longas */
+  overflow-x: auto;      /* Adiciona barra de rolagem se o conteúdo for muito largo */
+}
+            </pre>
+        </div>
+    </section>
+
+</div>
+
+</main>
+
+</div>
+
+<footer>
+    <p class="copyright"> ©️ 2025 - Lucas Willian</p>
+</footer>
+
+    <!-- Scripts originais mantidos no final para funcionalidade da página -->
+    <div id="player-wrapper" class="is-hidden">
+        <button id="toggle-player-btn" aria-label="Controlar Player">
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <iframe 
+            id="meu-player-de-musica"
+            src="../player/player.html"
+            title="Player de Música"
+            frameborder="0"
+            allow="autoplay">
+        </iframe>
+    </div>
+
+    <script src="../Scripts/sound-effects.js" defer></script>
+    <script src="../Scripts/player-toggle.js" defer></script>
+    <script src="../Scripts/status-bar.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="../Scripts/barba-init.js" defer></script>
+
+    <script src="../Scripts/theme-toggle.js" defer></script>
+
+</body>
+</html>

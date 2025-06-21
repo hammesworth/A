@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <link rel="stylesheet" href="../estilo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Guia C++: Exercícios de Funções e Laços</title>
+    
+    <!-- Biblioteca de áudio Tone.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
+</head>
+
+<body data-barba="wrapper">
+
+        <button id="theme-toggle" aria-label="Alternar tema" title="Alternar tema">
+        <span id="theme-icon">🌙</span>
+        </button>
+
+    <div data-barba="container" data-barba-namespace="Cpp-While-Exercicios" namespace="default-view">
+
+<header>
+
+    <button class="settings-btn" aria-label="Configurações">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Título atualizado para o novo foco -->
+    <h1>Exercícios de Lógica com C++ 🧠</h1>
+    <p>Implementando funções clássicas de matemática e sequências com laços de repetição.</p>
+
+    <!-- A navegação foi mantida para consistência -->
+    <nav>
+        <p><a href="../index.html" class="nav-link">Inicío 🏡</a></p>
+        <p><a href="../Hubs/ArquiteturaComp-Hub.html" class="nav-link"> Arquitetura ⚙️</a></p>
+        <p><a href="../Hubs/Matematica-Hub.html" class="nav-link">Matemática ✖️</a></p>
+        <p><a href="../Hubs/Cpp-Hub.html" class="nav-link">C++ 🔧</a></p>
+        <p><a href="../Hubs/InfoBasica-Hub.html" class="nav-link">Info Básica 🖥️</a></p>
+        <p><a href="../Hubs/DesignWeb-Hub.html" class="nav-link">Design Web 🌐</a></p>
+        <p><a href="../Hubs/Jogos-Hub.html" class="nav-link">Jogos 🕹️</a></p>
+    </nav>
+</header>
+
+<main>
+
+<div id="xml-intro">
+
+    <section id="intro">
+        <h2 class="subtitle">🎯 Resolvendo Problemas com Funções e Laços</h2>
+        <p>A combinação de funções para modularizar o código e laços de repetição para executar tarefas repetitivas é a base da programação estruturada. Abaixo, você encontrará uma série de exercícios clássicos resolvidos em C++, demonstrando como implementar algoritmos matemáticos e sequenciais do zero.</p>
+        <p>Cada exercício apresenta a criação de uma ou mais funções específicas e um programa principal (<code>main</code>) para testar sua funcionalidade, como solicitado.</p>
+    </section>
+
+    <section id="exercicios-propostos">
+        <h2 class="subtitle">✏️ Exercícios Resolvidos</h2>
+
+        <!-- Exercício 1: Floor e Ceil -->
+        <div class="exercise">
+            <h4>Exercício 1: Funções Floor e Ceil</h4>
+            <p><strong>Problema:</strong> Supondo a inexistência da biblioteca <code>math.h</code>, implemente funções para calcular o piso (floor) e o teto (ceil) de um número real. Crie um programa principal para testá-las.</p>
+            <p><strong>Solução:</strong></p>
+            <pre class="code">
+#include &lt;iostream&gt;
+
+// Função que calcula o piso de um número
+int meu_floor(double num) {
+    int parte_inteira = (int)num;
+    // Se o número for negativo e tiver parte fracionária, o piso é a parte inteira - 1.
+    // Ex: floor(-3.7) é -4. (int)-3.7 é -3.
+    if (num < 0 && num != parte_inteira) {
+        return parte_inteira - 1;
+    }
+    return parte_inteira;
+}
+
+// Função que calcula o teto de um número
+int meu_ceil(double num) {
+    int parte_inteira = (int)num;
+    // Se o número for positivo e tiver parte fracionária, o teto é a parte inteira + 1.
+    // Ex: ceil(3.7) é 4. (int)3.7 é 3.
+    if (num > 0 && num != parte_inteira) {
+        return parte_inteira + 1;
+    }
+    return parte_inteira;
+}
+
+int main() {
+    using namespace std;
+    double teste1 = 5.8;
+    double teste2 = -4.2;
+    double teste3 = 7.0;
+
+    cout << "Testando a funcao 'meu_floor':\n";
+    cout << "O piso de " << teste1 << " e: " << meu_floor(teste1) << "\n";   // Esperado: 5
+    cout << "O piso de " << teste2 << " e: " << meu_floor(teste2) << "\n";   // Esperado: -5
+    cout << "O piso de " << teste3 << " e: " << meu_floor(teste3) << "\n\n"; // Esperado: 7
+
+    cout << "Testando a funcao 'meu_ceil':\n";
+    cout << "O teto de " << teste1 << " e: " << meu_ceil(teste1) << "\n";   // Esperado: 6
+    cout << "O teto de " << teste2 << " e: " << meu_ceil(teste2) << "\n";   // Esperado: -4
+    cout << "O teto de " << teste3 << " e: " << meu_ceil(teste3) << "\n";   // Esperado: 7
+    
+    return 0;
+}
+            </pre>
+            <p><strong>Explicação da Resposta:</strong> A conversão de um <code>double</code> para <code>int</code> em C++ trunca a parte decimal.
+            Para o <strong>piso (floor)</strong>, este comportamento já é correto para números positivos. Para negativos, se o número não for inteiro (ex: -4.2), o piso real é uma unidade menor que a parte inteira truncada (-5).
+            Para o <strong>teto (ceil)</strong>, o oposto acontece: para números positivos com decimais (ex: 5.8), o teto é uma unidade maior que a parte inteira (6). Para negativos, a parte inteira truncada já é o teto (o teto de -4.2 é -4).</p>
+        </div>
+
+        <!-- Exercício 2: Potência -->
+        <div class="exercise">
+            <h4>Exercício 2: Função de Potência</h4>
+            <p><strong>Problema:</strong> Implemente uma função para calcular a potência entre dois números inteiros quaisquer (base e expoente positivos ou negativos). Teste os casos 2³, 2⁻³, (-3)² e (-3)⁻².</p>
+            <p><strong>Solução:</strong></p>
+            <pre class="code">
+#include &lt;iostream&gt;
+
+// Função que calcula a potência, lidando com expoentes negativos
+double potencia(int base, int expoente) {
+    double resultado = 1.0;
+    
+    if (expoente == 0) {
+        return 1.0;
+    }
+    
+    int exp_positivo = expoente > 0 ? expoente : -expoente;
+    int contador = 0;
+
+    while (contador < exp_positivo) {
+        resultado *= base;
+        contador++;
+    }
+
+    if (expoente < 0) {
+        return 1.0 / resultado;
+    }
+
+    return resultado;
+}
+
+int main() {
+    using namespace std;
+    cout << "Testando a funcao 'potencia':\n";
+    cout << "2^3 = " << potencia(2, 3) << "\n";         // Esperado: 8
+    cout << "2^-3 = " << potencia(2, -3) << "\n";       // Esperado: 0.125
+    cout << "-3^2 = " << potencia(-3, 2) << "\n";       // Esperado: 9
+    cout << "-3^-2 = " << potencia(-3, -2) << "\n";     // Esperado: 0.111...
+
+    return 0;
+}
+            </pre>
+            <p><strong>Explicação da Resposta:</strong> A função primeiro calcula a potência para o valor absoluto do expoente usando um laço <code>while</code>. Se o expoente original for 0, retorna 1. Se for positivo, o resultado do laço é retornado diretamente. Se o expoente for negativo, o resultado final é <code>1.0</code> dividido pelo valor encontrado, conforme a propriedade matemática de que x⁻ⁿ = 1/xⁿ. O tipo de retorno é <code>double</code> para lidar com os resultados fracionários dos expoentes negativos.</p>
+        </div>
+
+        <!-- Exercício 3: Número Primo -->
+        <div class="exercise">
+            <h4>Exercício 3: Função de Número Primo</h4>
+            <p><strong>Problema:</strong> Escreva uma função que retorne verdadeiro ou falso para o fato de um número ser primo. Crie um programa principal para testá-la.</p>
+            <p><strong>Solução:</strong></p>
+            <pre class="code">
+#include &lt;iostream&gt;
+
+// Retorna true se o número for primo, false caso contrário
+bool ehPrimo(int numero) {
+    if (numero <= 1) {
+        return false; // 0, 1 e negativos não são primos
+    }
+    
+    int divisor = 2;
+    // Só precisamos testar até a metade do número.
+    while (divisor <= numero / 2) {
+        if (numero % divisor == 0) {
+            return false; // Encontrou um divisor, não é primo
+        }
+        divisor++;
+    }
+    
+    return true; // Não encontrou divisores, é primo
+}
+
+int main() {
+    using namespace std;
+    cout << "Testando a funcao 'ehPrimo':\n";
+    cout << "O numero 29 e primo? " << (ehPrimo(29) ? "Sim" : "Nao") << "\n";
+    cout << "O numero 15 e primo? " << (ehPrimo(15) ? "Sim" : "Nao") << "\n";
+    cout << "O numero 2 e primo? " << (ehPrimo(2) ? "Sim" : "Nao") << "\n";
+    cout << "O numero 1 e primo? " << (ehPrimo(1) ? "Sim" : "Nao") << "\n";
+
+    return 0;
+}
+            </pre>
+            <p><strong>Explicação da Resposta:</strong> A função <code>ehPrimo</code> primeiro trata dos casos base: números menores ou iguais a 1 não são primos. Em seguida, um laço <code>while</code> testa todos os possíveis divisores de 2 até a metade do número (uma otimização comum). Se em algum momento o resto da divisão <code>numero % divisor</code> for 0, significa que um divisor foi encontrado, e a função retorna <code>false</code> imediatamente. Se o laço terminar sem encontrar nenhum divisor, o número é primo e a função retorna <code>true</code>.</p>
+        </div>
+
+        <!-- Exercício 4: Fatorial -->
+        <div class="exercise">
+            <h4>Exercício 4: Função Fatorial</h4>
+            <p><strong>Problema:</strong> Implemente uma função para calcular o fatorial de um número inteiro não-negativo. Lembre-se que 0! = 1. Crie um programa principal para testá-la.</p>
+            <p><strong>Solução:</strong></p>
+            <pre class="code">
+#include &lt;iostream&gt;
+
+// Calcula o fatorial de um número não-negativo
+unsigned long long fatorial(int n) {
+    if (n < 0) {
+        // Fatorial de número negativo é indefinido. Retornamos 0 como erro.
+        return 0; 
+    }
+    if (n == 0) {
+        return 1; // Caso base: 0! = 1
+    }
+
+    unsigned long long resultado = 1;
+    int contador = n;
+
+    while (contador > 1) {
+        resultado *= contador;
+        contador--;
+    }
+
+    return resultado;
+}
+
+int main() {
+    using namespace std;
+    cout << "Testando a funcao 'fatorial':\n";
+    cout << "Fatorial de 5 (!5) = " << fatorial(5) << "\n";   // Esperado: 120
+    cout << "Fatorial de 0 (!0) = " << fatorial(0) << "\n";   // Esperado: 1
+    cout << "Fatorial de 10 (!10) = " << fatorial(10) << "\n"; // Esperado: 3628800
+
+    return 0;
+}
+            </pre>
+            <p><strong>Explicação da Resposta:</strong> A função primeiro lida com casos especiais: retorna 0 (indicando erro) para números negativos e retorna 1 se o número for 0. Para números positivos, um laço <code>while</code> é iniciado. A variável <code>resultado</code> é multiplicada pelo <code>contador</code> (que começa em <code>n</code>), e o contador é decrementado a cada iteração, até chegar a 1. O tipo de retorno <code>unsigned long long</code> é usado para acomodar os valores grandes que os fatoriais podem atingir rapidamente.</p>
+        </div>
+        
+        <!-- Exercício 5: Fibonacci -->
+        <div class="exercise">
+            <h4>Exercício 5: Sequência de Fibonacci</h4>
+            <p><strong>Problema:</strong> A sequência de Fibonacci começa com 0 e 1, e cada termo subsequente é a soma dos dois anteriores (0, 1, 1, 2, 3, 5, ...). Implemente uma função para retornar o n-ésimo termo da sequência.</p>
+            <p><strong>Solução:</strong></p>
+            <pre class="code">
+#include &lt;iostream&gt;
+
+// Retorna o n-ésimo termo da sequência de Fibonacci
+int fibonacci(int n) {
+    if (n <= 0) return 0; // Termo 0 ou negativo é 0
+    if (n == 1) return 1; // Termo 1 é 1
+
+    int anterior = 0;
+    int atual = 1;
+    int contador = 2; // Já calculamos os dois primeiros termos
+
+    while (contador <= n) {
+        int proximo = anterior + atual;
+        anterior = atual;
+        atual = proximo;
+        contador++;
+    }
+
+    return atual;
+}
+
+int main() {
+    using namespace std;
+    cout << "Testando a funcao 'fibonacci':\n";
+    cout << "O 5º termo de Fibonacci e: " << fibonacci(5) << "\n";   // Esperado: 5
+    cout << "O 8º termo de Fibonacci e: " << fibonacci(8) << "\n";   // Esperado: 21
+    cout << "O 1º termo de Fibonacci e: " << fibonacci(1) << "\n";   // Esperado: 1
+
+    return 0;
+}
+            </pre>
+            <p><strong>Explicação da Resposta:</strong> A função trata os casos base <code>n=0</code> e <code>n=1</code>. Para <code>n > 1</code>, inicializamos <code>anterior = 0</code> e <code>atual = 1</code>. O laço <code>while</code> roda de 2 até <code>n</code>. Em cada iteração, calculamos o próximo termo somando os dois anteriores. Em seguida, atualizamos as variáveis: o <code>atual</code> vira o <code>anterior</code>, e o <code>proximo</code> calculado vira o novo <code>atual</code>. O laço efetivamente "caminha" pela sequência até atingir a posição <code>n</code>, retornando o valor contido em <code>atual</code>.</p>
+        </div>
+    </section>
+
+</div>
+
+</main>
+
+</div>
+
+<footer>
+    <p class="copyright"> ©️ 2025 - Lucas Willian</p>
+</footer>
+
+    <!-- Scripts originais mantidos no final para funcionalidade da página -->
+    <div id="player-wrapper" class="is-hidden">
+        <button id="toggle-player-btn" aria-label="Controlar Player">
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <iframe 
+            id="meu-player-de-musica"
+            src="../player/player.html"
+            title="Player de Música"
+            frameborder="0"
+            allow="autoplay">
+        </iframe>
+    </div>
+
+    <script src="../Scripts/sound-effects.js" defer></script>
+    <script src="../Scripts/player-toggle.js" defer></script>
+    <script src="../Scripts/status-bar.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="../Scripts/barba-init.js" defer></script>
+
+    <script src="../Scripts/theme-toggle.js" defer></script>
+
+</body>
+</html>

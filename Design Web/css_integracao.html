@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <!-- Mantive os links para seus arquivos de estilo e fontes para compatibilidade -->
+    <link rel="stylesheet" href="../estilo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Guia CSS Definitivo: Arquitetura e Theming</title>
+    
+    <!-- Biblioteca de áudio Tone.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
+</head>
+
+<body data-barba="wrapper">
+
+    <div data-barba="container" data-barba-namespace="CSS-Architecture-Guide-Expanded" namespace="default-view">
+
+<header>
+
+    <button class="settings-btn" aria-label="Configurações">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Título focado em Arquitetura CSS -->
+    <h1>Guia CSS: Arquitetura e Theming 🏛️</h1>
+    <p>Organizando estilos para projetos complexos e criando temas dinâmicos.</p>
+
+    <!-- A navegação foi mantida para consistência -->
+    <nav>
+        <p><a href="../index.html" class="nav-link">Inicío 🏡</a></p>
+        <p><a href="../Hubs/ArquiteturaComp-Hub.html" class="nav-link"> Arquitetura ⚙️</a></p>
+        <p><a href="../Hubs/Matematica-Hub.html" class="nav-link">Matemática ✖️</a></p>
+        <p><a href="../Hubs/Cpp-Hub.html" class="nav-link">C++ 🔧</a></p>
+        <p><a href="../Hubs/InfoBasica-Hub.html" class="nav-link">Info Básica 🖥️</a></p>
+        <p><a href="../Hubs/DesignWeb-Hub.html" class="nav-link">Design Web 🌐</a></p>
+        <p><a href="../Hubs/Jogos-Hub.html" class="nav-link">Jogos 🕹️</a></p>
+    </nav>
+</header>
+
+<main>
+
+<div id="xml-intro">
+
+    <section id="intro-architecture">
+        <h2 class="subtitle">🏗️ Engenharia de Estilos: Além do Básico</h2>
+        <p>Quando um projeto cresce, um único arquivo CSS pode se tornar um monstro caótico, onde mudar uma cor quebra três outras coisas. Uma boa <strong>arquitetura de CSS</strong> é sobre engenharia: planejar como seus estilos serão organizados, nomeados e escalados. Neste guia, vamos explorar metodologias e técnicas profissionais para criar sistemas de CSS robustos, fáceis de manter e flexíveis.</p>
+    </section>
+
+    <section id="multiple-files">
+        <h2 class="subtitle">1. Organizando Estilos com ITCSS (Inverted Triangle CSS)</h2>
+        <p>Em vez de uma lista aleatória de arquivos, a metodologia <strong>ITCSS</strong> propõe uma estrutura em camadas, do mais genérico ao mais específico. Isso controla a cascata e a especificidade de forma previsível.</p>
+        <div class="exercise">
+            <h4>As Camadas do Triângulo Invertido</h4>
+            <p>Os arquivos devem ser importados no HTML nesta ordem exata:</p>
+            <ol>
+                <li><strong>Settings:</strong> Variáveis globais (variáveis CSS, variáveis de pré-processadores). Nenhuma regra CSS aqui, apenas definições. <em>(Ex: <code>_settings.colors.css</code>)</em></li>
+                <li><strong>Tools:</strong> Mixins e funções de pré-processadores. Também não gera CSS diretamente. <em>(Ex: <code>_tools.mixins.css</code>)</em></li>
+                <li><strong>Generic:</strong> Resets (Normalize.css, etc.), <code>box-sizing</code>. Estilos que afetam tudo, mas com baixa especificidade. <em>(Ex: <code>generic.reset.css</code>)</em></li>
+                <li><strong>Elements:</strong> Estilos para tags HTML puras (<code>h1</code>, <code>p</code>, <code>a</code>). A aparência padrão dos elementos. <em>(Ex: <code>elements.typography.css</code>)</em></li>
+                <li><strong>Objects:</strong> Padrões de layout não estilizados. Classes que definem a estrutura, mas não a aparência. <em>(Ex: <code>.wrapper</code>, <code>.grid-container</code>). (Ex: <code>objects.layout.css</code>)</em></li>
+                <li><strong>Components:</strong> A maior parte do seu código. Estilos para componentes de UI específicos e reconhecíveis (<code>.button</code>, <code>.card</code>, <code>.main-nav</code>). <em>(Ex: <code>components.card.css</code>)</em></li>
+                <li><strong>Trumps (Utilities):</strong> A camada de maior especificidade. Classes auxiliares que sobrescrevem qualquer outra coisa (<code>.text-center</code>, <code>.hidden</code>, <code>.mt-4</code>). Use com cuidado. <em>(Ex: <code>trumps.utilities.css</code>)</em></li>
+            </ol>
+             <p><strong>Como Fica no HTML:</strong></p>
+            <pre class="code">
+&lt;!-- Dentro do &lt;head&gt; --&gt;
+&lt;link rel="stylesheet" href="css/1-generic/reset.css"&gt;
+&lt;link rel="stylesheet" href="css/2-elements/typography.css"&gt;
+&lt;link rel="stylesheet" href="css/3-objects/layout.css"&gt;
+&lt;link rel="stylesheet" href="css/4-components/buttons.css"&gt;
+&lt;link rel="stylesheet" href="css/4-components/cards.css"&gt;
+&lt;link rel="stylesheet" href="css/5-trumps/utilities.css"&gt;
+            </pre>
+        </div>
+    </section>
+
+    <section id="naming-bem">
+        <h2 class="subtitle">2. Nomenclatura com BEM (Block, Element, Modifier)</h2>
+        <p>BEM é uma convenção de nomenclatura que torna suas classes CSS mais legíveis e menos propensas a conflitos. A ideia é criar componentes independentes.</p>
+        <ul>
+            <li><strong>Block:</strong> O componente autônomo. Ex: <code>.card</code>, <code>.menu</code>.</li>
+            <li><strong>Element:</strong> Uma parte de um bloco que não tem sentido sozinha. Usa dois underscores. Ex: <code>.card__title</code>, <code>.menu__item</code>.</li>
+            <li><strong>Modifier:</strong> Uma variação na aparência ou estado de um bloco ou elemento. Usa dois hífens. Ex: <code>.card--featured</code>, <code>.menu__item--active</code>.</li>
+        </ul>
+        <div class="exercise">
+            <h4>Exemplo Prático: Um Card com BEM</h4>
+            <p><strong>HTML:</strong></p>
+            <pre class="code">
+&lt;!-- Bloco 'card', com um modificador '--dark' --&gt;
+&lt;div class="card card--dark"&gt;
+  &lt;!-- Elemento 'image' dentro do bloco 'card' --&gt;
+  &lt;img class="card__image" src="caminho/imagem.jpg" alt=""&gt;
+  &lt;div class="card__content"&gt;
+    &lt;h3 class="card__title"&gt;Título do Card&lt;/h3&gt;
+    &lt;p class="card__text"&gt;Texto do card.&lt;/p&gt;
+    &lt;!-- Elemento 'button', com um modificador '--disabled' --&gt;
+    &lt;a href="#" class="card__button card__button--disabled"&gt;Leia mais&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+            </pre>
+            <p><strong>CSS:</strong></p>
+            <pre class="code">
+.card { /* O Bloco */
+  background-color: white; border: 1px solid #ccc;
+}
+.card--dark { /* O Modificador do Bloco */
+  background-color: #333; color: white;
+}
+.card__image { /* O Elemento */
+  width: 100%; height: auto;
+}
+.card__button { /* Outro Elemento */
+  background-color: blue; color: white; padding: 10px;
+}
+.card__button--disabled { /* O Modificador do Elemento */
+  background-color: gray; pointer-events: none;
+}
+            </pre>
+            <p><strong>Vantagem:</strong> A especificidade é sempre baixa e previsível (apenas uma classe). Você sabe imediatamente que <code>.card__title</code> pertence ao componente <code>card</code>.</p>
+        </div>
+    </section>
+    
+    <section id="body-theming">
+        <h2 class="subtitle">3. Ecossistema de Temas com Classes e Variáveis</h2>
+        <p>Esta é a técnica mais poderosa para criar sites dinâmicos. Combinamos variáveis CSS com classes no <code>&lt;body&gt;</code> para controlar todo o sistema de design.</p>
+        
+        <div class="exercise">
+            <h4>Passo 1: Definir os Temas com Variáveis</h4>
+            <p>Em um arquivo como <code>_settings.themes.css</code>, definimos as paletas de cores.</p>
+            <pre class="code">
+/* Tema Padrão (Claro) */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #212529;
+  --primary-color: #007bff;
+  --border-color: #dee2e6;
+}
+
+/* Sobrescreve as variáveis quando a classe .theme-dark está presente */
+.theme-dark {
+  --bg-color: #1a1a1a;
+  --text-color: #f8f9fa;
+  --primary-color: #1e90ff;
+  --border-color: #495057;
+}
+
+/* Podemos ter temas de conteúdo também */
+.theme-docs {
+  --primary-color: #563d7c; /* Roxo para documentação */
+}
+            </pre>
+        </div>
+        <div class="exercise">
+            <h4>Passo 2: Componentes Usam as Variáveis</h4>
+            <p>Seus componentes nunca usam cores fixas. Eles sempre referenciam as variáveis.</p>
+            <pre class="code">
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+.button {
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+.card {
+  border: 1px solid var(--border-color);
+}
+            </pre>
+        </div>
+        <div class="exercise">
+            <h4>Passo 3: Aplicar as Classes no HTML</h4>
+            <p>A combinação de classes no body permite total flexibilidade.</p>
+            <pre class="code">
+&lt;!-- Uma página de documentação com tema escuro --&gt;
+&lt;body class="theme-dark theme-docs"&gt;
+  &lt;!-- Todos os botões usarão a cor primária #563d7c (do theme-docs),
+       mas o fundo e o texto usarão as cores do theme-dark. --&gt;
+&lt;/body&gt;
+
+&lt;!-- Uma página normal com tema claro --&gt;
+&lt;body&gt; &lt;!-- ou class="theme-light" --&gt;
+  &lt;!-- Usará a paleta de cores padrão. --&gt;
+&lt;/body&gt;
+            </pre>
+            <p>Com um simples script de JavaScript, um usuário pode clicar em um botão para adicionar ou remover a classe <code>theme-dark</code> do <code>body</code>, trocando o tema do site inteiro em tempo real.</p>
+        </div>
+    </section>
+
+</div>
+
+</main>
+
+</div>
+
+<footer>
+    <p class="copyright"> ©️ 2025 - Lucas Willian</p>
+</footer>
+
+    <!-- Scripts originais mantidos no final para funcionalidade da página -->
+    <div id="player-wrapper" class="is-hidden">
+        <button id="toggle-player-btn" aria-label="Controlar Player">
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <iframe 
+            id="meu-player-de-musica"
+            src="../player/player.html"
+            title="Player de Música"
+            frameborder="0"
+            allow="autoplay">
+        </iframe>
+    </div>
+
+    <script src="../Scripts/sound-effects.js" defer></script>
+    <script src="../Scripts/player-toggle.js" defer></script>
+    <script src="../Scripts/status-bar.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="../Scripts/barba-init.js" defer></script>
+
+    <script src="../Scripts/theme-toggle.js" defer></script>
+
+</body>
+</html>

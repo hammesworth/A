@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="estilo.css">
@@ -18,12 +19,21 @@
 
 <body data-barba="wrapper">
 
+        <button id="theme-toggle" aria-label="Alternar tema" title="Alternar tema">
+        <span id="theme-icon">🌙</span>
+        </button>
+
     <div data-barba="container" data-barba-namespace="Hub-Principal" namespace="default-view">
 
     <header>
 
         <button class="settings-btn" aria-label="Configurações">
         <i class="fas fa-bars"></i> </button>
+
+        <button id="theme-toggle" aria-label="Alternar tema" title="Alternar tema">
+        <span id="theme-icon">🌙</span>
+        </button>
+
 
         <h1>Microspace:</h1>
         <h2>
@@ -115,6 +125,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
     <script src="https://unpkg.com/@barba/core" defer></script>
+
+    <script src="Scripts/theme-toggle.js" defer></script>
+
     <script src="Scripts/barba-init.js" defer></script>
 
 </body>

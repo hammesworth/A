@@ -57,6 +57,58 @@ body {
     min-height: 100vh; /* Garante que o corpo ocupe no mínimo toda a altura da tela */
 }
 
+body.dark-mode {
+  --bg-color: #121212;
+  --surface-color: #1e1e1e;
+  --text-title: #f1f1f1;
+  --text-body: #dcdcdc;
+  --text-muted: #a0a0a0;
+  --border-color: #2c2c2c;
+  --code-bg-light: #2a2a2a; /* se você usa fundo claro em blocos de código */
+}
+
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+*, *::before, *::after {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#theme-toggle {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  background: var(--surface-color);
+  color: var(--text-body);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  transition: background 0.3s, color 0.3s, transform 0.3s;
+  font-size: 1.25rem;
+}
+
+#theme-toggle:hover {
+  transform: scale(1.1);
+  background: var(--primary-hover);
+  color: #fff;
+}
+
+#theme-icon {
+  display: inline-block;
+  transition: transform 0.4s ease;
+}
+
+/* Roda o ícone quando troca de tema */
+body.dark-mode #theme-icon {
+  transform: rotate(180deg);
+}
+
+
+
 .page-hub, .page-content {
     flex-grow: 1;
 }

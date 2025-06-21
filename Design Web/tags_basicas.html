@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <!-- Mantive os links para seus arquivos de estilo e fontes para compatibilidade -->
+    <link rel="stylesheet" href="../estilo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Guia Definitivo: Tags Essenciais do HTML</title>
+    
+    <!-- Biblioteca de áudio Tone.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
+</head>
+
+<body data-barba="wrapper">
+
+    <div data-barba="container" data-barba-namespace="HTML-Tags-Essenciais" namespace="default-view">
+
+<header>
+
+    <button class="settings-btn" aria-label="Configurações">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Título focado nas tags essenciais -->
+    <h1>Guia Definitivo das Tags HTML 🏷️</h1>
+    <p>Um guia de referência completo sobre as tags que formam a espinha dorsal da web.</p>
+
+    <!-- A navegação foi mantida para consistência -->
+    <nav>
+        <p><a href="../index.html" class="nav-link">Inicío 🏡</a></p>
+        <p><a href="../Hubs/ArquiteturaComp-Hub.html" class="nav-link"> Arquitetura ⚙️</a></p>
+        <p><a href="../Hubs/Matematica-Hub.html" class="nav-link">Matemática ✖️</a></p>
+        <p><a href="../Hubs/Cpp-Hub.html" class="nav-link">C++ 🔧</a></p>
+        <p><a href="../Hubs/InfoBasica-Hub.html" class="nav-link">Info Básica 🖥️</a></p>
+        <p><a href="../Hubs/DesignWeb-Hub.html" class="nav-link">Design Web 🌐</a></p>
+        <p><a href="../Hubs/Jogos-Hub.html" class="nav-link">Jogos 🕹️</a></p>
+    </nav>
+</header>
+
+<main>
+
+<div id="xml-intro">
+
+    <section id="intro-essentials">
+        <h2 class="subtitle">🚀 Além do Essencial: Dominando a Estrutura</h2>
+        <p>Embora o HTML tenha mais de 100 tags, a grande maioria dos sites é construída com um pequeno subconjunto delas. Dominar estas tags fundamentais é o segredo para construir qualquer estrutura web de forma rápida e eficiente. Este guia é uma referência direta e aprofundada para essas tags cruciais, explicando não só o que fazem, mas por que e como usá-las corretamente.</p>
+    </section>
+
+    <section id="tags-estrutura">
+        <h2 class="subtitle">🏛️ Tags de Estrutura e Semântica</h2>
+        <p>Estas tags definem o layout principal da sua página e, mais importante, dão <strong>significado</strong> ao seu conteúdo. Usá-las corretamente é vital para acessibilidade e SEO.</p>
+        
+        <div class="exercise">
+            <h4><code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code></h4>
+            <p><strong>Uso:</strong> Dividem a página em suas três áreas lógicas mais básicas: o cabeçalho, o conteúdo principal e o rodapé.</p>
+            <p><strong>Funcionamento:</strong> São como as placas de uma cidade. O <code>&lt;header&gt;</code> contém a "apresentação" do site (logo, menu principal). O <code>&lt;main&gt;</code> deve conter o conteúdo único e central daquela página específica. O <code>&lt;footer&gt;</code> guarda as informações de finalização (copyright, contatos, links secundários).</p>
+        </div>
+        
+        <div class="exercise">
+            <h4><code>&lt;nav&gt;</code></h4>
+            <p><strong>Uso:</strong> Exclusivamente para agrupar os blocos de links de <strong>navegação primária</strong> do site.</p>
+            <p><strong>Funcionamento:</strong> Sinaliza que o conteúdo dentro dela é um menu. Isso permite que tecnologias assistivas (leitores de tela) ofereçam um atalho para "pular a navegação" e ir direto para o conteúdo principal, melhorando drasticamente a experiência do usuário.</p>
+        </div>
+
+        <div class="exercise">
+            <h4><code>&lt;section&gt;</code> vs <code>&lt;article&gt;</code> vs <code>&lt;div&gt;</code></h4>
+            <p><strong>Uso:</strong> Esta é uma das distinções mais importantes do HTML semântico.</p>
+            <ul>
+                <li><code>&lt;section&gt;</code>: Agrupa conteúdos relacionados tematicamente. Pense nela como um capítulo de um livro. Uma página sobre "Nossos Serviços" pode ter uma <code>&lt;section&gt;</code> para "Desenvolvimento Web", outra para "Design Gráfico", etc.</li>
+                <li><code>&lt;article&gt;</code>: Para conteúdo autossuficiente e distribuível. Se você pode imaginar o conteúdo fazendo sentido sozinho em um feed de notícias (como um post de blog, um artigo, um tweet, um produto), ele deve estar em um <code>&lt;article&gt;</code>.</li>
+                <li><code>&lt;div&gt;</code>: A tag de último recurso. Use-a apenas para agrupamento visual (para aplicar estilos CSS) quando nenhuma outra tag semântica se encaixar. É um contêiner sem significado próprio.</li>
+            </ul>
+            <pre class="code">
+&lt;main&gt;
+  &lt;h1&gt;Blog de Tecnologia&lt;/h1&gt;
+  &lt;article&gt;
+    &lt;h2&gt;O Futuro da Inteligência Artificial&lt;/h2&gt;
+    &lt;p&gt;O primeiro parágrafo do post...&lt;/p&gt;
+    &lt;section&gt;
+      &lt;h3&gt;IA na Medicina&lt;/h3&gt;
+      &lt;p&gt;Detalhes sobre IA na medicina...&lt;/p&gt;
+    &lt;/section&gt;
+    &lt;section&gt;
+      &lt;h3&gt;IA nas Artes&lt;/h3&gt;
+      &lt;p&gt;Detalhes sobre IA nas artes...&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/article&gt;
+&lt;/main&gt;
+            </pre>
+        </div>
+    </section>
+
+    <section id="tags-texto">
+        <h2 class="subtitle">✍️ Tags de Texto, Ênfase e Citação</h2>
+        <p>Estas tags formatam e dão significado e hierarquia ao conteúdo textual.</p>
+        
+        <div class="exercise">
+            <h4><code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code></h4>
+            <p><strong>Uso:</strong> Para definir títulos e subtítulos. <code>&lt;h1&gt;</code> é o mais importante.</p>
+            <p><strong>Funcionamento:</strong> Criam a espinha dorsal do seu conteúdo. Use <strong>apenas um <code>&lt;h1&gt;</code> por página</strong>. A ordem dos outros títulos deve ser lógica (um <code>h3</code> deve ser subtópico de um <code>h2</code>), não pule níveis para obter um tamanho de fonte específico. A aparência visual deve ser controlada com CSS.</p>
+        </div>
+
+        <div class="exercise">
+            <h4><code>&lt;p&gt;</code> vs <code>&lt;br&gt;</code> vs <code>&lt;hr&gt;</code></h4>
+            <ul>
+                <li><code>&lt;p&gt;</code>: Define um parágrafo. Use para agrupar frases relacionadas.</li>
+                <li><code>&lt;br&gt;</code>: (Break) Força uma quebra de linha. É uma tag vazia. Use-a com moderação, apenas quando a quebra de linha for parte intrínseca do conteúdo, como em um poema ou endereço. Não a use para criar espaço vertical entre elementos; isso é trabalho para o CSS.</li>
+                <li><code>&lt;hr&gt;</code>: (Horizontal Rule) Cria uma linha horizontal. Representa uma mudança temática entre parágrafos dentro de uma mesma seção, como a transição de uma cena para outra em uma história.</li>
+            </ul>
+        </div>
+        
+        <div class="exercise">
+            <h4><code>&lt;strong&gt;</code> vs <code>&lt;em&gt;</code> vs <code>&lt;span&gt;</code></h4>
+            <ul>
+                <li><code>&lt;strong&gt;</code>: Dá <strong>forte importância</strong> ao texto. Os navegadores o deixam em negrito por padrão. Use para palavras ou frases de alta relevância.</li>
+                <li><code>&lt;em&gt;</code>: (Emphasis) Dá <strong>ênfase</strong> ao texto. Os navegadores o deixam em itálico. Use para mudar o tom de voz, como ao enfatizar uma palavra em uma frase.</li>
+                <li><code>&lt;span&gt;</code>: Não tem significado algum. É um contêiner genérico "em linha" (não quebra a linha) usado puramente para aplicar estilos (cor, fundo, etc.) a um pedaço de texto com CSS ou para manipulação com JavaScript.</li>
+            </ul>
+            <pre class="code">
+&lt;p&gt;
+  &lt;strong&gt;Atenção:&lt;/strong&gt; Não se esqueça de salvar seu trabalho.
+  Isso é &lt;em&gt;muito&lt;/em&gt; importante.
+  Para colorir apenas &lt;span style="color: blue;"&gt;esta palavra&lt;/span&gt;, usamos span.
+&lt;/p&gt;
+            </pre>
+        </div>
+
+        <div class="exercise">
+            <h4><code>&lt;blockquote&gt;</code> e <code>&lt;cite&gt;</code></h4>
+            <p><strong>Uso:</strong> Para citar fontes externas.</p>
+            <p><strong>Funcionamento:</strong> <code>&lt;blockquote&gt;</code> é para blocos de citação longos. O atributo <code>cite</code> pode conter a URL da fonte. A tag <code>&lt;cite&gt;</code> é para o título da obra (livro, filme, artigo) de onde a citação foi tirada, não para o nome da pessoa.</p>
+            <pre class="code">
+&lt;blockquote cite="https://developer.mozilla.org/..."&gt;
+  &lt;p&gt;O HTML (HyperText Markup Language) não é uma linguagem de programação...&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Como explicado no artigo &lt;cite&gt;HTML: HyperText Markup Language&lt;/cite&gt; da MDN.&lt;/p&gt;
+            </pre>
+        </div>
+    </section>
+
+    <section id="tags-midia-interacao">
+        <h2 class="subtitle">🖼️ Tags de Mídia, Formulários e Tabelas</h2>
+        <p>Para exibir conteúdo rico e interagir com o usuário.</p>
+
+        <div class="exercise">
+            <h4><code>&lt;img&gt;</code>, <code>&lt;video&gt;</code>, <code>&lt;audio&gt;</code></h4>
+            <ul>
+                <li><code>&lt;img&gt;</code>: Incorpora uma imagem. <code>src</code> é o caminho e <code>alt</code> é a descrição obrigatória para acessibilidade.</li>
+                <li><code>&lt;video&gt;</code>: Incorpora um vídeo. Use o atributo <code>controls</code> para que o usuário possa tocar, pausar, etc. Outros atributos úteis: <code>autoplay</code> (geralmente requer <code>muted</code>), <code>loop</code>.</li>
+                <li><code>&lt;audio&gt;</code>: Incorpora um áudio. Também usa <code>controls</code>, <code>autoplay</code>, <code>loop</code>.</li>
+            </ul>
+            <pre class="code">
+&lt;video controls width="400"&gt;
+  &lt;source src="videos/meu-video.mp4" type="video/mp4"&gt;
+  Seu navegador não suporta a tag de vídeo.
+&lt;/video&gt;
+            </pre>
+        </div>
+
+        <div class="exercise">
+            <h4>Formulários: <code>&lt;form&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;label&gt;</code>, <code>&lt;textarea&gt;</code>, <code>&lt;select&gt;</code>, <code>&lt;button&gt;</code></h4>
+            <p><strong>Uso:</strong> Um conjunto de tags que trabalham juntas para coletar dados do usuário.</p>
+            <ul>
+                <li><code>&lt;form&gt;</code>: O contêiner geral.</li>
+                <li><code>&lt;label&gt;</code>: O rótulo descritivo de um campo. Seu atributo <code>for</code> deve corresponder ao <code>id</code> do campo.</li>
+                <li><code>&lt;input&gt;</code>: O campo de dados. O atributo <code>type</code> define seu comportamento: <code>text</code>, <code>email</code>, <code>password</code>, <code>date</code>, <code>number</code>, <code>checkbox</code>, <code>radio</code>. O atributo <code>name</code> é crucial, pois é o nome da variável que será enviada ao servidor.</li>
+                <li><code>&lt;textarea&gt;</code>: Para caixas de texto de múltiplas linhas.</li>
+                <li><code>&lt;select&gt;</code>: Cria uma lista de opções (dropdown). Cada opção é um <code>&lt;option&gt;</code>.</li>
+                <li><code>&lt;button&gt;</code>: Um botão. Dentro de um form, <code>type="submit"</code> (padrão) envia os dados. <code>type="reset"</code> limpa o formulário. <code>type="button"</code> não faz nada, útil para ações com JavaScript.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="comentarios">
+        <h2 class="subtitle">🤫 Comentários em HTML</h2>
+        <p><strong>Uso:</strong> Para deixar anotações no código que não são exibidas pelo navegador.</p>
+        <p><strong>Funcionamento:</strong> Tudo que estiver entre <code>&lt;!--</code> e <code>--&gt;</code> será ignorado. É útil para explicar seções complexas do código, deixar lembretes para você mesmo ou para outros desenvolvedores, ou para "desativar" temporariamente um bloco de código sem apagá-lo.</p>
+        <pre class="code">
+&lt;!-- TODO: Preciso validar este formulário com JavaScript --&gt;
+&lt;div class="secao-contato"&gt;
+  ...
+&lt;/div&gt;
+
+&lt;!--
+&lt;div class="secao-antiga"&gt;
+  Código temporariamente desativado.
+&lt;/div&gt;
+--&gt;
+        </pre>
+    </section>
+
+</div>
+
+</main>
+
+</div>
+
+<footer>
+    <p class="copyright"> ©️ 2025 - Lucas Willian</p>
+</footer>
+
+    <!-- Scripts originais mantidos no final para funcionalidade da página -->
+    <div id="player-wrapper" class="is-hidden">
+        <button id="toggle-player-btn" aria-label="Controlar Player">
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <iframe 
+            id="meu-player-de-musica"
+            src="../player/player.html"
+            title="Player de Música"
+            frameborder="0"
+            allow="autoplay">
+        </iframe>
+    </div>
+
+    <script src="../Scripts/sound-effects.js" defer></script>
+    <script src="../Scripts/player-toggle.js" defer></script>
+    <script src="../Scripts/status-bar.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="../Scripts/barba-init.js" defer></script>
+
+    <script src="../Scripts/theme-toggle.js" defer></script>
+
+</body>
+</html>

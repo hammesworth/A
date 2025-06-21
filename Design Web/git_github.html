@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <!-- Mantive os links para seus arquivos de estilo e fontes para compatibilidade -->
+    <link rel="stylesheet" href="../estilo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Guia Detalhado de Git e GitHub</title>
+    
+    <!-- Biblioteca de áudio Tone.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
+</head>
+
+<body data-barba="wrapper">
+
+    <div data-barba="container" data-barba-namespace="Git-Github" namespace="default-view">
+
+<header>
+
+    <button class="settings-btn" aria-label="Configurações">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Título focado em Git/GitHub -->
+    <h1>Guia Detalhado de Git e GitHub 🐙</h1>
+    <p>Do clone ao push: aprendendo a versionar e colaborar em seus projetos.</p>
+
+    <!-- A navegação foi mantida para consistência -->
+    <nav>
+        <p><a href="../index.html" class="nav-link">Inicío 🏡</a></p>
+        <p><a href="../Hubs/ArquiteturaComp-Hub.html" class="nav-link"> Arquitetura ⚙️</a></p>
+        <p><a href="../Hubs/Matematica-Hub.html" class="nav-link">Matemática ✖️</a></p>
+        <p><a href="../Hubs/Cpp-Hub.html" class="nav-link">C++ 🔧</a></p>
+        <p><a href="../Hubs/InfoBasica-Hub.html" class="nav-link">Info Básica 🖥️</a></p>
+        <p><a href="../Hubs/DesignWeb-Hub.html" class="nav-link">Design Web 🌐</a></p>
+        <p><a href="../Hubs/Jogos-Hub.html" class="nav-link">Jogos 🕹️</a></p>
+    </nav>
+</header>
+
+<main>
+
+<div id="xml-intro">
+
+    <section id="intro-git">
+        <h2 class="subtitle">🤔 O que são Git e GitHub?</h2>
+        <p>Imagine que você está escrevendo um livro. A cada capítulo finalizado, você salva uma cópia. Se mais tarde você decidir que uma mudança estragou a história, você pode voltar para a cópia do capítulo anterior. O <strong>Git</strong> é um sistema que faz exatamente isso para o seu código, mas de forma muito mais poderosa. Ele é um <strong>Sistema de Controle de Versão</strong>.</p>
+        <p>O <strong>GitHub</strong>, por outro lado, é como uma biblioteca online para seus livros (seus projetos com Git). É um site onde você pode guardar cópias dos seus projetos, compartilhar com outras pessoas, trabalhar em equipe e até mesmo encontrar outros projetos para ler e contribuir.</p>
+        <ul>
+            <li><strong>Git:</strong> O programa no seu computador que controla o histórico de alterações.</li>
+            <li><strong>GitHub:</strong> O site na internet que armazena seus projetos e permite a colaboração.</li>
+        </ul>
+    </section>
+
+    <section id="git-logic">
+        <h2 class="subtitle">🧠 A Lógica do Git: As Três Árvores</h2>
+        <p>Para entender o Git, você precisa entender seu fluxo de trabalho, que envolve três "árvores" ou áreas principais:</p>
+        <ol>
+            <li><strong>Diretório de Trabalho (Working Directory):</strong> Esta é a sua pasta de projeto, onde seus arquivos realmente estão. É onde você edita, cria e apaga arquivos.</li>
+            <li><strong>Área de Preparação (Staging Area):</strong> Pense nela como uma caixa onde você coloca as mudanças que quer incluir no seu próximo "save point". Antes de salvar, você escolhe exatamente quais alterações quer guardar.</li>
+            <li><strong>Histórico (Repository - .git):</strong> Esta é a "cópia de segurança" final. Quando você "commita", as mudanças da Área de Preparação são salvas permanentemente no histórico do projeto, dentro de uma subpasta oculta chamada <code>.git</code>.</li>
+        </ol>
+        <p>O fluxo é sempre: <strong>Trabalho ➔ Preparação ➔ Histórico</strong>. Você modifica no diretório de trabalho, adiciona na área de preparação e, finalmente, salva no histórico.</p>
+    </section>
+
+    <section id="git-workflow">
+        <h2 class="subtitle">⚙️ O Fluxo de Trabalho Básico: Passo a Passo</h2>
+        <p>Vamos ver os comandos essenciais para versionar um projeto localmente.</p>
+
+        <div class="exercise">
+            <h4>1. <code>git init</code> - Iniciando um Repositório</h4>
+            <p><strong>O que faz:</strong> Cria um novo repositório Git na pasta atual. Essencialmente, "ativa" o Git para aquela pasta.</p>
+            <p><strong>Como usar:</strong> Abra o terminal na pasta do seu projeto e digite:</p>
+            <pre class="code">git init</pre>
+            <p>Isso criará uma pasta oculta <code>.git</code> que armazenará todo o histórico. Você só faz isso uma vez por projeto.</p>
+        </div>
+
+        <div class="exercise">
+            <h4>2. <code>git add</code> - Adicionando à Área de Preparação</h4>
+            <p><strong>O que faz:</strong> Pega as alterações do seu diretório de trabalho e as coloca na "caixa" da Área de Preparação.</p>
+            <p><strong>Como usar:</strong> Você pode adicionar um arquivo específico ou todos de uma vez.</p>
+            <pre class="code">
+# Adiciona um arquivo específico
+git add nome_do_arquivo.html
+
+# Adiciona TODOS os arquivos modificados e novos
+git add .
+            </pre>
+        </div>
+
+        <div class="exercise">
+            <h4>3. <code>git commit</code> - Salvando no Histórico</h4>
+            <p><strong>O que faz:</strong> Pega tudo que está na Área de Preparação e cria um "save point" (um commit) permanente no histórico. É como tirar uma foto do estado atual do seu projeto.</p>
+            <p><strong>Como usar:</strong> Todo commit precisa de uma mensagem descritiva, explicando o que foi feito.</p>
+            <pre class="code">git commit -m "Adiciona a estrutura inicial do site com HTML"</pre>
+            <p>A mensagem (flag <code>-m</code>) é crucial. Boas mensagens ajudam você a entender o histórico do projeto no futuro.</p>
+        </div>
+
+        <div class="exercise">
+            <h4>4. <code>git status</code> - Verificando o Estado</h4>
+            <p><strong>O que faz:</strong> Mostra o estado atual das suas três árvores. Informa quais arquivos foram modificados, quais estão na Área de Preparação e quais ainda não foram "rastreados" pelo Git.</p>
+            <p><strong>Como usar:</strong> É o seu melhor amigo. Use-o a todo momento para saber o que está acontecendo.</p>
+            <pre class="code">git status</pre>
+        </div>
+    </section>
+
+    <section id="github-workflow">
+        <h2 class="subtitle">☁️ Conectando com o GitHub</h2>
+        <p>Agora, vamos enviar nosso histórico local para a "biblioteca online", o GitHub.</p>
+
+        <div class="exercise">
+            <h4>1. Criar um Repositório no GitHub</h4>
+            <p>Vá até o site do <a href="https://github.com" target="_blank">GitHub</a>, faça login e clique em "New" para criar um novo repositório. Dê um nome a ele, mas <strong>não</strong> marque as opções para adicionar um README ou .gitignore. Crie um repositório vazio.</p>
+        </div>
+        
+        <div class="exercise">
+            <h4>2. <code>git remote add</code> - Conectando os Mundos</h4>
+            <p><strong>O que faz:</strong> Conecta seu repositório local a um repositório remoto (no GitHub).</p>
+            <p><strong>Como usar:</strong> O GitHub fornecerá a URL do seu repositório. Você usará o comando abaixo para dar um "apelido" a essa URL, que por convenção é <code>origin</code>.</p>
+            <pre class="code">git remote add origin https://github.com/seu-usuario/nome-do-repositorio.git</pre>
+        </div>
+
+        <div class="exercise">
+            <h4>3. <code>git push</code> - Enviando as Mudanças</h4>
+            <p><strong>O que faz:</strong> "Empurra" (push) os seus commits do repositório local para o remoto (GitHub).</p>
+            <p><strong>Como usar:</strong> Na primeira vez, você precisa ser explícito sobre para onde está enviando.</p>
+            <pre class="code">git push -u origin main</pre>
+            <p><code>-u origin main</code> diz: "Envie para o 'origin' (nosso apelido para a URL do GitHub), na branch 'main', e configure para que futuros pushes sejam mais fáceis". Depois da primeira vez, você pode usar apenas <code>git push</code>.</p>
+        </div>
+    </section>
+
+    <section id="github-pages">
+        <h2 class="subtitle">🌐 Publicando seu Site com GitHub Pages</h2>
+        <p>O GitHub Pages é um serviço gratuito que pega os arquivos de um repositório e os hospeda como um site estático, acessível a qualquer pessoa na internet.</p>
+        
+        <div class="exercise">
+            <h4>Como Funciona e Como Ativar</h4>
+            <ol>
+                <li><strong>Tenha um Arquivo <code>index.html</code>:</strong> Seu site precisa de uma "página inicial". O GitHub Pages procurará por um arquivo chamado <code>index.html</code> na raiz do seu repositório.</li>
+                <li><strong>Vá para as Configurações:</strong> No seu repositório no GitHub, clique na aba "Settings".</li>
+                <li><strong>Encontre a Seção "Pages":</strong> No menu lateral esquerdo, clique em "Pages".</li>
+                <li><strong>Escolha a Fonte (Source):</strong> Na seção "Build and deployment", em "Source", selecione "Deploy from a branch".</li>
+                <li><strong>Selecione a Branch:</strong> Na nova seção que aparece, em "Branch", selecione a branch <code>main</code> (ou a branch que contém seu código) e a pasta <code>/(root)</code>. Clique em "Save".</li>
+                <li><strong>Aguarde e Visite:</strong> O GitHub levará um ou dois minutos para construir e publicar seu site. Após isso, um link verde aparecerá no topo da seção Pages com a URL do seu site ao vivo (geralmente <code>https://seu-usuario.github.io/nome-do-repositorio/</code>).</li>
+            </ol>
+            <p>Pronto! Qualquer <code>git push</code> que você fizer para a branch <code>main</code> atualizará automaticamente o seu site ao vivo. É uma forma fantástica de hospedar portfólios e projetos de estudo de graça.</p>
+        </div>
+    </section>
+
+</div>
+
+</main>
+
+</div>
+
+<footer>
+    <p class="copyright"> ©️ 2025 - Lucas Willian</p>
+</footer>
+
+    <!-- Scripts originais mantidos no final para funcionalidade da página -->
+    <div id="player-wrapper" class="is-hidden">
+        <button id="toggle-player-btn" aria-label="Controlar Player">
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <iframe 
+            id="meu-player-de-musica"
+            src="../player/player.html"
+            title="Player de Música"
+            frameborder="0"
+            allow="autoplay">
+        </iframe>
+    </div>
+
+    <script src="../Scripts/sound-effects.js" defer></script>
+    <script src="../Scripts/player-toggle.js" defer></script>
+    <script src="../Scripts/status-bar.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="../Scripts/barba-init.js" defer></script>
+
+    <script src="../Scripts/theme-toggle.js" defer></script>
+
+</body>
+</html>

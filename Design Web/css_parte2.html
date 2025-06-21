@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <!-- Mantive os links para seus arquivos de estilo e fontes para compatibilidade -->
+    <link rel="stylesheet" href="../estilo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Guia Extensivo de CSS: Parte 2 - Intermediário</title>
+    
+    <!-- Biblioteca de áudio Tone.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
+</head>
+
+<body data-barba="wrapper">
+
+    <div data-barba="container" data-barba-namespace="CSS-Parte-2" namespace="default-view">
+
+<header>
+
+    <button class="settings-btn" aria-label="Configurações">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Título focado em CSS Intermediário -->
+    <h1>Guia de CSS: Parte 2 - Layouts e Interatividade 📐</h1>
+    <p>Dominando o posicionamento, Flexbox, Grid e animações básicas.</p>
+
+    <!-- A navegação foi mantida para consistência -->
+    <nav>
+        <p><a href="../index.html" class="nav-link">Inicío 🏡</a></p>
+        <p><a href="../Hubs/ArquiteturaComp-Hub.html" class="nav-link"> Arquitetura ⚙️</a></p>
+        <p><a href="../Hubs/Matematica-Hub.html" class="nav-link">Matemática ✖️</a></p>
+        <p><a href="../Hubs/Cpp-Hub.html" class="nav-link">C++ 🔧</a></p>
+        <p><a href="../Hubs/InfoBasica-Hub.html" class="nav-link">Info Básica 🖥️</a></p>
+        <p><a href="../Hubs/DesignWeb-Hub.html" class="nav-link">Design Web 🌐</a></p>
+        <p><a href="../Hubs/Jogos-Hub.html" class="nav-link">Jogos 🕹️</a></p>
+    </nav>
+</header>
+
+<main>
+
+<div id="xml-intro">
+
+    <section id="intro-css-p2">
+        <h2 class="subtitle">🚀 Subindo de Nível no CSS</h2>
+        <p>Na Parte 1, cobrimos os fundamentos: como estilizar elementos com cores, fontes e o Box Model. Agora, vamos mergulhar nos conceitos que permitem controlar onde os elementos ficam na página e como eles interagem entre si. Dominar o conteúdo desta seção é o que separa um iniciante de um desenvolvedor front-end capaz de construir layouts complexos e modernos.</p>
+    </section>
+
+    <section id="css-display">
+        <h2 class="subtitle">🚦 A Propriedade `display`: Controlando o Comportamento</h2>
+        <p>A propriedade <code>display</code> é uma das mais importantes do CSS. Ela define como um elemento se comporta, se ele quebra a linha e como interage com os outros. Seus valores mais comuns são:</p>
+        <ul>
+            <li><code>block</code>: O elemento ocupa toda a largura disponível e sempre começa em uma nova linha. Pense em <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code> e <code>&lt;h1&gt;</code>. Você pode definir <code>width</code> e <code>height</code> para eles.</li>
+            <li><code>inline</code>: O elemento ocupa apenas a largura do seu conteúdo e <strong>não</strong> começa em uma nova linha. Pense em <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code> e <code>&lt;strong&gt;</code>. <strong>Importante:</strong> Você <strong>não</strong> pode definir <code>width</code>, <code>height</code>, ou <code>margin-top/bottom</code> para elementos inline.</li>
+            <li><code>inline-block</code>: O melhor dos dois mundos. O elemento não começa em uma nova linha (como <code>inline</code>), mas você pode definir <code>width</code>, <code>height</code> e margens verticais (como <code>block</code>). Perfeito para itens de menu e botões.</li>
+            <li><code>none</code>: O elemento é completamente removido da página. Ele não apenas fica invisível, mas também não ocupa espaço. É como se nunca tivesse existido no HTML.</li>
+        </ul>
+    </section>
+    
+    <section id="css-position">
+        <h2 class="subtitle">📍 Posicionamento: Controlando a Posição Exata</h2>
+        <p>A propriedade <code>position</code> permite que você tire um elemento do fluxo normal do documento e o posicione com precisão usando as propriedades <code>top</code>, <code>right</code>, <code>bottom</code> e <code>left</code>.</p>
+
+        <div class="exercise">
+            <h4>Valores da Propriedade <code>position</code></h4>
+            <ul>
+                <li><strong><code>static</code>:</strong> O valor padrão. O elemento segue o fluxo normal da página. As propriedades <code>top</code>, <code>right</code>, etc., não têm efeito.</li>
+                <li><strong><code>relative</code>:</strong> O elemento é posicionado <strong>relativo à sua posição original</strong>. Você o move a partir do ponto onde ele deveria estar. O espaço original que ele ocupava é preservado.</li>
+                <li><strong><code>absolute</code>:</strong> O elemento é completamente removido do fluxo normal e é posicionado <strong>relativo ao seu ancestral posicionado mais próximo</strong> (ou seja, um pai, avô, etc., que tenha <code>position: relative</code>, <code>absolute</code>, <code>fixed</code> ou <code>sticky</code>). Se não houver nenhum, ele se posiciona em relação ao <code>&lt;body&gt;</code>.</li>
+                <li><strong><code>fixed</code>:</strong> O elemento é posicionado <strong>relativo à viewport</strong> (a janela do navegador). Ele fica "fixo" na tela, mesmo quando a página é rolada. Perfeito para cabeçalhos fixos ou botões de "voltar ao topo".</li>
+                <li><strong><code>sticky</code>:</strong> Um híbrido de <code>relative</code> e <code>fixed</code>. O elemento se comporta como <code>relative</code> até que você role a página até um certo ponto, a partir do qual ele se torna <code>fixed</code>. Ótimo para títulos de seção que "grudam" no topo da tela.</li>
+            </ul>
+            <pre class="code">
+.container {
+  position: relative; /* O ancestral posicionado */
+  height: 300px;
+  border: 2px solid black;
+}
+.caixa-absoluta {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 100px;
+  height: 100px;
+  background-color: crimson;
+}
+/* A .caixa-absoluta ficará a 20px do topo e 20px da direita DENTRO do .container */
+            </pre>
+        </div>
+    </section>
+
+    <section id="css-flexbox">
+        <h2 class="subtitle">🤸 Flexbox: O Padrão para Layouts 1D</h2>
+        <p><strong>Flexible Box Layout (Flexbox)</strong> é um modelo de layout projetado para alinhar, distribuir e organizar itens em um contêiner, mesmo quando seus tamanhos são desconhecidos ou dinâmicos. Ele é ideal para layouts em uma dimensão (uma linha ou uma coluna).</p>
+        <p>Para usar o Flexbox, você precisa de um <strong>contêiner flex</strong> (o pai) e <strong>itens flex</strong> (os filhos).</p>
+        
+        <div class="exercise">
+            <h4>Propriedades do Contêiner Flex (o Pai)</h4>
+            <p>Você ativa o Flexbox no elemento pai com:</p>
+            <pre class="code">
+.container-pai {
+  display: flex;
+}
+            </pre>
+            <p>As principais propriedades para controlar os filhos são:</p>
+            <ul>
+                <li><code>flex-direction</code>: Define a direção do eixo principal. <code>row</code> (padrão, da esquerda para a direita), <code>row-reverse</code>, <code>column</code> (de cima para baixo) ou <code>column-reverse</code>.</li>
+                <li><code>justify-content</code>: Alinha os itens ao longo do <strong>eixo principal</strong>. Valores comuns: <code>flex-start</code> (início), <code>flex-end</code> (fim), <code>center</code> (centro), <code>space-between</code> (espaço igual entre eles), <code>space-around</code> (espaço igual ao redor deles).</li>
+                <li><code>align-items</code>: Alinha os itens ao longo do <strong>eixo transversal</strong> (o eixo perpendicular ao principal). Valores comuns: <code>stretch</code> (padrão, estica para preencher), <code>flex-start</code>, <code>flex-end</code>, <code>center</code>.</li>
+                <li><code>flex-wrap</code>: Define se os itens podem quebrar para a próxima linha. <code>nowrap</code> (padrão, eles espremem) ou <code>wrap</code> (permite a quebra).</li>
+            </ul>
+             <pre class="code">
+.meu-menu {
+  display: flex;
+  flex-direction: row; /* Itens em linha */
+  justify-content: space-between; /* Espaço máximo entre os itens */
+  align-items: center; /* Alinha verticalmente no centro */
+  list-style: none;
+  padding: 0;
+}
+             </pre>
+        </div>
+    </section>
+    
+    <section id="css-grid">
+        <h2 class="subtitle">▦ Grid: O Padrão para Layouts 2D</h2>
+        <p>Enquanto o Flexbox é ótimo para alinhar em uma dimensão, o <strong>CSS Grid Layout</strong> é projetado para layouts bidimensionais (linhas E colunas ao mesmo tempo). Ele permite criar grades complexas de forma simples e poderosa.</p>
+        <p>Assim como no Flexbox, você ativa o Grid no elemento pai:</p>
+        <pre class="code">
+.container-grid {
+  display: grid;
+}
+        </pre>
+        <p>As propriedades mais básicas para definir sua grade são:</p>
+        <ul>
+            <li><code>grid-template-columns</code>: Define o número e o tamanho das colunas.</li>
+            <li><code>grid-template-rows</code>: Define o número e o tamanho das linhas.</li>
+            <li><code>gap</code> (ou <code>grid-gap</code>): Define o espaço entre as células da grade.</li>
+        </ul>
+        <p>A unidade <strong>fr (fração)</strong> é uma nova unidade específica do Grid. Ela representa uma fração do espaço disponível no contêiner.</p>
+        <pre class="code">
+.meu-layout {
+  display: grid;
+  /* Cria 3 colunas: a primeira e a última com 1 fração do espaço,
+     e a do meio com 2 frações (o dobro do tamanho das outras). */
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 100px 300px; /* Duas linhas com alturas fixas */
+  gap: 20px; /* 20px de espaço entre todas as células */
+}
+        </pre>
+    </section>
+
+    <section id="css-transitions">
+        <h2 class="subtitle">✨ Transições: Animações Simples</h2>
+        <p>A propriedade <code>transition</code> permite que você anime suavemente a mudança de uma propriedade CSS ao longo de um período de tempo, em vez de ela acontecer instantaneamente. É ótimo para criar interações mais agradáveis, como em um efeito <code>:hover</code>.</p>
+        <p>A forma mais fácil de usar é com o atalho (shorthand):</p>
+        <pre class="code">
+.botao {
+  background-color: blue;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  /* Shorthand: propriedade | duração | função de tempo | atraso */
+  transition: background-color 0.3s ease-in-out;
+}
+
+.botao:hover {
+  background-color: darkblue;
+}
+
+/* Quando o mouse passar sobre o botão, a cor de fundo mudará de azul para
+   azul-escuro suavemente ao longo de 0.3 segundos. */
+        </pre>
+    </section>
+
+</div>
+
+</main>
+
+</div>
+
+<footer>
+    <p class="copyright"> ©️ 2025 - Lucas Willian</p>
+</footer>
+
+    <!-- Scripts originais mantidos no final para funcionalidade da página -->
+    <div id="player-wrapper" class="is-hidden">
+        <button id="toggle-player-btn" aria-label="Controlar Player">
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <iframe 
+            id="meu-player-de-musica"
+            src="../player/player.html"
+            title="Player de Música"
+            frameborder="0"
+            allow="autoplay">
+        </iframe>
+    </div>
+
+    <script src="../Scripts/sound-effects.js" defer></script>
+    <script src="../Scripts/player-toggle.js" defer></script>
+    <script src="../Scripts/status-bar.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="../Scripts/barba-init.js" defer></script>
+
+    <script src="../Scripts/theme-toggle.js" defer></script>
+
+</body>
+</html>

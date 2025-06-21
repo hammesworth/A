@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <!-- Mantive os links para seus arquivos de estilo e fontes para compatibilidade -->
+    <link rel="stylesheet" href="../estilo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Guia Extensivo de CSS: Parte 1 - O Básico (Expandido)</title>
+    
+    <!-- Biblioteca de áudio Tone.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
+</head>
+
+<body data-barba="wrapper">
+
+    <div data-barba="container" data-barba-namespace="CSS-Parte-1" namespace="default-view">
+
+<header>
+
+    <button class="settings-btn" aria-label="Configurações">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Título focado em CSS Básico -->
+    <h1>Guia de CSS: Parte 1 - Os Fundamentos 🎨</h1>
+    <p>Aprendendo a dar vida e estilo às suas páginas HTML de forma completa.</p>
+
+    <!-- A navegação foi mantida para consistência -->
+    <nav>
+        <p><a href="../index.html" class="nav-link">Inicío 🏡</a></p>
+        <p><a href="../Hubs/ArquiteturaComp-Hub.html" class="nav-link"> Arquitetura ⚙️</a></p>
+        <p><a href="../Hubs/Matematica-Hub.html" class="nav-link">Matemática ✖️</a></p>
+        <p><a href="../Hubs/Cpp-Hub.html" class="nav-link">C++ 🔧</a></p>
+        <p><a href="../Hubs/InfoBasica-Hub.html" class="nav-link">Info Básica 🖥️</a></p>
+        <p><a href="../Hubs/DesignWeb-Hub.html" class="nav-link">Design Web 🌐</a></p>
+        <p><a href="../Hubs/Jogos-Hub.html" class="nav-link">Jogos 🕹️</a></p>
+    </nav>
+</header>
+
+<main>
+
+<div id="xml-intro">
+
+    <section id="intro-css">
+        <h2 class="subtitle">🤔 O que é CSS?</h2>
+        <p>CSS significa <strong>Cascading Style Sheets</strong> (Folhas de Estilo em Cascata). Se o HTML é o esqueleto de uma página, o CSS é todo o resto: a pele, as roupas, a cor dos olhos, o penteado. Ele é a linguagem que usamos para controlar a aparência de todos os elementos HTML: cores, fontes, espaçamentos, posicionamento, animações e muito mais.</p>
+        <p>A palavra-chave aqui é <strong>Cascading (Cascata)</strong>. Imagine uma cachoeira: a água flui de cima para baixo. No CSS, as regras também "fluem" para baixo, e o navegador decide qual regra aplicar com base em um sistema de prioridades. Entender essa "cascata" é o segredo para dominar o CSS.</p>
+    </section>
+
+    <section id="css-howto">
+        <h2 class="subtitle">🔌 Três Maneiras de Adicionar CSS</h2>
+        <p>A forma como você adiciona o CSS afeta a ordem da "cascata". A regra geral de prioridade é: quanto mais "perto" do elemento, mais forte é a regra.</p>
+        <ol>
+            <li><strong>CSS Externo (External):</strong> A melhor prática. Um arquivo <code>.css</code> linkado no <code>&lt;head&gt;</code>. Organizado e reutilizável.</li>
+            <li><strong>CSS Interno (Internal):</strong> Uma tag <code>&lt;style&gt;</code> no <code>&lt;head&gt;</code>. Útil para estilos de página única.</li>
+            <li><strong>CSS Inline:</strong> Um atributo <code>style="..."</code> direto na tag HTML. <strong>Esta é a forma mais forte e geralmente sobrescreve as outras duas</strong>. Deve ser evitada para estilização geral.</li>
+        </ol>
+    </section>
+    
+    <section id="css-syntax">
+        <h2 class="subtitle">🔬 Anatomia de uma Regra CSS</h2>
+        <p>Toda regra CSS é composta por um seletor e um bloco de declaração.</p>
+        <pre class="code">
+seletor {
+  propriedade: valor;
+}
+        </pre>
+        <ul>
+            <li><strong>Seletor:</strong> A "mira" que aponta para qual(is) elemento(s) HTML estilizar.</li>
+            <li><strong>Propriedade:</strong> O que você quer mudar (ex: <code>color</code>, <code>font-size</code>, <code>background-color</code>).</li>
+            <li><strong>Valor:</strong> Como você quer mudar (ex: <code>blue</code>, <code>16px</code>, <code>#ff0000</code>).</li>
+        </ul>
+    </section>
+
+    <section id="css-selectors">
+        <h2 class="subtitle">🎯 Seletores: A Arte de Mirar nos Elementos</h2>
+        <p>Dominar seletores é fundamental. Eles vão do simples ao extremamente específico.</p>
+
+        <div class="exercise">
+            <h4>Seletores Básicos</h4>
+            <ul>
+                <li><strong>Tipo:</strong> <code>h1</code>, <code>p</code>, <code>div</code> (mira em todas as tags daquele tipo).</li>
+                <li><strong>Classe:</strong> <code>.minha-classe</code> (mira em qualquer elemento com <code>class="minha-classe"</code>). É o mais usado.</li>
+                <li><strong>ID:</strong> <code>#meu-id</code> (mira no único elemento com <code>id="meu-id"</code>). Use com moderação.</li>
+                <li><strong>Universal:</strong> <code>*</code> (mira em tudo).</li>
+            </ul>
+        </div>
+        <div class="exercise">
+            <h4>Seletores Combinadores (Agrupamento)</h4>
+            <ul>
+                <li><strong>Descendente (espaço):</strong> <code>article p</code> - Seleciona todos os <code>&lt;p&gt;</code> que estão <strong>dentro</strong> de um <code>&lt;article&gt;</code>, em qualquer nível de profundidade.</li>
+                <li><strong>Filho Direto (>):</strong> <code>ul > li</code> - Seleciona apenas os <code>&lt;li&gt;</code> que são <strong>filhos diretos</strong> de uma <code>&lt;ul&gt;</code>.</li>
+                <li><strong>Irmão Adjacente (+):</strong> <code>h1 + p</code> - Seleciona o <strong>primeiro</strong> <code>&lt;p&gt;</code> que vem <strong>imediatamente depois</strong> de um <code>&lt;h1&gt;</code>.</li>
+                <li><strong>Irmãos Gerais (~):</strong> <code>h1 ~ p</code> - Seleciona <strong>todos</strong> os <code>&lt;p&gt;</code> que vêm depois de um <code>&lt;h1&gt;</code> e que compartilham o mesmo pai.</li>
+            </ul>
+        </div>
+        <div class="exercise">
+            <h4>Pseudo-classes e Pseudo-elementos</h4>
+            <p>Eles selecionam elementos com base em seu estado, posição ou partes virtuais.</p>
+            <ul>
+                <li><strong>Pseudo-classes (baseadas em estado):</strong> Começam com <code>:</code>
+                    <ul>
+                        <li><code>:hover</code>: Aplica estilo quando o mouse está sobre o elemento.</li>
+                        <li><code>:focus</code>: Aplica estilo quando o elemento está focado (ex: um campo de formulário clicado).</li>
+                        <li><code>:first-child</code>: Seleciona o elemento que é o primeiro filho de seu pai.</li>
+                        <li><code>:nth-child(n)</code>: Seleciona elementos com base em sua posição. Ex: <code>:nth-child(2n)</code> seleciona todos os filhos pares (2º, 4º, 6º...).</li>
+                    </ul>
+                </li>
+                <li><strong>Pseudo-elementos (partes virtuais):</strong> Começam com <code>::</code>
+                     <ul>
+                        <li><code>::before</code> e <code>::after</code>: Criam um "elemento falso" antes ou depois do conteúdo real de um elemento. Usado para adicionar ícones ou decoração.</li>
+                     </ul>
+                </li>
+            </ul>
+            <pre class="code">
+/* Deixa um link verde, mas sublinhado e roxo quando o mouse está em cima */
+a {
+  color: green;
+  text-decoration: none;
+}
+a:hover {
+  color: purple;
+  text-decoration: underline;
+}
+
+/* Coloca um ícone de seta antes de cada item de uma lista específica */
+.lista-especial li::before {
+  content: "→ "; /* A propriedade 'content' é obrigatória */
+  color: blue;
+}
+            </pre>
+        </div>
+    </section>
+
+    <section id="css-cascade">
+        <h2 class="subtitle">🌊 A Cascata, Especificidade e Herança</h2>
+        <p>Por que uma regra CSS vence a outra? A resposta está em três conceitos:</p>
+        <ol>
+            <li><strong>Especificidade (Specificity):</strong> É um cálculo de quão "específico" é um seletor. Um seletor de ID é mais específico que um seletor de classe, que é mais específico que um seletor de tipo. Uma regra com um seletor mais específico sempre vence. <code>#meu-id</code> (pontos: 100) vence <code>.minha-classe</code> (pontos: 10) que vence <code>p</code> (pontos: 1).</li>
+            <li><strong>Ordem da Fonte (Source Order):</strong> Se duas regras têm a mesma especificidade, a que aparece por último no arquivo CSS vence. A "cascata" flui para baixo.</li>
+            <li><strong>Herança (Inheritance):</strong> Algumas propriedades CSS, como <code>color</code> e <code>font-family</code>, são "herdadas" por elementos filhos. Se você define a cor no <code>&lt;body&gt;</code>, os parágrafos dentro dele herdarão essa cor, a menos que tenham sua própria regra de cor. Propriedades de layout como <code>width</code>, <code>padding</code>, <code>margin</code> e <code>border</code> geralmente não são herdadas.</li>
+        </ol>
+    </section>
+    
+    <section id="css-box-model">
+        <h2 class="subtitle">📦 O Box Model: A Caixa de Pandora</h2>
+        <p>Cada elemento HTML é uma caixa retangular. Dominar o Box Model é dominar o layout.</p>
+        <ul>
+            <li><strong>Content:</strong> O conteúdo.</li>
+            <li><strong>Padding:</strong> Espaço interno, entre o conteúdo e a borda.</li>
+            <li><strong>Border:</strong> A linha da moldura.</li>
+            <li><strong>Margin:</strong> Espaço externo, que empurra outros elementos.</li>
+        </ul>
+        <div class="exercise">
+            <h4>Propriedades do Box Model e Shorthands</h4>
+            <p>Você pode controlar cada lado individualmente ou usar "shorthands" (atalhos).</p>
+            <pre class="code">
+.caixa {
+  /* Propriedades individuais */
+  margin-top: 10px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+
+  /* O mesmo resultado com Shorthand */
+  /* Ordem: topo, direita, baixo, esquerda (sentido horário) */
+  margin: 10px 20px 10px 20px;
+
+  /* Se o topo/baixo e direita/esquerda são iguais */
+  margin: 10px 20px; /* 10px para topo/baixo, 20px para direita/esquerda */
+
+  /* Se todos os 4 lados são iguais */
+  margin: 15px;
+}
+/* O mesmo se aplica para 'padding' */
+            </pre>
+        </div>
+        <div class="exercise">
+            <h4>A Mágica do <code>box-sizing: border-box;</code></h4>
+            <p>Por padrão, quando você define <code>width: 200px;</code>, essa é a largura apenas do <strong>conteúdo</strong>. Padding e borda são adicionados a mais, aumentando o tamanho total da caixa e quebrando layouts. <code>border-box</code> muda isso.</p>
+            <p><strong>Com <code>border-box</code>, a largura que você define é a largura final da caixa, incluindo padding e borda.</strong> É muito mais intuitivo. Por isso, é uma prática universal adicionar o seguinte no topo do seu CSS:</p>
+            <pre class="code">
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+            </pre>
+        </div>
+    </section>
+    
+    <section id="css-properties">
+        <h2 class="subtitle">⚙️ Propriedades e Unidades Fundamentais</h2>
+        
+        <div class="exercise">
+            <h4>Unidades de Medida</h4>
+            <ul>
+                <li><strong>Absolutas:</strong> Tamanho fixo. A principal é o <strong>pixel (<code>px</code>)</strong>.</li>
+                <li><strong>Relativas:</strong> Tamanho relativo a outra coisa.
+                    <ul>
+                        <li><strong><code>%</code>:</strong> Relativo ao tamanho do elemento pai.</li>
+                        <li><strong><code>em</code>:</strong> Relativo ao tamanho da fonte do elemento atual.</li>
+                        <li><strong><code>rem</code> (root em):</strong> Relativo ao tamanho da fonte do elemento raiz (o <code>&lt;html&gt;</code>). <strong>Esta é a melhor unidade para fontes e espaçamentos consistentes e acessíveis.</strong></li>
+                        <li><strong><code>vw</code> / <code>vh</code>:</strong> 1/100 da largura (viewport width) ou altura (viewport height) da tela.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="exercise">
+            <h4>Formatos de Cores</h4>
+             <ul>
+                <li><strong>Keywords:</strong> <code>red</code>, <code>blue</code>, <code>transparent</code>.</li>
+                <li><strong>HEX:</strong> <code>#RRGGBB</code>. Ex: <code>#ff0000</code> (vermelho puro), <code>#000</code> (preto), <code>#fff</code> (branco).</li>
+                <li><strong>RGB:</strong> <code>rgb(red, green, blue)</code>, onde cada valor vai de 0 a 255. Ex: <code>rgb(255, 0, 0)</code>.</li>
+                <li><strong>RGBA:</strong> Igual ao RGB, mas com um canal "Alpha" (transparência) que vai de 0 (totalmente transparente) a 1 (totalmente opaco). Ex: <code>rgba(255, 0, 0, 0.5)</code> (vermelho 50% transparente).</li>
+            </ul>
+        </div>
+    </section>
+
+</div>
+
+</main>
+
+</div>
+
+<footer>
+    <p class="copyright"> ©️ 2025 - Lucas Willian</p>
+</footer>
+
+    <!-- Scripts originais mantidos no final para funcionalidade da página -->
+    <div id="player-wrapper" class="is-hidden">
+        <button id="toggle-player-btn" aria-label="Controlar Player">
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <iframe 
+            id="meu-player-de-musica"
+            src="../player/player.html"
+            title="Player de Música"
+            frameborder="0"
+            allow="autoplay">
+        </iframe>
+    </div>
+
+    <script src="../Scripts/sound-effects.js" defer></script>
+    <script src="../Scripts/player-toggle.js" defer></script>
+    <script src="../Scripts/status-bar.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="../Scripts/barba-init.js" defer></script>
+
+    <script src="../Scripts/theme-toggle.js" defer></script>
+
+</body>
+</html>

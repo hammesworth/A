@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <!-- Mantive os links para seus arquivos de estilo e fontes para compatibilidade -->
+    <link rel="stylesheet" href="../estilo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Guia Definitivo de CSS: Parte 3 - Avançado</title>
+    
+    <!-- Biblioteca de áudio Tone.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
+</head>
+
+<body data-barba="wrapper">
+
+    <div data-barba="container" data-barba-namespace="CSS-Parte-3" namespace="default-view">
+
+<header>
+
+    <button class="settings-btn" aria-label="Configurações">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Título focado em CSS Avançado -->
+    <h1>Guia de CSS: Parte 3 - Tópicos Avançados 🚀</h1>
+    <p>Explorando variáveis, design responsivo, transformações, animações e mais.</p>
+
+    <!-- A navegação foi mantida para consistência -->
+    <nav>
+        <p><a href="../index.html" class="nav-link">Inicío 🏡</a></p>
+        <p><a href="../Hubs/ArquiteturaComp-Hub.html" class="nav-link"> Arquitetura ⚙️</a></p>
+        <p><a href="../Hubs/Matematica-Hub.html" class="nav-link">Matemática ✖️</a></p>
+        <p><a href="../Hubs/Cpp-Hub.html" class="nav-link">C++ 🔧</a></p>
+        <p><a href="../Hubs/InfoBasica-Hub.html" class="nav-link">Info Básica 🖥️</a></p>
+        <p><a href="../Hubs/DesignWeb-Hub.html" class="nav-link">Design Web 🌐</a></p>
+        <p><a href="../Hubs/Jogos-Hub.html" class="nav-link">Jogos 🕹️</a></p>
+    </nav>
+</header>
+
+<main>
+
+<div id="xml-intro">
+
+    <section id="intro-css-p3">
+        <h2 class="subtitle">🌌 Além do Layout: CSS Dinâmico e Moderno</h2>
+        <p>Nas partes 1 e 2, construímos uma base sólida. Agora, vamos explorar as ferramentas que tornam o CSS verdadeiramente poderoso e dinâmico. Aprenderemos a criar estilos reutilizáveis com variáveis, a adaptar nossos layouts para qualquer tela com Media Queries, e a dar vida aos elementos com transformações e animações complexas. Estes são os conceitos que definem a web moderna.</p>
+    </section>
+
+    <section id="css-variables">
+        <h2 class="subtitle">🔧 Custom Properties (Variáveis CSS)</h2>
+        <p>Variáveis CSS permitem que você armazene valores para reutilização. Isso centraliza seus "tokens de design" (cores, fontes, espaçamentos), facilitando a manutenção e a criação de temas.</p>
+        <div class="exercise">
+            <h4>Escopo Global vs. Local</h4>
+            <p>Você pode declarar variáveis em escopo global (disponíveis para toda a página) ou local (disponíveis apenas dentro de um seletor específico e seus filhos).</p>
+            <pre class="code">
+/* Escopo Global: ideal para tokens de design do site */
+:root {
+  --cor-primaria: #007bff;
+  --cor-fundo: #ffffff;
+  --cor-texto: #333;
+}
+
+/* Escopo Local: útil para componentes específicos */
+.card-aviso {
+  --cor-borda-card: #ffc107; /* Variável local */
+  border: 2px solid var(--cor-borda-card);
+  background-color: var(--cor-fundo);
+}
+
+.botao {
+  /* Usando uma variável global com um valor de fallback */
+  /* Se --cor-botao não estiver definida, usará cinza */
+  background-color: var(--cor-botao, gray); 
+}
+            </pre>
+            <p><strong>Vantagem Principal:</strong> Com JavaScript, você pode alterar o valor dessas variáveis dinamicamente. Por exemplo, para criar um "modo escuro", basta alterar as variáveis de cor no <code>:root</code>.</p>
+        </div>
+    </section>
+    
+    <section id="css-transforms">
+        <h2 class="subtitle">🔄 A Propriedade `transform`</h2>
+        <p><code>transform</code> modifica a aparência de um elemento sem afetar o espaço que ele ocupa no layout. É como se ele estivesse em uma camada de vidro sobre a página.</p>
+        <div class="exercise">
+            <h4>Transformações 2D e 3D</h4>
+            <ul>
+                <li><strong>2D:</strong> <code>translate(x, y)</code>, <code>scale(x, y)</code>, <code>rotate(ângulo)</code>, <code>skew(x, y)</code>.</li>
+                <li><strong>3D:</strong> Para ativar o "espaço 3D" em um contêiner, você usa <code>perspective</code> no elemento pai.
+                    <ul>
+                        <li><code>perspective(valor)</code>: Define a "distância" do espectador ao plano Z=0. Um valor menor cria uma perspectiva mais extrema. Aplicado no PAI.</li>
+                        <li><code>transform-style: preserve-3d;</code>: Garante que os filhos de um elemento transformado também sejam posicionados no mesmo espaço 3D. Aplicado no PAI.</li>
+                        <li><code>rotateX(ângulo)</code>, <code>rotateY(ângulo)</code>, <code>rotateZ(ângulo)</code>: Rotaciona o elemento em torno dos eixos X, Y ou Z.</li>
+                        <li><code>translateZ(distância)</code>: Move o elemento para mais perto ou mais longe do espectador.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="exercise">
+            <h4>`transform-origin`: O Ponto de Pivô</h4>
+            <p>Por padrão, as transformações (como rotação e escala) acontecem a partir do centro do elemento (<code>50% 50%</code>). A propriedade <code>transform-origin</code> permite mudar esse ponto.</p>
+            <pre class="code">
+.ponteiro-relogio {
+  /* Gira a partir do canto inferior central */
+  transform-origin: bottom center; 
+  transition: transform 1s linear;
+}
+
+.ponteiro-relogio:hover {
+  transform: rotate(360deg);
+}
+            </pre>
+        </div>
+    </section>
+
+    <section id="css-animations">
+        <h2 class="subtitle">🎬 Animações com `@keyframes`</h2>
+        <p><code>@keyframes</code> permite criar animações com múltiplos estágios, dando controle total sobre a sequência.</p>
+        <div class="exercise">
+            <h4>Propriedades da Animação</h4>
+            <p>A propriedade <code>animation</code> é um atalho para várias outras:</p>
+            <ul>
+                <li><code>animation-name</code>: O nome da regra <code>@keyframes</code>.</li>
+                <li><code>animation-duration</code>: A duração de um ciclo da animação.</li>
+                <li><code>animation-timing-function</code>: A curva de velocidade (<code>linear</code>, <code>ease</code>, <code>ease-in-out</code>).</li>
+                <li><code>animation-delay</code>: Atraso antes do início da animação.</li>
+                <li><code>animation-iteration-count</code>: Quantas vezes a animação se repete (<code>infinite</code> para sempre).</li>
+                <li><code>animation-direction</code>: A direção (<code>normal</code>, <code>reverse</code>, <code>alternate</code> - vai e volta).</li>
+                <li><code>animation-fill-mode</code>: Define se os estilos da animação persistem antes ou depois de ela rodar (<code>forwards</code>, <code>backwards</code>, <code>both</code>).</li>
+            </ul>
+             <pre class="code">
+@keyframes slide-in-fade {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.elemento-entrada {
+  /* Usando o atalho completo: */
+  animation: slide-in-fade 0.7s ease-out 0.2s 1 normal forwards;
+}
+            </pre>
+        </div>
+    </section>
+    
+    <section id="css-media-queries">
+        <h2 class="subtitle">📱 Design Responsivo com Media Queries</h2>
+        <p>Media Queries são a base do design responsivo, aplicando CSS condicionalmente.</p>
+        <div class="exercise">
+            <h4>Além de `min-width`</h4>
+            <p>Você pode combinar múltiplas condições e usar outros recursos de mídia:</p>
+            <ul>
+                <li><code>max-width</code>: Aplica estilos até uma certa largura. Usado na abordagem "Desktop First".</li>
+                <li><strong>Operadores Lógicos:</strong>
+                    <ul>
+                        <li><code>and</code>: Combina múltiplas condições. Ex: <code>@media (min-width: 768px) and (max-width: 1023px) { ... }</code> (apenas para tablets).</li>
+                        <li><code>,</code> (vírgula): Funciona como um "OU". Ex: <code>@media (max-width: 600px), (orientation: portrait) { ... }</code> (telas pequenas OU orientação retrato).</li>
+                    </ul>
+                </li>
+                 <li><strong>Recursos de Mídia:</strong>
+                    <ul>
+                        <li><code>orientation</code>: Testa se a tela está em <code>portrait</code> (retrato) ou <code>landscape</code> (paisagem).</li>
+                        <li><code>(hover: hover)</code>: Testa se o dispositivo primário do usuário permite o efeito hover (ou seja, se tem um mouse). Útil para não aplicar estilos de hover em telas de toque.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="css-filters">
+        <h2 class="subtitle">🎨 Filtros e Efeitos Visuais</h2>
+        <p>A propriedade <code>filter</code> permite aplicar efeitos gráficos, como desfoque ou mudança de cor, a um elemento. É como ter um mini-Photoshop no CSS.</p>
+        <ul>
+            <li><code>blur(px)</code>: Aplica um desfoque gaussiano.</li>
+            <li><code>brightness(%)</code>: Ajusta o brilho.</li>
+            <li><code>contrast(%)</code>: Ajusta o contraste.</li>
+            <li><code>grayscale(%)</code>: Converte o elemento para tons de cinza.</li>
+            <li><code>saturate(%)</code>: Ajusta a saturação da cor.</li>
+            <li><code>sepia(%)</code>: Aplica um efeito sépia.</li>
+            <li><code>drop-shadow(...)</code>: Aplica uma sombra projetada, mas respeitando a forma exata do conteúdo (incluindo transparências de PNGs), o que é mais poderoso que <code>box-shadow</code>.</li>
+        </ul>
+        <pre class="code">
+.imagem-fundo {
+  filter: blur(5px) grayscale(80%);
+  transform: scale(1.1); /* Efeito de zoom no fundo */
+}
+.card:hover .imagem-perfil {
+  filter: brightness(110%);
+  transition: filter 0.3s ease;
+}
+        </pre>
+    </section>
+    
+    <section id="css-blend-modes">
+        <h2 class="subtitle">🎭 Modos de Mesclagem (Blend Modes)</h2>
+        <p>Blend modes definem como um elemento se mistura com o conteúdo que está atrás dele.</p>
+        <ul>
+            <li><code>mix-blend-mode</code>: Define como um elemento inteiro se mescla com os elementos abaixo dele na renderização.</li>
+            <li><code>background-blend-mode</code>: Define como a imagem de fundo de um elemento se mescla com sua cor de fundo.</li>
+        </ul>
+        <p>Valores comuns incluem <code>multiply</code>, <code>screen</code>, <code>overlay</code>, <code>darken</code>, <code>lighten</code>, <code>color-dodge</code>, e muitos outros, similares aos do Photoshop.</p>
+        <pre class="code">
+.titulo-destaque {
+  background-image: url('fundo-textura.jpg');
+  background-color: purple;
+  background-blend-mode: screen; /* Mistura a imagem com a cor de fundo */
+}
+
+.elemento-flutuante {
+  mix-blend-mode: overlay;
+  color: white;
+}
+        </pre>
+    </section>
+
+</div>
+
+</main>
+
+</div>
+
+<footer>
+    <p class="copyright"> ©️ 2025 - Lucas Willian</p>
+</footer>
+
+    <!-- Scripts originais mantidos no final para funcionalidade da página -->
+    <div id="player-wrapper" class="is-hidden">
+        <button id="toggle-player-btn" aria-label="Controlar Player">
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <iframe 
+            id="meu-player-de-musica"
+            src="../player/player.html"
+            title="Player de Música"
+            frameborder="0"
+            allow="autoplay">
+        </iframe>
+    </div>
+
+    <script src="../Scripts/sound-effects.js" defer></script>
+    <script src="../Scripts/player-toggle.js" defer></script>
+    <script src="../Scripts/status-bar.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="../Scripts/barba-init.js" defer></script>
+
+    <script src="../Scripts/theme-toggle.js" defer></script>
+
+</body>
+</html>

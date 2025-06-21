@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <!-- Mantive os links para seus arquivos de estilo e fontes para compatibilidade -->
+    <link rel="stylesheet" href="../estilo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Guia Definitivo de Animações CSS</title>
+    
+    <!-- Biblioteca de áudio Tone.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
+</head>
+
+<body data-barba="wrapper">
+
+    <div data-barba="container" data-barba-namespace="CSS-Animacoes" namespace="default-view">
+
+<header>
+
+    <button class="settings-btn" aria-label="Configurações">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Título focado em Animações CSS -->
+    <h1>Guia Definitivo de Animações CSS 🎬</h1>
+    <p>Da transição suave à orquestração de keyframes complexos.</p>
+
+    <!-- A navegação foi mantida para consistência -->
+    <nav>
+        <p><a href="../index.html" class="nav-link">Inicío 🏡</a></p>
+        <p><a href="../Hubs/ArquiteturaComp-Hub.html" class="nav-link"> Arquitetura ⚙️</a></p>
+        <p><a href="../Hubs/Matematica-Hub.html" class="nav-link">Matemática ✖️</a></p>
+        <p><a href="../Hubs/Cpp-Hub.html" class="nav-link">C++ 🔧</a></p>
+        <p><a href="../Hubs/InfoBasica-Hub.html" class="nav-link">Info Básica 🖥️</a></p>
+        <p><a href="../Hubs/DesignWeb-Hub.html" class="nav-link">Design Web 🌐</a></p>
+        <p><a href="../Hubs/Jogos-Hub.html" class="nav-link">Jogos 🕹️</a></p>
+    </nav>
+</header>
+
+<main>
+
+<div id="xml-intro">
+
+    <section id="intro-animations">
+        <h2 class="subtitle">✨ Dando Vida à Web</h2>
+        <p>Animações são uma das ferramentas mais poderosas no arsenal de um desenvolvedor front-end. Elas transformam uma interface estática em uma experiência dinâmica e envolvente, guiam a atenção do usuário, fornecem feedback visual e adicionam uma camada de profissionalismo e personalidade ao seu site. Neste guia, vamos explorar desde a forma mais simples de animação, a <code>transition</code>, até o controle total oferecido pelas animações com <code>@keyframes</code>.</p>
+    </section>
+
+    <section id="transitions">
+        <h2 class="subtitle">1. O Ponto de Partida: `transition`</h2>
+        <p>A propriedade <code>transition</code> é a forma mais fácil de animar. Ela suaviza a mudança de uma propriedade CSS de um estado para outro (por exemplo, durante um <code>:hover</code>). Em vez de a mudança ser instantânea, ela ocorre ao longo de uma duração que você define.</p>
+        <div class="exercise">
+            <h4>As Sub-propriedades da Transição</h4>
+            <p>A propriedade <code>transition</code> é um atalho (shorthand) para quatro sub-propriedades:</p>
+            <ul>
+                <li><code>transition-property</code>: Qual propriedade deve ser animada (ex: <code>background-color</code>, <code>transform</code>, ou <code>all</code> para todas as propriedades que puderem ser animadas).</li>
+                <li><code>transition-duration</code>: Quanto tempo a animação deve durar (ex: <code>0.3s</code> ou <code>300ms</code>).</li>
+                <li><code>transition-timing-function</code>: A "curva de velocidade" da animação. Define como a velocidade da animação progride ao longo da duração. Valores comuns são <code>ease</code> (padrão, começa devagar, acelera, termina devagar), <code>linear</code> (velocidade constante), <code>ease-in</code>, <code>ease-out</code>, <code>ease-in-out</code>.</li>
+                <li><code>transition-delay</code>: Quanto tempo esperar antes de iniciar a animação (ex: <code>0.1s</code>).</li>
+            </ul>
+             <p><strong>Exemplo Prático: Um Botão que se Transforma</strong></p>
+            <pre class="code">
+.btn-transform {
+  background-color: #8a2be2; /* Azul-violeta */
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+
+  /* Aplicamos a transição no estado base do elemento */
+  /* Propriedade | Duração | Função de Tempo */
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+}
+
+.btn-transform:hover {
+  background-color: #6a1a9a; /* Um tom mais escuro */
+  transform: scale(1.1) rotate(-5deg); /* Aumenta e gira um pouco */
+}
+            </pre>
+            <p><strong>Por que a <code>transition</code> vai no seletor base?</strong> Colocamos a transição no seletor principal (<code>.btn-transform</code>) e não no <code>:hover</code> para que a animação aconteça tanto na entrada (quando o mouse passa por cima) quanto na saída (quando o mouse sai).</p>
+        </div>
+    </section>
+    
+    <section id="keyframes-animations">
+        <h2 class="subtitle">2. Controle Total com `@keyframes`</h2>
+        <p>Enquanto as transições são para mudanças de estado simples (A para B), as animações com <code>@keyframes</code> permitem criar sequências complexas com múltiplos passos (A para B, para C, para D...).</p>
+        <div class="exercise">
+            <h4>Estrutura da Animação</h4>
+            <p>O processo envolve dois passos: definir os quadros-chave e aplicar a animação.</p>
+            <ol>
+                <li><strong>Definir com <code>@keyframes</code>:</strong> Você cria uma "regra" com um nome único. Dentro dela, você define os estilos em diferentes pontos da linha do tempo, usando porcentagens de <code>0%</code> a <code>100%</code> (ou as palavras-chave <code>from</code> e <code>to</code>, que são equivalentes a <code>0%</code> e <code>100%</code>).</li>
+                <li><strong>Aplicar com <code>animation</code>:</strong> Você usa a propriedade <code>animation</code> no elemento que deseja animar para vincular a regra de <code>@keyframes</code> e configurar seu comportamento.</li>
+            </ol>
+            <p><strong>Exemplo Prático: Animação de Entrada "Slide-in e Fade"</strong></p>
+            <pre class="code">
+/* 1. Definindo a sequência da animação */
+@keyframes slide-in-up {
+  from { /* O estado inicial, antes da animação começar */
+    opacity: 0;
+    transform: translateY(100px); /* Começa 100px para baixo */
+  }
+  to { /* O estado final */
+    opacity: 1;
+    transform: translateY(0); /* Termina em sua posição original */
+  }
+}
+
+/* 2. Aplicando a animação a um elemento */
+.card-animado {
+  /* Usando a propriedade 'animation' como um atalho */
+  animation: slide-in-up 0.8s ease-out;
+}
+            </pre>
+        </div>
+    </section>
+
+    <section id="animation-properties">
+        <h2 class="subtitle">3. Aprofundando na Propriedade `animation`</h2>
+        <p>A propriedade <code>animation</code> é um atalho para um conjunto poderoso de sub-propriedades que oferecem controle granular.</p>
+        <ul>
+            <li><code>animation-name</code>: O nome da regra <code>@keyframes</code>.</li>
+            <li><code>animation-duration</code>: A duração de um ciclo.</li>
+            <li><code>animation-timing-function</code>: A curva de velocidade.</li>
+            <li><code>animation-delay</code>: Atraso para o início.</li>
+            <li><code>animation-iteration-count</code>: O número de repetições. Use <code>infinite</code> para um loop eterno.</li>
+            <li><code>animation-direction</code>: A direção da animação.
+                <ul>
+                    <li><code>normal</code>: Padrão (do 0% ao 100%).</li>
+                    <li><code>reverse</code>: Roda ao contrário (do 100% ao 0%).</li>
+                    <li><code>alternate</code>: Alterna a direção a cada ciclo (0% -> 100%, depois 100% -> 0%, etc.).</li>
+                    <li><code>alternate-reverse</code>: O mesmo que <code>alternate</code>, mas começa na direção reversa.</li>
+                </ul>
+            </li>
+            <li><code>animation-fill-mode</code>: Define os estilos do elemento antes e depois da animação.
+                 <ul>
+                    <li><code>none</code>: Padrão. O elemento volta ao seu estilo original após a animação.</li>
+                    <li><code>forwards</code>: <strong>Muito útil.</strong> O elemento mantém os estilos do último keyframe (100%) após o término da animação.</li>
+                    <li><code>backwards</code>: O elemento aplica os estilos do primeiro keyframe (0%) durante o <code>animation-delay</code>.</li>
+                    <li><code>both</code>: Aplica as regras de <code>forwards</code> e <code>backwards</code>.</li>
+                </ul>
+            </li>
+            <li><code>animation-play-state</code>: Permite pausar (<code>paused</code>) e retomar (<code>running</code>) uma animação.</li>
+        </ul>
+        <p><strong>Exemplo Prático: um "Loading Spinner"</strong></p>
+        <pre class="code">
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3; /* Cinza claro */
+  border-top: 5px solid #3498db; /* Azul */
+  border-radius: 50%;
+  
+  /* Nome | Duração | Função | Contagem de Iteração */
+  animation: spin 1s linear infinite;
+}
+        </pre>
+    </section>
+    
+    <section id="performance">
+        <h2 class="subtitle">4. Performance: O Segredo das Animações Suaves</h2>
+        <p>Nem todas as propriedades CSS são iguais para animar. Animar certas propriedades pode ser "caro" para o navegador e causar animações travadas (com baixo FPS), especialmente em dispositivos móveis.</p>
+        <p>O navegador tem que fazer muito trabalho quando uma propriedade que afeta o layout da página é alterada. Para animações suaves (60 FPS), devemos usar propriedades que podem ser aceleradas pela GPU (a placa de vídeo).</p>
+        <ul>
+            <li>✅ <strong>Animar estas propriedades (barato):</strong>
+                <ul>
+                    <li><code>transform: translate(), scale(), rotate()</code></li>
+                    <li><code>opacity</code></li>
+                </ul>
+                <p>Por quê? Porque elas não forçam o navegador a recalcular o layout de outros elementos. Elas acontecem em sua própria "camada" de composição.</p>
+            </li>
+            <li>❌ <strong>Evitar animar estas propriedades (caro):</strong>
+                <ul>
+                    <li><code>width</code>, <code>height</code></li>
+                    <li><code>padding</code>, <code>margin</code></li>
+                    <li><code>top</code>, <code>left</code>, <code>bottom</code>, <code>right</code></li>
+                    <li><code>font-size</code>, <code>box-shadow</code></li>
+                </ul>
+                <p>Por quê? Porque elas causam um efeito dominó. Mudar a largura de um elemento pode forçar o navegador a recalcular a posição de todos os elementos que vêm depois dele. Isso é chamado de <strong>reflow</strong> ou <strong>layout</strong>, e é um processo lento.</p>
+            </li>
+        </ul>
+        <p><strong>Exemplo: Mover um elemento</strong></p>
+        <pre class="code">
+/* ❌ RUIM: Usa 'left', que causa reflow */
+@keyframes move-bad {
+  from { left: 0; }
+  to   { left: 200px; }
+}
+
+/* ✅ BOM: Usa 'transform', que é acelerado por GPU */
+@keyframes move-good {
+  from { transform: translateX(0); }
+  to   { transform: translateX(200px); }
+}
+        </pre>
+    </section>
+
+</div>
+
+</main>
+
+</div>
+
+<footer>
+    <p class="copyright"> ©️ 2025 - Lucas Willian</p>
+</footer>
+
+    <!-- Scripts originais mantidos no final para funcionalidade da página -->
+    <div id="player-wrapper" class="is-hidden">
+        <button id="toggle-player-btn" aria-label="Controlar Player">
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <iframe 
+            id="meu-player-de-musica"
+            src="../player/player.html"
+            title="Player de Música"
+            frameborder="0"
+            allow="autoplay">
+        </iframe>
+    </div>
+
+    <script src="../Scripts/sound-effects.js" defer></script>
+    <script src="../Scripts/player-toggle.js" defer></script>
+    <script src="../Scripts/status-bar.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="../Scripts/barba-init.js" defer></script>
+
+    <script src="../Scripts/theme-toggle.js" defer></script>
+
+</body>
+</html>
