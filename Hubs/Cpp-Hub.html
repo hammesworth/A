@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-    <title>Hub de C++</title>
+    <title>Microspace: C++</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script> 
 
@@ -25,9 +25,6 @@
     <div data-barba="container" data-barba-namespace="Cpp-Hub" namespace="default-view">
 
     <header>
-
-        <button class="settings-btn" aria-label="Configurações">
-        <i class="fas fa-bars"></i> </button>
 
         <h1><a href="../index.html" style="all: unset; cursor: inherit;">Microspace</a></h1>
         <h2>Bem-vindo(a) ao Hub de C++</h2>
@@ -74,13 +71,7 @@
         
     </footer>
 
-    <!-- ===== NOVO PLAYER CONTROLÁVEL ===== -->
     <div id="player-wrapper" class="is-hidden">
-
-        <!-- Botão para mostrar/esconder o player -->
-        <button id="toggle-player-btn" aria-label="Controlar Player">
-            <i class="fas fa-chevron-down"></i>
-        </button>
 
     <iframe 
         id="meu-player-de-musica"
@@ -92,13 +83,16 @@
 
     </div>
 
+    <button id="toggle-player-btn" aria-label="Controlar Player">
+    🎵
+    </button>
+
     <script src="../Scripts/sound-effects.js" defer></script>
     <script src="../Scripts/player-toggle.js" defer></script>
     <script src="../Scripts/status-bar.js" defer></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
     <script src="https://unpkg.com/@barba/core" defer></script>
-
     <script src="../Scripts/theme-toggle.js" defer></script>
 
     <script src="../Scripts/barba-init.js" defer></script>

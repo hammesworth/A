@@ -13,7 +13,6 @@
 
     <title>Guia de Laços e Vetores C++</title>
     
-    <!-- NOVO: Biblioteca de áudio Tone.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
 
 </head>
@@ -27,9 +26,6 @@
         <div data-barba="container" data-barba-namespace="Cpp-While" namespace="default-view">
 
 <header>
-
-    <button class="settings-btn" aria-label="Configurações">
-    <i class="fas fa-bars"></i> </button>
 
     <h1>Guia do Laço 'while' C++ 🛠️</h1>
     <p>Um mergulho profundo na estrutura de repetição mais fundamental para controle de fluxo.</p>
@@ -344,13 +340,7 @@ int main() {
 
 </footer>
 
-    <!-- ===== NOVO PLAYER CONTROLÁVEL ===== -->
     <div id="player-wrapper" class="is-hidden">
-
-        <!-- Botão para mostrar/esconder o player -->
-        <button id="toggle-player-btn" aria-label="Controlar Player">
-            <i class="fas fa-chevron-down"></i>
-        </button>
 
     <iframe 
         id="meu-player-de-musica"
@@ -359,6 +349,10 @@ int main() {
         frameborder="0"
         allow="autoplay">
     </iframe>
+
+    <button id="toggle-player-btn" aria-label="Controlar Player">
+    🎵
+    </button>
 
     <script src="../Scripts/sound-effects.js" defer></script>
     <script src="../Scripts/player-toggle.js" defer></script>

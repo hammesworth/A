@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../estilo.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Microspace: Arquitetura</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script> 
+
+</head>
+
+<body data-barba="wrapper">
+
+        <button id="theme-toggle" aria-label="Alternar tema" title="Alternar tema">
+        <span id="theme-icon">🌙</span>
+        </button>
+
+    <div data-barba="container" data-barba-namespace="DesignWeb-Hub" namespace="default-view">
+
+    <header>
+
+        <h1><a href="../index.html" style="all: unset; cursor: inherit;">Microspace</a></h1>
+        <h2>Bem-vindo(a) ao hub de Design Web</h2>
+        <p>Navegue pelos módulos abaixo para explorar os guias sobre HTML, CSS, XML, Git e mais.</p>
+
+    </header>
+
+    <main>
+        <div class="hub-grid">
+            
+            <a href="../Design Web/html_fundamental.html" class="module-card">
+                <span class="icon">🌐</span>
+                <h3>Fundamentos do HTML</h3>
+                <p>Uma introdução aos conceitos básicos do HTML</p>
+            </a>
+
+            <a href="../Design Web/tags_basicas.html" class="module-card">
+                <span class="icon">🏷️</span>
+                <h3>Tags Essenciais do HTML</h3>
+                <p>Um pouco sobre as mais comuns e mais importantes tags do HTML</p>
+            </a>
+
+            <a href="../Design Web/git_github.html" class="module-card">
+                <span class="icon">💾</span>
+                <h3>Git & GitHub</h3>
+                <p>Entenda sobre o sistema de controle de versão Git e o repositório online GitHub.</p>
+            </a>
+
+            <a href="../Design Web/css_parte1.html" class="module-card">
+                <span class="icon">⭐</span>
+                <h3>CSS Básico</h3>
+                <p>Um guia detalhado dos princípios básicos do CSS</p>
+            </a>
+
+            <a href="../Design Web/css_parte2.html" class="module-card">
+                <span class="icon">🌟</span>
+                <h3>CSS Intermediário</h3>
+                <p>Adentre conceitos mais avançados de CSS</p>
+            </a>
+
+            <a href="../Design Web/css_parte3.html" class="module-card">
+                <span class="icon">✨</span>
+                <h3>CSS Avançado</h3>
+                <p>Aprenda sobre algumas das possibilidades avançadas que o CSS oferece.</p>
+            </a>
+
+            <a href="../Design Web/css_animacoes.html" class="module-card">
+                <span class="icon">🎞️</span>
+                <h3>CSS: Animações</h3>
+                <p>Deseja tornar tudo mais fluido? Esse é um guia focado exclusivamente em animações.</p>
+            </a>
+
+            <a href="../Design Web/css_blocos.html" class="module-card">
+                <span class="icon">📸</span>
+                <h3>CSS: Componentes Visuais</h3>
+                <p>Quer fazer botões, cartões (como esse aqui) e outras coisas do gênero? Esse é o guia para isto.</p>
+            </a>
+
+            <a href="../Design Web/css_integracao.html" class="module-card">
+                <span class="icon">🔄</span>
+                <h3>CSS: Integração</h3>
+                <p>Um guia sobre como integrar códigos CSS a múltiplas páginas e como modularizar seus sites.</p>
+            </a>
+
+        </div>
+        
+    </main>
+
+    </div>
+
+    <footer>
+
+        <p class="copyright"> ©️ 2025 - Lucas Willian</p>
+        
+    </footer>
+
+    <div id="player-wrapper" class="is-hidden">
+
+    <iframe 
+        id="meu-player-de-musica"
+        src="../player/player.html"
+        title="Player de Música"
+        frameborder="0"
+        allow="autoplay">
+    </iframe>
+
+    </div>
+
+    <button id="toggle-player-btn" aria-label="Controlar Player">
+    🎵
+    </button>
+
+    <script src="../Scripts/sound-effects.js" defer></script>
+    <script src="../Scripts/player-toggle.js" defer></script>
+    <script src="../Scripts/status-bar.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+
+    <script src="../Scripts/theme-toggle.js" defer></script>
+
+    <script src="../Scripts/barba-init.js" defer></script>
+
+</body>
+</html>

@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-    <title>Guia Detalhado de HTML: A Base da Web</title>
+    <title>HTML: A Base da Web</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
 
@@ -19,15 +19,15 @@
 
 <body data-barba="wrapper">
 
+        <button id="theme-toggle" aria-label="Alternar tema" title="Alternar tema">
+        <span id="theme-icon">🌙</span>
+        </button>
+
     <div data-barba="container" data-barba-namespace="HTML-Fundamentos" namespace="default-view">
 
 <header>
 
-    <button class="settings-btn" aria-label="Configurações">
-        <i class="fas fa-bars"></i>
-    </button>
-
-    <h1>Guia Detalhado de HTML 🏗️</h1>
+    <h1>Guia Detalhado de HTML</h1>
     <p>Aprendendo a construir a estrutura de qualquer página da web, passo a passo.</p>
 
     <nav>
@@ -239,9 +239,7 @@
 </footer>
 
     <div id="player-wrapper" class="is-hidden">
-        <button id="toggle-player-btn" aria-label="Controlar Player">
-            <i class="fas fa-chevron-down"></i>
-        </button>
+   
         <iframe 
             id="meu-player-de-musica"
             src="../player/player.html"
@@ -249,7 +247,12 @@
             frameborder="0"
             allow="autoplay">
         </iframe>
+
     </div>
+
+    <button id="toggle-player-btn" aria-label="Controlar Player">
+    🎵
+    </button>
 
     <script src="../Scripts/sound-effects.js" defer></script>
     <script src="../Scripts/player-toggle.js" defer></script>

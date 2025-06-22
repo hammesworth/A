@@ -5,35 +5,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     
-    <!-- Mantive os links para seus arquivos de estilo e fontes para compatibilidade -->
     <link rel="stylesheet" href="../estilo.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-    <title>Guia CSS: Construindo Componentes Visuais</title>
+    <title>Componentes Visuais</title>
     
-    <!-- Biblioteca de áudio Tone.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
 
 </head>
 
 <body data-barba="wrapper">
 
+        <button id="theme-toggle" aria-label="Alternar tema" title="Alternar tema">
+        <span id="theme-icon">🌙</span>
+        </button>
+
     <div data-barba="container" data-barba-namespace="CSS-Componentes-Visuais" namespace="default-view">
 
 <header>
 
-    <button class="settings-btn" aria-label="Configurações">
-        <i class="fas fa-bars"></i>
-    </button>
-
-    <!-- Título focado em Componentes CSS -->
-    <h1>Guia CSS: Construindo Componentes Visuais 🧱</h1>
+    <h1>CSS: Construindo Componentes Visuais 🧱</h1>
     <p>Um guia prático para criar blocos, botões e menus reutilizáveis.</p>
 
-    <!-- A navegação foi mantida para consistência -->
     <nav>
         <p><a href="../index.html" class="nav-link">Inicío 🏡</a></p>
         <p><a href="../Hubs/ArquiteturaComp-Hub.html" class="nav-link"> Arquitetura ⚙️</a></p>
@@ -235,11 +231,8 @@ body {
     <p class="copyright"> ©️ 2025 - Lucas Willian</p>
 </footer>
 
-    <!-- Scripts originais mantidos no final para funcionalidade da página -->
     <div id="player-wrapper" class="is-hidden">
-        <button id="toggle-player-btn" aria-label="Controlar Player">
-            <i class="fas fa-chevron-down"></i>
-        </button>
+      
         <iframe 
             id="meu-player-de-musica"
             src="../player/player.html"
@@ -247,7 +240,12 @@ body {
             frameborder="0"
             allow="autoplay">
         </iframe>
+
     </div>
+
+    <button id="toggle-player-btn" aria-label="Controlar Player">
+    🎵
+    </button>
 
     <script src="../Scripts/sound-effects.js" defer></script>
     <script src="../Scripts/player-toggle.js" defer></script>
