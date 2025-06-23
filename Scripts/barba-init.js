@@ -41,7 +41,7 @@ barba.hooks.afterEnter(async ({ next }) => {
     // 💡 Importa dinamicamente o script do jogo da tabela-verdade, se for a página correta
     if (namespace === 'Arquitetura-Operacoes') {
         try {
-            const jogo = await import('/Scripts/Jogos_Internos/truth-table-game.js');
+            const jogo = await import('https://hammesworth.github.io/Microspace/Scripts/Jogos_Internos/truth-table-game.js');
             jogo.runGameInit();
         } catch (err) {
             console.error('Erro ao carregar o jogo da Tabela-Verdade:', err);
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Também importa dinamicamente o jogo se já estiver na página certa no load inicial
     if (initialNamespace === 'Arquitetura-Operacoes') {
-        import('/Scripts/Jogos_Internos/truth-table-game.js')
+        import('https://hammesworth.github.io/Microspace/Scripts/Jogos_Internos/truth-table-game.js')
             .then(mod => mod.runGameInit())
             .catch(err => console.error('Erro ao carregar o jogo (inicial):', err));
     }
