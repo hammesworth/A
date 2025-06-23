@@ -1,6 +1,7 @@
 /* ==========================================================================
    ARQUIVO CSS OTIMIZADO (estilo.css)
    Organizado para clareza, manutenibilidade e responsividade.
+   Versão com menu de navegação responsivo corrigido.
    ========================================================================== */
 
 /* ==========================================================================
@@ -9,8 +10,8 @@
 
 :root {
     /* Paleta de Cores */
-    --primary-color: #007BFF;
-    --primary-hover: #0056b3;
+    --primary-color: #7e00c7;
+    --primary-hover: #6904bb;
     --text-title: #1a202c;
     --text-body: #343a40;
     --text-muted: #6c757d;
@@ -20,6 +21,7 @@
     --code-bg-dark: #1b1919;
     --code-bg-light: #e9ecef;
     --danger-color: #dc3545;
+    --icon-color: #6D0E97;
 
     /* Tipografia */
     --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -54,7 +56,7 @@ body {
     
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Garante que o corpo ocupe no mínimo toda a altura da tela */
+    min-height: 100vh;
 }
 
 body.dark-mode {
@@ -64,7 +66,8 @@ body.dark-mode {
   --text-body: #dcdcdc;
   --text-muted: #a0a0a0;
   --border-color: #2c2c2c;
-  --code-bg-light: #272525; /* se você usa fundo claro em blocos de código */
+  --code-bg-light: #272525;
+  --icon-color: #8D07C7;
 }
 
 body {
@@ -80,19 +83,12 @@ body {
   bottom: 1rem;
   right: 1rem;
   z-index: 1000;
-
-  /* 1. Definir altura e largura iguais */
   width: 50px;
   height: 50px;
-  
-  /* 2. Remover o padding e usar flexbox para centralizar o ícone */
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  /* 3. Aplicar o border-radius para criar o círculo */
   border-radius: 50%;
-
   background: var(--surface-color);
   color: var(--text-body);
   border: 1px solid var(--border-color);
@@ -104,7 +100,7 @@ body {
 
 #theme-toggle:hover {
   background-color: var(--bg-color);
-  transform: translateY(-2px); /* Efeito sutil ao passar o mouse */
+  transform: translateY(-2px);
 }
 
 #theme-icon {
@@ -112,37 +108,40 @@ body {
   transition: transform 0.4s ease;
 }
 
-/* Roda o ícone quando troca de tema */
 body.dark-mode #theme-icon {
   transform: rotate(180deg);
 }
-
-
 
 .page-hub, .page-content {
     flex-grow: 1;
 }
 
 /* --- Animações Globais --- */
+/* Animações Globais Suavizadas */
 @keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-15px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(-22px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes float-anim {
-    50% { transform: translateY(-6px); }
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-12px); }
+}
+
+@keyframes gentle-float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
 }
 
 /* ==========================================================================
    2. HEADER E BARRA DE PESQUISA
    ========================================================================== */
 
-/* --- 2.1 Estrutura Base do Header --- */
 .page-hub header,
 .page-content header {
     background: var(--surface-color);
@@ -150,7 +149,7 @@ body.dark-mode #theme-icon {
     box-shadow: var(--shadow-medium);
     padding: 2.5rem;
     margin: 0 auto;
-    position: relative; /* Contexto para posicionar elementos filhos */
+    position: relative;
     text-align: center;
     max-width: 1000px;
     display: flex;
@@ -159,29 +158,30 @@ body.dark-mode #theme-icon {
 }
 
 .page-hub header {
-    margin-bottom: 50px; /* Espaço entre o header e os cards */
+    margin-bottom: 50px;
 }
 
 .page-content header {
-    margin-bottom: 50px; /* Espaço entre o header e o conteúdo */
+    margin-bottom: 50px;
 }
 
 .page-hub header h1 {
     font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 800;
-    animation: float-anim 5s ease-in-out infinite;
+    animation: float-anim 8s cubic-bezier(0.3, 0, 0.6, 1) infinite;
 }
 
 .page-content header h1 {
     font-size: clamp(2rem, 4vw, 2.5rem);
     font-weight: 700;
+    animation: gentle-float 8s cubic-bezier(0.3, 0, 0.6, 1) infinite;
 }
 
 .page-content header nav {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 0.15rem;
+    gap: 0.5rem; /* Aumentado um pouco o gap para melhor espaçamento */
     width: 100%;
     margin: 0 auto;
     padding-top: 1.5rem;
@@ -232,22 +232,23 @@ body.dark-mode #theme-icon {
     text-decoration: none;
     color: var(--text-body);
     box-shadow: var(--shadow-soft);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease, border-color 0.3s ease;
     opacity: 0;
-    animation: fadeInUp 0.5s ease-out forwards;
+    animation: fadeInUp 0.5s ease-out forwards, gentle-float 10s cubic-bezier(0.37, 0, 0.63, 1) infinite;
 }
 
 .module-card:hover {
     transform: translateY(-10px) scale(1.03);
     box-shadow: var(--shadow-hard);
     border-color: var(--primary-color);
+    animation-play-state: paused;
 }
 
 .module-card .icon {
     font-size: 3rem;
     margin-bottom: 1rem;
     display: block;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .module-card:hover .icon {
@@ -259,6 +260,7 @@ body.dark-mode #theme-icon {
     color: var(--text-title);
     font-weight: 700;
     margin-bottom: 0.5rem;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .module-card p {
@@ -266,13 +268,19 @@ body.dark-mode #theme-icon {
     color: var(--text-muted);
     margin-bottom: 0;
     flex-grow: 1;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Animação em cascata dos cards */
+.module-card:hover h3,
+.module-card:hover p {
+    transform: translateY(-2px);
+}
+
 .page-hub .module-card:nth-child(1) { animation-delay: 0.7s; }
 .page-hub .module-card:nth-child(2) { animation-delay: 0.8s; }
 .page-hub .module-card:nth-child(3) { animation-delay: 0.9s; }
 .page-hub .module-card:nth-child(4) { animation-delay: 1.0s; }
+
 
 /* ==========================================================================
    4. PÁGINAS DE CONTEÚDO
@@ -302,6 +310,7 @@ body.dark-mode #theme-icon {
     padding-bottom: 0.75rem;
     border-bottom: 2px solid var(--border-color);
     font-weight: 700;
+    animation: gentle-float 9s cubic-bezier(0.37, 0, 0.63, 1) 0.2s infinite;
 }
 
 .page-content section:first-of-type h2.subtitle {
@@ -326,8 +335,8 @@ body.dark-mode #theme-icon {
 }
 
 .page-content a:hover {
-    color: var(--primary-hover);
-    text-decoration: underline;
+    background-color: var(--bg-color);
+    transform: translateY(-2px);
 }
 
 .page-content code {
@@ -369,12 +378,22 @@ body.dark-mode #theme-icon {
 
 footer {
     text-align: center;
-    color: var(--text-muted);
+    color: var(--text-title);
     font-size: 1.0rem;
-    padding: 2rem 0; /* Ajustado o padding */
-    margin-top: auto; /* Garante que o footer seja empurrado para o final do container flex */
+    padding: 2rem 0;
+    margin-top: auto;
     width: 100%;
     animation: fadeInUp 0.8s 1.2s ease-out forwards;
+}
+
+footer a {
+    text-decoration: none;
+    font-size: 1.3rem;
+    align-items: baseline;
+    padding-left: 5px;
+    color: var(--icon-color);
+    margin-bottom: 0;
+    bottom: 0;
 }
 
 /* ==========================================================================
@@ -394,32 +413,59 @@ footer {
 /* --- Telas Pequenas (Tablets em modo retrato e celulares grandes) --- */
 @media (max-width: 768px) {
     .page-hub header, .page-content header {
-        margin-bottom: 60px;
-        padding: 2rem 1.5rem 60px 1.5rem;
+        margin-bottom: 40px; /* Reduzido o margin-bottom */
+        padding: 2rem 1.5rem; /* Removido o padding-bottom extra */
     }
     .page-hub header h1 {
-        animation: none; /* Remove animação em telas menores */
+        animation: none;
     }
 
     /* Tipografia */
     .page-hub h1, .page-content h1 {
         font-size: 2rem;
+        animation: none;
     }
     .page-content h2.subtitle {
         font-size: 1.7rem;
+        animation: none;
     }
     .page-content p, .page-content li {
         font-size: 1rem;
     }
+    
+    .module-card {
+        animation: fadeInUp 0.5s ease-out forwards;
+    }
 
-    /* Music Player */
-    .player-controls {
-        flex-grow: 0;
+    .page-hub .module-card:nth-child(1) { animation-delay: 0.3s; }
+    .page-hub .module-card:nth-child(2) { animation-delay: 0.4s; }
+    .page-hub .module-card:nth-child(3) { animation-delay: 0.5s; }
+    .page-hub .module-card:nth-child(4) { animation-delay: 0.6s; }
+
+    /* ========== MUDANÇA PRINCIPAL PARA O MENU RESPONSIVO ========== */
+    .page-content header nav {
+        justify-content: flex-start; /* Alinha os botões à esquerda */
+        flex-wrap: nowrap; /* Impede que os botões quebrem a linha */
+        overflow-x: auto; /* Adiciona a rolagem horizontal */
+        -webkit-overflow-scrolling: touch; /* Melhora a experiência de rolagem no iOS */
+        
+        /* Adiciona um pouco de padding para não colar nas bordas */
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        
+        /* Remove a margem do container do header para o nav usar o espaço todo */
+        margin-left: -1.5rem;
+        margin-right: -1.5rem;
+
+        /* Esconde a barra de rolagem visualmente, mas mantém a funcionalidade */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;  /* IE/Edge */
     }
-    .progress-container {
-        flex: 2;
-        order: initial; /* Ordem natural no layout flex */
+    .page-content header nav::-webkit-scrollbar {
+        display: none; /* Chrome/Safari/Opera */
     }
+    /* ================================================================= */
+
 }
 
 /* --- Telas Muito Pequenas (Celulares) --- */
@@ -438,18 +484,16 @@ footer {
         border-radius: var(--border-radius-sm);
         margin-top: 1rem;
     }
-    .page-content header {
-        margin-bottom: 4rem;
-    }
+
+    /* Remove as regras que empilhavam o menu verticalmente */
     .page-content header nav {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.5rem;
+        /* As regras de rolagem do breakpoint de 768px já se aplicam aqui */
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin-left: -1rem;
+        margin-right: -1rem;
     }
-    .page-content header nav a {
-        text-align: center;
-        padding: 12px 20px;
-    }
+    
     .page-content pre {
         padding: 1rem;
     }
@@ -459,23 +503,21 @@ footer {
    7. PLAYER DE MÚSICA CONTROLÁVEL
    ========================================================================== */
 
-/* Garante que o conteúdo do rodapé não seja coberto pelo player quando ele estiver visível */
 body {
     padding-bottom: 0px;
 }
 
-/* --- ESTILOS DO PLAYER (sem alterações) --- */
 #player-wrapper {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    z-index: 999; /* Z-index um pouco menor que o botão */
+    z-index: 999;
     transition: transform 0.4s ease-in-out;
 }
 
 #player-wrapper.is-hidden {
-    transform: translateY(100%); /* Esconde o player completamente */
+    transform: translateY(100%);
 }
 
 #player-wrapper iframe {
@@ -485,22 +527,20 @@ body {
     display: block;
 }
 
-
-/* --- CSS MODIFICADO PARA O BOTÃO --- */
 #toggle-player-btn {
-    position: fixed; /* Posição fixa na tela */
-    bottom: 80px;  /* Distância do fundo (ajuste se necessário para ficar acima do botão de tema) */
-    right: 15px; /* Distância da direita */
-    width: 50px; /* Largura do botão */
-    height: 50px; /* Altura do botão */
+    position: fixed;
+    bottom: 80px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
     background-color: var(--surface-color);
     border: 1px solid var(--border-color);
-    border-radius: 50%; /* Deixa o botão perfeitamente circular */
+    border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    z-index: 1001; /* Garante que fique acima de outros elementos */
+    z-index: 1001;
     color: var(--text-title);
-    font-size: 1.5rem; /* Tamanho do emoji */
+    font-size: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -509,5 +549,115 @@ body {
 
 #toggle-player-btn:hover {
     background-color: var(--bg-color);
-    transform: translateY(-2px); /* Efeito sutil ao passar o mouse */
+    transform: translateY(-2px);
+}
+
+/* ========================================================================== */
+/* 8. TABELA-VERDADE (Estilo harmonizado com o tema geral) */
+/* ========================================================================== */
+
+#truth-table-game {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    font-family: var(--font-code);
+    color: var(--text-body);
+    background-color: var(--surface-color);
+    border-radius: var(--border-radius-md);
+    padding: 2rem;
+    box-shadow: var(--shadow-medium);
+    max-width: 900px;
+    margin: 3rem auto;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#truth-table-game table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 1rem;
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+    background-color: var(--surface-color);
+    transition: background-color 0.3s ease;
+}
+
+#truth-table-game th {
+    background-color: var(--bg-color);
+    color: var(--text-title);
+    padding: 12px;
+    font-size: 1.1rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+#truth-table-game td {
+    padding: 10px 14px;
+    text-align: center;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-body);
+}
+
+#truth-table-game input[type="text"] {
+    background-color: var(--bg-color);
+    color: var(--text-title);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 6px;
+    text-align: center;
+    width: 45px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+#truth-table-game input[type="text"]:focus {
+    border-color: var(--primary-color);
+    background-color: var(--surface-color);
+}
+
+#verificar-btn {
+    background: linear-gradient(135deg, var(--primary-color), #9a4dff);
+    color: #fff;
+    padding: 12px 24px;
+    font-weight: bold;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    font-size: 1rem;
+    box-shadow: var(--shadow-soft);
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+#verificar-btn:hover {
+    background: linear-gradient(135deg, var(--primary-hover), #b56dff);
+    transform: translateY(-2px);
+}
+
+#truth-table-game #feedback {
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* Feedback visual na verificação */
+.saida-input.correct {
+    background-color: #265e3a !important;
+    border-color: #00b871 !important;
+    color: #fff !important;
+}
+
+.saida-input.wrong {
+    background-color: #592f2f !important;
+    border-color: #ff4c4c !important;
+    color: #fff !important;
+}
+
+.saida-input.invalid {
+    background-color: #665400 !important;
+    border-color: #ffcc00 !important;
+    color: #fff !important;
 }

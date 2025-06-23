@@ -23,8 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
     statusBar.id = 'status-bar';
     statusBar.style.fontFamily = "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif";
     statusBar.style.fontSize = '1.1em';
-    statusBar.style.color = '#2B2B2B';
-    statusBar.style.marginTop = '5px';
+    statusBar.style.color = 'var(--text-title)';
+    statusBar.style.marginTop = '0';
+    statusBar.style.marginBottom = '4px';
     statusBar.style.textAlign = 'center';
     statusBar.textContent = 'Carregando status...';
 
@@ -71,21 +72,21 @@ document.addEventListener('DOMContentLoaded', () => {
     function getWeatherEmoji(weatherId) {
         const mainCondition = (weatherId || 'clear').toLowerCase();
         switch (mainCondition) {
-            case 'thunderstorm': return 'Tempestade ⛈️';
-            case 'drizzle': return 'Garoa 🌦️';
-            case 'rain': return 'Chuva 🌧️';
-            case 'snow': return 'Neve 🌨️';
-            case 'mist': return 'Névoa 🌫️';
-            case 'smoke': return 'Fumaça 🌫️';
-            case 'haze': return 'Nevoeiro 🌫️';
-            case 'dust': return 'Poeira 🌫️';
-            case 'fog': return 'Névoa 🌫️';
+            case 'thunderstorm': return '⛈️';
+            case 'drizzle': return '🌦️';
+            case 'rain': return '🌧️';
+            case 'snow': return '🌨️';
+            case 'mist': return '🌫️';
+            case 'smoke': return '🌫️';
+            case 'haze': return '🌫️';
+            case 'dust': return '🌫️';
+            case 'fog': return '🌫️';
             case 'sand': return 'Areia 🟨⁉️';
-            case 'ash': return 'Cinzas 🌫️';
-            case 'squall': return 'Tempestade ⛈️';
-            case 'tornado': return 'Tornado 🌪️';
-            case 'clear': return '☀️ Céu Limpo';
-            case 'clouds': return 'Nublado ☁️';
+            case 'ash': return '🌫️';
+            case 'squall': return '⛈️';
+            case 'tornado': return '🌪️';
+            case 'clear': return '☀️';
+            case 'clouds': return '☁️';
             default: return '🌌';
         }
     }
@@ -135,10 +136,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         // 4. Monta e exibe a string final na barra de status
-        statusBar.textContent = `${timeString}h   |   ${weatherString}   |   ${moonPhase}`;
+        statusBar.textContent = `${timeString} · ${weatherString} · ${moonPhase}`
+;
     }
 
-    // Atualiza a barra de status imediatamente e depois a cada 60 segundos
+    // Atualiza a barra de status imediatamente e depois a cada 10 segundos
     updateStatusBar();
-    setInterval(updateStatusBar, 60000); // 60 segundos
+    setInterval(updateStatusBar, 10000); // 10 segundos
 });

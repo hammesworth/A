@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../estilo.css">
+
+    <link rel="icon" type="image/png" href="../Others/Icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../Others/Icons/favicon.svg" />
+    <link rel="shortcut icon" href="../Others/Icons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../Others/Icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Microspace" />
+    <link rel="manifest" href="../Others/Icons/site.webmanifest" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Entendendo Expressões Booleanas</title>
+ 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
+</head>
+
+<body data-barba="wrapper">
+
+    <button id="theme-toggle" aria-label="Alternar tema" title="Alternar tema">
+        <span id="theme-icon">🌙</span>
+    </button>
+
+    <div data-barba="container" data-barba-namespace="Arquitetura-Expressoes" namespace="default-view">
+
+<header>
+
+    <h1>Entendendo Expressões Booleanas 📝</h1>
+    <p>Um guia para ler, interpretar e avaliar a lógica por trás dos circuitos</p>
+
+    <nav>
+
+        <p><a href="../index.html" class="nav-link">Inicío 🏡</a></p>
+        <p><a href="../Hubs/ArquiteturaComp-Hub.html" class="nav-link"> Arquitetura ⚙️</a></p>
+        <p><a href="../Hubs/Matematica-Hub.html" class="nav-link">Matemática ✖️</a></p>
+        <p><a href="../Hubs/Cpp-Hub.html" class="nav-link">C++ 🔧</a></p>
+        <p><a href="../Hubs/InfoBasica-Hub.html" class="nav-link">Info Básica 🖥️</a></p>
+        <p><a href="../Hubs/DesignWeb-Hub.html" class="nav-link">Design Web 🌐</a></p>
+        <p><a href="../Hubs/Jogos-Hub.html" class="nav-link">Jogos 🕹️</a></p>
+
+    </nav>
+
+</header>
+
+<main>
+<div id="boolean-expressions-intro">
+
+    <section>
+      <h2 class="subtitle">🔣 O Que é uma Expressão Booleana?</h2>
+      <p>Uma expressão booleana é a formalização matemática de uma declaração lógica. Criada pelo matemático George Boole no século XIX, essa álgebra lida exclusivamente com dois valores: <strong>VERDADEIRO (1)</strong> ou <strong>FALSO (0)</strong>. Em vez de números infinitos, usamos variáveis (A, B, C...) que representam uma condição ("O alarme está ativado?", "A temperatura está acima de 25°C?"). Essas variáveis são conectadas por operadores lógicos (AND, OR, NOT) para formar uma "sentença" que descreve uma condição complexa. O resultado dessa sentença, invariavelmente, será 1 ou 0. No mundo digital, cada expressão booleana é a planta exata de um circuito eletrônico, definindo precisamente como os dados são processados e como as decisões são tomadas a cada nanossegundo.</p>
+    </section>
+
+    <section>
+        <h2 class="subtitle">📖 A Sintaxe: A Gramática da Lógica</h2>
+        <p>Para construir sentenças lógicas sem ambiguidade, a álgebra booleana usa uma gramática rigorosa, com operadores bem definidos.</p>
+        
+        <h3 class="sub-subtitle">1. Operador AND (Multiplicação Lógica)</h3>
+        <p><strong>Símbolo:</strong> Ponto ( <strong>.</strong> ) ou, mais comumente na prática, nenhum símbolo (<code>S = AB</code>).<br><strong>Significado:</strong> É o operador da "exigência". A expressão <code>S = A . B</code> só resulta em VERDADEIRO (1) se <strong>todas</strong> as suas condições de entrada forem VERDADEIRAS. Se uma única entrada for falsa, toda a expressão se torna falsa.</p>
+        <p><em>Analogia de Circuito:</em> Imagine dois interruptores (A e B) em <strong>série</strong> para acender uma lâmpada. Não adianta ligar apenas um; a corrente só passará se o interruptor A <strong>E</strong> o interruptor B estiverem fechados.</p>
+        <p><em>Exemplo Prático:</em> A lógica para disparar um míssil pode ser <code>Disparar = ChaveGirada . BotaoPressionado</code>. Ambos devem ser 1 para que a saída seja 1.</p>
+
+        <h3 class="sub-subtitle">2. Operador OR (Adição Lógica)</h3>
+        <p><strong>Símbolo:</strong> Sinal de mais ( <strong>+</strong> ).<br><strong>Significado:</strong> É o operador da "alternativa". A expressão <code>S = A + B</code> resulta em VERDADEIRO (1) se <strong>pelo menos uma</strong> de suas entradas for VERDADEIRA. Só será falsa se todas as entradas forem falsas.</p>
+        <p><em>Analogia de Circuito:</em> Imagine dois interruptores (A e B) em <strong>paralelo</strong>. A corrente pode seguir pelo caminho A <strong>OU</strong> pelo caminho B. Ligar qualquer um dos dois (ou ambos) é suficiente para acender a lâmpada.</p>
+        <p><em>Exemplo Prático:</em> Um sistema de alerta de carro pode ser <code>Alerta = PortaAberta + CintoNaoAfivelado</code>. Qualquer uma das condições (ou ambas) ativa o alerta.</p>
+
+        <h3 class="sub-subtitle">3. Operador NOT (Negação ou Inversão)</h3>
+        <p><strong>Símbolo:</strong> Barra superior ( <strong>¬A</strong> ), apóstrofo ( <strong>A'</strong> ) ou til ( <strong>~A</strong> ).<br><strong>Significado:</strong> É o operador de oposição. Ele simplesmente inverte o valor de entrada. O que é verdadeiro se torna falso, e o que é falso se torna verdadeiro.</p>
+        <p><em>Analogia de Circuito:</em> Pense em um botão que, quando <strong>não</strong> está pressionado (0), mantém uma luz acesa (1). Ao pressioná-lo (1), a luz se apaga (0). É uma lógica de "estado de repouso".</p>
+        <p><em>Exemplo Prático:</em> Se temos uma variável <code>LoginOK</code>, a condição <code>¬LoginOK</code> representa "acesso negado".</p>
+
+        <h3 class="sub-subtitle">4. Parênteses ( )</h3>
+        <p><strong>Símbolo:</strong> Parênteses ( <strong>( )</strong> ).<br><strong>Significado:</strong> São a ferramenta para forçar uma ordem de avaliação. Em uma expressão complexa, os parênteses criam um "subproblema" que deve ser resolvido antes de qualquer outra coisa. Sem eles, a ordem de precedência padrão seria seguida, o que pode alterar drasticamente o resultado.</p>
+        <p><em>Exemplo de Impacto:</em> A expressão <code>S = A . B + C</code> é diferente de <code>S = A . (B + C)</code>. No primeiro caso, fazemos o AND primeiro. No segundo, o OR dentro dos parênteses tem prioridade total.</p>
+    </section>
+
+    <section>
+        <h2 class="subtitle">⚖️ Ordem de Precedência: Quem Vem Primeiro?</h2>
+        <p>Assim como na matemática (Multiplicação antes da Adição), a lógica booleana tem uma hierarquia de operações para garantir consistência. A ordem de execução é sagrada:</p>
+        <ol>
+            <li><strong>Parênteses (P):</strong> A prioridade máxima. Operações dentro de parênteses são sempre resolvidas primeiro, das mais internas para as mais externas.</li>
+            <li><strong>NOT (N):</strong> A negação é aplicada logo em seguida. Antes de fazer qualquer AND ou OR, você resolve todas as inversões.</li>
+            <li><strong>AND (A):</strong> A multiplicação lógica tem a próxima prioridade. Todas as operações AND são feitas antes das operações OR.</li>
+            <li><strong>OR (O):</strong> A adição lógica é a última operação na hierarquia.</li>
+        </ol>
+        <p>Lembre-se da sigla <strong>PNAO</strong> (Parênteses, NOT, AND, OR). Ela é a sua guia para não se perder em expressões complexas.</p>
+    </section>
+
+    <section>
+        <h2 class="subtitle">⚙️ Avaliando Expressões na Prática: Passo a Passo</h2>
+        <p>Avaliar uma expressão significa encontrar seu valor final (0 ou 1) para um conjunto de entradas. É um processo metódico de substituição e simplificação, seguindo a ordem de precedência.</p>
+
+        <p><strong>Exemplo 1: Avaliar S = A . B + C</strong>, com <strong>A=1, B=0, C=1</strong></p>
+        <pre class="code">
+// Expressão Original
+1. S = A . B + C
+
+// Passo 1: Substituir as variáveis pelos seus valores.
+2. S = 1 . 0 + 1
+
+// Passo 2 (Precedência AND): A operação AND (.) é executada antes da OR (+).
+3. S = 0 + 1
+
+// Passo 3 (Operação OR): A última operação é a adição lógica.
+4. S = 1
+
+// Resultado Final: A saída do circuito (S) é VERDADEIRA (1).
+        </pre>
+
+        <p><strong>Exemplo 2: Avaliar S = A . (B + ¬C)</strong>, com <strong>A=1, B=1, C=1</strong></p>
+        <pre class="code">
+// Expressão Original
+1. S = A . (B + ¬C)
+
+// Passo 1: Substituir as variáveis.
+2. S = 1 . (1 + ¬1)
+
+// Passo 2 (Precedência Parênteses/NOT): Dentro do parêntese, o NOT (¬) tem prioridade.
+3. S = 1 . (1 + 0)
+
+// Passo 3 (Precedência Parênteses/OR): Ainda dentro do parêntese, resolvemos o OR (+).
+4. S = 1 . (1)
+
+// Passo 4 (Operação AND): Agora, a operação final fora dos parênteses.
+5. S = 1
+
+// Resultado Final: A saída S é VERDADEIRA (1).
+        </pre>
+
+        <p><strong>Exemplo 3: Avaliar S = ¬(A . B) + ¬C . (A + B)</strong>, com <strong>A=1, B=0, C=1</strong></p>
+        <pre class="code">
+// Expressão Original
+1. S = ¬(A . B) + ¬C . (A + B)
+
+// Passo 1: Substituir os valores das variáveis.
+2. S = ¬(1 . 0) + ¬1 . (1 + 0)
+
+// Passo 2 (Precedência Parênteses): Resolver as operações dentro de ambos os parênteses.
+// No primeiro parêntese: (1 . 0) = 0
+// No segundo parêntese: (1 + 0) = 1
+3. S = ¬(0) + ¬1 . (1)
+
+// Passo 3 (Precedência NOT): Resolver todas as negações.
+// ¬(0) se torna 1.
+// ¬1 se torna 0.
+4. S = 1 + 0 . 1
+
+// Passo 4 (Precedência AND): Resolver a multiplicação lógica.
+5. S = 1 + 0
+
+// Passo 5 (Precedência OR): Resolver a adição lógica final.
+6. S = 1
+
+// Resultado Final: A saída S é VERDADEIRA (1).
+        </pre>
+    </section>
+
+</div>
+</main>
+
+<footer>
+
+    <p>
+    <a href="../Hubs/ArquiteturaComp-Hub.html"><i class="fa-solid fa-circle-chevron-left"></i></a>
+    <a href="../index.html"><i class="fa-solid fa-house-chimney"></i></a>
+    <a href="#"><i class="fa-solid fa-circle-chevron-up"></i></a>
+    </p>
+
+    <p class="copyright"> ©️ 2025 - Lucas Willian</p>
+    
+</footer>
+
+</div>
+
+    <div id="player-wrapper" class="is-hidden">
+
+    <iframe 
+        id="meu-player-de-musica"
+        src="../Player/player.html"
+        title="Player de Música"
+        frameborder="0"
+        allow="autoplay">
+    </iframe>
+
+    </div>
+
+    <button id="toggle-player-btn" aria-label="Controlar Player">
+    🎵
+    </button>
+
+    <!-- Mantendo os scripts originais para compatibilidade -->
+    <script src="../Scripts/sound-effects.js" defer></script>
+    <script src="../Scripts/player-toggle.js" defer></script>
+    <script src="../Scripts/status-bar.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="../Scripts/barba-init.js" defer></script>
+
+    <script src="../Scripts/theme-toggle.js" defer></script>
+
+</body>
+</html>

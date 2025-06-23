@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../estilo.css">
+
+    <link rel="icon" type="image/png" href="../Others/Icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../Others/Icons/favicon.svg" />
+    <link rel="shortcut icon" href="../Others/Icons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../Others/Icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Microspace" />
+    <link rel="manifest" href="../Others/Icons/site.webmanifest" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://css.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Operações com Bases e Aritmética Binária</title>
+ 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
+</head>
+
+<body data-barba="wrapper">
+
+    <button id="theme-toggle" aria-label="Alternar tema" title="Alternar tema">
+        <span id="theme-icon">🌙</span>
+    </button>
+
+    <div data-barba="container" data-barba-namespace="Arquitetura-Operacoes" namespace="default-view">
+
+<header>
+
+    <h1>Operações com Bases e Aritmética Binária ➕</h1>
+    <p>O guia definitivo sobre como os computadores calculam</p>
+
+    <nav>
+
+        <p><a href="../index.html" class="nav-link">Inicío 🏡</a></p>
+        <p><a href="../Hubs/ArquiteturaComp-Hub.html" class="nav-link"> Arquitetura ⚙️</a></p>
+        <p><a href="../Hubs/Matematica-Hub.html" class="nav-link">Matemática ✖️</a></p>
+        <p><a href="../Hubs/Cpp-Hub.html" class="nav-link">C++ 🔧</a></p>
+        <p><a href="../Hubs/InfoBasica-Hub.html" class="nav-link">Info Básica 🖥️</a></p>
+        <p><a href="../Hubs/DesignWeb-Hub.html" class="nav-link">Design Web 🌐</a></p>
+        <p><a href="../Hubs/Jogos-Hub.html" class="nav-link">Jogos 🕹️</a></p>
+
+    </nav>
+
+</header>
+
+<main>
+<div id="binary-operations-intro">
+
+    <section>
+      <h2 class="subtitle">🧮 Aritmética Binária: A Matemática dos Transistores</h2>
+      <p>No nível mais fundamental, um computador é uma máquina de calcular incrivelmente rápida. Mas como ele realiza operações matemáticas complexas usando apenas dois símbolos, 0 e 1? A resposta está na aritmética binária, um conjunto de regras que adapta as operações que conhecemos (soma, subtração) para o sistema de base 2. Dominar essa aritmética é entender o "pensamento" do processador.</p>
+    </section>
+
+    <section>
+    
+    <h2 class="subtitle">🔌 Bits, Portas Lógicas e Álgebra Booleana</h2>
+    <p>No coração da computação digital, as operações binárias são implementadas fisicamente por <strong>portas lógicas</strong>, que nada mais são do que circuitos eletrônicos capazes de realizar operações da <strong>álgebra booleana</strong>.</p>
+    <p>A Álgebra Booleana é uma matemática binária criada por George Boole no século XIX. Ela descreve como variáveis que só assumem dois valores (<code>0</code> ou <code>1</code>) podem se combinar por meio de operadores como:</p>
+  
+    <ul>
+    <li><code>AND</code> (E): Só retorna <code>1</code> se ambos forem <code>1</code>.</li>
+    <li><code>OR</code> (OU): Retorna <code>1</code> se pelo menos um for <code>1</code>.</li>
+    <li><code>NOT</code> (NÃO): Inverte o valor. <code>NOT 1 = 0</code>, <code>NOT 0 = 1</code>.</li>
+    </ul>
+
+    <p>Outras operações úteis como <code>XOR</code> (ou exclusivo), <code>NAND</code> (não E) e <code>NOR</code> (não OU) derivam dessas.</p>
+    
+    </section>
+
+</div>
+
+    <section>
+        <h2 class="subtitle">➕ Soma Binária: O "Vai-Um" Digital</h2>
+        <p>A soma binária segue uma lógica muito parecida com a soma decimal, mas é ainda mais simples, pois só temos quatro possibilidades básicas para somar dois bits:</p>
+        <ul>
+            <li><code>0 + 0 = 0</code></li>
+            <li><code>0 + 1 = 1</code></li>
+            <li><code>1 + 0 = 1</code></li>
+            <li><code>1 + 1 = 0</code> e <strong>"vai-um"</strong> (carry) para a próxima coluna à esquerda. Este é o ponto-chave. Em decimal, 1+1=2, que em binário é escrito como <code>10</code>.</li>
+        </ul>
+
+        <p><strong>Exemplo: Somar 1011 (11) e 0110 (6)</strong></p>
+        <pre class="code">
+  1 1 1   <- Bits de "vai-um" (carry)
+  1 0 1 1   (Número A)
++ 0 1 1 0   (Número B)
+---------
+1 0 0 0 1   (Resultado)
+
+// Análise passo a passo, da direita para a esquerda:
+// Coluna 0 (LSB): 1 + 0 = 1.
+// Coluna 1: 1 + 1 = 0, vai-um para a coluna 2.
+// Coluna 2: 1 (carry) + 0 + 1 = 0, vai-um para a coluna 3.
+// Coluna 3: 1 (carry) + 1 + 0 = 0, vai-um para a coluna 4.
+// Coluna 4 (MSB): O último carry se torna o bit mais significativo.
+
+// Verificação: 11 + 6 = 17. O resultado binário 10001 é 16 + 1 = 17. Correto!
+        </pre>
+    </section>
+
+    <section>
+        <h2 class="subtitle">➖ Subtração Binária e o Complemento de 2</h2>
+        <p>A subtração direta em binário existe, mas envolve uma lógica de "emprestar" (borrow) que torna o design de circuitos (hardware) mais complexo. Para otimizar isso, os computadores usam um truque genial: eles transformam toda subtração em uma soma usando uma técnica chamada <strong>Complemento de 2</strong>.</p>
+        
+        <h3 class="sub-subtitle">O Que é o Complemento de 2?</h3>
+        <p>É um método para representar números negativos em binário. Fazer <code>A - B</code> é o mesmo que fazer <code>A + (-B)</code>. O Complemento de 2 é a forma como encontramos o valor de <code>-B</code> em binário. O processo tem dois passos simples:</p>
+        <ol>
+            <li><strong>Passo 1: Complemento de 1</strong> - Inverta todos os bits do número (troque 0 por 1 e 1 por 0).</li>
+            <li><strong>Passo 2: Adicionar 1</strong> - Some 1 ao resultado do passo anterior.</li>
+        </ol>
+
+        <p><strong>Exemplo: Achar o Complemento de 2 de 0110 (6) para 8 bits</strong></p>
+        <pre class="code">
+// Número original (6) em 8 bits:
+0000 0110
+
+// Passo 1: Complemento de 1 (inverter tudo).
+1111 1001
+
+// Passo 2: Adicionar 1.
+  1111 1001
++         1
+-----------
+  1111 1010  <- Este é o binário para -6 em Complemento de 2
+
+// O bit mais à esquerda (MSB) ser 1 indica que o número é negativo.
+        </pre>
+
+        <h3 class="sub-subtitle">Realizando a Subtração com Complemento de 2</h3>
+        <p>Agora, para subtrair, somamos o primeiro número com o complemento de 2 do segundo. O "vai-um" (carry) final que sair da operação é simplesmente descartado.</p>
+
+        <p><strong>Exemplo: Calcular 1001 (9) - 0101 (5)</strong></p>
+        <pre class="code">
+// O problema é 9 - 5. Vamos transformá-lo em 9 + (-5).
+// 1. Achar o complemento de 2 de 0101 (5).
+Número original (5):   0101
+Complemento de 1:      1010
+Soma 1:              +    1
+Complemento de 2 (-5): 1011
+
+// 2. Somar 1001 (9) com 1011 (-5).
+  1 0 0 1
++ 1 0 1 1
+-----------
+1 0 1 0 0  <- Resultado da soma
+
+// 3. Descartar o carry final (o '1' mais à esquerda).
+Resultado: 0100
+
+// Verificação: O resultado binário 0100 é 4. 9 - 5 = 4. Correto!
+        </pre>
+    </section>
+    
+    <section>
+        <h2 class="subtitle">⚠️ Overflow: Quando o Pote Transborda</h2>
+        <p>Computadores trabalham com um número fixo de bits para representar números (ex: 8, 16, 32, 64 bits). <strong>Overflow</strong> (ou estouro) é um erro que ocorre quando o resultado de uma operação aritmética é maior do que o que pode ser representado com o número de bits disponíveis. É como tentar colocar 10 litros de água em um balde de 5 litros - a água vai transbordar.</p>
+        <p>Em sistemas que usam complemento de 2, o bit mais à esquerda (MSB) é o <strong>bit de sinal</strong> (0 para positivo, 1 para negativo). O overflow é particularmente perigoso aqui, pois pode levar a resultados absurdos:</p>
+        <ul>
+            <li>Somar dois números positivos grandes e o resultado ser... negativo.</li>
+            <li>Somar dois números negativos grandes e o resultado ser... positivo.</li>
+        </ul>
+
+        <p><strong>Exemplo de Overflow (em 8 bits): Somar 100 e 50</strong></p>
+        <pre class="code">
+// Com 8 bits, o maior número positivo é 127 (0111 1111). 100+50 = 150, que não cabe.
+// 100 em decimal = 0110 0100
+//  50 em decimal = 0011 0010
+
+  0110 0100  (100)
++ 0011 0010  (50)
+-----------
+  1001 0110  (Resultado)
+
+// Análise do resultado:
+// O resultado é 1001 0110. O bit de sinal (MSB) é 1.
+// O computador interpreta isso como um número negativo! (-106 em complemento de 2).
+// Ocorreu um overflow. Somamos dois positivos e obtivemos um negativo.
+
+// Como detectar o Overflow?
+// O "vai-um" para a coluna do bit de sinal foi 1, mas o "vai-um" para fora dela foi 0.
+// Se o carry-in e o carry-out do bit de sinal são diferentes, houve overflow.
+        </pre>
+    </section>
+
+<section>
+  <h2 class="subtitle">📐 Propriedades Fundamentais da Álgebra Booleana</h2>
+  <p>Assim como na álgebra comum, a booleana possui um conjunto de leis que ajudam a simplificar e manipular expressões. Aqui vão as principais (há um <a href="arquitetura_de_reducao.html">guia</a> apenas sobre isso, então esse será apenas um resumo):</p>
+  <ul>
+    <li><strong>Comutativa:</strong> <code>A + B = B + A</code> e <code>A · B = B · A</code></li>
+    <li><strong>Associativa:</strong> <code>A + (B + C) = (A + B) + C</code></li>
+    <li><strong>Distributiva:</strong> <code>A · (B + C) = A·B + A·C</code></li>
+    <li><strong>Identidade:</strong> <code>A + 0 = A</code> e <code>A · 1 = A</code></li>
+    <li><strong>Domínio:</strong> <code>A + 1 = 1</code> e <code>A · 0 = 0</code></li>
+    <li><strong>Complemento:</strong> <code>A + A' = 1</code> e <code>A · A' = 0</code></li>
+    <li><strong>Dupla Negação:</strong> <code>(A')' = A</code></li>
+    <li><strong>Absorção:</strong> <code>A + A·B = A</code> e <code>A · (A + B) = A</code></li>
+    <li><strong>Idempotência:</strong> <code>A + A = A</code> e <code>A · A = A</code></li>
+    <li><strong>De Morgan:</strong> <code>(A·B)' = A' + B'</code> e <code>(A + B)' = A'·B'</code></li>
+  </ul>
+  <p>Essas regras são ferramentas poderosas na simplificação de circuitos digitais.</p>
+</section>
+
+
+    <section>
+        <h2 class="subtitle">🔄 Operações Entre Bases Diferentes (Aprofundado)</h2>
+        <p>Trabalhar com arquitetura de computadores exige fluidez na conversão entre bases. Entender o "porquê" por trás dos métodos é crucial.</p>
+
+        <h3 class="sub-subtitle">1. Qualquer Base para Decimal (Base 10)</h3>
+        <p><strong>Método: Expansão Polinomial.</strong> Este método funciona porque todo sistema numérico posicional é uma soma de potências da sua base. Cada dígito é um coeficiente que multiplica uma potência da base, determinada por sua posição.</p>
+        <p><em>Exemplo (Hexadecimal para Decimal):</em> Converter <strong>1A3</strong> para decimal.</p>
+        <pre class="code">
+// Posições:    2  1  0
+// Dígitos:     1  A  3
+// Valor: (1 * 16²) + (A * 16¹) + (3 * 16⁰)
+// Lembre-se que A = 10.
+-> (1 * 256) + (10 * 16) + (3 * 1)
+-> 256 + 160 + 3 = 419 (Decimal)
+        </pre>
+        
+        <h3 class="sub-subtitle">2. Decimal (Base 10) para Qualquer Base</h3>
+        <p><strong>Método: Divisões Sucessivas.</strong> Este método funciona como uma "engenharia reversa" da expansão. Cada divisão pela base "isola" o coeficiente da menor potência (o resto). O quociente restante é o número sem esse último dígito. Repetimos o processo até não sobrar mais nada. O primeiro resto é o dígito menos significativo (LSB), e o último resto é o mais significativo (MSB), por isso lemos de baixo para cima.</p>
+        <p><em>Exemplo (Decimal para Hexadecimal):</em> Converter <strong>419</strong> para hexadecimal.</p>
+        <pre class="code">
+419 ÷ 16 = 26, Resto: 3 (Dígito menos significativo)
+26  ÷ 16 = 1,  Resto: 10 (que é 'A' em hexadecimal)
+1   ÷ 16 = 0,  Resto: 1 (Dígito mais significativo)
+
+// Lendo os restos de baixo para cima: 1A3.
+// Então, 419 (decimal) = 1A3 (hexadecimal).
+        </pre>
+
+        <h3 class="sub-subtitle">3. Conversões Rápidas: O Poder do Agrupamento</h3>
+        <p>A conversão entre Binário, Octal e Hexadecimal é muito mais simples porque suas bases são potências de 2 (8 = 2³, 16 = 2⁴). Isso cria uma relação direta e previsível: <strong>cada dígito hexadecimal corresponde a um grupo de 4 bits, e cada dígito octal corresponde a um grupo de 3 bits.</strong></p>
+        
+        <p><strong>Tabela de Consulta Rápida: Binário <-> Hexadecimal</strong></p>
+        <pre class="code">
+0000=0  0100=4  1000=8  1100=C (12)
+0001=1  0101=5  1001=9  1101=D (13)
+0010=2  0110=6  1010=A (10) 1110=E (14)
+0011=3  0111=7  1011=B (11) 1111=F (15)
+        </pre>
+
+        <p><em>Exemplo (Binário para Hexadecimal):</em> Converter <strong>1101101100</strong>.</p>
+        <pre class="code">
+// 1. Agrupar em blocos de 4. Complete com zeros à esquerda se necessário.
+Binário: 0011 0110 1100
+
+// 2. Converter cada bloco usando a tabela.
+0011 -> 3
+0110 -> 6
+1100 -> C
+
+// Resultado: 36C (Hexadecimal)
+        </pre>
+        <p><em>Exemplo (Hexadecimal para Binário):</em> Converter <strong>E5B</strong>.</p>
+        <pre class="code">
+// 1. Pegue cada dígito hexadecimal.
+E   |   5   |   B
+
+// 2. Converta cada um para seu grupo de 4 bits.
+1110 | 0101 | 1011
+
+// 3. Junte tudo.
+Resultado: 111001011011 (Binário)
+        </pre>
+    </section>
+
+<section>
+  <h2 class="subtitle">🎮 Complete a Tabela-Verdade</h2>
+  <p>Complete os campos da coluna "Saída" com <code>0</code> ou <code>1</code>, com base na expressão <code>(A · B) + C</code>.</p>
+
+  <div id="truth-table-game">
+    <table>
+      <thead>
+        <tr>
+          <th>A</th>
+          <th>B</th>
+          <th>C</th>
+          <th>Saída</th>
+        </tr>
+      </thead>
+      <tbody id="game-rows">
+        <!-- As linhas serão geradas via JS -->
+      </tbody>
+    </table>
+
+    <button id="verificar-btn">Verificar Resultado ✅</button>
+    <p id="feedback" style="margin-top: 10px;"></p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+
+    <p>
+    <a href="../Hubs/ArquiteturaComp-Hub.html"><i class="fa-solid fa-circle-chevron-left"></i></a>
+    <a href="../index.html"><i class="fa-solid fa-house-chimney"></i></a>
+    <a href="#"><i class="fa-solid fa-circle-chevron-up"></i></a>
+    </p>
+
+    <p class="copyright"> ©️ 2025 - Lucas Willian</p>
+    
+</footer>
+
+</div>
+
+    <div id="player-wrapper" class="is-hidden">
+
+    <iframe 
+        id="meu-player-de-musica"
+        src="../Player/player.html"
+        title="Player de Música"
+        frameborder="0"
+        allow="autoplay">
+    </iframe>
+
+    </div>
+
+    <button id="toggle-player-btn" aria-label="Controlar Player">
+    🎵
+    </button>
+
+    <!-- Mantendo os scripts originais para compatibilidade -->
+    <script src="../Scripts/sound-effects.js" defer></script>
+    <script src="../Scripts/player-toggle.js" defer></script>
+    <script src="../Scripts/status-bar.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="../Scripts/barba-init.js" defer></script>
+
+    <script src="../Scripts/theme-toggle.js" defer></script>
+
+</body>
+</html>

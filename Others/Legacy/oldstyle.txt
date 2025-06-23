@@ -1,0 +1,692 @@
+/* ==========================================================================
+   ARQUIVO CSS UNIFICADO (estilo.css)
+   ========================================================================== */
+
+/* --- 1. Reset e Configurações Globais (Comum a todas as páginas) --- */
+:root {
+    /* Paleta de Cores */
+    --primary-color: #007BFF;
+    --primary-hover: #0056b3;
+    --text-title: #1a202c;
+    --text-body: #343a40;
+    --text-muted: #6c757d;
+    --bg-color: #f4f7f9;
+    --surface-color: #ffffff;
+    --border-color: #e9ecef;
+    --code-bg-dark: #282c34;
+    --code-bg-light: #e9ecef;
+    --danger-color: #dc3545;
+
+    /* Tipografia */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-code: 'Fira Code', 'Courier New', Courier, monospace;
+
+    /* Layout */
+    --border-radius-sm: 8px;
+    --border-radius-md: 16px;
+    --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.05);
+    --shadow-medium: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --shadow-hard: 0 12px 35px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--bg-color);
+    color: var(--text-body);
+    line-height: 1.7;
+    padding: 2rem;
+    overflow-x: hidden;
+}
+
+/* --- Animações Globais --- */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ==========================================================================
+   2. ESTILOS DAS PÁGINAS DE HUB (page-hub)
+   ========================================================================== */
+.page-hub header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 1rem 0;
+}
+
+.page-hub main {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.page-hub h1 {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: var(--text-title);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    animation: fadeInDown 0.6s ease-out forwards;
+}
+
+.page-hub h2 {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    animation: fadeInDown 0.6s 0.2s ease-out forwards;
+    opacity: 0;
+}
+
+.page-hub header p {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    margin: 0 auto 1.5rem auto;
+    max-width: 650px;
+    animation: fadeInDown 0.6s 0.4s ease-out forwards;
+    opacity: 0;
+}
+
+.page-hub #search-bar {
+    width: 100%;
+    max-width: 600px;
+    padding: 14px 24px;
+    margin: 1rem auto 0 auto;
+    font-size: 1rem;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    box-shadow: var(--shadow-soft);
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 0.7s 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.page-hub #search-bar::placeholder {
+    color: var(--text-muted);
+}
+
+.page-hub #search-bar:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.hub-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.module-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: 2rem;
+    text-decoration: none;
+    color: var(--text-body);
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.module-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: var(--shadow-hard);
+    border-color: var(--primary-color);
+}
+
+.module-card .icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.module-card:hover .icon {
+    transform: scale(1.1);
+}
+
+.module-card h3 {
+    font-size: 1.5rem;
+    color: var(--text-title);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.module-card p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 0;
+    flex-grow: 1; 
+}
+
+/* Atraso em cascata para a animação dos cards */
+.page-hub .module-card:nth-child(1) { animation-delay: 0.7s; }
+.page-hub .module-card:nth-child(2) { animation-delay: 0.8s; }
+.page-hub .module-card:nth-child(3) { animation-delay: 0.9s; }
+.page-hub .module-card:nth-child(4) { animation-delay: 1.0s; }
+
+
+/* ==========================================================================
+   3. ESTILOS DAS PÁGINAS DE CONTEÚDO (page-content)
+   ========================================================================== */
+.page-content header {
+    background-color: var(--surface-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.5rem 2rem;
+    margin-bottom: 3rem;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.page-content .header-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.page-content main {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--surface-color);
+    border-radius: var(--border-radius-md);
+    padding: 2.5rem 3rem;
+    box-shadow: var(--shadow-medium);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.page-content main:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hard);
+}
+
+.page-content h1 {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--text-title);
+    margin-bottom: 0.25rem;
+}
+
+.page-content header p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.page-content h2 {
+    font-size: clamp(1.5rem, 3vw, 3rem);
+    font-weight: 800;
+    color: var(--text-title);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.page-content h2.subtitle {
+    font-size: clamp(1.8rem, 4vw, 2.2rem);
+    color: var(--primary-color);
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border-color);
+    font-weight: 700;
+}
+
+.page-content section:first-of-type h2.subtitle {
+    margin-top: 0;
+}
+
+.page-content p, .page-content li {
+    font-size: 1.1rem;
+    margin-bottom: 1.25rem;
+}
+
+.page-content strong {
+    color: var(--danger-color);
+    font-weight: 600;
+}
+
+.page-content a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease-in-out;
+}
+
+.page-content a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+.page-content header nav {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.page-content header nav a {
+    flex: 1;
+    background-color: transparent;
+    color: var(--text-body);
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    border-left: 1px solid var(--border-color);
+    box-shadow: none;
+    transition: all 0.2s ease-in-out;
+    white-space: nowrap;
+}
+
+.page-content header nav a:first-child {
+    border-left: none;
+}
+
+.page-content header nav a:hover,
+.page-content header nav a:focus-visible {
+    background-color: color-mix(in srgb, var(--primary-color) 8%, transparent);
+    color: var(--primary-hover);
+    transform: none;
+    box-shadow: none;
+    text-decoration: none;
+}
+
+.page-content #search-bar {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 1px solid var(--border-color);
+    background-color: var(--surface-color);
+    color: var(--text-body);
+    border-radius: 25px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.page-content #search-bar:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 25%, transparent);
+}
+
+.page-content .search-container {
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto 1.5rem auto;
+}
+
+.page-content code {
+    font-family: var(--font-code);
+    background-color: var(--code-bg-light);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-size: 0.95em;
+    color: var(--danger-color);
+}
+
+.page-content pre {
+    background-color: var(--code-bg-dark);
+    color: #abb2bf;
+    padding: 1.5rem;
+    border-radius: var(--border-radius-sm);
+    overflow-x: auto;
+    margin: 1rem 0 2rem 0;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.page-content pre code {
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+.page-content ul {
+    list-style: none;
+    padding-left: 1.5rem;
+}
+
+.page-content ul li {
+    position: relative;
+}
+
+/* ==========================================================================
+   4. ESTILOS DE COMPONENTES COMPARTILHADOS (Footer, Player, etc.)
+   ========================================================================== */
+
+footer {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    animation: fadeInUp 0.8s 1.2s ease-out forwards;
+    opacity: 0;
+    position: relative;
+    padding-top: 6rem; 
+    background: linear-gradient(to top, rgba(0,0,0,0.02), transparent);
+    margin-top: 4rem;
+}
+
+/* Este container do player é compartilhado, então não precisa de classe de página */
+#music-player-container {
+    max-width: 900px;
+    margin: -5rem auto 2rem auto; 
+    padding: 1rem 1.5rem;
+    background-color: var(--surface-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-medium);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 10;
+    opacity: 0;
+    border: 1px solid var(--border-color);
+    animation: fadeInUp 0.8s 1.2s ease-out forwards;
+}
+
+.track-info {
+    flex: 1;
+    min-width: 150px;
+}
+
+#track-title {
+    font-weight: 700;
+    color: var(--text-title);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#track-artist {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-grow: 1; 
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: var(--text-body);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.control-btn:hover {
+    background-color: var(--border-color);
+    transform: scale(1.1);
+}
+
+.control-btn.play {
+    background-color: var(--primary-color);
+    color: white;
+}
+.control-btn.play:hover {
+    background-color: var(--primary-hover);
+}
+
+#shuffle-btn.active {
+    color: var(--primary-color);
+}
+
+.progress-container, .volume-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.progress-container {
+    flex-basis: 100%;
+    order: 3;
+}
+
+.progress-container span, .volume-container i {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    background: var(--border-color);
+    outline: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.slider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s ease;
+}
+
+.slider:hover::-webkit-slider-thumb, .slider:hover::-moz-range-thumb {
+    background: var(--primary-hover);
+}
+
+.copyright {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    padding-top: 1rem;
+}
+
+
+/* ==========================================================================
+   5. RESPONSIVIDADE (Regras combinadas e ajustadas)
+   ========================================================================== */
+
+@media (max-width: 992px) {
+    body {
+        padding: 1.5rem;
+    }
+    .page-content main {
+        padding: 2rem 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-hub h1, .page-content h1 {
+        font-size: 2rem;
+    }
+    .page-hub header p, .page-content header p {
+        font-size: 1.1rem;
+    }
+    .page-content h2.subtitle {
+        font-size: 1.7rem;
+    }
+    .page-content p, .page-content li {
+        font-size: 1rem;
+    }
+    .player-controls {
+        flex-grow: 0; 
+    }
+    .progress-container {
+        flex: 2;
+        order: initial;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 1rem;
+        line-height: 1.6;
+    }
+    .hub-grid {
+        grid-template-columns: 1fr;
+    }
+    .page-content header {
+        margin-bottom: 2rem;
+    }
+    .page-content main {
+        padding: 1.5rem 1rem;
+        border-radius: var(--border-radius-sm);
+    }
+    .page-content header nav {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .page-content header nav a {
+        text-align: center;
+        padding: 14px 20px;
+    }
+    .page-content pre {
+        padding: 1rem;
+    }
+}
+
+/* ==================================================================
+   CORREÇÃO FINAL E GLOBAL PARA A BARRA DE BUSCA
+   Adicione este bloco inteiro ao FINAL do seu estilo-principal.css
+   ================================================================== */
+
+/* 1. O "Quadro de Avisos": Garante que o container seja a referência de posição. */
+.search-container {
+    position: relative; /* A regra mais importante! */
+    max-width: 600px;
+    margin: 1.5rem auto; /* Espaçamento consistente */
+}
+
+/* 2. O "Post-it": A caixa de resultados que flutua sobre o conteúdo. */
+.search-results-box {
+    display: none; /* Começa escondida. O JS vai mudar para 'block' para exibi-la. */
+    position: absolute;
+    width: 100%;
+    top: 100%; /* Posiciona a caixa logo abaixo do input. */
+    left: 0;
+    margin-top: 8px; /* Um pequeno espaço entre a barra e a caixa. */
+    background-color: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: var(--border-radius-md, 16px);
+    box-shadow: var(--shadow-hard, 0 12px 35px rgba(0, 0, 0, 0.1));
+    max-height: 350px; /* Limita a altura para não ficar gigante. */
+    overflow-y: auto;  /* Adiciona uma barra de rolagem se houver muitos resultados. */
+    z-index: 5000;     /* Garante que a caixa fique acima de TUDO na página. */
+}
+
+/* 3. O Estilo de cada item dentro da caixa de resultados. */
+.search-result-item {
+    display: block; /* Faz o link ocupar a linha inteira. */
+    padding: 14px 22px;
+    color: var(--text-body, #343a40);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-color, #e9ecef);
+    transition: background-color 0.2s ease;
+}
+
+.search-result-item:last-child {
+    border-bottom: none; /* Remove a borda do último item. */
+}
+
+.search-result-item:hover,
+.search-result-item.active { /* A classe .active é para a navegação com teclado. */
+    background-color: #f4f7f9;
+    color: var(--primary-color, #007BFF);
+    cursor: pointer;
+}
+
+/* 4. O estilo para a sugestão de autocompletar com Tab. */
+#autocomplete-suggestion {
+    position: absolute;
+    top: 1px;
+    left: 21px; /* Ajuste fino para alinhar com o texto digitado */
+    padding: 12px 0; /* Deve ser igual ao padding do input */
+    font-size: 16px; /* Deve ser igual ao font-size do input */
+    color: var(--text-muted, #6c757d);
+    z-index: -1; /* Fica "atrás" do texto do input */
+    pointer-events: none; /* Permite que o clique atravesse o elemento */
+}
+
+/* =======================================================
+   POSICIONAMENTO FINAL DA BARRA DE BUSCA GLOBAL
+   ======================================================= */
+
+/* 1. Prepara os cabeçalhos para servirem de "âncora" para a busca. */
+.page-hub header,
+.page-content header {
+    position: relative; /* Transforma o header no "quadro de avisos". */
+}
+
+/* 2. Transforma a busca em um elemento "flutuante". */
+.search-container {
+    position: absolute;   /* Solta a barra de busca do fluxo normal da página. */
+    z-index: 100;         /* Garante que ela fique acima do header. */
+    
+    /* 3. Posiciona a busca no lugar certo. */
+    width: 90%;           /* Largura máxima. */
+    max-width: 600px;
+    
+    /* Centraliza horizontalmente em relação ao header */
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* Ajusta a posição vertical. MUDE ESTE VALOR para subir/descer a barra! */
+    top: 260px; 
+}
+
+/* Ajuste fino para a página de conteúdo, que pode ter um header de altura diferente */
+.page-content .search-container {
+    top: 2.7px; /* Exemplo: um pouco mais para baixo. Ajuste conforme necessário. */
+    left: 21.7%;
+    transform: translateX(-50%);
+}

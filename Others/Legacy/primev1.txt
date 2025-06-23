@@ -1,0 +1,513 @@
+/* ==========================================================================
+   ARQUIVO CSS OTIMIZADO (estilo.css)
+   Organizado para clareza, manutenibilidade e responsividade.
+   ========================================================================== */
+
+/* ==========================================================================
+   1. CONFIGURAÇÕES GLOBAIS E RESET
+   ========================================================================== */
+
+:root {
+    /* Paleta de Cores */
+    --primary-color: #7e00c7;
+    --primary-hover: #6904bb;
+    --text-title: #1a202c;
+    --text-body: #343a40;
+    --text-muted: #6c757d;
+    --bg-color: #f4f7f9;
+    --surface-color: #ffffff;
+    --border-color: #e9ecef;
+    --code-bg-dark: #1b1919;
+    --code-bg-light: #e9ecef;
+    --danger-color: #dc3545;
+
+    /* Tipografia */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-code: 'Fira Code', 'Courier New', Courier, monospace;
+
+    /* Layout */
+    --border-radius-sm: 8px;
+    --border-radius-md: 16px;
+    --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.05);
+    --shadow-medium: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --shadow-hard: 0 12px 35px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--bg-color);
+    color: var(--text-body);
+    line-height: 1.7;
+    padding: 2rem;
+    overflow-x: hidden;
+    
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Garante que o corpo ocupe no mínimo toda a altura da tela */
+}
+
+body.dark-mode {
+  --bg-color: #121212;
+  --surface-color: #1e1e1e;
+  --text-title: #f1f1f1;
+  --text-body: #dcdcdc;
+  --text-muted: #a0a0a0;
+  --border-color: #2c2c2c;
+  --code-bg-light: #272525; /* se você usa fundo claro em blocos de código */
+}
+
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+*, *::before, *::after {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#theme-toggle {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 1000;
+
+  /* 1. Definir altura e largura iguais */
+  width: 50px;
+  height: 50px;
+  
+  /* 2. Remover o padding e usar flexbox para centralizar o ícone */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* 3. Aplicar o border-radius para criar o círculo */
+  border-radius: 50%;
+
+  background: var(--surface-color);
+  color: var(--text-body);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  transition: background 0.3s, color 0.3s, transform 0.3s;
+  font-size: 1.25rem;
+}
+
+#theme-toggle:hover {
+  background-color: var(--bg-color);
+  transform: translateY(-2px); /* Efeito sutil ao passar o mouse */
+}
+
+#theme-icon {
+  display: inline-block;
+  transition: transform 0.4s ease;
+}
+
+/* Roda o ícone quando troca de tema */
+body.dark-mode #theme-icon {
+  transform: rotate(180deg);
+}
+
+
+
+.page-hub, .page-content {
+    flex-grow: 1;
+}
+
+/* --- Animações Globais --- */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float-anim {
+    50% { transform: translateY(-6px); }
+}
+
+/* ==========================================================================
+   2. HEADER E BARRA DE PESQUISA
+   ========================================================================== */
+
+/* --- 2.1 Estrutura Base do Header --- */
+.page-hub header,
+.page-content header {
+    background: var(--surface-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-medium);
+    padding: 2.5rem;
+    margin: 0 auto;
+    position: relative; /* Contexto para posicionar elementos filhos */
+    text-align: center;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.page-hub header {
+    margin-bottom: 50px; /* Espaço entre o header e os cards */
+}
+
+.page-content header {
+    margin-bottom: 50px; /* Espaço entre o header e o conteúdo */
+}
+
+.page-hub header h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    animation: float-anim 5s ease-in-out infinite;
+}
+
+.page-content header h1 {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 700;
+}
+
+.page-content header nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.15rem;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.page-content header nav a {
+    color: var(--text-body);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    white-space: nowrap;
+    transition: all 0.2s ease-in-out;
+}
+
+.page-content header nav a:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+
+/* ==========================================================================
+   3. PÁGINA HUB (Grid de Módulos)
+   ========================================================================== */
+
+.page-hub main {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.hub-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.module-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: 2rem;
+    text-decoration: none;
+    color: var(--text-body);
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.module-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: var(--shadow-hard);
+    border-color: var(--primary-color);
+}
+
+.module-card .icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.module-card:hover .icon {
+    transform: scale(1.1);
+}
+
+.module-card h3 {
+    font-size: 1.5rem;
+    color: var(--text-title);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.module-card p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 0;
+    flex-grow: 1;
+}
+
+/* Animação em cascata dos cards */
+.page-hub .module-card:nth-child(1) { animation-delay: 0.7s; }
+.page-hub .module-card:nth-child(2) { animation-delay: 0.8s; }
+.page-hub .module-card:nth-child(3) { animation-delay: 0.9s; }
+.page-hub .module-card:nth-child(4) { animation-delay: 1.0s; }
+
+/* ==========================================================================
+   4. PÁGINAS DE CONTEÚDO
+   ========================================================================== */
+
+.page-content main {
+    max-width: 1000px;
+    margin: 2rem auto 0;
+    background: var(--surface-color);
+    border-radius: var(--border-radius-md);
+    padding: 2.5rem 3rem;
+    box-shadow: var(--shadow-medium);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.page-content main:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hard);
+}
+
+.page-content h2.subtitle {
+    font-size: clamp(1.8rem, 4vw, 2.2rem);
+    color: var(--primary-color);
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border-color);
+    font-weight: 700;
+}
+
+.page-content section:first-of-type h2.subtitle {
+    margin-top: 0;
+}
+
+.page-content p, .page-content li {
+    font-size: 1.1rem;
+    margin-bottom: 1.25rem;
+}
+
+.page-content strong {
+    color: var(--text-title);
+    font-weight: 600;
+}
+
+.page-content a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease-in-out;
+}
+
+.page-content a:hover {
+    background-color: var(--bg-color);
+    transform: translateY(-2px); /* Efeito sutil ao passar o mouse */
+}
+
+.page-content code {
+    font-family: var(--font-code);
+    background-color: var(--code-bg-light);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-size: 0.95em;
+    color: var(--danger-color);
+}
+
+.page-content pre {
+    background-color: var(--code-bg-dark);
+    color: #abb2bf;
+    padding: 1.5rem;
+    border-radius: var(--border-radius-sm);
+    overflow-x: auto;
+    margin: 1rem 0 2rem 0;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.page-content pre code {
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+.page-content ul {
+    list-style-position: outside;
+    padding-left: 1.5rem;
+}
+
+
+/* ==========================================================================
+   5. COMPONENTES COMPARTILHADOS (Footer)
+   ========================================================================== */
+
+footer {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 1.0rem;
+    padding: 2rem 0; /* Ajustado o padding */
+    margin-top: auto; /* Garante que o footer seja empurrado para o final do container flex */
+    width: 100%;
+    animation: fadeInUp 0.8s 1.2s ease-out forwards;
+}
+
+/* ==========================================================================
+   6. RESPONSIVIDADE (Regras consolidadas)
+   ========================================================================== */
+
+/* --- Telas Médias (Tablets) --- */
+@media (max-width: 992px) {
+    body {
+        padding: 1.5rem;
+    }
+    .page-content main {
+        padding: 2rem 2.5rem;
+    }
+}
+
+/* --- Telas Pequenas (Tablets em modo retrato e celulares grandes) --- */
+@media (max-width: 768px) {
+    .page-hub header, .page-content header {
+        margin-bottom: 60px;
+        padding: 2rem 1.5rem 60px 1.5rem;
+    }
+    .page-hub header h1 {
+        animation: none; /* Remove animação em telas menores */
+    }
+
+    /* Tipografia */
+    .page-hub h1, .page-content h1 {
+        font-size: 2rem;
+    }
+    .page-content h2.subtitle {
+        font-size: 1.7rem;
+    }
+    .page-content p, .page-content li {
+        font-size: 1rem;
+    }
+
+    /* Music Player */
+    .player-controls {
+        flex-grow: 0;
+    }
+    .progress-container {
+        flex: 2;
+        order: initial; /* Ordem natural no layout flex */
+    }
+}
+
+/* --- Telas Muito Pequenas (Celulares) --- */
+@media (max-width: 480px) {
+    body {
+        padding: 1rem;
+        line-height: 1.6;
+    }
+
+    .hub-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page-content main {
+        padding: 1.5rem 1rem;
+        border-radius: var(--border-radius-sm);
+        margin-top: 1rem;
+    }
+    .page-content header {
+        margin-bottom: 4rem;
+    }
+    .page-content header nav {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+    .page-content header nav a {
+        text-align: center;
+        padding: 12px 20px;
+    }
+    .page-content pre {
+        padding: 1rem;
+    }
+}
+
+/* ==========================================================================
+   7. PLAYER DE MÚSICA CONTROLÁVEL
+   ========================================================================== */
+
+/* Garante que o conteúdo do rodapé não seja coberto pelo player quando ele estiver visível */
+body {
+    padding-bottom: 0px;
+}
+
+/* --- ESTILOS DO PLAYER (sem alterações) --- */
+#player-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999; /* Z-index um pouco menor que o botão */
+    transition: transform 0.4s ease-in-out;
+}
+
+#player-wrapper.is-hidden {
+    transform: translateY(100%); /* Esconde o player completamente */
+}
+
+#player-wrapper iframe {
+    width: 100%;
+    height: 155px;
+    border: none;
+    display: block;
+}
+
+
+/* --- CSS MODIFICADO PARA O BOTÃO --- */
+#toggle-player-btn {
+    position: fixed; /* Posição fixa na tela */
+    bottom: 80px;  /* Distância do fundo (ajuste se necessário para ficar acima do botão de tema) */
+    right: 15px; /* Distância da direita */
+    width: 50px; /* Largura do botão */
+    height: 50px; /* Altura do botão */
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 50%; /* Deixa o botão perfeitamente circular */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 1001; /* Garante que fique acima de outros elementos */
+    color: var(--text-title);
+    font-size: 1.5rem; /* Tamanho do emoji */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+#toggle-player-btn:hover {
+    background-color: var(--bg-color);
+    transform: translateY(-2px); /* Efeito sutil ao passar o mouse */
+}

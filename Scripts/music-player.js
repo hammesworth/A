@@ -22,8 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 2. Playlist ---
     const playlist = [
         { title: 'song 1', artist: 'Lu', src: '../Music/song1.mp3' },
+        { title: 'places', artist: 'Lu', src: '../Music/song2.mp3' },
+        { title: 'blocks', artist: 'Lu', src: '../Music/song3.mp3' },
         { title: 'Dreamer', artist: 'Hazy', src: '../Music/Dreamer.mp3' },
         { title: 'Sophie', artist: 'Lu', src: '../Music/Sophie.mp3' },
+        { title: 'free roam', artist: 'Lu', src: '../Music/free roam.mp3' },
     ];
 
     let currentTrackIndex = 0;

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../estilo.css">
+
+    <link rel="icon" type="image/png" href="../Others/Icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../Others/Icons/favicon.svg" />
+    <link rel="shortcut icon" href="../Others/Icons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../Others/Icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Microspace" />
+    <link rel="manifest" href="../Others/Icons/site.webmanifest" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Arquitetura Computacional Básica</title>
+ 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
+</head>
+
+<body data-barba="wrapper">
+
+    <button id="theme-toggle" aria-label="Alternar tema" title="Alternar tema">
+        <span id="theme-icon">🌙</span>
+    </button>
+
+    <div data-barba="container" data-barba-namespace="Arquitetura-Basica" namespace="default-view">
+
+<header>
+
+    <h1>Arquitetura Computacional Básica ⚙️</h1>
+    <p>Os fundamentos da computação: sistemas numéricos e portas lógicas</p>
+
+    <nav>
+
+        <p><a href="../index.html" class="nav-link">Inicío 🏡</a></p>
+        <p><a href="../Hubs/ArquiteturaComp-Hub.html" class="nav-link"> Arquitetura ⚙️</a></p>
+        <p><a href="../Hubs/Matematica-Hub.html" class="nav-link">Matemática ✖️</a></p>
+        <p><a href="../Hubs/Cpp-Hub.html" class="nav-link">C++ 🔧</a></p>
+        <p><a href="../Hubs/InfoBasica-Hub.html" class="nav-link">Info Básica 🖥️</a></p>
+        <p><a href="../Hubs/DesignWeb-Hub.html" class="nav-link">Design Web 🌐</a></p>
+        <p><a href="../Hubs/Jogos-Hub.html" class="nav-link">Jogos 🕹️</a></p>
+
+    </nav>
+
+</header>
+
+<main>
+<div id="basic-architecture-intro">
+
+    <section>
+      <h2 class="subtitle">🔢 Por Que os Computadores Falam Outra Língua?</h2>
+      <p>Nós, humanos, usamos o sistema decimal (base 10) para tudo. Temos 10 dedos, então contar de 0 a 9 é natural. Computadores, no entanto, não têm dedos. Eles têm transistores, que são pequenas chaves eletrônicas que podem estar em um de dois estados: <strong>ligado</strong> ou <strong>desligado</strong>. Para representar esses estados, usamos o sistema binário (base 2), com apenas dois algarismos: <strong>1</strong> (ligado, verdadeiro, com tensão) e <strong>0</strong> (desligado, falso, sem tensão). Toda a complexidade de um computador, desde jogos a vídeos e textos, é construída sobre essa base simples. Para facilitar a leitura de longas sequências de 0s e 1s, usamos outras bases, como Octal (base 8) e Hexadecimal (base 16), que são formas compactas de representar o código binário.</p>
+    </section>
+
+    <section>
+        <h2 class="subtitle">📜 As Bases Numéricas Essenciais</h2>
+        <p>Entender como os números são representados em diferentes bases é o primeiro passo para compreender como o hardware funciona.</p>
+        
+        <h3 class="sub-subtitle">1. Sistema Decimal (Base 10) - O Nosso Mundo</h3>
+        <p>É o sistema que usamos todos os dias. Possui 10 símbolos (0, 1, 2, 3, 4, 5, 6, 7, 8, 9). Cada posição de um número representa uma potência de 10.</p>
+        <p><em>Exemplo:</em> O número <strong>345</strong> é, na verdade, <code>(3 * 10²) + (4 * 10¹) + (5 * 10⁰) = 300 + 40 + 5 = 345</code>.</p>
+
+        <h3 class="sub-subtitle">2. Sistema Binário (Base 2) - A Língua dos Computadores</h3>
+        <p>A base de toda a computação moderna. Usa apenas dois símbolos: <strong>0</strong> e <strong>1</strong>. Cada posição é uma potência de 2. Uma única unidade binária é chamada de <strong>bit</strong>.</p>
+        <p><em>Exemplo de Conversão (Binário para Decimal):</em> O número binário <strong>1011</strong>.</p>
+        <pre class="code">
+Posição:   3  2  1  0
+Binário:   1  0  1  1
+Cálculo: (1*2³) + (0*2²) + (1*2¹) + (1*2⁰)
+Resultado: 8 + 0 + 2 + 1 = 11 (em decimal)
+        </pre>
+        <p><em>Exemplo de Conversão (Decimal para Binário):</em> Converter o número <strong>13</strong> para binário usando divisões sucessivas por 2.</p>
+        <pre class="code">
+13 ÷ 2 = 6, Resto: 1 (LSB - Bit Menos Significativo)
+ 6 ÷ 2 = 3, Resto: 0
+ 3 ÷ 2 = 1, Resto: 1
+ 1 ÷ 2 = 0, Resto: 1 (MSB - Bit Mais Significativo)
+        
+Lendo os restos de baixo para cima: 1101.
+Portanto, 13 (decimal) = 1101 (binário).
+        </pre>
+
+        <h3 class="sub-subtitle">3. Sistema Hexadecimal (Base 16) - O Atalho dos Programadores</h3>
+        <p>Muito usado para representar cores (ex: <code>#FFFFFF</code> para branco), endereços de memória e dados binários de forma compacta. Usa 16 símbolos: <strong>0-9</strong> e as letras <strong>A, B, C, D, E, F</strong> (que representam 10, 11, 12, 13, 14 e 15, respectivamente).</p>
+        <p>A "mágica" do hexadecimal é que cada dígito hexadecimal corresponde a exatamente <strong>4 bits</strong> binários.</p>
+        <p><em>Exemplo de Conversão (Binário para Hexadecimal):</em> O número binário <strong>11010101</strong>.</p>
+        <pre class="code">
+// 1. Separe o binário em grupos de 4 bits, da direita para a esquerda.
+Binário: 1101 0101
+
+// 2. Converta cada grupo para seu equivalente hexadecimal.
+1101 = (8+4+0+1) = 13 = D
+0101 = (0+4+0+1) = 5  = 5
+
+// 3. Junte os resultados.
+Resultado: D5 (em hexadecimal)
+        </pre>
+
+        <h3 class="sub-subtitle">4. Sistema Octal (Base 8) - O Parente Mais Antigo</h3>
+        <p>Menos comum hoje em dia, mas historicamente importante (usado em sistemas como o PDP-8). Usa 8 símbolos: <strong>0-7</strong>. Cada dígito octal corresponde a exatamente <strong>3 bits</strong> binários.</p>
+        <p><em>Exemplo de Conversão (Binário para Octal):</em> O número binário <strong>110101</strong>.</p>
+        <pre class="code">
+// 1. Separe em grupos de 3 bits.
+Binário: 110 101
+
+// 2. Converta cada grupo.
+110 = (4+2+0) = 6
+101 = (4+0+1) = 5
+
+// 3. Junte os resultados.
+Resultado: 65 (em octal)
+        </pre>
+    </section>
+
+    <section>
+        <h2 class="subtitle">⚡ As Portas Lógicas: O Cérebro do Circuito</h2>
+        <p>Se os bits são os "átomos" da informação, as portas lógicas são as "moléculas". Elas são circuitos eletrônicos simples que recebem uma ou mais entradas (bits) e produzem uma única saída (bit) com base em uma regra lógica. São os blocos de construção de tudo, desde uma simples calculadora até um processador complexo.</p>
+
+        <h3 class="sub-subtitle">Porta AND</h3>
+        <p><strong>Função:</strong> A saída é 1 <strong>somente se TODAS</strong> as entradas forem 1. Pense em dois interruptores em série para ligar uma lâmpada: ambos precisam estar ligados.<br><strong>Expressão Booleana:</strong> <code>S = A . B</code></p>
+        <pre class="code">
+-- Tabela Verdade (2 entradas) --
+ A | B | S
+---+---+---
+ 0 | 0 | 0
+ 0 | 1 | 0
+ 1 | 0 | 0
+ 1 | 1 | 1
+        </pre>
+
+        <h3 class="sub-subtitle">Porta OR</h3>
+        <p><strong>Função:</strong> A saída é 1 <strong>se PELO MENOS UMA</strong> das entradas for 1. Pense em dois interruptores em paralelo: qualquer um deles liga a lâmpada.<br><strong>Expressão Booleana:</strong> <code>S = A + B</code></p>
+        <pre class="code">
+-- Tabela Verdade (2 entradas) --
+ A | B | S
+---+---+---
+ 0 | 0 | 0
+ 0 | 1 | 1
+ 1 | 0 | 1
+ 1 | 1 | 1
+        </pre>
+
+        <h3 class="sub-subtitle">Porta NOT (Inversor)</h3>
+        <p><strong>Função:</strong> A mais simples de todas. Ela apenas <strong>inverte</strong> a entrada. Se entra 0, sai 1. Se entra 1, sai 0.<br><strong>Expressão Booleana:</strong> <code>S = ¬A</code> ou <code>S = A'</code></p>
+        <pre class="code">
+-- Tabela Verdade --
+ A | S
+---+---
+ 0 | 1
+ 1 | 0
+        </pre>
+
+        <h3 class="sub-subtitle">Porta NAND (NOT AND)</h3>
+        <p><strong>Função:</strong> É o exato oposto da porta AND. A saída é 0 <strong>somente se TODAS</strong> as entradas forem 1.<br><strong>Expressão Booleana:</strong> <code>S = ¬(A . B)</code></p>
+        <pre class="code">
+-- Tabela Verdade (2 entradas) --
+ A | B | S
+---+---+---
+ 0 | 0 | 1
+ 0 | 1 | 1
+ 1 | 0 | 1
+ 1 | 1 | 0
+        </pre>
+
+        <h3 class="sub-subtitle">Porta NOR (NOT OR)</h3>
+        <p><strong>Função:</strong> O exato oposto da porta OR. A saída é 1 <strong>somente se TODAS</strong> as entradas forem 0.<br><strong>Expressão Booleana:</strong> <code>S = ¬(A + B)</code></p>
+        <pre class="code">
+-- Tabela Verdade (2 entradas) --
+ A | B | S
+---+---+---
+ 0 | 0 | 1
+ 0 | 1 | 0
+ 1 | 0 | 0
+ 1 | 1 | 0
+        </pre>
+        
+        <h3 class="sub-subtitle">Porta XOR (OU Exclusivo)</h3>
+        <p><strong>Função:</strong> A saída é 1 <strong>somente se as entradas forem DIFERENTES</strong>. É um detector de diferença.<br><strong>Expressão Booleana:</strong> <code>S = A ⊕ B</code></p>
+        <pre class="code">
+-- Tabela Verdade (2 entradas) --
+ A | B | S
+---+---+---
+ 0 | 0 | 0
+ 0 | 1 | 1
+ 1 | 0 | 1
+ 1 | 1 | 0
+        </pre>
+
+        <h3 class="sub-subtitle">Porta XNOR (NÃO OU Exclusivo)</h3>
+        <p><strong>Função:</strong> O oposto da XOR. A saída é 1 <strong>somente se as entradas forem IGUAIS</strong>. É um detector de igualdade ou "porta de equivalência".<br><strong>Expressão Booleana:</strong> <code>S = ¬(A ⊕ B)</code></p>
+        <pre class="code">
+-- Tabela Verdade (2 entradas) --
+ A | B | S
+---+---+---
+ 0 | 0 | 1
+ 0 | 1 | 0
+ 1 | 0 | 0
+ 1 | 1 | 1
+        </pre>
+    </section>
+
+</div>
+
+</main>
+
+<footer>
+    
+    <p>
+    <a href="../Hubs/ArquiteturaComp-Hub.html"><i class="fa-solid fa-circle-chevron-left"></i></a>
+    <a href="../index.html"><i class="fa-solid fa-house-chimney"></i></a>
+    <a href="#"><i class="fa-solid fa-circle-chevron-up"></i></a>
+    </p>
+
+    <p class="copyright"> ©️ 2025 - Lucas Willian</p>
+
+</footer>
+
+</div>
+
+    <div id="player-wrapper" class="is-hidden">
+
+    <iframe 
+        id="meu-player-de-musica"
+        src="../Player/player.html"
+        title="Player de Música"
+        frameborder="0"
+        allow="autoplay">
+    </iframe>
+
+    </div>
+
+    <button id="toggle-player-btn" aria-label="Controlar Player">
+    🎵
+    </button>
+
+    <script src="../Scripts/sound-effects.js" defer></script>
+    <script src="../Scripts/player-toggle.js" defer></script>
+    <script src="../Scripts/status-bar.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="../Scripts/barba-init.js" defer></script>
+
+    <script src="../Scripts/theme-toggle.js" defer></script>
+
+</body>
+</html>
