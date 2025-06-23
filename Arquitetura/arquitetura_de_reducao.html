@@ -140,6 +140,33 @@
 
     </section>
 
+<section>
+
+<h3 class="sub-subtitle">11. Identidades Auxiliares (Teoremas de Simplificação Avançada)</h3>
+<p>Além dos teoremas fundamentais, existem algumas identidades derivadas que funcionam como atalhos poderosos para simplificar expressões comuns de forma rápida.</p>
+
+<h4>a) Absorção (Forma Dual)</h4>
+<p><strong>Regra:</strong> <code>A . (A + B) = A</code></p>
+<p><em>Explicação:</em> Assim como na forma original (<code>A + A.B = A</code>), esta regra mostra que um termo pode "absorver" outro. Aqui, um termo A que multiplica uma soma que já o contém resulta apenas nele mesmo. A prova é simples: expandindo com a distributiva, temos <code>A.A + A.B</code>. Pela idempotência, isso vira <code>A + A.B</code>, que sabemos pela primeira regra de absorção que é igual a <code>A</code>.</p>
+
+<h4>b) Adjacência (ou Redundância)</h4>
+<p><strong>Regra 1:</strong> <code>A + A'.B = A + B</code></p>
+<p><strong>Regra 2 (Dual):</strong> <code>A . (A' + B) = A . B</code></p>
+<p><em>Explicação:</em> Este é um dos teoremas mais úteis. A primeira regra diz que se você tem um termo (A) somado a seu complemento multiplicado por outra coisa (A'.B), o complemento (A') pode ser simplesmente eliminado. Foi essa regra que usamos para resolver o Exemplo 2 na seção de prática. A segunda regra (dual) aplica a mesma lógica para a multiplicação.</p>
+
+<h4>c) Teorema do Consenso</h4>
+<p><strong>Regra:</strong> <code>A.B + A'.C + B.C = A.B + A'.C</code></p>
+<p><em>Explicação:</em> Este é o teorema mais avançado e poderoso para simplificações complexas. Ele diz que, se você tem uma expressão com três termos, onde uma variável (A) aparece em um termo e seu complemento (A') aparece em outro, o terceiro termo (chamado de "termo de consenso"), formado pelas partes restantes dos dois primeiros (B e C), é <strong>redundante</strong> e pode ser eliminado.</p>
+<p><em>Por que funciona?</em> O termo <code>B.C</code> só é verdadeiro (1) quando B=1 e C=1. Vamos analisar o que acontece com o lado esquerdo da equação nesse cenário:
+    <ul>
+        <li>Se A=1, o lado esquerdo vira <code>1.B + 0.C + B.C</code> &rarr; <code>B + 0 + B.C</code> &rarr; <code>B + B.C</code>. Pela absorção, isso é apenas <code>B</code>. Como B=1, o resultado é 1.</li>
+        <li>Se A=0, o lado esquerdo vira <code>0.B + 1.C + B.C</code> &rarr; <code>0 + C + B.C</code> &rarr; <code>C + B.C</code>. Pela absorção, isso é apenas <code>C</code>. Como C=1, o resultado é 1.</li>
+    </ul>
+Em ambos os casos, o valor do termo <code>B.C</code> já estava "coberto" pelos outros dois termos (<code>A.B</code> ou <code>A'.C</code>). Por isso, ele é redundante e pode ser removido para simplificar o circuito.
+</p>
+
+</section>
+
     <section>
       <h2 class="subtitle">🛠️ Simplificação na Prática</h2>
       <p>Vamos aplicar essas ferramentas para transformar expressões complexas em expressões mais simples.</p>

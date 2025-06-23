@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../estilo.css">
+
+    <link rel="icon" type="image/png" href="../Others/Icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../Others/Icons/favicon.svg" />
+    <link rel="shortcut icon" href="../Others/Icons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../Others/Icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Microspace" />
+    <link rel="manifest" href="../Others/Icons/site.webmanifest" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://css.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Guia Detalhado sobre Tabelas-Verdade</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+    <style>
+        .truth-table-container {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family:¬ Fira Cod¬e, monospace;
+            text-align: center;
+        }
+        th, td {
+            border: 1px solid #555;
+            padding: 10px;
+        }
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+        td.input-col {
+            background-color: rgba(0, 100, 255, 0.1);
+        }
+        td.output-col {
+            background-color: rgba(0, 255, 100, 0.15);
+            font-weight: bold;
+        }
+        td.intermediate-col {
+             background-color: rgba(255, 150, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body data-barba="wrapper">
+
+    <button id="theme-toggle" aria-label="Alternar tema" title="Alternar tema">
+        <span id="theme-icon">🌙</span>
+    </button>
+
+    <div data-barba="container" data-barba-namespace="Arquitetura-TabelasVerdade" namespace="default-view">
+
+<header>
+
+    <h1>Guia Detalhado sobre Tabelas-Verdade 📋</h1>
+    <p>Decifrando o comportamento dos circuitos lógicos, uma linha de cada vez</p>
+
+    <nav>
+
+        <p><a href="../index.html" class="nav-link">Inicío 🏡</a></p>
+        <p><a href="../Hubs/ArquiteturaComp-Hub.html" class="nav-link"> Arquitetura ⚙️</a></p>
+        <p><a href="../Hubs/Matematica-Hub.html" class="nav-link">Matemática ✖️</a></p>
+        <p><a href="../Hubs/Cpp-Hub.html" class="nav-link">C++ 🔧</a></p>
+        <p><a href="../Hubs/InfoBasica-Hub.html" class="nav-link">Info Básica 🖥️</a></p>
+        <p><a href="../Hubs/DesignWeb-Hub.html" class="nav-link">Design Web 🌐</a></p>
+        <p><a href="../Hubs/Jogos-Hub.html" class="nav-link">Jogos 🕹️</a></p>
+
+    </nav>
+
+</header>
+
+<main>
+    <section>
+        <h2 class="subtitle">O que é uma Tabela-Verdade?</h2>
+        <p>Uma <strong>Tabela-Verdade</strong> é uma ferramenta matemática usada para mapear sistematicamente todas as combinações de valores lógicos de entrada para o seu resultado lógico correspondente. Em essência, ela é a "prova definitiva" do comportamento de uma expressão booleana ou de um circuito lógico. Ela não deixa espaço para ambiguidades: para um conjunto específico de entradas, a saída será sempre a mesma.</p>
+        <p>A beleza da tabela-verdade está em sua simplicidade e poder. Ela nos permite analisar e prever o funcionamento de um circuito antes mesmo de construí-lo, sendo uma ferramenta indispensável no design e na depuração de sistemas digitais.</p>
+    </section>
+
+    <section>
+        <h2 class="subtitle">A Estrutura de uma Tabela-Verdade</h2>
+        <p>Toda tabela-verdade possui uma estrutura bem definida:</p>
+        <ul>
+            <li><strong>Colunas de Entrada:</strong> Representam todas as variáveis da expressão (A, B, C, etc.).</li>
+            <li><strong>Colunas Intermediárias:</strong> Opcionais, mas extremamente úteis para resolver expressões complexas. Elas mostram o resultado de sub-expressões.</li>
+            <li><strong>Coluna de Saída:</strong> Mostra o resultado final da expressão booleana para cada combinação de entradas.</li>
+            <li><strong>Linhas:</strong> Cada linha representa uma única combinação possível de valores para as variáveis de entrada.</li>
+        </ul>
+        <h3 class="sub-subtitle">Quantas Linhas Eu Preciso? A Fórmula 2^n</h3>
+        <p>O número de linhas em uma tabela-verdade é determinado pelo número de variáveis de entrada. A regra é simples: se você tem <strong>n</strong> variáveis, terá <strong>2^n</strong> linhas (combinações de entrada possíveis).</p>
+        <ul>
+            <li><strong>1 variável (A):</strong> 2^1 = 2 linhas (0, 1)</li>
+            <li><strong>2 variáveis (A, B):</strong> 2^2 = 4 linhas (00, 01, 10, 11)</li>
+            <li><strong>3 variáveis (A, B, C):</strong> 2^3 = 8 linhas (000, 001, ..., 111)</li>
+            <li><strong>4 variáveis (A, B, C, D):</strong> 2^4 = 16 linhas.</li>
+        </ul>
+        <p>Perceba que o número de combinações dobra a cada nova variável adicionada. Para preencher as colunas de entrada sistematicamente, a coluna mais à direita alterna 0, 1, 0, 1... A próxima alterna 0, 0, 1, 1... A seguinte alterna 0, 0, 0, 0, 1, 1, 1, 1... e assim por diante. Isso garante que todas as combinações sejam listadas sem repetições ou omissões.</p>
+    </section>
+    
+    <section>
+        <h2 class="subtitle">Construindo Tabelas-Verdade: Passo a Passo</h2>
+        <p>Vamos construir tabelas para expressões, começando pelas mais simples e avançando para as mais complexas.</p>
+
+        <h3 class="sub-subtitle">Exemplo 1: Expressão Simples com NOT e AND -> F = ¬A · B</h3>
+        <ol>
+            <li><strong>Identificar Variáveis:</strong> Temos 2 variáveis (A e B). Portanto, teremos 2^2 = 4 linhas.</li>
+            <li><strong>Listar Entradas:</strong> Criamos colunas para A e B e listamos todas as 4 combinações.</li>
+            <li><strong>Colunas Intermediárias:</strong> A expressão tem uma parte negada (¬A). É uma boa prática criar uma coluna para ¬A e calcular seus valores invertendo a coluna A.</li>
+            <li><strong>Calcular a Saída Final:</strong> Agora, calculamos a coluna final (F) fazendo a operação AND entre a coluna intermediária ¬A e a coluna de entrada B. Lembre-se, AND (·) só é 1 quando ambos os operandos são 1.</li>
+        </ol>
+
+        <div class="truth-table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>¬A</th>
+                        <th>F = ¬A · B</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="input-col">0</td>
+                        <td class="input-col">0</td>
+                        <td class="intermediate-col">1</td>
+                        <td class="output-col">0</td> <!-- 1 · 0 = 0 -->
+                    </tr>
+                    <tr>
+                        <td class="input-col">0</td>
+                        <td class="input-col">1</td>
+                        <td class="intermediate-col">1</td>
+                        <td class="output-col">1</td> <!-- 1 · 1 = 1 -->
+                    </tr>
+                    <tr>
+                        <td class="input-col">1</td>
+                        <td class="input-col">0</td>
+                        <td class="intermediate-col">0</td>
+                        <td class="output-col">0</td> <!-- 0 · 0 = 0 -->
+                    </tr>
+                    <tr>
+                        <td class="input-col">1</td>
+                        <td class="input-col">1</td>
+                        <td class="intermediate-col">0</td>
+                        <td class="output-col">0</td> <!-- 0 · 1 = 0 -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 class="sub-subtitle">Exemplo 2: Expressão Complexa -> F = (A + B) ⊕ (B · C)</h3>
+        <p>Aqui, a abordagem de colunas intermediárias se torna crucial.</p>
+         <ol>
+            <li><strong>Identificar Variáveis:</strong> 3 variáveis (A, B, C). Teremos 2^3 = 8 linhas.</li>
+            <li><strong>Listar Entradas:</strong> Criamos e preenchemos as colunas A, B e C.</li>
+            <li><strong>Colunas Intermediárias:</strong>
+                <ul>
+                    <li>Primeiro, criamos uma coluna para o primeiro parêntese: <code>(A + B)</code>.</li>
+                    <li>Depois, criamos outra para o segundo parêntese: <code>(B · C)</code>.</li>
+                </ul>
+            </li>
+            <li><strong>Calcular a Saída Final:</strong> A coluna final, F, é o resultado da operação XOR (⊕) entre as duas colunas intermediárias que acabamos de criar. Lembre-se, XOR é 1 apenas quando as entradas são diferentes.</li>
+        </ol>
+        
+        <div class="truth-table-container">
+             <table>
+                <thead>
+                    <tr>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>C</th>
+                        <th>(A + B)</th>
+                        <th>(B · C)</th>
+                        <th>F = (A+B)⊕(B·C)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="input-col">0</td><td class="input-col">0</td><td class="input-col">0</td><td class="intermediate-col">0</td><td class="intermediate-col">0</td><td class="output-col">0</td></tr>
+                    <tr><td class="input-col">0</td><td class="input-col">0</td><td class="input-col">1</td><td class="intermediate-col">0</td><td class="intermediate-col">0</td><td class="output-col">0</td></tr>
+                    <tr><td class="input-col">0</td><td class="input-col">1</td><td class="input-col">0</td><td class="intermediate-col">1</td><td class="intermediate-col">0</td><td class="output-col">1</td></tr>
+                    <tr><td class="input-col">0</td><td class="input-col">1</td><td class="input-col">1</td><td class="intermediate-col">1</td><td class="intermediate-col">1</td><td class="output-col">0</td></tr>
+                    <tr><td class="input-col">1</td><td class="input-col">0</td><td class="input-col">0</td><td class="intermediate-col">1</td><td class="intermediate-col">0</td><td class="output-col">1</td></tr>
+                    <tr><td class="input-col">1</td><td class="input-col">0</td><td class="input-col">1</td><td class="intermediate-col">1</td><td class="intermediate-col">0</td><td class="output-col">1</td></tr>
+                    <tr><td class="input-col">1</td><td class="input-col">1</td><td class="input-col">0</td><td class="intermediate-col">1</td><td class="intermediate-col">0</td><td class="output-col">1</td></tr>
+                    <tr><td class="input-col">1</td><td class="input-col">1</td><td class="input-col">1</td><td class="intermediate-col">1</td><td class="intermediate-col">1</td><td class="output-col">0</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="subtitle">Da Tabela-Verdade para a Expressão Lógica</h2>
+        <p>A tabela-verdade também pode ser usada no sentido inverso: se você tem uma descrição funcional de um circuito (ou seja, uma tabela-verdade completa), você pode derivar a expressão booleana correspondente. O método mais comum é a <strong>Soma de Produtos (Sum of Products - SOP)</strong>.</p>
+        <ol>
+            <li><strong>Foque nas Saídas 1:</strong> Encontre todas as linhas na tabela-verdade onde a saída final (F) é igual a 1.</li>
+            <li><strong>Crie os Termos de Produto (Minterms):</strong> Para cada uma dessas linhas, escreva um termo AND (um produto) que só será verdadeiro para aquela combinação específica de entradas. Para fazer isso, se uma variável de entrada é <code>1</code>, use-a como está. Se for <code>0</code>, use sua forma negada (<code¬></code>).</li>
+            <li><strong>Some os Termos:</strong> A expressão final é a soma (operação OR) de todos os termos de produto que você criou.</li>
+        </ol>
+        <p><strong>Exemplo:</strong> Vamos usar a tabela do circuito XOR.</p>
+        <div class="truth-table-container">
+            <table>
+                <thead><tr><th>A</th><th>B</th><th>F</th><th>Termo de Produto (Minterm)</th></tr></thead>
+                <tbody>
+                    <tr><td>0</td><td>0</td><td class="output-col">0</td><td></td></tr>
+                    <tr style="background-color: #d9ff00;"><td>0</td><td>1</td><td class="output-col">1</td><td>¬A · B</td></tr>
+                    <tr style="background-color: #d9ff00;"><td>1</td><td>0</td><td class="output-col">1</td><td>A · ¬B</td></tr>
+                    <tr><td>1</td><td>1</td><td class="output-col">0</td><td></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>As saídas 1 ocorrem na segunda e terceira linhas. O termo para a segunda linha é <code>¬AB</code> (pois A=0 e B=1). O termo para a terceira linha é <code>A¬B</code> (pois A=1 e B=0). Somando-os, obtemos a expressão canônica para o XOR: <strong>F = ¬AB + A¬B</strong>.</p>
+        <p>Esta expressão pode então ser usada para construir o circuito ou ser simplificada usando teoremas booleanos ou Mapas de Karnaugh.</p>
+    </section>
+</main>
+
+<footer>
+
+    <p>
+    <a href="./Guia_Completo_de_Portas_Logicas.html"><i class="fa-solid fa-circle-chevron-left"></i></a>
+    <a href="../index.html"><i class="fa-solid fa-house-chimney"></i></a>
+    <a href="#"><i class="fa-solid fa-circle-chevron-up"></i></a>
+    </p>
+
+    <p class="copyright"> ©️ 2025 - Lucas Willian</p>
+    
+</footer>
+
+</div>
+
+    <div id="player-wrapper" class="is-hidden">
+
+    <iframe 
+        id="meu-player-de-musica"
+        src="../player/player.html"
+        title="Player de Música"
+        frameborder="0"
+        allow="autoplay">
+    </iframe>
+
+    </div>
+
+    <button id="toggle-player-btn" aria-label="Controlar Player">
+    🎵
+    </button>
+
+    <!-- Mantendo os scripts originais para compatibilidade -->
+    <script src="../Scripts/sound-effects.js" defer></script>
+    <script src="../Scripts/player-toggle.js" defer></script>
+    <script src="../Scripts/status-bar.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="../Scripts/barba-init.js" defer></script>
+
+    <script src="../Scripts/theme-toggle.js" defer></script>
+
+</body>
+</html>

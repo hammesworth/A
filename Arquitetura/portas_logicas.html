@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../estilo.css">
+
+    <link rel="icon" type="image/png" href="../Others/Icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../Others/Icons/favicon.svg" />
+    <link rel="shortcut icon" href="../Others/Icons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../Others/Icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Microspace" />
+    <link rel="manifest" href="../Others/Icons/site.webmanifest" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://css.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Guia Completo de Portas Lógicas</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+    <style>
+        .gate-container {
+            border: 1px solid #444;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            background-color: rgba(0,0,0,0.1);
+        }
+        .gate-symbol {
+            font-family: 'Fira Code', monospace;
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 150px;
+        }
+        .gate-symbol svg {
+            stroke: #abb2bf;
+            stroke-width: 5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+        }
+    </style>
+</head>
+
+<body data-barba="wrapper">
+
+    <button id="theme-toggle" aria-label="Alternar tema" title="Alternar tema">
+        <span id="theme-icon">🌙</span>
+    </button>
+
+    <div data-barba="container" data-barba-namespace="Arquitetura-PortasLogicas" namespace="default-view">
+
+<header>
+
+    <h1>Guia Completo de Portas Lógicas ⚡</h1>
+    <p>Os blocos de construção fundamentais de todo hardware digital</p>
+
+    <nav>
+
+        <p><a href="../index.html" class="nav-link">Inicío 🏡</a></p>
+        <p><a href="../Hubs/ArquiteturaComp-Hub.html" class="nav-link"> Arquitetura ⚙️</a></p>
+        <p><a href="../Hubs/Matematica-Hub.html" class="nav-link">Matemática ✖️</a></p>
+        <p><a href="../Hubs/Cpp-Hub.html" class="nav-link">C++ 🔧</a></p>
+        <p><a href="../Hubs/InfoBasica-Hub.html" class="nav-link">Info Básica 🖥️</a></p>
+        <p><a href="../Hubs/DesignWeb-Hub.html" class="nav-link">Design Web 🌐</a></p>
+        <p><a href="../Hubs/Jogos-Hub.html" class="nav-link">Jogos 🕹️</a></p>
+
+    </nav>
+
+</header>
+
+<main>
+    <section>
+      <h2 class="subtitle">🧱 O que são Portas Lógicas?</h2>
+      <p>Uma <strong>Porta Lógica</strong> (Logic Gate) é um dispositivo eletrônico, um bloco de construção fundamental de um circuito digital. A maioria das portas lógicas tem duas entradas e uma saída. Em qualquer momento, cada terminal está em um dos dois estados binários, <code>0</code> (baixo) ou <code>1</code> (alto). O estado do terminal de saída é determinado pelo tipo de porta e pelos estados dos terminais de entrada.</p>
+      <p>Elas são a manifestação física da Álgebra Booleana. Compreender cada uma delas é essencial para entender como os computadores processam informações em seu nível mais básico.</p>
+    </section>
+
+    <!-- AND Gate -->
+    <section class="gate-container">
+        <h3 class="sub-subtitle">1. Porta AND</h3>
+        <p>A porta AND implementa a conjunção lógica. A saída é <code>1</code> (ALTA) somente se <strong>todas</strong> as suas entradas forem <code>1</code>. Se qualquer entrada for <code>0</code>, a saída será <code>0</code>.</p>
+        <ul>
+            <li><strong>Expressão Booleana:</strong> <code>F = A · B</code> ou <code>F = AB</code></li>
+            <li><strong>Analogia:</strong> Um circuito em série com dois interruptores. A lâmpada só acende se o interruptor A <strong>E</strong> o interruptor B estiverem fechados.</li>
+        </ul>
+        <pre class="code">
+// Tabela-Verdade (2 entradas)
+A | B | Saída
+--|---|------
+0 | 0 |   0
+0 | 1 |   0
+1 | 0 |   0
+1 | 1 |   1
+        </pre>
+        <div class="gate-symbol" title="Símbolo da Porta AND">
+            <svg width="150" height="100" viewBox="0 0 150 100">
+                <path d="M30 20 H70 A30 30 0 0 1 70 80 H30 Z"/>
+                <line x1="0" y1="35" x2="30" y2="35"/>
+                <line x1="0" y1="65" x2="30" y2="65"/>
+                <line x1="100" y1="50" x2="150" y2="50"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- OR Gate -->
+    <section class="gate-container">
+        <h3 class="sub-subtitle">2. Porta OR</h3>
+        <p>A porta OR implementa a disjunção lógica inclusiva. A saída é <code>1</code> se <strong>pelo menos uma</strong> de suas entradas for <code>1</code>. A saída só é <code>0</code> se todas as entradas forem <code>0</code>.</p>
+        <ul>
+            <li><strong>Expressão Booleana:</strong> <code>F = A + B</code></li>
+            <li><strong>Analogia:</strong> Um circuito em paralelo com dois interruptores. A lâmpada acende se o interruptor A <strong>OU</strong> o interruptor B (ou ambos) estiver fechado.</li>
+        </ul>
+        <pre class="code">
+// Tabela-Verdade (2 entradas)
+A | B | Saída
+--|---|------
+0 | 0 |   0
+0 | 1 |   1
+1 | 0 |   1
+1 | 1 |   1
+        </pre>
+        <div class="gate-symbol" title="Símbolo da Porta OR">
+            <svg width="150" height="100" viewBox="0 0 150 100">
+                <path d="M25,20 C45,35 45,65 25,80 L80,50 Z"/>
+                <line x1="0" y1="25" x2="25" y2="25"/>
+                <line x1="0" y1="75" x2="25" y2="75"/>
+                <line x1="80" y1="50" x2="150" y2="50"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- NOT Gate -->
+    <section class="gate-container">
+        <h3 class="sub-subtitle">3. Porta NOT (Inversor)</h3>
+        <p>A porta NOT, ou Inversor, é a única porta com uma única entrada. Sua função é simplesmente inverter o sinal. Uma entrada <code>1</code> resulta em uma saída <code>0</code>, e vice-versa.</p>
+        <ul>
+            <li><strong>Expressão Booleana:</strong> <code>F = A'</code> ou <code>F = Ā</code></li>
+            <li><strong>Analogia:</strong> Um botão de emergência "normalmente fechado". O circuito está ativo (1) até que você pressione o botão (entrada 1), o que interrompe o circuito (saída 0).</li>
+        </ul>
+        <pre class="code">
+// Tabela-Verdade
+A | Saída
+--|------
+0 |   1
+1 |   0
+        </pre>
+        <div class="gate-symbol" title="Símbolo da Porta NOT">
+            <svg width="150" height="100" viewBox="0 0 150 100">
+                <path d="M20 50 L80 50 L50 80 Z" transform="rotate(-90 50 50)"/>
+                <circle cx="88" cy="50" r="8" fill="#282c34"/>
+                <line x1="0" y1="50" x2="20" y2="50"/>
+                <line x1="96" y1="50" x2="150" y2="50"/>
+            </svg>
+        </div>
+    </section>
+    
+    <hr style="margin: 3rem 0;">
+    <h2 class="subtitle" style="text-align:center;">Portas Derivadas (Universais e Exclusivas)</h2>
+    
+    <!-- NAND Gate -->
+    <section class="gate-container">
+        <h3 class="sub-subtitle">4. Porta NAND (NOT-AND)</h3>
+        <p>A porta NAND é a contração de "NOT-AND". Ela se comporta exatamente como uma porta AND seguida por uma porta NOT. Sua saída é <code>0</code> somente se todas as entradas forem <code>1</code>. Em todos os outros casos, a saída é <code>1</code>. É uma "Porta Universal", pois qualquer outra porta pode ser criada usando apenas portas NAND.</p>
+        <ul>
+            <li><strong>Expressão Booleana:</strong> <code>F = (A · B)'</code> ou <code>F = (AB)'</code></li>
+        </ul>
+        <pre class="code">
+// Tabela-Verdade (2 entradas)
+A | B | Saída
+--|---|------
+0 | 0 |   1
+0 | 1 |   1
+1 | 0 |   1
+1 | 1 |   0
+        </pre>
+        <div class="gate-symbol" title="Símbolo da Porta NAND">
+            <svg width="150" height="100" viewBox="0 0 150 100">
+                <path d="M30 20 H70 A30 30 0 0 1 70 80 H30 Z"/>
+                <circle cx="108" cy="50" r="8" fill="#282c34"/>
+                <line x1="0" y1="35" x2="30" y2="35"/>
+                <line x1="0" y1="65" x2="30" y2="65"/>
+                <line x1="116" y1="50" x2="150" y2="50"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- NOR Gate -->
+    <section class="gate-container">
+        <h3 class="sub-subtitle">5. Porta NOR (NOT-OR)</h3>
+        <p>A porta NOR é a contração de "NOT-OR". Ela se comporta como uma porta OR seguida por uma porta NOT. Sua saída é <code>1</code> somente se todas as entradas forem <code>0</code>. Em todos os outros casos, a saída é <code>0</code>. Assim como a NAND, a NOR também é uma "Porta Universal".</p>
+        <ul>
+            <li><strong>Expressão Booleana:</strong> <code>F = (A + B)'</code></li>
+        </ul>
+        <pre class="code">
+// Tabela-Verdade (2 entradas)
+A | B | Saída
+--|---|------
+0 | 0 |   1
+0 | 1 |   0
+1 | 0 |   0
+1 | 1 |   0
+        </pre>
+        <div class="gate-symbol" title="Símbolo da Porta NOR">
+             <svg width="150" height="100" viewBox="0 0 150 100">
+                <path d="M25,20 C45,35 45,65 25,80 L80,50 Z"/>
+                <circle cx="88" cy="50" r="8" fill="#282c34"/>
+                <line x1="0" y1="25" x2="25" y2="25"/>
+                <line x1="0" y1="75" x2="25" y2="75"/>
+                <line x1="96" y1="50" x2="150" y2="50"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- XOR Gate -->
+    <section class="gate-container">
+        <h3 class="sub-subtitle">6. Porta XOR (OU Exclusivo)</h3>
+        <p>A porta XOR (Exclusive OR) produz uma saída <code>1</code> somente se as entradas forem diferentes. Se as entradas forem iguais (ambas <code>0</code> ou ambas <code>1</code>), a saída é <code>0</code>. É um "detector de diferença".</p>
+        <ul>
+            <li><strong>Expressão Booleana:</strong> <code>F = A ⊕ B</code> ou <code>F = A'B + AB'</code></li>
+            <li><strong>Analogia:</strong> Um interruptor de escada (three-way switch). Você pode acender ou apagar a luz de qualquer um dos interruptores. A luz está acesa (saída 1) quando os interruptores estão em posições opostas.</li>
+        </ul>
+        <pre class="code">
+// Tabela-Verdade (2 entradas)
+A | B | Saída
+--|---|------
+0 | 0 |   0
+0 | 1 |   1
+1 | 0 |   1
+1 | 1 |   0
+        </pre>
+        <div class="gate-symbol" title="Símbolo da Porta XOR">
+            <svg width="150" height="100" viewBox="0 0 150 100">
+                <path d="M15,20 C35,35 35,65 15,80" fill="none"/>
+                <path d="M25,20 C45,35 45,65 25,80 L80,50 Z"/>
+                <line x1="0" y1="25" x2="20" y2="25"/>
+                <line x1="0" y1="75" x2="20" y2="75"/>
+                <line x1="80" y1="50" x2="150" y2="50"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- XNOR Gate -->
+    <section class="gate-container">
+        <h3 class="sub-subtitle">7. Porta XNOR (NÃO-OU Exclusivo)</h3>
+        <p>A porta XNOR (Exclusive NOR) é o inverso da XOR. Ela produz uma saída <code>1</code> somente se suas entradas forem iguais (ambas <code>0</code> ou ambas <code>1</code>). Por isso, é conhecida como a "porta da igualdade" ou "comparador lógico".</p>
+        <ul>
+            <li><strong>Expressão Booleana:</strong> <code>F = (A ⊕ B)'</code> ou <code>F = A'B' + AB</code></li>
+            <li><strong>Analogia:</strong> Um sistema de segurança que só ativa (saída 1) se dois sensores (A e B) estiverem no mesmo estado (ambos ativados ou ambos desativados).</li>
+        </ul>
+        <pre class="code">
+// Tabela-Verdade (2 entradas)
+A | B | Saída
+--|---|------
+0 | 0 |   1
+0 | 1 |   0
+1 | 0 |   0
+1 | 1 |   1
+        </pre>
+        <div class="gate-symbol" title="Símbolo da Porta XNOR">
+            <svg width="150" height="100" viewBox="0 0 150 100">
+                <path d="M15,20 C35,35 35,65 15,80" fill="none"/>
+                <path d="M25,20 C45,35 45,65 25,80 L80,50 Z"/>
+                <circle cx="88" cy="50" r="8" fill="#282c34"/>
+                <line x1="0" y1="25" x2="20" y2="25"/>
+                <line x1="0" y1="75" x2="20" y2="75"/>
+                <line x1="96" y1="50" x2="150" y2="50"/>
+            </svg>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+
+    <p>
+    <a href="./Guia_Detalhado_da_Algebra_Booleana.html"><i class="fa-solid fa-circle-chevron-left"></i></a>
+    <a href="../index.html"><i class="fa-solid fa-house-chimney"></i></a>
+    <a href="#"><i class="fa-solid fa-circle-chevron-up"></i></a>
+    </p>
+
+    <p class="copyright"> ©️ 2025 - Lucas Willian</p>
+    
+</footer>
+
+</div>
+
+    <div id="player-wrapper" class="is-hidden">
+
+    <iframe 
+        id="meu-player-de-musica"
+        src="../player/player.html"
+        title="Player de Música"
+        frameborder="0"
+        allow="autoplay">
+    </iframe>
+
+    </div>
+
+    <button id="toggle-player-btn" aria-label="Controlar Player">
+    🎵
+    </button>
+
+    <!-- Mantendo os scripts originais para compatibilidade -->
+    <script src="../Scripts/sound-effects.js" defer></script>
+    <script src="../Scripts/player-toggle.js" defer></script>
+    <script src="../Scripts/status-bar.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="../Scripts/barba-init.js" defer></script>
+
+    <script src="../Scripts/theme-toggle.js" defer></script>
+
+</body>
+</html>
