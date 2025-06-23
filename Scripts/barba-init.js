@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Também importa dinamicamente o jogo se já estiver na página certa no load inicial
     if (initialNamespace === 'Arquitetura-Operacoes') {
-        import('/Scripts/Jogos_Internos/truth-table-game.js')
+        import('../Scripts/Jogos_Internos/truth-table-game.js')
             .then(mod => mod.runGameInit())
             .catch(err => console.error('Erro ao carregar o jogo (inicial):', err));
     }
