@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../estilo.css">
+
+    <link rel="icon" type="image/png" href="../Others/Icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../Others/Icons/favicon.svg" />
+    <link rel="shortcut icon" href="../Others/Icons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../Others/Icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Microspace" />
+    <link rel="manifest" href="../Others/Icons/site.webmanifest" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Exercícios Resolvidos de Redução Booleana</title>
+ 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
+</head>
+
+<body data-barba="wrapper">
+
+        <button id="theme-toggle" aria-label="Alternar tema" title="Alternar tema">
+        <span id="theme-icon">🌙</span>
+        </button>
+
+    <div data-barba="container" data-barba-namespace="Arquitetura-ReducaoExercicios" namespace="default-view">
+
+<header>
+
+    <h1>Exercícios de Redução Booleana 🛠️</h1>
+    <p>A teoria na prática: simplificando circuitos passo a passo</p>
+
+    <nav>
+
+        <p><a href="../index.html" class="nav-link">Inicío 🏡</a></p>
+        <p><a href="../Hubs/ArquiteturaComp-Hub.html" class="nav-link"> Arquitetura ⚙️</a></p>
+        <p><a href="../Hubs/Matematica-Hub.html" class="nav-link">Matemática ✖️</a></p>
+        <p><a href="../Hubs/Cpp-Hub.html" class="nav-link">C++ 🔧</a></p>
+        <p><a href="../Hubs/InfoBasica-Hub.html" class="nav-link">Info Básica 🖥️</a></p>
+        <p><a href="../Hubs/DesignWeb-Hub.html" class="nav-link">Design Web 🌐</a></p>
+        <p><a href="../Hubs/Jogos-Hub.html" class="nav-link">Jogos 🕹️</a></p>
+
+    </nav>
+
+</header>
+
+<main>
+<div>
+    <section>
+        <h2 class="subtitle">🎯 A Prática Leva à Perfeição</h2>
+        <p>Entender os teoremas da Álgebra Booleana é o primeiro passo. O segundo, e mais importante, é saber aplicá-los. Esta seção é uma coleção de exercícios resolvidos para demonstrar como usar as ferramentas de simplificação para transformar expressões complexas em circuitos mais eficientes. Cada passo será justificado com a lei ou teorema correspondente.</p>
+    </section>
+
+    <section>
+        <h2 class="subtitle">Exercício 1: Simplificação por Agrupamento e Fatoração</h2>
+        <p><strong>Problema:</strong> Simplifique a expressão <code>S = ¬A.B.C + ¬A.B.¬C + A.B.C + A.B.¬C</code></p>
+        <p>Esta expressão parece intimidante, descrevendo um circuito com quatro termos de três entradas cada. No entanto, o padrão de repetição é a chave.</p>
+        <pre class="code">
+// Expressão Original
+1. S = ¬A.B.C + ¬A.B.¬C + A.B.C + A.B.¬C
+
+// Passo 1: Reorganize os termos usando a Lei Comutativa para agrupar termos semelhantes.
+2. S = (¬A.B.C + ¬A.B.¬C) + (A.B.C + A.B.¬C)
+   // Lei Comutativa
+
+// Passo 2: Em cada parêntese, coloque os fatores comuns em evidência.
+3. S = ¬A.B.(C + ¬C) + A.B.(C + ¬C)
+   // Lei Distributiva
+
+// Passo 3: A expressão (X + ¬X) é sempre 1.
+4. S = ¬A.B.(1) + A.B.(1)
+   // Lei da Complementação
+
+// Passo 4: Qualquer termo multiplicado por 1 é ele mesmo.
+5. S = ¬A.B + A.B
+   // Lei da Identidade
+
+// Passo 5: Coloque o fator comum 'B' em evidência novamente.
+6. S = B.(¬A + A)
+   // Lei Distributiva
+
+// Passo 6: Novamente, (¬X + X) é igual a 1.
+7. S = B.(1)
+   // Lei da Complementação
+
+// Passo 7: O resultado final.
+8. S = B
+   //Lei da Identidade
+        </pre>
+        <p><strong>Conclusão:</strong> Um circuito que parecia precisar de múltiplas portas AND de 3 entradas e uma porta OR de 4 entradas foi reduzido a um simples fio. A saída <strong>S</strong> depende unicamente da entrada <strong>B</strong>.</p>
+    </section>
+
+    <section>
+        <h2 class="subtitle">Exercício 2: O Teorema da Adjacência em Ação</h2>
+        <p><strong>Problema:</strong> Simplifique a expressão <code>S = A + ¬A.B</code></p>
+        <p>Este é um caso clássico que demonstra uma das identidades auxiliares mais poderosas. A solução não é óbvia por fatoração direta.</p>
+        <pre class="code">
+// Expressão Original
+1. S = A + ¬A.B
+
+// Passo 1: Aplicar a segunda Lei Distributiva (X + Y.Z = (X+Y).(X+Z)).
+// Esta é a "distributiva reversa".
+2. S = (A + ¬A) . (A + B)
+   // Forma 2
+
+// Passo 2: Sabemos que um termo somado com seu complemento é sempre 1.
+3. S = 1 . (A + B)
+   // Lei da Complementação
+
+// Passo 3: Qualquer coisa multiplicada por 1 é ela mesma.
+4. S = A + B
+   // Lei da Identidade
+        </pre>
+        <p><strong>Conclusão:</strong> Conseguimos remover completamente a variável ¬A. A identidade <code>A + ¬A.B = A + B</code> é conhecida como <strong>Teorema da Adjacência</strong> e é um atalho que vale a pena memorizar.</p>
+    </section>
+
+    <section>
+        <h2 class="subtitle">Exercício 3: "Quebrando a Barra" com De Morgan</h2>
+        <p><strong>Problema:</strong> Simplifique a expressão <code>S = ¬(¬(A.B) . ¬C)</code></p>
+        <p>Esta expressão envolve negações sobre múltiplos termos. Os Teoremas de De Morgan são a ferramenta perfeita para isso.</p>
+        <pre class="code">
+// Expressão Original
+1. S = ¬(¬(A.B) . ¬C)
+
+// Passo 1: Aplique o Teorema de De Morgan na barra de negação mais externa.
+// ¬(X . Y) se torna (¬X + ¬Y). Aqui, X=¬(A.B) e Y=¬C.
+2. S = ¬(¬(A.B)) + ¬(¬C)
+   // Teorema de De Morgan
+
+// Passo 2: Duas negações seguidas se cancelam.
+3. S = (A.B) + C
+   // Lei da Dupla Negação
+
+// Passo 3: Removendo os parênteses desnecessários, chegamos à forma final.
+4. S = A.B + C
+        </pre>
+        <p><strong>Conclusão:</strong> Uma expressão que parecia complexa foi simplificada para uma porta AND e uma porta OR. Os Teoremas de De Morgan são essenciais para "empurrar" as negações para dentro da expressão, onde podem ser mais facilmente resolvidas ou canceladas.</p>
+    </section>
+    
+    <section>
+        <h2 class="subtitle">Exercício 4: Simplificação com Múltiplas Fatorações</h2>
+        <p><strong>Problema:</strong> Simplifique a expressão <code>S = A.¬B.¬C + A.B.C + A.B.¬C</code></p>
+        <p>Neste caso, precisamos ser estratégicos sobre quais termos agrupar para obter a melhor simplificação.</p>
+        <pre class="code">
+// Expressão Original
+1. S = A.¬B.¬C + A.B.C + A.B.¬C
+
+// Passo 1: Use a Lei Comutativa para reagrupar, colocando os dois últimos termos juntos,
+// pois eles compartilham mais fatores (A e B).
+2. S = A.¬B.¬C + (A.B.C + A.B.¬C)
+   // Lei Comutativa
+
+// Passo 2: Fatore o termo comum A.B do grupo entre parênteses.
+3. S = A.¬B.¬C + A.B.(C + ¬C)
+   // Lei Distributiva
+
+// Passo 3: Aplique a Lei da Complementação.
+4. S = A.¬B.¬C + A.B.(1)
+   // Lei da Complementação
+
+// Passo 4: Aplique a Lei da Identidade.
+5. S = A.¬B.¬C + A.B
+   // Lei da Identidade
+
+// Passo 5: Agora, podemos fatorar o termo 'A', que é comum a ambos os termos restantes.
+6. S = A.(¬B.¬C + B)
+   // Lei Distributiva
+
+// Passo 6: Aplique o Teorema da Adjacência (X + ¬X.Y = X + Y) dentro do parêntese.
+// Aqui, X=B e Y=¬C. Então, B + ¬B.¬C se torna B + ¬C.
+7. S = A.(B + ¬C)
+   // Teorema da Adjacência)
+
+// Passo 7: Forma final, expandida.
+8. S = A.B + A.¬C
+        </pre>
+        <p><strong>Conclusão:</strong> Ao escolher o agrupamento correto, conseguimos aplicar os teoremas em cascata para chegar a uma forma muito mais simples, reduzindo de 3 portas AND de 3 entradas e 1 OR de 3 entradas para apenas 2 portas AND de 2 entradas e 1 porta OR de 2 entradas.</p>
+    </section>
+
+</div>
+</main>
+
+<footer>
+
+    <p>
+    <a href="./guia_reducao_booleana.html"><i class="fa-solid fa-circle-chevron-left"></i></a>
+    <a href="../index.html"><i class="fa-solid fa-house-chimney"></i></a>
+    <a href="#"><i class="fa-solid fa-circle-chevron-up"></i></a>
+    </p>
+
+    <p class="copyright"> ©️ 2025 - Lucas Willian</p>
+</footer>
+
+</div>
+
+    <div id="player-wrapper" class="is-hidden">
+
+    <iframe 
+        id="meu-player-de-musica"
+        src="../player/player.html"
+        title="Player de Música"
+        frameborder="0"
+        allow="autoplay">
+    </iframe>
+
+    </div>
+
+    <button id="toggle-player-btn" aria-label="Controlar Player">
+    🎵
+    </button>
+
+    <script src="../Scripts/sound-effects.js" defer></script>
+    <script src="../Scripts/player-toggle.js" defer></script>
+    <script src="../Scripts/status-bar.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="../Scripts/barba-init.js" defer></script>
+
+    <script src="../Scripts/theme-toggle.js" defer></script>
+
+</body>
+</html>
