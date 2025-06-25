@@ -1,4 +1,5 @@
-// A palavra 'export' torna este objeto importável por outros scripts.
+// quiz-engine.js - Versão Corrigida para o Event Listener
+
 export const quizEngine = {
     timerInterval: null,
 
@@ -15,23 +16,29 @@ export const quizEngine = {
         }
     },
 
+    // A função init() foi reorganizada para corrigir o bug
     init(namespace) {
         const config = this.database[namespace];
         if (!config) return;
 
-        const quizForm = document.getElementById('quiz-form');
-        const submitButton = document.getElementById('submit-quiz');
-
-        this.cleanup(); // Garante que qualquer estado anterior seja limpo
+        // 1. PRIMEIRO, limpa qualquer estado anterior. Isso recria o botão.
+        this.cleanup(); 
         
-        this.startTimer(config.timeLimit);
-
+        // 2. AGORA, com o DOM limpo, pegamos as referências aos elementos atuais.
+        const submitButton = document.getElementById('submit-quiz');
         const consultationArea = document.getElementById('consultation-area');
+
+        // Se o botão não for encontrado, encerra para evitar erros.
+        if (!submitButton) return;
+
+        // 3. Adiciona o listener ao botão correto que está na página.
+        submitButton.addEventListener('click', () => this.handleSubmission(config));
+        
+        // 4. Continua com o resto da inicialização.
+        this.startTimer(config.timeLimit);
         if (config.allowConsultation && consultationArea) {
             consultationArea.style.display = 'flex';
         }
-
-        submitButton.addEventListener('click', () => this.handleSubmission(config));
     },
 
     cleanup() {
@@ -41,7 +48,7 @@ export const quizEngine = {
         }
         const oldButton = document.getElementById('submit-quiz');
         if (oldButton) {
-            const newButton = oldButton.cloneNode(true); // Recria o botão para remover listeners
+            const newButton = oldButton.cloneNode(true);
             oldButton.parentNode.replaceChild(newButton, oldButton);
         }
     },
@@ -95,7 +102,7 @@ export const quizEngine = {
                 const inputEl = document.getElementById(questionKey);
                 const userAnswer = inputEl.value.trim().replace(/\s+/g, ' ');
                 isCorrect = config.answers[questionKey].some(ans => ans.trim().replace(/\s+/g, ' ') === userAnswer);
-                correctAnswerText = `<pre class="code" style="margin: 0.5rem 0 0 0;">${config.answers[questionKey][0]}</pre>`;
+                correctAnswerText = `<pre class="code" style="margin: 0.5rem 0 0 0; background-color: var(--code-bg-light); color: var(--text-body);">${config.answers[questionKey][0]}</pre>`;
             } else {
                 const selectedOption = document.querySelector(`input[name="${questionKey}"]:checked`);
                 isCorrect = selectedOption && selectedOption.value === config.answers[questionKey];
@@ -147,6 +154,7 @@ export const quizEngine = {
         if (submitButton) {
            submitButton.disabled = true;
            submitButton.style.cursor = 'not-allowed';
+           submitButton.style.background = 'var(--text-muted)';
         }
     }
 };
