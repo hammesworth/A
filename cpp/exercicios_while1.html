@@ -300,6 +300,34 @@ int main() {
             </pre>
             <p><strong>Explicação:</strong> A função trata os casos base <code>n=0</code> e <code>n=1</code>. Para <code>n > 1</code>, inicializamos <code>anterior = 0</code> e <code>atual = 1</code>. O laço <code>while</code> roda de 2 até <code>n</code>. Em cada iteração, calculamos o próximo termo somando os dois anteriores. Em seguida, atualizamos as variáveis: o <code>atual</code> vira o <code>anterior</code>, e o <code>proximo</code> calculado vira o novo <code>atual</code>. O laço efetivamente "caminha" pela sequência até atingir a posição <code>n</code>, retornando o valor contido em <code>atual</code>.</p>
         </div>
+
+<div class="exercise">
+    <h4>Exercício 6: Cálculo de meia-vida</h4>
+    <p><strong>Problema:</strong> Um determinado material radioativo perde metade de sua massa a cada 50 segundos. Dada a massa inicial, em gramas, faça um programa que determine o tempo necessário para que essa massa se torne menor que 0,05 gramas.</p>
+    <p><strong>Solução:</strong></p>
+    <pre class="code">
+     #include <iostream>
+using namespace std;
+
+        int main()
+        {
+            float massa; // Declaração da variável massa
+            int t = 0; // Tempo inicial é zero
+            cout << "Usuario, forneca a massa do elemento: ";
+            cin >> massa; // Usuário fornece a massa
+
+            while (massa > 0.05) // Enquanto a massa for maior, quando for menor, imterrompe o laço
+            {
+                massa = massa/2; // Uma meia vida = metade da massa
+                t = t + 50; // Cada meia vida demora 50 segundos
+            } // Laço imterrompido quando massa < 0.05
+            cout << "\nO tempo necessario para a massa ser menor do que 0.05 eh de: " << t << " segundos."; // t aqui é é a soma de todos os 50 até massa < 0.05
+            return 0;
+        }
+    </pre>
+    <p><strong>Explicação:</strong> esse exercício é bem simples, o usuário fornece uma massa inicial qualquer, digamos, 1 grama. Enquanto essa massa for maior do que 0.05, a massa se transforma no valor dela mesma dividida por 2, e t ganha 50 de valor. Se a condição (massa > 0.05) continuar sendo verdadeira, a massa vai continuar sendo dividida, e o t ganahndo valor. Para o exemplo de massa 1, até ela ser menor do que 0.05, ela passa por 5 divisões (0.5, depois 0.25, depois 0.125, depois 0.0625 e por fim, 0.03125, que é menor do que 0.05). Nesse processo, t, com valor inicial ganha valor 50 cinco vezes, 50*5 = 250. O tempo necessário para massa 1 é 250 segundos, aproximadamente 4,1 minutos.</p>
+</div>
+
     </section>
 
 </div>
