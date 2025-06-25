@@ -41,7 +41,7 @@ async function initializeDynamicModules(namespace) {
     if (namespace.includes('Prova')) {
         try {
             // Importa o módulo e o armazena na variável 'activeQuizModule'
-            activeQuizModule = await import('/provas.js'); // VERIFIQUE SE O CAMINHO ESTÁ CORRETO!
+            activeQuizModule = await import('https://hammesworth.github.io/Microspace/Scripts/provas.js'); // VERIFIQUE SE O CAMINHO ESTÁ CORRETO!
             // Chama a função de inicialização do motor, passando o namespace da página atual
             activeQuizModule.quizEngine.init(namespace);
         } catch (err) {
