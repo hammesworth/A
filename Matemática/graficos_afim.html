@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../estilo.css">
+
+    <link rel="icon" type="image/png" href="../Others/Icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../Others/Icons/favicon.svg" />
+    <link rel="shortcut icon" href="../Others/Icons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../Others/Icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Microspace" />
+    <link rel="manifest" href="../Others/Icons/site.webmanifest" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Guia de Gráficos de Funções Afins</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
+</head>
+
+<body data-barba="wrapper">
+
+        <button id="theme-toggle" aria-label="Alternar tema" title="Alternar tema">
+        <span id="theme-icon">🌙</span>
+        </button>
+
+        <div data-barba="container" data-barba-namespace="Mat-Graficos" namespace="default-view">
+
+<header>
+
+    <h1>Gráficos da Função Afim 📊</h1>
+    <p>Um guia completo sobre como construir, ler e interpretar os gráficos de funções do 1º grau.</p>
+
+    <nav>
+        <p><a href="../index.html" class="nav-link">Inicío 🏡</a></p>
+        <p><a href="../Hubs/ArquiteturaComp-Hub.html" class="nav-link"> Arquitetura ⚙️</a></p>
+        <p><a href="../Hubs/Matematica-Hub.html" class="nav-link">Matemática ✖️</a></p>
+        <p><a href="../Hubs/Cpp-Hub.html" class="nav-link">C++ 🔧</a></p>
+        <p><a href="../Hubs/InfoBasica-Hub.html" class="nav-link">Info Básica 🖥️</a></p>
+        <p><a href="../Hubs/DesignWeb-Hub.html" class="nav-link">Design Web 🌐</a></p>
+        <p><a href="../Hubs/Jogos-Hub.html" class="nav-link">Jogos 🕹️</a></p>
+    </nav>
+</header>
+
+<main>
+
+<div id="xml-intro">
+
+    <section id="recap-grafico">
+        <h2 class="subtitle">🌐 O Gráfico da Função Afim: A Linha Reta</h2>
+        <p>Como vimos no guia anterior, a representação visual de uma função afim, <strong>y = ax + b</strong>, é sempre uma <strong>linha reta</strong>. Essa linha não é apenas um desenho; ela é um mapa completo do comportamento da função. Cada ponto minúsculo que compõe essa reta representa um par de valores (x, y) que satisfaz a equação da função.</p>
+        <p>Entender o gráfico significa ser capaz de extrair todas as informações da função apenas olhando para a reta, e também ser capaz de traduzir uma equação em seu respectivo desenho. Este guia foca exatamente nessas duas habilidades.</p>
+    </section>
+
+    <section id="construcao-passos">
+        <h2 class="subtitle">🛠️ Como Construir o Gráfico: Métodos Detalhados</h2>
+        <p>Para desenhar uma reta, precisamos de no mínimo dois pontos distintos. Existem duas maneiras principais de encontrar esses pontos de forma rápida e precisa.</p>
+
+        <h3>Método 1: Pelos Pontos de Interseção (O Mais Eficiente)</h3>
+        <p>Este método é o mais recomendado por ser rápido e por já fornecer pontos importantes para a interpretação do gráfico: onde a reta cruza os eixos.</p>
+        <ol>
+            <li><strong>Achar o intercepto Y:</strong> Encontre o ponto onde a reta cruza o eixo vertical (eixo Y). Isso sempre acontece quando <strong>x = 0</strong>. O ponto será <strong>(0, b)</strong>.</li>
+            <li><strong>Achar o intercepto X (a raiz):</strong> Encontre o ponto onde a reta cruza o eixo horizontal (eixo X). Isso sempre acontece quando <strong>y = 0</strong> (ou f(x) = 0). Resolva a equação <strong>ax + b = 0</strong> para achar o valor de x, que será <strong>x = -b/a</strong>. O ponto será <strong>(-b/a, 0)</strong>.</li>
+            <li><strong>Ligar os pontos:</strong> Marque os dois pontos no plano cartesiano e desenhe a linha reta que passa por eles.</li>
+        </ol>
+        <h4>Exemplo: Construir o gráfico de y = -2x + 6</h4>
+        <ul>
+            <li><strong>Passo 1 (x=0):</strong> y = -2*(0) + 6  ➡️  y = 6.  <strong>Ponto 1: (0, 6)</strong>.</li>
+            <li><strong>Passo 2 (y=0):</strong> 0 = -2x + 6  ➡️  2x = 6  ➡️  x = 3.  <strong>Ponto 2: (3, 0)</strong>.</li>
+            <li><strong>Passo 3:</strong> Marque os pontos (0, 6) e (3, 0) e trace a reta.</li>
+        </ul>
+
+        <h3>Método 2: Atribuindo Valores (A Tabela de Pontos)</h3>
+        <p>Este método é mais fundamental e funciona para qualquer tipo de função. Ele consiste em escolher valores aleatórios para 'x', calcular o 'y' correspondente e montar uma tabela de pares ordenados.</p>
+        <ol>
+            <li>Escolha pelo menos dois valores simples para 'x' (por exemplo, 0, 1, -1).</li>
+            <li>Substitua cada valor de 'x' na função para encontrar seu 'y' correspondente.</li>
+            <li>Anote os pares (x, y) em uma tabela.</li>
+            <li>Marque os pontos do plano e desenhe a reta.</li>
+        </ol>
+        <h4>Exemplo: Construir o gráfico de y = -2x + 6 usando uma tabela</h4>
+        <pre class="code">
+| Valor de x | Cálculo de y = -2x + 6  | Ponto (x, y) |
+|------------|-------------------------|--------------|
+|     0      | y = -2*(0) + 6 = 6      |    (0, 6)    |
+|     1      | y = -2*(1) + 6 = 4      |    (1, 4)    |
+|     2      | y = -2*(2) + 6 = 2      |    (2, 2)    |
+        </pre>
+        <p>Marcando os pontos (0, 6), (1, 4) e (2, 2), você verá que todos estão alinhados, formando a mesma reta do método anterior. Usar um terceiro ponto é uma ótima forma de verificar se seus cálculos estão corretos.</p>
+    </section>
+
+    <section id="leitura-interpretacao">
+        <h2 class="subtitle">🔍 Lendo e Interpretando um Gráfico Pronto</h2>
+        <p>Saber "ler" um gráfico é extrair a história que ele conta. Apenas olhando para a reta, podemos descobrir tudo sobre a função.</p>
+        
+        <h3>Identificando os Coeficientes 'a' e 'b'</h3>
+        <ul>
+            <li><strong>Onde está o 'b'?</strong> O coeficiente linear 'b' é o valor mais fácil de encontrar: <strong>basta olhar para o ponto onde a reta cruza o eixo Y</strong>. O valor de 'y' nesse ponto é o valor de 'b'.</li>
+            <li><strong>Qual o sinal de 'a'?</strong> Olhe para a reta da esquerda para a direita. Se ela estiver <strong>subindo</strong>, a função é crescente, e portanto <strong>a > 0</strong>. Se ela estiver <strong>descendo</strong>, a função é decrescente, e <strong>a < 0</strong>.</li>
+        </ul>
+
+        <h3>Estudo de Sinais: Positivo, Negativo ou Nulo?</h3>
+        <p>Esta é uma das análises mais importantes. Ela responde à pergunta: "para quais valores de 'x' o resultado da função é positivo, negativo ou zero?".</p>
+        <ul>
+            <li><strong>f(x) = 0 (Nulo):</strong> A função é nula no ponto em que a reta <strong>cruza o eixo X</strong>. Esse ponto é a raiz da função.</li>
+            <li><strong>f(x) > 0 (Positivo):</strong> A função é positiva em todo o intervalo onde a reta está <strong>acima do eixo X</strong>.</li>
+            <li><strong>f(x) < 0 (Negativo):</strong> A função é negativa em todo o intervalo onde a reta está <strong>abaixo do eixo X</strong>.</li>
+        </ul>
+        <p><strong>Dica:</strong> A raiz é o ponto que "divide" a função em uma região positiva e uma negativa. Para uma função crescente (a > 0), ela será negativa antes da raiz e positiva depois. Para uma decrescente (a < 0), será positiva antes da raiz e negativa depois.</p>
+
+        <h3>Encontrando Valores Específicos</h3>
+        <ul>
+            <li><strong>Dado um 'x', achar o 'y':</strong> Localize o valor de 'x' no eixo horizontal. Suba (ou desça) verticalmente até encontrar a reta. A partir desse ponto na reta, mova-se horizontalmente até o eixo Y. O valor que você encontrar é o 'y' correspondente.</li>
+            <li><strong>Dado um 'y', achar o 'x':</strong> O processo inverso. Localize o valor de 'y' no eixo vertical. Mova-se horizontalmente até encontrar a reta. A partir desse ponto, desça (ou suba) verticalmente até o eixo X. O valor encontrado é o 'x' correspondente.</li>
+        </ul>
+    </section>
+
+    <section id="comparando-graficos">
+        <h2 class="subtitle">🤝 Análise de Múltiplos Gráficos</h2>
+        <p>O poder dos gráficos se multiplica quando analisamos duas ou mais funções no mesmo plano cartesiano. Isso nos permite comparar situações diferentes.</p>
+        <h3>O Ponto de Interseção</h3>
+        <p>Quando duas retas se cruzam, o <strong>ponto de interseção</strong> é extremamente significativo. Neste ponto, as duas funções possuem o mesmo valor de 'x' e o mesmo valor de 'y'. Isso significa que, no contexto de um problema, as duas situações modeladas pelas funções são equivalentes naquele ponto.</p>
+        <p><strong>Exemplo Prático:</strong> Imagine duas propostas de salário.<br>
+        - Empresa A: y = 50x + 1000 (R$ 1000 fixos + R$ 50 por venda 'x')<br>
+        - Empresa B: y = 75x + 600 (R$ 600 fixos + R$ 75 por venda 'x')<br>
+        Ao plotar os dois gráficos, o ponto onde eles se cruzam mostra exatamente com quantas vendas 'x' o salário nas duas empresas se torna igual. Antes desse ponto, uma empresa é mais vantajosa; depois desse ponto, a outra passa a ser.</p>
+    </section>
+
+    <section id="exercicios">
+        <h2 class="subtitle">✏️ Exercícios Práticos de Gráficos</h2>
+
+        <div class="exercise">
+            <h4>Exercício 1: Leitura de Gráfico</h4>
+            <p><strong>Problema:</strong> Observe o gráfico de uma função afim que passa pelos pontos (0, 8) e (4, 0). Responda:</p>
+            <p>
+                a) A função é crescente ou decrescente?<br>
+                b) Qual o valor do coeficiente linear 'b'?<br>
+                c) Qual é a raiz da função?<br>
+                d) Para quais valores de 'x' temos f(x) > 0?<br>
+                e) Qual é a lei da função (a fórmula y = ax + b)?
+            </p>
+            <p><strong>Solução:</strong></p>
+            <pre class="code">
+a) A reta "desce" da esquerda para a direita. Portanto, a função é **decrescente**.
+
+b) O coeficiente 'b' é o valor onde a reta corta o eixo Y. Isso ocorre em y=8. Logo, **b = 8**.
+
+c) A raiz é o valor onde a reta corta o eixo X. Isso ocorre em x=4. A raiz é **x = 4**.
+
+d) f(x) > 0 significa "onde o gráfico está acima do eixo X". Isso acontece para todos os valores de 'x' antes da raiz. Portanto, **para x < 4**.
+
+e) Já sabemos que b = 8. Para achar 'a', podemos usar a fórmula a = (y2 - y1) / (x2 - x1) com os pontos (0, 8) e (4, 0).
+a = (0 - 8) / (4 - 0) = -8 / 4 = -2.
+A lei da função é **y = -2x + 8**.
+            </pre>
+        </div>
+
+        <div class="exercise">
+            <h4>Exercício 2: Ponto de Encontro</h4>
+            <p><strong>Problema:</strong> Um serviço de streaming de vídeo oferece dois planos:<br>
+            - Plano Básico: R$ 25,00 de mensalidade fixa.<br>
+            - Plano Premium: R$ 10,00 de mensalidade + R$ 3,00 por filme alugado.<br>
+            Modele as duas funções, construa seus gráficos no mesmo plano e determine com quantos filmes alugados o custo dos dois planos se torna o mesmo.</p>
+            <p><strong>Solução:</strong></p>
+            <pre class="code">
+1. Modelando as funções (C = Custo, f = número de filmes):
+- Plano Básico: É um custo constante, não depende dos filmes. C(f) = 25. (Função constante)
+- Plano Premium: C(f) = 3f + 10. (Função afim)
+
+2. Construindo os gráficos:
+- Para C(f) = 25: É uma reta horizontal passando pelo y=25.
+- Para C(f) = 3f + 10:
+  - Se f=0, C=10. Ponto (0, 10).
+  - Se f=5, C=3*5+10=25. Ponto (5, 25).
+  - Trace a reta que passa por (0, 10) e (5, 25).
+
+3. Análise gráfica e algébrica:
+Graficamente, vemos que as duas retas se cruzam no ponto **(5, 25)**.
+Algebraicamente, para encontrar o ponto de encontro, igualamos as duas funções:
+Custo Básico = Custo Premium
+25 = 3f + 10
+15 = 3f
+f = 5
+
+**Resposta:** O custo dos dois planos se torna o mesmo quando o usuário aluga exatamente **5 filmes**. Nesse caso, ambos os planos custarão R$ 25,00.
+            </pre>
+        </div>
+    </section>
+
+</div>
+
+</main>
+
+<footer>
+
+    <p>
+    <a href="../Hubs/Matematica-Hub.html"><i class="fa-solid fa-circle-chevron-left"></i></a>
+    <a href="../index.html"><i class="fa-solid fa-house-chimney"></i></a>
+    <a href="#"><i class="fa-solid fa-circle-chevron-up"></i></a>
+    </p>
+
+    <p class="copyright"> ©️ 2025 - Lucas Willian</p>
+
+</footer>
+
+</div>
+
+    <div id="player-wrapper" class="is-hidden">
+
+    <iframe 
+        id="meu-player-de-musica"
+        src="../player/player.html"
+        title="Player de Música"
+        frameborder="0"
+        allow="autoplay">
+    </iframe>
+
+    <button id="toggle-player-btn" aria-label="Controlar Player">
+    🎵
+    </button>
+
+    <script src="../Scripts/sound-effects.js" defer></script>
+    <script src="../Scripts/player-toggle.js" defer></script>
+    <script src="../Scripts/status-bar.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="../Scripts/barba-init.js" defer></script>
+
+    <script src="../Scripts/theme-toggle.js" defer></script>
+
+</body>
+</html>

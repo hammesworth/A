@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../estilo.css">
+
+    <link rel="icon" type="image/png" href="../Others/Icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../Others/Icons/favicon.svg" />
+    <link rel="shortcut icon" href="../Others/Icons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../Others/Icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Microspace" />
+    <link rel="manifest" href="../Others/Icons/site.webmanifest" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Exercícios Avançados de Funções Afins</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
+</head>
+
+<body data-barba="wrapper">
+
+        <button id="theme-toggle" aria-label="Alternar tema" title="Alternar tema">
+        <span id="theme-icon">🌙</span>
+        </button>
+
+        <div data-barba="container" data-barba-namespace="Mat-Exercicios" namespace="default-view">
+
+<header>
+
+    <h1>Exercícios Avançados de Funções Afins 🧠</h1>
+    <p>Desafie seus conhecimentos com problemas complexos e suas soluções detalhadas.</p>
+
+    <nav>
+        <p><a href="../index.html" class="nav-link">Inicío 🏡</a></p>
+        <p><a href="../Hubs/ArquiteturaComp-Hub.html" class="nav-link"> Arquitetura ⚙️</a></p>
+        <p><a href="../Hubs/Matematica-Hub.html" class="nav-link">Matemática ✖️</a></p>
+        <p><a href="../Hubs/Cpp-Hub.html" class="nav-link">C++ 🔧</a></p>
+        <p><a href="../Hubs/InfoBasica-Hub.html" class="nav-link">Info Básica 🖥️</a></p>
+        <p><a href="../Hubs/DesignWeb-Hub.html" class="nav-link">Design Web 🌐</a></p>
+        <p><a href="../Hubs/Jogos-Hub.html" class="nav-link">Jogos 🕹️</a></p>
+    </nav>
+</header>
+
+<main>
+
+<div id="xml-intro">
+
+    <section id="intro-exercicios">
+        <h2 class="subtitle">🎯 Nível Desafio: Testando os Limites</h2>
+        <p>Você já domina os fundamentos, a construção de gráficos e a interpretação básica. Agora, é hora de levar suas habilidades ao próximo nível. Os exercícios a seguir envolvem múltiplos passos, combinam conceitos de geometria e álgebra, e exploram cenários mais complexos do que os habituais. Prepare-se para pensar!</p>
+    </section>
+
+    <section id="lista-exercicios">
+        <h2 class="subtitle">📝 Conjunto de Problemas</h2>
+
+        <div class="exercise">
+            <h4>Exercício 1: A Área do Triângulo</h4>
+            <p><strong>Problema:</strong> Uma função afim f(x) tem um coeficiente angular igual a -3. Sabe-se que seu gráfico passa pelo ponto (2, 4). Determine a área do triângulo formado pelo gráfico desta função e pelos eixos coordenados (eixo X e eixo Y).</p>
+            <p><strong>Solução:</strong></p>
+            <pre class="code">
+1. Encontrar a lei da função f(x) = ax + b:
+   - Sabemos que 'a' = -3. A função é f(x) = -3x + b.
+   - Usamos o ponto (2, 4) para achar 'b'.
+     4 = -3*(2) + b
+     4 = -6 + b
+     b = 10
+   - A função é: f(x) = -3x + 10.
+
+2. Encontrar os pontos onde o gráfico corta os eixos:
+   - Intercepto Y (onde x=0): É o ponto (0, b). Logo, P1 = (0, 10).
+   - Intercepto X (raiz, onde y=0):
+     0 = -3x + 10
+     3x = 10
+     x = 10/3
+     O ponto é P2 = (10/3, 0).
+
+3. Visualizar e calcular a área do triângulo:
+   - Os vértices do triângulo são a origem (0, 0), o intercepto Y (0, 10) e o intercepto X (10/3, 0).
+   - Este é um triângulo retângulo. A base pode ser a distância do (0,0) ao (10/3, 0), que é 10/3.
+   - A altura pode ser a distância do (0,0) ao (0, 10), que é 10.
+   - Fórmula da área do triângulo: A = (base * altura) / 2.
+     A = ( (10/3) * 10 ) / 2
+     A = (100/3) / 2
+     A = 100 / 6
+     A = 50 / 3
+
+   A área do triângulo é 50/3 unidades de área (ou aproximadamente 16,67).
+            </pre>
+            <p><strong>Explicação da Resposta:</strong> Este problema exige mais do que apenas encontrar a função. Primeiro, usamos a informação do coeficiente angular e do ponto para definir completamente a equação da reta. Em seguida, reconhecemos que a "área formada com os eixos" se refere a um triângulo cujos catetos (base e altura) são exatamente as distâncias dos pontos de intercepto até a origem. Calculamos os interceptos (a raiz e o coeficiente linear 'b') e, com esses valores, aplicamos a fórmula de área de um triângulo retângulo para chegar ao resultado final.</p>
+        </div>
+
+        <div class="exercise">
+            <h4>Exercício 2: O Ponto de Encontro Estratégico</h4>
+            <p><strong>Problema:</strong> Determine a equação da reta 'r' que é paralela à reta definida pela função f(x) = 2x - 5 e que passa exatamente pelo ponto de interseção das retas 's' e 't', definidas por s(x) = -x + 7 e t(x) = 4x - 3.</p>
+            <p><strong>Solução:</strong></p>
+            <pre class="code">
+1. Encontrar o ponto de interseção entre 's' e 't':
+   - No ponto de interseção, s(x) = t(x).
+     -x + 7 = 4x - 3
+     7 + 3 = 4x + x
+     10 = 5x
+     x = 2
+   - Agora, achamos o valor de y substituindo x=2 em qualquer uma das duas funções:
+     y = s(2) = -(2) + 7 = 5
+   - O ponto de interseção é P = (2, 5).
+
+2. Determinar as características da reta 'r':
+   - A reta 'r' deve passar pelo ponto (2, 5).
+   - "Paralela à reta f(x) = 2x - 5": Retas paralelas possuem o mesmo coeficiente angular.
+     Portanto, o coeficiente angular 'a' da reta 'r' também deve ser 2.
+
+3. Encontrar a equação da reta 'r':
+   - Sabemos que r(x) = ax + b, com a = 2. Então, r(x) = 2x + b.
+   - Usamos o ponto (2, 5) para achar 'b'.
+     5 = 2*(2) + b
+     5 = 4 + b
+     b = 1
+   - A equação da reta 'r' é: y = 2x + 1.
+            </pre>
+            <p><strong>Explicação da Resposta:</strong> Este é um problema de 3 passos que conecta diferentes conceitos. O primeiro passo é encontrar o "ponto estratégico" resolvendo um sistema de equações (igualando as funções 's' e 't'). O segundo passo é interpretar a condição de paralelismo, que nos dá diretamente o coeficiente angular da reta que queremos encontrar. O terceiro e último passo é usar o ponto e o coeficiente angular, como no primeiro exercício, para determinar o coeficiente 'b' e, assim, a equação completa da reta 'r'.</p>
+        </div>
+        
+        <div class="exercise">
+            <h4>Exercício 3: A Função Inversa e o Contexto</h4>
+            <p><strong>Problema:</strong> O custo C (em reais) para produzir 'q' unidades de um certo produto é dado pela função C(q) = 25q + 1200.
+            a) Qual o custo para produzir 100 unidades?<br>
+            b) Determine a função inversa, q(C), que representa a quantidade de unidades que podem ser produzidas em função de um determinado custo.<br>
+            c) Se a fábrica tem um orçamento de R$ 7450 para este produto, quantas unidades ela pode produzir?</p>
+            <p><strong>Solução:</strong></p>
+            <pre class="code">
+a) Custo para 100 unidades:
+   - C(100) = 25 * (100) + 1200
+     C(100) = 2500 + 1200
+     C(100) = 3700.
+   - O custo é de R$ 3700,00.
+
+b) Encontrando a função inversa q(C):
+   - A função original é y = 25x + 1200 (usando y para C e x para q).
+   - Passo 1: Trocar x e y de lugar.
+     x = 25y + 1200
+   - Passo 2: Isolar o novo 'y'.
+     x - 1200 = 25y
+     y = (x - 1200) / 25
+   - Passo 3: Reescrever na notação de função, trocando y por q(C) e x por C.
+     q(C) = (C - 1200) / 25  ou  q(C) = 0.04C - 48.
+
+c) Unidades para um orçamento de R$ 7450:
+   - Podemos usar a função inversa que acabamos de encontrar.
+     q(7450) = (7450 - 1200) / 25
+     q(7450) = 6250 / 25
+     q(7450) = 250.
+   - A fábrica pode produzir 250 unidades.
+            </pre>
+            <p><strong>Explicação da Resposta:</strong> A complexidade aqui está na compreensão e aplicação do conceito de função inversa. A parte 'a' é um cálculo direto. A parte 'b' é o processo algébrico padrão para encontrar a inversa: trocar as variáveis e isolar a nova variável dependente. O crucial é entender o que a inversa significa: enquanto a função original converte quantidade em custo, a inversa converte custo em quantidade. A parte 'c' demonstra a utilidade prática da função inversa, permitindo-nos responder à pergunta "quantas unidades posso fazer com X reais?" de forma direta, sem precisar resolver a equação original toda vez.</p>
+        </div>
+        
+        <div class="exercise">
+            <h4>Exercício 4: Comparando Três Planos</h4>
+            <p><strong>Problema:</strong> Uma empresa de logística analisa três opções de transportadoras para suas entregas.
+            - Transportadora ALFA: Custo fixo de R$ 500 mais R$ 2,00 por km rodado.
+            - Transportadora BETA: Custo fixo de R$ 200 mais R$ 2,50 por km rodado.
+            - Transportadora GAMA: Custo de R$ 3,20 por km rodado, sem custo fixo.
+            Determine para quais intervalos de quilometragem cada uma das transportadoras é a opção mais barata.</p>
+            <p><strong>Solução:</strong></p>
+            <pre class="code">
+1. Modelar as três funções (C = Custo, k = km):
+   - Alfa: A(k) = 2k + 500
+   - Beta: B(k) = 2.5k + 200
+   - Gama: G(k) = 3.2k
+
+2. Comparar as transportadoras duas a duas:
+   - Comparando Beta e Gama (as duas mais baratas para k pequeno):
+     B(k) = G(k)  =>  2.5k + 200 = 3.2k  =>  200 = 0.7k  =>  k ≈ 285.7 km
+     Para k < 285.7, Gama é mais barata. Para k > 285.7, Beta é mais barata.
+
+   - Comparando Alfa e Beta (as duas mais baratas para k grande):
+     A(k) = B(k)  =>  2k + 500 = 2.5k + 200  =>  300 = 0.5k  =>  k = 600 km
+     Para k < 600, Beta é mais barata. Para k > 600, Alfa é mais barata.
+
+3. Consolidar os resultados para definir os intervalos:
+   - Intervalo 1: De 0 km até o primeiro ponto de encontro (k ≈ 285.7 km).
+     Neste trecho, G(k) tem o menor custo inicial.
+     **GAMA é a mais barata para k < 285.7 km.**
+
+   - Intervalo 2: Entre os dois pontos de encontro (285.7 km < k < 600 km).
+     Após 285.7 km, Beta se tornou mais barata que Gama. Ela continuará mais barata que Alfa até os 600 km.
+     **BETA é a mais barata para 285.7 km < k < 600 km.**
+
+   - Intervalo 3: Acima do segundo ponto de encontro (k > 600 km).
+     Após 600 km, Alfa se torna mais barata que Beta. Como Alfa já era mais barata que Gama há muito tempo (A(k)=G(k) em k=416.7), ela passa a ser a opção mais econômica.
+     **ALFA é a mais barata para k > 600 km.**
+            </pre>
+            <p><strong>Explicação da Resposta:</strong> Este problema de "análise de break-even" com três variáveis exige uma abordagem sistemática. A chave é não tentar resolver tudo de uma vez. Comparamos as funções duas a duas para encontrar os "pontos de virada" onde a melhor opção muda. Ao encontrar esses pontos (k ≈ 285.7 e k = 600), podemos dividir a linha numérica (quilometragem) em três intervalos distintos. Testando um valor dentro de cada intervalo ou analisando a lógica da transição, conseguimos determinar qual função tem o menor valor (menor custo) em cada um desses trechos, fornecendo uma recomendação completa para a empresa.</p>
+        </div>
+
+    </section>
+</div>
+
+</main>
+
+<footer>
+
+    <p>
+    <a href="../Hubs/Matematica-Hub.html"><i class="fa-solid fa-circle-chevron-left"></i></a>
+    <a href="../index.html"><i class="fa-solid fa-house-chimney"></i></a>
+    <a href="#"><i class="fa-solid fa-circle-chevron-up"></i></a>
+    </p>
+
+    <p class="copyright"> ©️ 2025 - Lucas Willian</p>
+
+</footer>
+
+</div>
+
+    <div id="player-wrapper" class="is-hidden">
+
+    <iframe 
+        id="meu-player-de-musica"
+        src="../player/player.html"
+        title="Player de Música"
+        frameborder="0"
+        allow="autoplay">
+    </iframe>
+
+    <button id="toggle-player-btn" aria-label="Controlar Player">
+    🎵
+    </button>
+
+    <script src="../Scripts/sound-effects.js" defer></script>
+    <script src="../Scripts/player-toggle.js" defer></script>
+    <script src="../Scripts/status-bar.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="../Scripts/barba-init.js" defer></script>
+
+    <script src="../Scripts/theme-toggle.js" defer></script>
+
+</body>
+</html>

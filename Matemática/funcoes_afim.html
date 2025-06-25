@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../estilo.css">
+
+    <link rel="icon" type="image/png" href="../Others/Icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../Others/Icons/favicon.svg" />
+    <link rel="shortcut icon" href="../Others/Icons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../Others/Icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Microspace" />
+    <link rel="manifest" href="../Others/Icons/site.webmanifest" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Guia de Funções Afins Matemáticas</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
+</head>
+
+<body data-barba="wrapper">
+
+        <button id="theme-toggle" aria-label="Alternar tema" title="Alternar tema">
+        <span id="theme-icon">🌙</span>
+        </button>
+
+        <div data-barba="container" data-barba-namespace="Mat-Afim" namespace="default-view">
+
+<header>
+
+    <h1>Guia de Funções Afins 📈</h1>
+    <p>Entendendo os fundamentos, a construção de gráficos e as aplicações das funções do 1º grau.</p>
+
+    <nav>
+        <p><a href="../index.html" class="nav-link">Inicío 🏡</a></p>
+        <p><a href="../Hubs/ArquiteturaComp-Hub.html" class="nav-link"> Arquitetura ⚙️</a></p>
+        <p><a href="../Hubs/Matematica-Hub.html" class="nav-link">Matemática ✖️</a></p>
+        <p><a href="../Hubs/Cpp-Hub.html" class="nav-link">C++ 🔧</a></p>
+        <p><a href="../Hubs/InfoBasica-Hub.html" class="nav-link">Info Básica 🖥️</a></p>
+        <p><a href="../Hubs/DesignWeb-Hub.html" class="nav-link">Design Web 🌐</a></p>
+        <p><a href="../Hubs/Jogos-Hub.html" class="nav-link">Jogos 🕹️</a></p>
+    </nav>
+</header>
+
+<main>
+
+<div id="xml-intro">
+
+    <section id="intro">
+      <h2 class="subtitle">📊 Introdução à Função Afim</h2>
+      <p>Uma <strong>função afim</strong>, também conhecida como <strong>função polinomial do 1º grau</strong>, é uma das estruturas mais fundamentais e úteis da matemática. Ela descreve uma relação de dependência linear entre duas variáveis. Em outras palavras, a variação em uma variável provoca uma variação proporcional e constante na outra.</p>
+      <p>A sua forma geral é expressa pela fórmula:</p>
+      <p style="font-family: 'Fira Code', monospace; font-size: 1.1em; text-align: center;">f(x) = ax + b</p>
+      <p>Onde:</p>
+      <ul>
+          <li><strong>f(x)</strong> (ou y): É a variável dependente, cujo valor é determinado pela função.</li>
+          <li><strong>x</strong>: É a variável independente, o valor que "alimenta" a função.</li>
+          <li><strong>a</strong>: É o <strong>coeficiente angular</strong> ou taxa de variação. Ele precisa ser diferente de zero (a ≠ 0) para que a função seja, de fato, do primeiro grau.</li>
+          <li><strong>b</strong>: É o <strong>coeficiente linear</strong> ou termo constante. Representa o valor da função quando x=0.</li>
+      </ul>
+      <p>O domínio (os valores que x pode assumir) e o contradomínio (os valores que f(x) pode assumir) de uma função afim são, geralmente, o conjunto dos números reais (R). A principal característica visual de uma função afim é que seu gráfico é sempre uma <strong>linha reta</strong> não vertical.</p>
+    </section>
+
+    <section id="coeficientes">
+        <h2 class="subtitle">🔍 Análise dos Coeficientes 'a' e 'b'</h2>
+        <p>Os coeficientes 'a' e 'b' são a alma da função afim. Compreender o papel de cada um é crucial para interpretar a função e seu gráfico.</p>
+        
+        <h3>O Coeficiente Angular (a)</h3>
+        <p>O coeficiente 'a' é chamado de <strong>taxa de variação</strong>. Ele mede o quanto a variável 'y' muda para cada unidade que a variável 'x' aumenta. Graficamente, ele define a <strong>inclinação</strong> ou <strong>declividade</strong> da reta.</p>
+        <ul>
+            <li>Se <strong>a > 0</strong>, a função é <strong>crescente</strong>. Isso significa que, à medida que 'x' aumenta, f(x) também aumenta. A reta "sobe" da esquerda para a direita.</li>
+            <li>Se <strong>a < 0</strong>, a função é <strong>decrescente</strong>. À medida que 'x' aumenta, f(x) diminui. A reta "desce" da esquerda para a direita.</li>
+            <li>Se <strong>a = 0</strong>, a função deixa de ser do 1º grau e se torna uma função constante, com a forma f(x) = b, cujo gráfico é uma reta horizontal.</li>
+        </ul>
+        <p>É possível calcular o coeficiente 'a' se tivermos dois pontos distintos (x1, y1) e (x2, y2) da reta, usando a fórmula da variação:</p>
+        <p style="font-family: 'Fira Code', monospace; font-size: 1.1em; text-align: center;">a = (y2 - y1) / (x2 - x1)</p>
+
+        <h3>O Coeficiente Linear (b)</h3>
+        <p>O coeficiente 'b' é o <strong>termo constante</strong> ou <strong>valor inicial</strong>. Ele não depende de 'x' e tem uma interpretação gráfica muito direta: ele é o valor da ordenada (eixo y) onde a reta <strong>intercepta o eixo vertical</strong>. Isso ocorre porque, no momento da interceptação, o valor de 'x' é zero:</p>
+        <p style="font-family: 'Fira Code', monospace; font-size: 1.1em; text-align: center;">f(0) = a * 0 + b = b</p>
+        <p>Portanto, o ponto de interceptação do eixo y é sempre (0, b). Em muitos problemas práticos, 'b' representa um valor fixo ou inicial (uma taxa fixa, um salário base, uma posição inicial, etc.).</p>
+    </section>
+
+    <section id="grafico">
+        <h2 class="subtitle">📈 Construindo o Gráfico de uma Função Afim</h2>
+        <p>Como o gráfico de uma função afim é uma reta, basta encontrar <strong>dois pontos distintos</strong> que pertencem a ela e traçar a linha que passa por eles. A maneira mais eficiente e informativa de fazer isso é encontrar os pontos onde a reta cruza os eixos coordenados.</p>
+        
+        <h4>Passo a Passo:</h4>
+        <ol>
+            <li><strong>Encontrar a Interseção com o Eixo Y:</strong> Este é o ponto mais fácil. Como vimos, ele ocorre quando x=0. O ponto será sempre (0, b).</li>
+            <li><strong>Encontrar a Interseção com o Eixo X:</strong> Este ponto é conhecido como a <strong>raiz</strong> ou <strong>zero</strong> da função. Ele ocorre quando f(x) = 0. Para encontrá-lo, basta resolver a equação ax + b = 0. A solução é x = -b/a. O ponto será (-b/a, 0).</li>
+            <li><strong>Marcar os Pontos e Traçar a Reta:</strong> Marque os dois pontos encontrados, (0, b) e (-b/a, 0), no plano cartesiano e desenhe a única reta que passa por ambos.</li>
+        </ol>
+
+        <h4>Exemplo Prático: Construir o gráfico de f(x) = 2x - 4</h4>
+        <p>Nesta função, temos a = 2 e b = -4.</p>
+        <ul>
+            <li><strong>Interseção com o Eixo Y (quando x=0):</strong><br>
+            f(0) = 2 * 0 - 4 = -4.<br>
+            O ponto de interceptação é <strong>P1 = (0, -4)</strong>.</li>
+            <li><strong>Interseção com o Eixo X (quando f(x)=0):</strong><br>
+            2x - 4 = 0, o que nos leva a 2x = 4, e finalmente x = 2.<br>
+            O ponto de interceptação é <strong>P2 = (2, 0)</strong>.</li>
+        </ul>
+        <p>Agora, basta marcar os pontos (0, -4) e (2, 0) no gráfico e ligá-los para obter a reta que representa a função. Como a = 2 (positivo), notamos que a reta é crescente.</p>
+    </section>
+
+    <section id="raiz">
+        <h2 class="subtitle">🎯 Raiz ou Zero da Função</h2>
+        <p>A <strong>raiz</strong> (ou <strong>zero</strong>) de uma função afim é o valor de 'x' que torna o resultado da função igual a zero. Ou seja, é o valor de 'x' que satisfaz a equação f(x) = 0.</p>
+        <p>Como já vimos, para encontrar a raiz, resolvemos a equação de primeiro grau:</p>
+        <p style="font-family: 'Fira Code', monospace; font-size: 1.1em; text-align: center;">ax + b = 0  ➡️  ax = -b  ➡️  x = -b/a</p>
+        <p>A raiz é fundamental porque ela representa o ponto de equilíbrio ou a solução de muitos problemas. Graficamente, ela é a <strong>abscissa (coordenada x) do ponto onde a reta cruza o eixo horizontal (eixo das abscissas)</strong>. Este ponto é crucial para a análise de sinal da função (saber quando f(x) é positiva ou negativa).</p>
+        
+        <h4>Exemplo: Encontrando a raiz de g(x) = -3x + 15</h4>
+        <p>Igualamos a função a zero:</p>
+        <p>-3x + 15 = 0</p>
+        <p>Isso significa que -3x = -15.</p>
+        <p>Portanto, x = (-15) / (-3), o que resulta em x = 5.</p>
+        <p>A raiz da função g(x) é 5. Isso significa que o gráfico dessa função corta o eixo x no ponto (5, 0).</p>
+    </section>
+    
+    <section id="casos-especiais">
+        <h2 class="subtitle">⭐ Casos Especiais de Funções Afins</h2>
+        <p>Dentro da família das funções afins, existem alguns casos particulares notáveis que recebem nomes especiais.</p>
+        
+        <h3>1. Função Linear</h3>
+        <p>Uma função afim é chamada de <strong>Função Linear</strong> quando seu coeficiente linear 'b' é igual a zero (b=0). Sua forma é:</p>
+        <p style="font-family: 'Fira Code', monospace; font-size: 1.1em; text-align: center;">f(x) = ax</p>
+        <p>As funções lineares modelam situações de <strong>proporcionalidade direta</strong>. Se você dobra o valor de 'x', o valor de f(x) também dobra. A característica gráfica mais importante de uma função linear é que sua reta <strong>sempre passa pela origem do plano cartesiano, o ponto (0, 0)</strong>.</p>
+        <p>Exemplo: f(x) = 3x. Se x=1, y=3. Se x=2, y=6. O gráfico é uma reta crescente que passa pela origem.</p>
+
+        <h3>2. Função Identidade</h3>
+        <p>A Função Identidade é um caso particular da função linear onde a=1 e b=0. Sua forma é a mais simples possível:</p>
+        <p style="font-family: 'Fira Code', monospace; font-size: 1.1em; text-align: center;">f(x) = x</p>
+        <p>Nesta função, o valor de saída é sempre idêntico ao valor de entrada. O seu gráfico é uma reta que passa pela origem e divide o primeiro e o terceiro quadrantes exatamente ao meio (é a bissetriz dos quadrantes ímpares), formando um ângulo de 45º com o eixo x.</p>
+    </section>
+
+    <section id="aplicacoes">
+        <h2 class="subtitle">💡 Aplicações no Mundo Real</h2>
+        <p>As funções afins são extremamente comuns no dia a dia para modelar situações que envolvem um custo fixo e um custo variável.</p>
+        
+        <h3>1. Preço de Corrida de Táxi</h3>
+        <p>Uma empresa de táxi cobra uma taxa fixa chamada "bandeirada" (valor que você paga só por entrar no carro) e um valor por quilômetro rodado.</p>
+        <ul>
+            <li>Bandeirada (taxa fixa): R$ 5,00 (este é o coeficiente 'b')</li>
+            <li>Preço por km: R$ 2,50 (esta é a taxa de variação, o coeficiente 'a')</li>
+        </ul>
+        <p>A função que descreve o custo C de uma corrida em função da distância 'd' em quilômetros é: C(d) = 2.50 * d + 5.00.</p>
+
+        <h3>2. Salário de Vendedor</h3>
+        <p>Um vendedor recebe um salário fixo mensal mais uma comissão por cada produto vendido.</p>
+        <ul>
+            <li>Salário fixo: R$ 1.500,00 (coeficiente 'b')</li>
+            <li>Comissão por venda: R$ 50,00 (coeficiente 'a')</li>
+        </ul>
+        <p>A função que descreve o salário total S em função do número de vendas 'v' é: S(v) = 50 * v + 1500.</p>
+    </section>
+
+    <section id="exercicios">
+        <h2 class="subtitle">✏️ Exercícios Práticos</h2>
+        <p>A melhor forma de aprender é praticando. Tente resolver os problemas abaixo antes de olhar a resposta!</p>
+
+        <div class="exercise">
+            <h4>Exercício 1: Descobrindo a Função</h4>
+            <p><strong>Problema:</strong> Uma função afim f(x) = ax + b é tal que f(1) = 5 e f(3) = 11. Determine os valores de 'a' e 'b' e escreva a lei da função.</p>
+            <p><strong>Solução:</strong></p>
+            <pre class="code">
+Temos dois pontos: (1, 5) e (3, 11).
+
+1. Calcular o coeficiente angular 'a':
+a = (y2 - y1) / (x2 - x1)
+a = (11 - 5) / (3 - 1)
+a = 6 / 2
+a = 3
+
+2. Descobrir o coeficiente linear 'b':
+Agora que sabemos que a = 3, nossa função é f(x) = 3x + b.
+Podemos usar qualquer um dos pontos para achar 'b'. Vamos usar f(1) = 5:
+f(1) = 3 * 1 + b
+5 = 3 + b
+b = 5 - 3
+b = 2
+
+3. Escrever a função:
+A lei da função é f(x) = 3x + 2.
+            </pre>
+            <p><strong>Explicação da Resposta:</strong> Primeiro, usamos a fórmula da taxa de variação, a = (y2-y1)/(x2-x1), com os dois pontos dados para encontrar o coeficiente angular 'a'. Com o valor de 'a' em mãos, substituímos um dos pontos na forma geral f(x) = ax+b para criar uma equação simples e resolver para 'b'.</p>
+        </div>
+
+        <div class="exercise">
+            <h4>Exercício 2: Plano de Celular</h4>
+            <p><strong>Problema:</strong> Uma operadora oferece um plano de celular com um custo fixo de R$ 40,00 por mês, que dá direito a 100 minutos de ligação. Para cada minuto excedente, é cobrado um adicional de R$ 0,75. Determine a função que calcula o valor P da conta para um cliente que utilizou 't' minutos, sendo t > 100.</p>
+             <p><strong>Solução:</strong></p>
+            <pre class="code">
+1. Identificar o custo fixo e a taxa variável.
+O custo fixo é R$ 40,00. A taxa variável é R$ 0,75, mas ela só se aplica aos minutos *além* dos 100.
+
+2. Expressar os minutos excedentes.
+Se o total de minutos é 't', os minutos excedentes são (t - 100).
+
+3. Montar a função.
+O preço P(t) será o custo fixo mais o custo variável.
+Custo variável = 0,75 * (minutos excedentes)
+Custo variável = 0,75 * (t - 100)
+P(t) = Custo Fixo + Custo Variável
+P(t) = 40 + 0,75 * (t - 100)
+
+4. Simplificar a expressão (opcional, mas recomendado):
+P(t) = 40 + 0,75t - 75
+P(t) = 0,75t - 35
+
+A função é P(t) = 0,75t - 35, para t > 100.
+            </pre>
+            <p><strong>Explicação da Resposta:</strong> A chave aqui é entender que a taxa de variação (a = 0,75) não se aplica ao total de minutos 't', mas apenas à porção que excede o limite de 100 minutos. A expressão (t-100) representa essa porção. Ao montar a equação somando o custo fixo (R$ 40,00) com o custo adicional e simplificando, chegamos à função afim que modela a situação.</p>
+        </div>
+
+        <div class="exercise">
+            <h4>Exercício 3: Análise Completa</h4>
+            <p><strong>Problema:</strong> Dada a função f(x) = -4x + 8, determine:
+            a) Se a função é crescente ou decrescente.
+            b) A raiz da função.
+            c) O ponto onde o gráfico corta o eixo y.
+            d) O valor de f(5).
+            </p>
+             <p><strong>Solução:</strong></p>
+            <pre class="code">
+a) Crescente ou decrescente:
+O coeficiente angular é a = -4. Como 'a' é negativo, a função é **decrescente**.
+
+b) Raiz da função:
+Fazemos f(x) = 0.
+-4x + 8 = 0
+-4x = -8
+x = (-8) / (-4)
+x = 2. A raiz é **2**.
+
+c) Interseção com o eixo y:
+Este é o valor do coeficiente linear 'b'.
+b = 8. O ponto é **(0, 8)**.
+
+d) Valor de f(5):
+Substituímos x por 5 na função.
+f(5) = -4 * 5 + 8
+f(5) = -20 + 8
+f(5) = -12. O valor é **-12**.
+            </pre>
+            <p><strong>Explicação da Resposta:</strong> Este exercício revisa todos os conceitos fundamentais. O comportamento (crescente/decrescente) é dado pelo sinal de 'a'. A raiz é encontrada resolvendo f(x)=0. A interseção com o eixo y é dada diretamente pelo coeficiente 'b'. O valor de f(5) é encontrado pela simples substituição de 'x' na lei da função.</p>
+        </div>
+    </section>
+
+</div>
+
+</main>
+
+<footer>
+
+    <p>
+    <a href="../Hubs/Matematica-Hub.html"><i class="fa-solid fa-circle-chevron-left"></i></a>
+    <a href="../index.html"><i class="fa-solid fa-house-chimney"></i></a>
+    <a href="#"><i class="fa-solid fa-circle-chevron-up"></i></a>
+    </p>
+
+    <p class="copyright"> ©️ 2025 - Lucas Willian</p>
+
+</footer>
+
+</div>
+
+    <div id="player-wrapper" class="is-hidden">
+
+    <iframe 
+        id="meu-player-de-musica"
+        src="../player/player.html"
+        title="Player de Música"
+        frameborder="0"
+        allow="autoplay">
+    </iframe>
+
+    <button id="toggle-player-btn" aria-label="Controlar Player">
+    🎵
+    </button>
+
+    <script src="../Scripts/sound-effects.js" defer></script>
+    <script src="../Scripts/player-toggle.js" defer></script>
+    <script src="../Scripts/status-bar.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="../Scripts/barba-init.js" defer></script>
+
+    <script src="../Scripts/theme-toggle.js" defer></script>
+
+</body>
+</html>

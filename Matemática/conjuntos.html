@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../estilo.css">
+
+    <link rel="icon" type="image/png" href="../Others/Icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../Others/Icons/favicon.svg" />
+    <link rel="shortcut icon" href="../Others/Icons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../Others/Icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Microspace" />
+    <link rel="manifest" href="../Others/Icons/site.webmanifest" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Guia Introdutório de Conjuntos</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
+</head>
+
+<body data-barba="wrapper">
+
+        <button id="theme-toggle" aria-label="Alternar tema" title="Alternar tema">
+        <span id="theme-icon">🌙</span>
+        </button>
+
+        <div data-barba="container" data-barba-namespace="Mat-Conjuntos" namespace="default-view">
+
+<header>
+
+    <h1>Guia Introdutório de Conjuntos 📦</h1>
+    <p>Desvendando o conceito fundamental da matemática para organizar e agrupar informações.</p>
+
+    <nav>
+        <p><a href="../index.html" class="nav-link">Inicío 🏡</a></p>
+        <p><a href="../Hubs/ArquiteturaComp-Hub.html" class="nav-link"> Arquitetura ⚙️</a></p>
+        <p><a href="../Hubs/Matematica-Hub.html" class="nav-link">Matemática ✖️</a></p>
+        <p><a href="../Hubs/Cpp-Hub.html" class="nav-link">C++ 🔧</a></p>
+        <p><a href="../Hubs/InfoBasica-Hub.html" class="nav-link">Info Básica 🖥️</a></p>
+        <p><a href="../Hubs/DesignWeb-Hub.html" class="nav-link">Design Web 🌐</a></p>
+        <p><a href="../Hubs/Jogos-Hub.html" class="nav-link">Jogos 🕹️</a></p>
+    </nav>
+</header>
+
+<main>
+
+<div id="xml-intro">
+
+    <section id="intro">
+        <h2 class="subtitle">🤔 O que é um Conjunto?</h2>
+        <p>Imagine que você quer organizar suas coisas. Você pode ter uma caixa para seus lápis de cor, uma playlist para suas músicas de rock e uma lista de compras para o supermercado. Em matemática, um <strong>conjunto</strong> é exatamente isso: uma <strong>coleção ou agrupamento de objetos</strong>. Esses objetos são chamados de <strong>elementos</strong> do conjunto.</p>
+        <p>A ideia é simples, mas poderosa. Podemos ter um conjunto de números, um conjunto de letras, um conjunto de pessoas, um conjunto de cidades, e assim por diante. A característica mais importante de um conjunto é que ele define claramente o que está "dentro" e o que está "fora" dele.</p>
+        <p>Duas regras de ouro para os conjuntos:</p>
+        <ul>
+            <li><strong>A ordem não importa:</strong> O conjunto {1, 2, 3} é exatamente o mesmo que {3, 1, 2}.</li>
+            <li><strong>Elementos não se repetem:</strong> Se você tem dois lápis azuis, no conjunto "cores dos meus lápis", o elemento "azul" aparece apenas uma vez. O conjunto {a, b, a, c} é, na verdade, apenas {a, b, c}.</li>
+        </ul>
+    </section>
+
+    <section id="representacao">
+        <h2 class="subtitle">✍️ Como Representamos um Conjunto?</h2>
+        <p>Existem duas maneiras principais de escrever o que há em um conjunto.</p>
+        
+        <h3>1. Listando os Elementos (Enumeração)</h3>
+        <p>Esta é a forma mais direta. Simplesmente listamos todos os elementos do conjunto entre chaves <strong>{ }</strong>. </p>
+        <p><em>Exemplos:</em></p>
+        <ul>
+            <li>O conjunto das vogais: V = {a, e, i, o, u}</li>
+            <li>Um conjunto de números pares: P = {2, 4, 6, 8}</li>
+            <li>O conjunto de planetas do sistema solar (sem Plutão): S = {Mercúrio, Vênus, Terra, Marte, Júpiter, Saturno, Urano, Netuno}</li>
+        </ul>
+
+        <h3>2. Por uma Propriedade (Compreensão)</h3>
+        <p>E se o conjunto for muito grande ou infinito? Listar tudo seria impossível! Nesses casos, descrevemos o conjunto por uma <strong>propriedade comum</strong> a todos os seus elementos. Usamos uma notação que se lê assim:</p>
+        <p style="font-family: 'Fira Code', monospace; font-size: 1.1em; text-align: center;">A = { x | propriedade de x }</p>
+        <p>Isso se lê: "O conjunto A é formado por todo elemento 'x', <strong>tal que</strong> 'x' obedece a uma determinada propriedade". A barrinha vertical "|" significa "tal que".</p>
+        <p><em>Exemplos:</em></p>
+        <ul>
+            <li>B = { x | x é um número ímpar positivo }. (Lê-se: "B é o conjunto de todos os 'x', tal que 'x' é um número ímpar positivo". Este conjunto é infinito: {1, 3, 5, 7, ...})</li>
+            <li>C = { x | x é um estado da região Sudeste do Brasil }. (Este conjunto é {São Paulo, Rio de Janeiro, Minas Gerais, Espírito Santo}).</li>
+        </ul>
+    </section>
+    
+    <section id="conceitos-chave">
+        <h2 class="subtitle">🧩 Relação de Pertinência: Dentro ou Fora?</h2>
+        <p>A relação mais básica em Teoria dos Conjuntos é saber se um elemento está ou não dentro de um conjunto. Chamamos isso de <strong>relação de pertinência</strong>.</p>
+        <ul>
+            <li>Usamos o símbolo <strong>∈</strong> para dizer "pertence a".</li>
+            <li>Usamos o símbolo <strong>∉</strong> para dizer "não pertence a".</li>
+        </ul>
+        <p>Essa relação ocorre sempre entre um <strong>ELEMENTO</strong> e um <strong>CONJUNTO</strong>.</p>
+        <p><em>Exemplo:</em> Dado o conjunto A = {2, 4, 6, 8}:</p>
+        <ul>
+            <li>2 <strong>∈</strong> A (2 pertence ao conjunto A)</li>
+            <li>7 <strong>∉</strong> A (7 não pertence ao conjunto A)</li>
+            <li>'a' <strong>∉</strong> A ('a' não pertence ao conjunto A)</li>
+        </ul>
+    </section>
+
+    <section id="tipos-conjuntos">
+        <h2 class="subtitle">📦 Tipos Especiais de Conjuntos</h2>
+        <p>Alguns conjuntos são tão importantes que ganharam nomes especiais.</p>
+        <ul>
+            <li><strong>Conjunto Finito:</strong> É um conjunto onde podemos contar o número de elementos e essa contagem termina. Ex: {a, b, c}.</li>
+            <li><strong>Conjunto Infinito:</strong> Não é possível contar todos os seus elementos. Ex: {1, 2, 3, 4, ...}.</li>
+            <li><strong>Conjunto Unitário:</strong> Possui apenas um único elemento. Ex: {5}.</li>
+            <li><strong>Conjunto Vazio (∅):</strong> Este é muito importante! É o conjunto que <strong>não possui elemento algum</strong>. É representado pelo símbolo <strong>∅</strong> ou por chaves sem nada dentro: <strong>{ }</strong>. Analogia: uma caixa completamente vazia.</li>
+        </ul>
+        <p><strong>Cuidado com a pegadinha!</strong> O conjunto {∅} <strong>não</strong> é vazio! Ele é um conjunto unitário, cujo único elemento é o próprio símbolo de conjunto vazio. Pense nele como "uma caixa que contém uma outra caixa vazia dentro".</p>
+    </section>
+
+    <section id="relacoes">
+        <h2 class="subtitle">🤝 Relação de Inclusão: Um Conjunto Dentro do Outro</h2>
+        <p>Enquanto a pertinência (∈) relaciona um elemento a um conjunto, a <strong>inclusão</strong> relaciona um <strong>CONJUNTO</strong> com outro <strong>CONJUNTO</strong>. Ela descreve a ideia de um conjunto estar totalmente contido dentro de outro.</p>
+        <ul>
+            <li>Usamos o símbolo <strong>⊂</strong> para dizer "está contido em" (é um subconjunto de).</li>
+            <li>Usamos o símbolo <strong>⊄</strong> para dizer "não está contido em".</li>
+        </ul>
+        <p>Dizemos que A ⊂ B se <strong>todo</strong> elemento de A também for um elemento de B.</p>
+        <p><em>Exemplo:</em></p>
+        <p>Se A = {1, 2} e B = {1, 2, 3, 4}, então <strong>A ⊂ B</strong>, porque tudo que está em A (o 1 e o 2) também está em B.</p>
+        <p>Se C = {1, 5}, então <strong>C ⊄ B</strong>, porque o elemento 5 está em C mas não está em B.</p>
+        <p><strong>Regras Importantes:</strong></p>
+        <ul>
+            <li>O conjunto vazio (∅) é subconjunto de <strong>qualquer</strong> conjunto. (∅ ⊂ A para todo A).</li>
+            <li>Todo conjunto é subconjunto de si mesmo. (A ⊂ A).</li>
+        </ul>
+    </section>
+
+    <section id="operacoes">
+        <h2 class="subtitle">⚙️ Operações Entre Conjuntos</h2>
+        <p>Assim como fazemos operações com números (+, -, *), podemos fazer operações com conjuntos para criar novos conjuntos.</p>
+
+        <h3>União (∪): Juntar Tudo</h3>
+        <p>A união de dois conjuntos A e B é um novo conjunto que contém <strong>todos os elementos que estão em A, em B, ou em ambos</strong>. É a "fusão" dos dois conjuntos. Usamos o símbolo <strong>∪</strong>.</p>
+        <p><em>Exemplo:</em> Se A = {1, 2, 3} e B = {3, 4, 5}, então <strong>A ∪ B = {1, 2, 3, 4, 5}</strong>. (Note que o '3' não se repete).</p>
+        
+        <h3>Interseção (∩): Apenas o que for Comum</h3>
+        <p>A interseção de A e B é um novo conjunto que contém apenas os elementos que <strong>pertencem a A e a B ao mesmo tempo</strong>. É o que os dois conjuntos têm em comum. Usamos o símbolo <strong>∩</strong>.</p>
+        <p><em>Exemplo:</em> Se A = {1, 2, 3} e B = {3, 4, 5}, então <strong>A ∩ B = {3}</strong>.</p>
+        <p>Se dois conjuntos não têm nada em comum, sua interseção é o conjunto vazio (∅). Eles são chamados de <strong>conjuntos disjuntos</strong>.</p>
+
+        <h3>Diferença (-): O que Sobra</h3>
+        <p>A diferença A - B é um novo conjunto formado pelos elementos que <strong>pertencem a A mas não pertencem a B</strong>. É como "remover" de A tudo que também está em B.</p>
+        <p><em>Exemplo:</em> Se A = {1, 2, 3} e B = {3, 4, 5}:</p>
+        <ul>
+            <li><strong>A - B = {1, 2}</strong> (O que está em A e não está em B)</li>
+            <li><strong>B - A = {4, 5}</strong> (O que está em B e não está em A)</li>
+        </ul>
+    </section>
+
+    <section id="diagrama-venn">
+        <h2 class="subtitle">🎨 Diagrama de Venn: Desenhando os Conjuntos</h2>
+        <p>Uma forma incrivelmente útil de visualizar as relações e operações entre conjuntos é usar o <strong>Diagrama de Venn</strong>. Nele, cada conjunto é representado por um círculo (ou outra forma fechada). A forma como os círculos se sobrepõem ou se separam mostra exatamente como os conjuntos se relacionam.</p>
+        <ul>
+            <li>A <strong>União (∪)</strong> é toda a área pintada dos dois círculos.</li>
+            <li>A <strong>Interseção (∩)</strong> é apenas a área de sobreposição entre os círculos.</li>
+            <li>A <strong>Diferença (A - B)</strong> é a parte do círculo A que não se sobrepõe com B.</li>
+        </ul>
+        <p>O diagrama ajuda a resolver problemas de lógica e contagem de forma muito intuitiva.</p>
+    </section>
+    
+    <section id="exercicios">
+        <h2 class="subtitle">✏️ Exercícios para Praticar</h2>
+
+        <div class="exercise">
+            <h4>Exercício 1: Relações e Operações</h4>
+            <p><strong>Problema:</strong> Dados os conjuntos A = {a, b, c, d}, B = {c, d, e, f} e C = {a, b}. Responda:</p>
+            <p>
+                a) O elemento 'c' pertence a A? (Use ∈ ou ∉)<br>
+                b) O conjunto C está contido em A? (Use ⊂ ou ⊄)<br>
+                c) Qual o resultado de A ∪ B?<br>
+                d) Qual o resultado de A ∩ B?<br>
+                e) Qual o resultado de A - B?
+            </p>
+            <p><strong>Solução:</strong></p>
+            <pre class="code">
+a) Sim. c ∈ A.
+
+b) Sim. Todos os elementos de C ('a' e 'b') também estão em A. Logo, C ⊂ A.
+
+c) A ∪ B = {a, b, c, d, e, f}. (Juntamos tudo sem repetir).
+
+d) A ∩ B = {c, d}. (Apenas os elementos em comum).
+
+e) A - B = {a, b}. (Os elementos que estão em A mas não em B).
+            </pre>
+            <p><strong>Explicação da Resposta:</strong> Este exercício revisa as notações e operações básicas. 'a' e 'b' mostram a diferença entre a relação elemento-conjunto (pertinência) e conjunto-conjunto (inclusão). 'c', 'd' e 'e' aplicam diretamente as definições de União (juntar), Interseção (pegar o comum) e Diferença (remover).</p>
+        </div>
+
+    </section>
+</div>
+
+</main>
+
+<footer>
+
+    <p>
+    <a href="../Hubs/Matematica-Hub.html"><i class="fa-solid fa-circle-chevron-left"></i></a>
+    <a href="../index.html"><i class="fa-solid fa-house-chimney"></i></a>
+    <a href="#"><i class="fa-solid fa-circle-chevron-up"></i></a>
+    </p>
+
+    <p class="copyright"> ©️ 2025 - Lucas Willian</p>
+
+</footer>
+
+</div>
+
+    <div id="player-wrapper" class="is-hidden">
+
+    <iframe 
+        id="meu-player-de-musica"
+        src="../player/player.html"
+        title="Player de Música"
+        frameborder="0"
+        allow="autoplay">
+    </iframe>
+
+    <button id="toggle-player-btn" aria-label="Controlar Player">
+    🎵
+    </button>
+
+    <script src="../Scripts/sound-effects.js" defer></script>
+    <script src="../Scripts/player-toggle.js" defer></script>
+    <script src="../Scripts/status-bar.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="../Scripts/barba-init.js" defer></script>
+
+    <script src="../Scripts/theme-toggle.js" defer></script>
+
+</body>
+</html>

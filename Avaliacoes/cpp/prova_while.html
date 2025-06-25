@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../../estilo.css">
+    <link rel="stylesheet" href="../estilo_provas.css">
+
+    <link rel="icon" type="image/png" href="../Others/Icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../Others/Icons/favicon.svg" />
+    <link rel="shortcut icon" href="../Others/Icons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../Others/Icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Microspace" />
+    <link rel="manifest" href="../Others/Icons/site.webmanifest" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Prova de While Nº 1</title>
+
+</head>
+
+<body data-barba="wrapper">
+
+    <div data-barba="container" data-barba-namespace="Cpp-While-Prova1" namespace="default-view">
+
+<header>
+    <h1>Prova de 'while' Nº 1</h1>
+    <p>Teste seus conhecimentos sobre a estrutura de repetição condicional.</p>
+</header>
+
+<main class="quiz-container">
+
+    <div class="quiz-header">
+        <div id="timer" class="timer-display">--:--</div>
+        <div id="consultation-area" class="consultation-links" style="display: none;">
+            <span>Consulta Rápida:</span>
+            <a href="guia-while.html" target="_blank">Guia do While</a>
+            <a href="guia-operadores.html" target="_blank">Guia de Operadores</a>
+        </div>
+    </div>
+
+    <form id="quiz-form">
+
+        <div class="question-block" id="q1">
+            <h3>Questão 1 (1 ponto)</h3>
+            <p>Qual é a principal característica que define o laço <code>while</code>?</p>
+            <ul class="options-list">
+                <li><label><input type="radio" name="q1" value="a"> Ser um laço contado, que executa um número fixo de vezes.</label></li>
+                <li><label><input type="radio" name="q1" value="b"> Ser um laço pós-condicional, que testa a condição após a execução do bloco.</label></li>
+                <li><label><input type="radio" name="q1" value="c"> Ser um laço pré-condicional, que testa a condição antes de cada execução do bloco.</label></li>
+                <li><label><input type="radio" name="q1" value="d"> Exigir obrigatoriamente o uso das palavras-chave `break` e `continue`.</label></li>
+            </ul>
+        </div>
+
+        <div class="question-block" id="q2">
+            <h3>Questão 2 (1 ponto)</h3>
+            <p>Observe o código abaixo. O que será impresso na tela?</p>
+            <pre class="code">int i = 5;
+while (i > 0) {
+    cout << i << " ";
+    i--;
+}</pre>
+            <ul class="options-list">
+                <li><label><input type="radio" name="q2" value="a"> 5 4 3 2 1</label></li>
+                <li><label><input type="radio" name="q2" value="b"> 5 4 3 2 1 0</label></li>
+                <li><label><input type="radio" name="q2" value="c"> 4 3 2 1 0</label></li>
+                <li><label><input type="radio" name="q2" value="d"> 4 3 2 1</label></li>
+            </ul>
+        </div>
+
+        <div class="question-block" id="q3">
+            <h3>Questão 3 (1 ponto)</h3>
+            <p>O que acontece se a condição de um laço <code>while</code> nunca se tornar falsa?</p>
+            <ul class="options-list">
+                <li><label><input type="radio" name="q3" value="a"> O programa apresenta um erro de compilação.</label></li>
+                <li><label><input type="radio" name="q3" value="b"> O laço é executado apenas uma vez e depois termina.</label></li>
+                <li><label><input type="radio" name="q3" value="c"> O programa entra em um loop infinito.</label></li>
+                <li><label><input type="radio" name="q3" value="d"> O sistema operacional encerra o programa automaticamente.</label></li>
+            </ul>
+        </div>
+
+        <div class="question-block" id="q4">
+            <h3>Questão 4 (1 ponto)</h3>
+            <p>Qual a função da palavra-chave <code>break</code> dentro de um laço <code>while</code>?</p>
+            <ul class="options-list">
+                <li><label><input type="radio" name="q4" value="a"> Pula para a próxima iteração do laço.</label></li>
+                <li><label><input type="radio" name="q4" value="b"> Pausa a execução do laço temporariamente.</label></li>
+                <li><label><input type="radio" name="q4" value="c"> Encerra o laço imediatamente e continua a execução do código após o laço.</label></li>
+                <li><label><input type="radio" name="q4" value="d"> Reinicia o laço do começo.</label></li>
+            </ul>
+        </div>
+
+        <div class="question-block" id="q5">
+            <h3>Questão 5 (1 ponto)</h3>
+            <p>Analise o código abaixo. Quantas vezes a palavra "Teste" será impressa?</p>
+            <pre class="code">int x = 10;
+while (x <= 15) {
+    cout << "Teste\n";
+    x += 2;
+}</pre>
+            <ul class="options-list">
+                <li><label><input type="radio" name="q5" value="a"> 3 vezes</label></li>
+                <li><label><input type="radio" name="q5" value="b"> 5 vezes</label></li>
+                <li><label><input type="radio" name="q5" value="c"> 6 vezes</label></li>
+                <li><label><input type="radio" name="q5" value="d"> Nenhuma vez</label></li>
+            </ul>
+        </div>
+        
+        <div class="question-block" id="q6">
+            <h3>Questão 6 (1 ponto)</h3>
+            <p>Em qual das seguintes situações o uso do laço <code>while</code> é mais apropriado que o laço <code>for</code>?</p>
+            <ul class="options-list">
+                <li><label><input type="radio" name="q6" value="a"> Para percorrer todos os elementos de um vetor de tamanho conhecido.</label></li>
+                <li><label><input type="radio" name="q6" value="b"> Para repetir um bloco de código exatamente 100 vezes.</label></li>
+                <li><label><input type="radio" name="q6" value="c"> Para continuar pedindo uma senha ao usuário até que a senha correta seja digitada.</label></li>
+                <li><label><input type="radio" name="q6" value="d"> Para imprimir os números de 1 a 10.</label></li>
+            </ul>
+        </div>
+
+        <div class="question-block" id="q7">
+            <h3>Questão 7 (1 ponto)</h3>
+            <p>O que será impresso pelo código a seguir?</p>
+            <pre class="code">int i = 0;
+while (i < 5) {
+    i++;
+    if (i == 3) {
+        continue;
+    }
+    cout << i << " ";
+}</pre>
+            <ul class="options-list">
+                <li><label><input type="radio" name="q7" value="a"> 1 2 3 4 5</label></li>
+                <li><label><input type="radio" name="q7" value="b"> 1 2 4 5</label></li>
+                <li><label><input type="radio" name="q7" value="c"> 0 1 2 4</label></li>
+                <li><label><input type="radio" name="q7" value="d"> 1 2</label></li>
+            </ul>
+        </div>
+        
+        <div class="question-block" id="q8">
+            <h3>Questão 8 (1 ponto)</h3>
+            <p>Complete o código para que ele imprima todos os números pares de 10 a 20 (inclusive). A condição do <code>while</code> já está pronta.</p>
+            <pre class="code">int num = 10;
+while (num <= 20) {
+    cout << num << " ";
+    <span class="fill-in-blank">
+        <input type="text" id="q8_blank" name="q8_blank" placeholder="Escreva aqui">
+    </span>;
+}</pre>
+        </div>
+
+        <div class="question-block" id="q9">
+            <h3>Questão 9 (1 ponto)</h3>
+            <p>Complete a condição do <code>while</code> para que o laço continue executando enquanto o usuário não digitar o número <code>-1</code>.</p>
+            <pre class="code">int valor;
+cout << "Digite um numero (-1 para sair): ";
+cin >> valor;
+while (<span class="fill-in-blank">
+        <input type="text" id="q9_blank" name="q9_blank" placeholder="Escreva aqui">
+    </span>) {
+    cout << "Voce digitou: " << valor << endl;
+    cout << "Digite um numero (-1 para sair): ";
+    cin >> valor;
+}</pre>
+        </div>
+
+        <div class="question-block" id="q10">
+            <h3>Questão 10 (1 ponto)</h3>
+            <p>Complete a linha que está faltando para evitar um loop infinito. O objetivo é fazer a contagem regressiva de uma variável <code>vida</code>.</p>
+            <pre class="code">int vida = 100;
+while (vida > 0) {
+    cout << "Vida restante: " << vida << endl;
+    <span class="fill-in-blank">
+        <input type="text" id="q10_blank" name="q10_blank" placeholder="Escreva aqui">
+    </span>;
+}</pre>
+        </div>
+
+        <button type="button" id="submit-quiz">Finalizar Prova</button>
+
+    </form>
+</main>
+
+<footer>
+    <p>
+        <a href="../Hubs/Cpp-Hub.html"><i class="fa-solid fa-circle-chevron-left"></i></a>
+        <a href="../index.html"><i class="fa-solid fa-house-chimney"></i></a>
+    </p>
+    <p class="copyright"> ©️ 2025 - Lucas Willian</p>
+</footer>
+
+</div>
+
+    <script src="../../Scripts/Provas/prova_while.js" defer></script>
+    <script src="../../Scripts/sound-effects.js" defer></script>
+    <script src="../../Scripts/barba-init.js" defer></script>
+    </body>
+</html>

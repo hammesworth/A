@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <link rel="stylesheet" href="../estilo.css">
+    <link rel="stylesheet" href="estilo-prova.css">
+    
+    <title>[TÍTULO DA PROVA]</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body data-barba="wrapper">
+
+    <button id="theme-toggle" aria-label="Alternar tema" title="Alternar tema">
+        <span id="theme-icon">🌙</span>
+    </button>
+    
+    <div data-barba="container" data-barba-namespace="[NAMESPACE-UNICO-DA-PROVA]" namespace="default-view">
+        <header>
+            <h1>[TÍTULO DA PROVA] 📝</h1>
+            <p>[Subtítulo ou descrição da prova]</p>
+        </header>
+
+        <main class="quiz-container">
+            <div class="quiz-header">
+                <div id="timer" class="timer-display">--:--</div>
+                <div id="consultation-area" class="consultation-links" style="display: none;">
+                    <span>Consulta Rápida:</span>
+                    <a href="link-guia-1.html" target="_blank">Guia 1</a>
+                    <a href="link-guia-2.html" target="_blank">Guia 2</a>
+                </div>
+            </div>
+
+            <form id="quiz-form">
+                
+                <div class="question-block" id="q1">
+                    <h3>Questão 1 (1 ponto)</h3>
+                    <p>[Enunciado da questão 1 vai aqui]</p>
+                    <pre class="code">[Opcional: Bloco de código para a questão 1]</pre>
+                    <ul class="options-list">
+                        <li><label><input type="radio" name="q1" value="a"> [Texto da alternativa A]</label></li>
+                        <li><label><input type="radio" name="q1" value="b"> [Texto da alternativa B]</label></li>
+                        <li><label><input type="radio" name="q1" value="c"> [Texto da alternativa C]</label></li>
+                        <li><label><input type="radio" name="q1" value="d"> [Texto da alternativa D]</label></li>
+                    </ul>
+                </div>
+
+                <div class="question-block" id="q2">
+                    <h3>Questão 2 (1 ponto)</h3>
+                    <p>[Enunciado da questão 2 vai aqui]</p>
+                    <pre class="code">
+[Parte 1 do código]
+<span class="fill-in-blank"><input type="text" id="q2_blank" placeholder="[Dica do que preencher]"></span>
+[Parte 2 do código]
+                    </pre>
+                </div>
+
+                <button type="button" id="submit-quiz">Finalizar Prova</button>
+            </form>
+        </main>
+
+        <footer>
+            <p>
+                <a href="../Hubs/Cpp-Hub.html"><i class="fa-solid fa-circle-chevron-left"></i></a>
+                <a href="../index.html"><i class="fa-solid fa-house-chimney"></i></a>
+            </p>
+            <p class="copyright"> ©️ 2025 - Lucas Willian</p>
+        </footer>
+    </div>
+
+    <script src="quiz-engine.js" defer></script>
+    <script src="../Scripts/theme-toggle.js" defer></script>
+    </body>
+</html>

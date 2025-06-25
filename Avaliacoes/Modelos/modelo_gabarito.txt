@@ -1,0 +1,16 @@
+"namespace_qualquer": {
+            timeLimit: QUALQUER,
+            allowConsultation: true ou false,
+            answers: {
+                q1: 'resposta_objetiva_1',
+                q2: 'resposta_objetiva_2',
+                q3: 'resposta_objetiva_3',
+                q4: 'resposta_objetiva_4',
+                q5: 'resposta_objetiva_5',
+                q6: 'resposta_objetiva_6',
+                q7: 'resposta_objetiva_7',
+                q8_blank: ['opcao_resposta_completar_1', 'opcao_resposta_completar_2'],
+                q9_blank: ['opcao_resposta_completar_3'],
+                q10_blank: ['opcao_resposta_completar_4', 'opcao_resposta_completar_5', 'opcao_resposta_completar_6']
+            }
+        },

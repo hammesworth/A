@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../../estilo.css">
+    <link rel="stylesheet" href="../estilo_provas.css">
+    <title>Prova de While Nº 2 (Avançado)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body data-barba="wrapper">
+    
+    <div data-barba="container" data-barba-namespace="Cpp-While-Prova2" namespace="default-view">
+        <header>
+            <h1>Prova de 'while' Nº 2 (Avançado) 🧠</h1>
+            <p>Teste seus conhecimentos com cenários complexos e análise de código.</p>
+        </header>
+        <main class="quiz-container">
+            <div class="quiz-header">
+                <div id="timer" class="timer-display">--:--</div>
+            </div>
+            <form id="quiz-form">
+                <div class="question-block" id="q1">
+                    <h3>Questão 1 (1 ponto)</h3>
+                    <p>Qual a principal diferença entre um laço `while` e um laço `do-while`?</p>
+                    <ul class="options-list">
+                        <li><label><input type="radio" name="q1" value="a"> `do-while` é pré-condicional, enquanto `while` é pós-condicional.</label></li>
+                        <li><label><input type="radio" name="q1" value="b"> `while` executa o bloco de código pelo menos uma vez, garantidamente.</label></li>
+                        <li><label><input type="radio" name="q1" value="c"> `do-while` executa o bloco de código pelo menos uma vez, garantidamente.</label></li>
+                        <li><label><input type="radio" name="q1" value="d"> Não há diferença funcional, apenas sintática.</label></li>
+                    </ul>
+                </div>
+
+                <div class="question-block" id="q2">
+                    <h3>Questão 2 (1 ponto)</h3>
+                    <p>Qual será a saída do código abaixo?</p>
+                    <pre class="code">int i = 0, j;
+while (i < 3) {
+    j = 0;
+    while (j < 2) {
+        cout << "In ";
+        j++;
+    }
+    cout << "Out ";
+    i++;
+}</pre>
+                    <ul class="options-list">
+                        <li><label><input type="radio" name="q2" value="a"> In In Out In In Out In In Out</label></li>
+                        <li><label><input type="radio" name="q2" value="b"> In Out In Out In Out</label></li>
+                        <li><label><input type="radio" name="q2" value="c"> In In In In In In Out Out Out</label></li>
+                        <li><label><input type="radio" name="q2" value="d"> O código entra em loop infinito.</label></li>
+                    </ul>
+                </div>
+                
+                <div class="question-block" id="q3">
+                    <h3>Questão 3 (1 ponto)</h3>
+                    <p>Complete o trecho para que o laço calcule o fatorial de <code>n</code>. O fatorial é a multiplicação de todos os inteiros de 1 até o próprio número (ex: 5! = 5*4*3*2*1).</p>
+                    <pre class="code">int n = 5;
+long long fatorial = 1;
+int i = 1;
+while (i <= n) {
+    <span class="fill-in-blank"><input type="text" id="q3_blank" placeholder="Lógica do fatorial"></span>;
+    i++;
+}</pre>
+                </div>
+
+                <div class="question-block" id="q4">
+                    <h3>Questão 4 (1 ponto)</h3>
+                    <p>Complete a condição do <code>while</code> para que ele continue executando enquanto o ponteiro <code>ptr</code> não apontar para um caractere nulo (fim de uma string em C).</p>
+                    <pre class="code">char texto[] = "prova";
+char* ptr = texto;
+while (<span class="fill-in-blank"><input type="text" id="q4_blank" placeholder="Condição com ponteiro"></span>) {
+    cout << *ptr;
+    ptr++;
+}</pre>
+                </div>
+                
+                <div class="question-block" id="q5">
+                    <h3>Questão 5 (1 ponto)</h3>
+                    <p>O código abaixo deveria somar apenas os números pares de 2 a 10. Complete a linha com `continue` para corrigir a lógica e pular os números ímpares.</p>
+                    <pre class="code">int soma = 0;
+int i = 1;
+while (i < 10) {
+    i++;
+    if (i % 2 != 0) { // Se 'i' for ímpar...
+        <span class="fill-in-blank"><input type="text" id="q5_blank" placeholder="Use break ou continue"></span>;
+    }
+    soma += i;
+}</pre>
+                </div>
+
+                <div class="question-block" id="q6">
+                    <h3>Questão 6 (1 ponto)</h3>
+                    <p>Este laço busca o primeiro múltiplo de 7 a partir de 100. Complete a condição do <code>while</code> para que ele pare assim que o número for encontrado.</p>
+                    <pre class="code">int num = 100;
+while (<span class="fill-in-blank"><input type="text" id="q6_blank" placeholder="Condição de parada"></span>) {
+    num++;
+}</pre>
+                </div>
+
+                <div class="question-block" id="q7">
+                    <h3>Questão 7 (1 ponto)</h3>
+                    <p>Qual será o valor final da variável <code>soma</code> após a execução deste código?</p>
+                    <pre class="code">int soma = 0, i = 10;
+while (i > 0) {
+    soma += i;
+    if (soma > 20) {
+        break;
+    }
+    i -= 2;
+}</pre>
+                    <ul class="options-list">
+                        <li><label><input type="radio" name="q7" value="a"> 20</label></li>
+                        <li><label><input type="radio" name="q7" value="b"> 24</label></li>
+                        <li><label><input type="radio" name="q7" value="c"> 30</label></li>
+                        <li><label><input type="radio" name="q7" value="d"> 18</label></li>
+                    </ul>
+                </div>
+
+                <div class="question-block" id="q8">
+                    <h3>Questão 8 (1 ponto)</h3>
+                    <p>O laço abaixo contém um erro que causa um loop infinito. Qual das opções descreve corretamente o erro?</p>
+                    <pre class="code">int i = 0;
+while (i < 5) {
+    if (i == 3) {
+        continue;
+    }
+    cout << i;
+    i++;
+}</pre>
+                    <ul class="options-list">
+                        <li><label><input type="radio" name="q8" value="a"> A condição `i < 5` nunca se torna falsa.</label></li>
+                        <li><label><input type="radio" name="q8" value="b"> `continue` não pode ser usado dentro de um `if`.</label></li>
+                        <li><label><input type="radio" name="q8" value="c"> Quando `i` se torna 3, o `continue` pula o `i++`, e `i` nunca mais é incrementado.</label></li>
+                        <li><label><input type="radio" name="q8" value="d"> O `cout` deveria estar antes do `if`.</label></li>
+                    </ul>
+                </div>
+                
+                <div class="question-block" id="q9">
+                    <h3>Questão 9 (1 ponto)</h3>
+                    <p>Complete a lógica para validar uma senha. O laço deve continuar pedindo a senha enquanto a tentativa for diferente da senha correta E o número de tentativas for menor que 3.</p>
+                    <pre class="code">string senha_correta = "1234";
+string tentativa;
+int tentativas = 0;
+while (<span class="fill-in-blank"><input type="text" id="q9_blank" placeholder="Condição de validação"></span>) {
+    cout << "Senha incorreta. Tente de novo: ";
+    cin >> tentativa;
+    tentativas++;
+}</pre>
+                </div>
+                
+                <div class="question-block" id="q10">
+                    <h3>Questão 10 (1 ponto)</h3>
+                    <p>O código inverte os dígitos de um número (ex: 123 -> 321). Complete a linha que realiza a "mágica" de construir o número invertido.</p>
+                    <pre class="code">int numero = 123, invertido = 0, digito;
+while (numero != 0) {
+    digito = numero % 10;
+    <span class="fill-in-blank"><input type="text" id="q10_blank" placeholder="Lógica da inversão"></span>;
+    numero /= 10;
+}</pre>
+                </div>
+
+                <button type="button" id="submit-quiz">Finalizar Prova</button>
+            </form>
+        </main>
+        <footer>
+            <p><a href="../Hubs/Cpp-Hub.html"><i class="fa-solid fa-circle-chevron-left"></i></a></p>
+        </footer>
+    </div>
+
+    <div id="player-wrapper" class="is-hidden">
+
+    <iframe 
+        id="meu-player-de-musica"
+        src="../../player/player.html"
+        title="Player de Música"
+        frameborder="0"
+        allow="autoplay">
+    </iframe>
+
+    </div>
+
+    <button id="toggle-player-btn" aria-label="Controlar Player">
+    🎵
+    </button>
+
+    <script src="https://unpkg.com/@barba/core" defer></script>
+    <script src="../../Scripts/player-toggle.js" defer></script>
+    <script src="../../Scripts/sound-effects.js" defer></script>
+    <script src="../../Scripts/theme-toggle.js" defer></script>
+    <script src="../../Scripts/barba-init.js" defer></script>
+
+</body>
+</html>
