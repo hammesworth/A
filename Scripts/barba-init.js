@@ -1,6 +1,3 @@
-// Arquivo: Scripts/barba-init.js
-// Responsabilidade: Transições de página + carregamentos dinâmicos de scripts
-
 function configurePage(pageType) {
     document.body.classList.remove('page-hub', 'page-content');
     document.body.classList.add(pageType);
