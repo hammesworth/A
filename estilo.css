@@ -1,10 +1,4 @@
 /* ==========================================================================
-   ARQUIVO CSS OTIMIZADO (estilo.css)
-   Organizado para clareza, manutenibilidade e responsividade.
-   Versão com menu de navegação responsivo corrigido.
-   ========================================================================== */
-
-/* ==========================================================================
    1. CONFIGURAÇÕES GLOBAIS E RESET
    ========================================================================== */
 
@@ -117,7 +111,6 @@ body.dark-mode #theme-icon {
 }
 
 /* --- Animações Globais --- */
-/* Animações Globais Suavizadas */
 @keyframes fadeInDown {
     from { opacity: 0; transform: translateY(-22px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -139,7 +132,7 @@ body.dark-mode #theme-icon {
 }
 
 /* ==========================================================================
-   2. HEADER E BARRA DE PESQUISA
+   2. HEADER
    ========================================================================== */
 
 .page-hub header,
@@ -181,7 +174,7 @@ body.dark-mode #theme-icon {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 0.5rem; /* Aumentado um pouco o gap para melhor espaçamento */
+    gap: 0.5rem;
     width: 100%;
     margin: 0 auto;
     padding-top: 1.5rem;
@@ -402,7 +395,7 @@ footer a {
 }
 
 /* ==========================================================================
-   6. RESPONSIVIDADE (Regras consolidadas)
+   6. RESPONSIVIDADE
    ========================================================================== */
 
 /* --- Telas Médias (Tablets) --- */
@@ -418,8 +411,8 @@ footer a {
 /* --- Telas Pequenas (Tablets em modo retrato e celulares grandes) --- */
 @media (max-width: 768px) {
     .page-hub header, .page-content header {
-        margin-bottom: 40px; /* Reduzido o margin-bottom */
-        padding: 2rem 1.5rem; /* Removido o padding-bottom extra */
+        margin-bottom: 40px;
+        padding: 2rem 1.5rem; 
     }
     .page-hub header h1 {
         animation: none;
@@ -447,7 +440,6 @@ footer a {
     .page-hub .module-card:nth-child(3) { animation-delay: 0.5s; }
     .page-hub .module-card:nth-child(4) { animation-delay: 0.6s; }
 
-    /* ========== MUDANÇA PRINCIPAL PARA O MENU RESPONSIVO ========== */
     .page-content header nav {
         justify-content: flex-start; /* Alinha os botões à esquerda */
         flex-wrap: nowrap; /* Impede que os botões quebrem a linha */
@@ -505,7 +497,7 @@ footer a {
 }
 
 /* ==========================================================================
-   7. PLAYER DE MÚSICA CONTROLÁVEL
+   7. PLAYER DE MÚSICA
    ========================================================================== */
 
 body {
@@ -558,7 +550,7 @@ body {
 }
 
 /* ========================================================================== */
-/* 8. TABELA-VERDADE (Estilo harmonizado com o tema geral) */
+/* 8. TABELA-VERDADE*/
 /* ========================================================================== */
 
 #truth-table-game {
